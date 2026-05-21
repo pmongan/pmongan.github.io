@@ -3,9 +3,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mongan's Teaching Archive</title>
+<meta name="description" content="Free teaching resources for social work students, faculty, and practitioners. Plain-language case explainers, policy analysis, and clinical materials — no paywall, no login, no strings.">
+<meta name="author" content="Philip Mongan">
+<meta property="og:title" content="Mongan's Teaching Archive">
+<meta property="og:description" content="Free teaching resources for social work students, faculty, and practitioners. Plain-language case explainers, policy analysis, and clinical materials — no paywall, no login, no strings.">
+<meta property="og:url" content="https://philipmongan.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mongan's Teaching Archive">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&amp;family=Inter+Tight:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter+Tight:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --paper: #f4ede0;
@@ -67,40 +74,6 @@
   }
   .skip-link:focus { top: 16px; outline: 3px solid var(--oxblood); }
 
-  /* MASTHEAD */
-  .masthead {
-    border-bottom: 1px solid var(--rule);
-    padding: 24px 0 18px;
-    position: relative;
-    z-index: 2;
-  }
-  .masthead-inner {
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: 0 32px;
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 24px;
-    flex-wrap: wrap;
-  }
-  .masthead-brand {
-    font-family: var(--font-display);
-    font-size: 15px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink);
-  }
-  .masthead-meta {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ink-mute);
-  }
-
-  /* HERO */
   .hero {
     max-width: 1180px;
     margin: 0 auto;
@@ -181,7 +154,6 @@
     border-top: 1px solid var(--rule);
   }
 
-  /* MAIN */
   main {
     max-width: 1180px;
     margin: 0 auto;
@@ -190,7 +162,6 @@
     z-index: 2;
   }
 
-  /* COLLECTIONS HEADER */
   .collections-head {
     display: flex;
     align-items: baseline;
@@ -213,7 +184,6 @@
     background: var(--rule-soft);
   }
 
-  /* COLLECTION CARDS */
   .collections {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -242,9 +212,7 @@
     border-top-color: var(--rule);
     opacity: 0.7;
   }
-  .collection-card.coming-soon:hover {
-    box-shadow: none;
-  }
+  .collection-card.coming-soon:hover { box-shadow: none; }
 
   .collection-tag {
     font-family: var(--font-mono);
@@ -255,9 +223,7 @@
     font-weight: 700;
     margin-bottom: 14px;
   }
-  .collection-card.coming-soon .collection-tag {
-    color: var(--ink-mute);
-  }
+  .collection-card.coming-soon .collection-tag { color: var(--ink-mute); }
 
   .collection-title {
     font-family: var(--font-display);
@@ -268,13 +234,8 @@
     color: var(--ink);
     margin-bottom: 16px;
   }
-  .collection-title em {
-    font-style: italic;
-    color: var(--oxblood);
-  }
-  .collection-card.coming-soon .collection-title em {
-    color: var(--ink-soft);
-  }
+  .collection-title em { font-style: italic; color: var(--oxblood); }
+  .collection-card.coming-soon .collection-title em { color: var(--ink-soft); }
 
   .collection-desc {
     font-size: 15.5px;
@@ -291,10 +252,7 @@
     color: var(--ink-mute);
     margin-bottom: 20px;
   }
-  .collection-meta span {
-    color: var(--ink-soft);
-    font-weight: 700;
-  }
+  .collection-meta span { color: var(--ink-soft); font-weight: 700; }
 
   .collection-link {
     display: inline-flex;
@@ -325,7 +283,6 @@
     align-self: flex-start;
   }
 
-  /* ABOUT SECTION */
   .about {
     border-top: 3px double var(--ink);
     padding-top: 56px;
@@ -363,7 +320,6 @@
     .about { grid-template-columns: 1fr; gap: 12px; }
   }
 
-  /* COLOPHON */
   .colophon {
     background: var(--ink);
     color: var(--paper-2);
@@ -450,7 +406,6 @@
     <div class="collection-tag">Coming Soon</div>
     <h2 class="collection-title">Substance Use<br><em>Disorders</em></h2>
     <p class="collection-desc">Graduate-level materials on SUDs assessment, treatment planning, the Transtheoretical Model, pharmacology of commonly abused substances, and evidence-based intervention. Built for MSW students and clinical practitioners.</p>
-    <div class="collection-meta">SW 6460 · <span>In development</span></div>
     <div class="collection-coming">In development</div>
   </div>
 
@@ -459,7 +414,6 @@
     <div class="collection-tag">Coming Soon</div>
     <h2 class="collection-title">Social Welfare<br><em>Policy</em></h2>
     <p class="collection-desc">The history, structure, and politics of the American welfare state. Major legislation, policy analysis frameworks, and the social movements that shaped what exists today. For practitioners who need to understand the systems their clients navigate.</p>
-    <div class="collection-meta">SW 6030 · <span>In development</span></div>
     <div class="collection-coming">In development</div>
   </div>
 
@@ -468,7 +422,6 @@
     <div class="collection-tag">Coming Soon</div>
     <h2 class="collection-title">Psycho-<br><em>pathology</em></h2>
     <p class="collection-desc">DSM-based diagnostic frameworks translated for clinical social work practice. Differential diagnosis, comorbidity, cultural considerations, and the relationship between diagnosis and treatment planning.</p>
-    <div class="collection-meta"><span>In development</span></div>
     <div class="collection-coming">In development</div>
   </div>
 
