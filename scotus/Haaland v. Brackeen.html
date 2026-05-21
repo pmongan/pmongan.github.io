@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Haaland v. Brackeen, Case Explainer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&amp;family=Inter+Tight:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f4ede0;
+    --paper-2: #ebe2d1;
+    --paper-deep: #e5dac4;
+    --ink: #1c1815;
+    --ink-2: #2d2722;
+    --ink-soft: #4a4239;
+    --ink-mute: #6b6258;
+    --rule: #c9bda6;
+    --rule-soft: #d9cfba;
+    --oxblood: #6b1f2a;
+    --oxblood-deep: #4f1620;
+    --oxblood-tint: #f3e0e2;
+    --brass: #6b5320;
+    --brass-tint: #f1e8cf;
+    --majority: #2d4a3a;
+    --majority-tint: #d9e2d8;
+    --dissent: #6b1f2a;
+    --dissent-tint: #ebd5d6;
+    --concur: #6b5320;
+    --concur-tint: #efe5c8;
+
+    --font-display: 'Fraunces', 'Times New Roman', serif;
+    --font-body: 'Inter Tight', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 17px;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(107,31,42,0.025) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(107,83,32,0.025) 0%, transparent 50%);
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.4;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.11 0 0 0 0 0.09 0 0 0 0 0.08 0 0 0 0.12 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 16px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 12px 18px;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 2px;
+    z-index: 9999;
+    transition: top 0.2s;
+  }
+  .skip-link:focus { top: 16px; outline: 3px solid var(--oxblood); }
+
+  .masthead {
+    border-bottom: 1px solid var(--rule);
+    padding: 24px 0 18px;
+    position: relative;
+    z-index: 2;
+  }
+  .masthead-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .masthead-brand {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .masthead-brand span { color: var(--oxblood); }
+  .masthead-meta {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .masthead-meta strong { color: var(--ink); }
+
+  .hero {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 48px 32px 32px;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--oxblood);
+  }
+  .hero-eyebrow::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+    max-width: 200px;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(40px, 6vw, 84px);
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-bottom: 12px;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+  }
+  .hero-title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--oxblood);
+  }
+  .hero-citation {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--ink-mute);
+    letter-spacing: 0.04em;
+    margin-bottom: 36px;
+  }
+  .hero-citation a { color: var(--oxblood); text-decoration: underline; text-underline-offset: 3px; }
+  .hero-citation a:hover { color: var(--oxblood-deep); }
+
+  .lede {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    padding-top: 28px;
+    border-top: 3px double var(--ink);
+  }
+  .lede-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    padding-top: 6px;
+  }
+  .lede-label-mark {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--oxblood);
+    margin-right: 8px;
+    border-radius: 50%;
+    vertical-align: middle;
+  }
+  .lede-text {
+    font-family: var(--font-display);
+    font-size: clamp(20px, 2.2vw, 26px);
+    line-height: 1.4;
+    font-weight: 400;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .lede-text strong {
+    font-weight: 600;
+    color: var(--oxblood);
+    font-style: italic;
+  }
+  @media (max-width: 720px) {
+    .lede { grid-template-columns: 1fr; gap: 12px; }
+  }
+
+  .bluf {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    margin-top: 28px;
+    padding: 24px 28px 26px;
+    background: var(--paper-2);
+    border-left: 4px solid var(--brass);
+    border-radius: 2px;
+  }
+  .bluf-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--brass);
+    font-weight: 700;
+    padding-top: 4px;
+  }
+  .bluf-label-mark {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--brass);
+    margin-right: 8px;
+    border-radius: 50%;
+    vertical-align: middle;
+  }
+  .bluf-text {
+    font-family: var(--font-body);
+    font-size: 16.5px;
+    line-height: 1.7;
+    color: var(--ink-2);
+  }
+  .bluf-text strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  @media (max-width: 720px) {
+    .bluf { grid-template-columns: 1fr; gap: 8px; padding: 20px 22px; }
+  }
+
+  .dropcap::first-letter {
+    font-family: var(--font-display);
+    font-size: 5em;
+    font-weight: 600;
+    float: left;
+    line-height: 0.85;
+    margin: 0.04em 0.08em 0 0;
+    color: var(--oxblood);
+    font-style: italic;
+  }
+
+  main {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px 80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  section {
+    padding: 56px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  section:last-of-type { border-bottom: none; }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 32px;
+    align-items: baseline;
+    margin-bottom: 32px;
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    border-top: 2px solid var(--ink);
+    padding-top: 8px;
+  }
+  .section-num strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--oxblood);
+    letter-spacing: -0.01em;
+    margin-top: 2px;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .section-title em { font-style: italic; color: var(--oxblood); }
+  @media (max-width: 720px) {
+    .section-head { grid-template-columns: 1fr; gap: 8px; }
+    .section-num { border-top: none; padding-top: 0; }
+  }
+
+  .body-grid {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 32px;
+  }
+  .body-grid-aside {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    padding-top: 8px;
+  }
+  .body-grid-main { max-width: 65ch; }
+  .body-grid-main p { margin-bottom: 1em; font-size: 17px; line-height: 1.7; color: var(--ink-2); }
+  .body-grid-main p:last-child { margin-bottom: 0; }
+  .body-grid-main strong { color: var(--ink); font-weight: 600; }
+  .body-grid-main em { font-style: italic; }
+  @media (max-width: 720px) {
+    .body-grid { grid-template-columns: 1fr; gap: 8px; }
+  }
+
+  .bench {
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 36px 32px 28px;
+    margin-top: 8px;
+  }
+  .bench-title {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .bench-row {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+  .justice {
+    flex: 0 0 auto;
+    width: 88px;
+    text-align: center;
+    padding: 12px 4px;
+    border-radius: 4px;
+    border: 1.5px solid var(--rule);
+    background: var(--paper);
+    position: relative;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .justice:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(28,24,21,0.08);
+  }
+  .justice-seal {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin: 0 auto 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--paper);
+    font-style: italic;
+  }
+  .justice-name {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.15;
+    color: var(--ink);
+  }
+  .justice-role {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-top: 4px;
+  }
+  .justice.majority { border-color: var(--majority); background: var(--majority-tint); }
+  .justice.majority .justice-seal { background: var(--majority); }
+  .justice.dissent { border-color: var(--dissent); background: var(--dissent-tint); }
+  .justice.dissent .justice-seal { background: var(--dissent); }
+  .justice.dissent .justice-role { color: var(--ink); }
+  .justice.concur { border-color: var(--concur); background: var(--concur-tint); }
+  .justice.concur .justice-seal { background: var(--concur); }
+  .justice.concur .justice-role { color: var(--ink); }
+  .justice.author::after {
+    content: '\2726';
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    font-size: 12px;
+    color: var(--oxblood);
+  }
+
+  .bench-legend {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .bench-legend-item { display: flex; align-items: center; gap: 8px; }
+  .bench-legend-swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1.5px solid;
+  }
+  .bench-legend-swatch.maj { background: var(--majority-tint); border-color: var(--majority); }
+  .bench-legend-swatch.con { background: var(--concur-tint); border-color: var(--concur); }
+  .bench-legend-swatch.dis { background: var(--dissent-tint); border-color: var(--dissent); }
+
+  .arguments {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 8px;
+  }
+  @media (max-width: 720px) { .arguments { grid-template-columns: 1fr; } }
+
+  .arg-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-top: 4px solid;
+    padding: 28px 28px 24px;
+    border-radius: 2px;
+    position: relative;
+  }
+  .arg-card.majority-arg { border-top-color: var(--majority); }
+  .arg-card.dissent-arg { border-top-color: var(--dissent); }
+
+  .arg-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .arg-card.majority-arg .arg-label { color: var(--majority); }
+  .arg-card.dissent-arg .arg-label { color: var(--dissent); }
+  .arg-label-mark {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+  .arg-card.majority-arg .arg-label-mark { background: var(--majority); }
+  .arg-card.dissent-arg .arg-label-mark { background: var(--dissent); }
+
+  .arg-headline {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--ink);
+    margin-bottom: 18px;
+    letter-spacing: -0.01em;
+  }
+  .arg-headline em { font-style: italic; color: var(--oxblood); }
+
+  .arg-points {
+    list-style: none;
+    counter-reset: argp;
+  }
+  .arg-points li {
+    counter-increment: argp;
+    padding: 14px 0 14px 36px;
+    border-bottom: 1px solid var(--rule-soft);
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--ink-2);
+    position: relative;
+  }
+  .arg-points li:last-child { border-bottom: none; padding-bottom: 4px; }
+  .arg-points li::before {
+    content: counter(argp, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 14px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-mute);
+    letter-spacing: 0.05em;
+  }
+  .arg-points li strong {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--ink);
+    margin-bottom: 4px;
+    letter-spacing: -0.005em;
+  }
+
+  .guardrail {
+    background: var(--brass-tint);
+    border: 1px solid var(--brass);
+    border-left: 4px solid var(--brass);
+    padding: 24px 28px;
+    margin-top: 8px;
+    border-radius: 2px;
+    position: relative;
+  }
+  .guardrail-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brass);
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .guardrail-label::before {
+    content: '\26A0';
+    font-size: 16px;
+    color: var(--brass);
+  }
+  .guardrail-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 14px;
+    letter-spacing: -0.01em;
+  }
+  .guardrail ul {
+    list-style: none;
+    padding: 0;
+  }
+  .guardrail li {
+    padding: 8px 0 8px 24px;
+    font-size: 15.5px;
+    color: var(--ink-2);
+    line-height: 1.55;
+    position: relative;
+  }
+  .guardrail li::before {
+    content: '\2715';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    color: var(--brass);
+    font-weight: 700;
+    font-size: 13px;
+  }
+  .guardrail li strong { color: var(--ink); font-weight: 600; }
+
+  .term {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: var(--oxblood);
+    cursor: help;
+    border-bottom: 1.5px dotted var(--oxblood);
+    font-weight: 600;
+  }
+  .term:focus-visible {
+    outline: 2px solid var(--oxblood);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  .term-popup {
+    position: absolute;
+    max-width: 340px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 16px 18px;
+    border-radius: 3px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.55;
+    box-shadow: 0 12px 28px rgba(28,24,21,0.3);
+    z-index: 200;
+    border: 1px solid var(--ink-2);
+  }
+  .term-popup[hidden] { display: none; }
+  .term-popup strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--paper);
+    margin-bottom: 6px;
+    font-style: italic;
+  }
+
+  .timeline {
+    margin-top: 8px;
+    border-left: 2px solid var(--rule);
+    padding-left: 28px;
+    margin-left: 12px;
+  }
+  .timeline-event {
+    position: relative;
+    padding-bottom: 28px;
+  }
+  .timeline-event:last-child { padding-bottom: 0; }
+  .timeline-event::before {
+    content: '';
+    position: absolute;
+    left: -36px;
+    top: 6px;
+    width: 14px;
+    height: 14px;
+    background: var(--paper);
+    border: 2px solid var(--oxblood);
+    border-radius: 50%;
+  }
+  .timeline-event.scotus::before { background: var(--oxblood); }
+  .timeline-court {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+  .timeline-ruling {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+    letter-spacing: -0.005em;
+  }
+  .timeline-desc {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+
+  .practice-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 8px;
+  }
+  @media (max-width: 820px) { .practice-grid { grid-template-columns: 1fr; } }
+
+  .practice-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 24px 22px;
+    border-radius: 2px;
+    border-top: 4px solid var(--oxblood);
+  }
+  .practice-card-tag {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  .practice-card-title {
+    font-family: var(--font-display);
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .practice-card p {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink-2);
+  }
+
+  .pullquote {
+    margin: 48px auto;
+    max-width: 800px;
+    text-align: center;
+    padding: 0 24px;
+  }
+  .pullquote-mark {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 88px;
+    color: var(--oxblood);
+    line-height: 0.6;
+    margin-bottom: 12px;
+    font-weight: 400;
+  }
+  .pullquote-text {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(22px, 2.4vw, 30px);
+    line-height: 1.35;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 16px;
+    letter-spacing: -0.005em;
+  }
+  .pullquote-cite {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+
+  .colophon {
+    background: var(--ink);
+    color: var(--paper-2);
+    padding: 36px 32px;
+    position: relative;
+    z-index: 2;
+  }
+  .colophon-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .colophon-brand {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    font-style: italic;
+    color: var(--paper);
+  }
+  .colophon-meta {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #a89e8e;
+  }
+  .colophon-meta strong { color: var(--paper-2); }
+
+  .key-terms {
+    margin-top: 16px;
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    padding: 28px 32px;
+    border-radius: 2px;
+  }
+  .key-terms-title {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .key-terms-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 32px;
+  }
+  @media (max-width: 720px) { .key-terms-list { grid-template-columns: 1fr; gap: 20px; } }
+  .key-term-item { padding: 0; }
+  .key-term-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-style: italic;
+    color: var(--ink);
+    font-size: 17px;
+    margin-bottom: 8px;
+    letter-spacing: -0.005em;
+  }
+  .key-term-def {
+    font-size: 14.5px;
+    color: var(--ink-2);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ICWA PROVISIONS TABLE */
+  .icwa-table {
+    margin-top: 8px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .icwa-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 0;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .icwa-row:last-child { border-bottom: none; }
+  .icwa-row.header {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .icwa-cell {
+    padding: 16px 20px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    border-right: 1px solid var(--rule-soft);
+  }
+  .icwa-cell:last-child { border-right: none; }
+  .icwa-row.header .icwa-cell {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--paper);
+    font-weight: 700;
+    border-right-color: var(--ink-soft);
+  }
+  .icwa-cell.label {
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--ink);
+    font-size: 16px;
+    letter-spacing: -0.005em;
+  }
+  .icwa-cell.detail { color: var(--ink-2); }
+  @media (max-width: 720px) {
+    .icwa-row { grid-template-columns: 1fr; }
+    .icwa-cell { border-right: none; border-bottom: 1px solid var(--rule-soft); }
+    .icwa-row.header { display: none; }
+  }
+
+  /* HISTORICAL CALLOUT */
+  .historical-callout {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 28px 32px;
+    margin: 8px 0;
+    border-radius: 2px;
+    border-left: 4px solid var(--oxblood);
+  }
+  .historical-callout-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #c8a87a;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .historical-callout-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--paper);
+    margin-bottom: 14px;
+    letter-spacing: -0.005em;
+    font-style: italic;
+  }
+  .historical-callout p {
+    font-size: 15.5px;
+    line-height: 1.7;
+    color: #d6cdb8;
+    margin-bottom: 12px;
+  }
+  .historical-callout p:last-child { margin-bottom: 0; }
+  .historical-callout strong { color: var(--paper); font-weight: 600; }
+
+  @media print {
+    body::before, .skip-link { display: none; }
+    body { background: white; color: black; }
+    section { page-break-inside: avoid; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
+</head><body><p><a class="skip-link" href="#main">Skip to main content</a></p>
+<div class="masthead" role="banner">
+<div class="masthead-inner">
+<div class="masthead-brand">understanding scotus opinions</div>
+<div class="masthead-meta">Dr. Philip Mongan, lcsw, ph.D.</div>
+</div>
+</div>
+<div class="hero">
+<p class="hero-eyebrow">October Term 2022 · Decided June 15, 2023</p>
+<h1 class="hero-title">Haaland <em>v.</em><br>Brackeen</h1>
+<p class="hero-citation">No. 21–376 · 599 U.S. 255 (2023) · <a href="https://www.oyez.org/cases/2022/21-376" target="_blank" rel="noopener">Read the full case on Oyez ↗</a></p>
+<div class="lede">
+<div class="lede-label"><span class="lede-label-mark" aria-hidden="true"></span>The Holding</div>
+<p class="lede-text">The Supreme Court ruled, <strong>7–2</strong>, that the Indian Child Welfare Act (ICWA) of 1978 falls within Congress's constitutional authority and does not violate the Tenth Amendment by commandeering state child welfare agencies. The Court did not reach the <em>equal protection</em> challenge because the plaintiffs lacked standing.</p>
+</div>
+<div class="bluf">
+<div class="bluf-label"><span class="bluf-label-mark" aria-hidden="true"></span>In plain terms</div>
+<p class="bluf-text">ICWA is a 1978 federal law that protects Native American children from being removed from their families and tribes without strong justification. It sets higher standards for state child welfare workers and courts to follow when an Indian child is involved. Several non-Native adoptive parents and three states sued to strike the whole law down, arguing it discriminated by race and forced states to enforce federal policy. The Supreme Court upheld ICWA. <strong>The Court said Congress has constitutional authority to legislate on tribal affairs, and ICWA is a valid use of that authority.</strong> For child welfare workers, this means ICWA is still the law of the land. If you work a case involving a child who is or might be a member of a federally recognized tribe, ICWA's standards apply and must be followed.</p>
+</div>
+</div>
+<main id="main"><!-- 01 - THE QUESTION -->
+<section aria-labelledby="s1-title">
+<div class="section-head">
+<div class="section-num">Section <strong>01</strong></div>
+<h2 class="section-title" id="s1-title">The Question <em>Presented</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">What was<br>at stake</div>
+<div class="body-grid-main">
+<p class="dropcap">The case began with families trying to adopt Native American children. The Brackeens, a Texas couple, fostered and eventually adopted a Navajo and Cherokee boy. They later tried to adopt his sister and were initially blocked because the <button type="button" class="term" data-term="icwa" aria-describedby="popup-icwa">Indian Child Welfare Act</button> required state courts to prefer placement with the child's tribe or other Native families. The Cliffords of Minnesota and the Librettis of Nevada had similar experiences. The biological mother of one of the children, Altagracia Hernandez, joined the suit. So did the states of Texas, Louisiana, and Indiana.</p>
+<p>The plaintiffs argued ICWA was unconstitutional on three grounds. First, Congress had no authority to pass it. Second, it forced state agencies and courts to carry out federal policy, which they said violated the <button type="button" class="term" data-term="commandeering" aria-describedby="popup-commandeering">anti-commandeering doctrine</button>. Third, by treating Indian children differently from other children, ICWA violated the equal protection guarantee.</p>
+<p>This was not a small case. ICWA has been called the gold standard of child welfare law. Striking it down would have undone the most significant federal protection for Native families since the law was passed in 1978. The Cherokee Nation, the Oneida Nation, the Quinault Indian Nation, and the Morongo Band of Mission Indians intervened to defend the law alongside the federal government.</p>
+</div>
+</div>
+</section>
+<!-- 02 - WHY ICWA EXISTS - HISTORICAL CONTEXT -->
+<section aria-labelledby="s2-title">
+<div class="section-head">
+<div class="section-num">Section <strong>02</strong></div>
+<h2 class="section-title" id="s2-title">Why ICWA <em>Exists</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">The history<br>that shaped<br>the law</div>
+<div class="body-grid-main">
+<p>Understanding this case requires understanding why ICWA was passed in the first place. Justice Gorsuch's concurrence walked through this history in detail because it is not background; it is the reason the statute exists at all. For a child welfare practitioner, knowing this history is the difference between treating ICWA as a procedural inconvenience and understanding it as a remedy for harm that the state and federal governments themselves caused.</p>
+</div>
+</div>
+<div class="historical-callout">
+<div class="historical-callout-label">A Brief History of Federal and State Removal</div>
+<h3 class="historical-callout-title">By the 1970s, an estimated 25 to 35 percent of all Native American children had been separated from their families, and roughly 90 percent of those children were placed with non-Indian families.</h3>
+<p>Starting in 1879, the federal government operated <strong>Indian boarding schools</strong>. At their peak there were 408 schools across the country. Children were taken from their families, sometimes by force, sometimes by withholding food rations from parents who refused. At the schools, they were given English names, had their hair cut, had their traditional clothes taken away, and were prohibited from speaking their languages or practicing their religions. The stated goal was, in the words of the era, the abolition of the old tribal relations.</p>
+<p>The boarding school era continued through the 1970s. As it wound down, a parallel system rose to replace it: <strong>state-run child welfare agencies</strong>. With the encouragement of the federal Indian Adoption Project, state social workers removed Native children from their families at extraordinary rates and placed them, overwhelmingly, with white adoptive families. Tribes had no notice, no standing, and no voice in those proceedings.</p>
+<p>ICWA was passed in 1978 as Congress's response to this documented crisis. It was the first federal law to recognize that the removal of Native children was not an unfortunate side effect of child welfare practice. It was a policy. ICWA was designed to stop it.</p>
+</div>
+<h3 style="font-family: var(--font-display); font-size: 24px; font-weight: 600; color: var(--ink); margin: 32px 0 16px; letter-spacing: -0.01em;">What ICWA Actually Does</h3>
+<div class="icwa-table" role="table" aria-label="Key provisions of ICWA">
+<div class="icwa-row header" role="row">
+<div class="icwa-cell" role="columnheader">Provision</div>
+<div class="icwa-cell" role="columnheader">What it requires</div>
+</div>
+<div class="icwa-row" role="row">
+<div class="icwa-cell label" role="cell">Active efforts</div>
+<div class="icwa-cell detail" role="cell">State agencies must make "active efforts" to keep Indian families together. This is a higher standard than the "reasonable efforts" required in most non-ICWA cases. It means more than offering services; it means actively helping the family use them.</div>
+</div>
+<div class="icwa-row" role="row">
+<div class="icwa-cell label" role="cell">Tribal notice and intervention</div>
+<div class="icwa-cell detail" role="cell">When an Indian child enters a state child welfare proceeding, the child's tribe must be notified and has the right to intervene. The tribe also has the right to ask that the case be transferred to tribal court.</div>
+</div>
+<div class="icwa-row" role="row">
+<div class="icwa-cell label" role="cell">Placement preferences</div>
+<div class="icwa-cell detail" role="cell">For foster care or adoptive placement of an Indian child, states must prefer, in order: (1) extended family, (2) other members of the same tribe, (3) other Indian families. A non-Indian placement requires "good cause" to depart from these preferences.</div>
+</div>
+<div class="icwa-row" role="row">
+<div class="icwa-cell label" role="cell">Higher burden of proof</div>
+<div class="icwa-cell detail" role="cell">Termination of parental rights for an Indian child requires proof "beyond a reasonable doubt." This is higher than the "clear and convincing evidence" standard Santosky set as the constitutional floor for non-ICWA cases.</div>
+</div>
+<div class="icwa-row" role="row">
+<div class="icwa-cell label" role="cell">Qualified expert witness</div>
+<div class="icwa-cell detail" role="cell">In a TPR or foster placement case, the state must present testimony from a "qualified expert witness" familiar with tribal culture, usually someone from the tribe itself.</div>
+</div>
+</div>
+</section>
+<!-- 03 - THE BENCH -->
+<section aria-labelledby="s3-title">
+<div class="section-head">
+<div class="section-num">Section <strong>03</strong></div>
+<h2 class="section-title" id="s3-title">The <em>Bench</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">Who joined<br>which side</div>
+<div class="body-grid-main">
+<p>Justice Barrett wrote for a seven-Justice majority that cut across the ideological lines that usually predict outcomes. The Court's three liberals joined with Roberts, Gorsuch, Kavanaugh, and Barrett herself. Justice Gorsuch wrote a long, historically detailed concurrence that has become the most quoted opinion in the case. Justices Thomas and Alito each wrote separately to dissent.</p>
+</div>
+</div>
+<div class="bench" role="figure" aria-label="The nine Justices and how they voted">
+<p class="bench-title">The Roberts Court · Vote 7–2</p>
+<div class="bench-row">
+<div class="justice majority author">
+<div class="justice-seal" aria-hidden="true">B</div>
+<div class="justice-name">Barrett</div>
+<div class="justice-role">Author</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">R</div>
+<div class="justice-name">Roberts</div>
+<div class="justice-role">Joined</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">S</div>
+<div class="justice-name">Sotomayor</div>
+<div class="justice-role">Joined</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">K</div>
+<div class="justice-name">Kagan</div>
+<div class="justice-role">Joined</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">G</div>
+<div class="justice-name">Gorsuch</div>
+<div class="justice-role">Joined</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">K</div>
+<div class="justice-name">Kavanaugh</div>
+<div class="justice-role">Joined</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">J</div>
+<div class="justice-name">Jackson</div>
+<div class="justice-role">Joined</div>
+</div>
+<div class="justice dissent">
+<div class="justice-seal" aria-hidden="true">T</div>
+<div class="justice-name">Thomas</div>
+<div class="justice-role">Dissented</div>
+</div>
+<div class="justice dissent">
+<div class="justice-seal" aria-hidden="true">A</div>
+<div class="justice-name">Alito</div>
+<div class="justice-role">Dissented</div>
+</div>
+</div>
+<div class="bench-legend">
+<div class="bench-legend-item"><span class="bench-legend-swatch maj" aria-hidden="true"></span>Majority (7)</div>
+<div class="bench-legend-item"><span class="bench-legend-swatch dis" aria-hidden="true"></span>Dissent (2)</div>
+<div class="bench-legend-item">✦ Opinion author</div>
+</div>
+</div>
+</section>
+<!-- PULL QUOTE -->
+<div class="pullquote">
+<div class="pullquote-mark" aria-hidden="true">“</div>
+<p class="pullquote-text">The right of Indian communities to resist fading into the twilight of history.</p>
+<p class="pullquote-cite">Justice Gorsuch, concurring</p>
+</div>
+<!-- 04 - THE REASONING -->
+<section aria-labelledby="s4-title">
+<div class="section-head">
+<div class="section-num">Section <strong>04</strong></div>
+<h2 class="section-title" id="s4-title">The <em>Reasoning</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">Two<br>positions</div>
+<div class="body-grid-main">
+<p>The majority and the dissent disagree most fundamentally about the source and the limits of Congress's authority to legislate on tribal matters. The majority sees a long line of precedent recognizing Congress's broad power over Indian affairs. The dissents argue that power should be read more narrowly and that ICWA stretches it past constitutional limits.</p>
+</div>
+</div>
+<div class="arguments">
+<article class="arg-card majority-arg">
+<div class="arg-label"><span class="arg-label-mark" aria-hidden="true"></span>The Majority</div>
+<h3 class="arg-headline">Congress has constitutional authority to legislate on tribal affairs, and ICWA is a <em>valid use</em> of that authority.</h3>
+<ol class="arg-points">
+<li><strong>Congress has long had broad power over Indian affairs.</strong> The Constitution gives Congress authority over commerce with the Indian tribes, treaty-making power, and other tools to manage the federal trust relationship with tribal nations. For more than 200 years, Congress has used that authority to legislate on tribal matters. ICWA fits squarely within that tradition.</li>
+<li><strong>The anti-commandeering doctrine does not apply.</strong> The plaintiffs argued that ICWA forces state agencies and courts to enforce federal policy, which they said violated the Tenth Amendment. The Court disagreed. ICWA applies the same procedural rules to both private and state actors in child welfare proceedings. It is not the same as ordering a state legislature to pass a federal program. State courts already apply federal law in many contexts; ICWA is one more example.</li>
+<li><strong>Tribal status is political, not racial.</strong> The majority did not have to reach this question because the plaintiffs lacked standing on equal protection grounds. But the dissents pushed hard on the equal protection angle, and the majority's broader reasoning, especially Gorsuch's concurrence, made clear that membership in a federally recognized tribe is a political relationship between a sovereign and its citizens, not a racial classification. Tribal nations are governments. Members are citizens.</li>
+<li><strong>The plaintiffs lacked standing on equal protection.</strong> To bring an equal protection challenge in federal court, plaintiffs must show a concrete injury that the court can fix. The Court found that the individual plaintiffs had either already finalized their adoptions or could not show the relief they sought would change their situation. Texas, as a state, does not have its own equal protection rights and cannot assert them on behalf of its citizens. The equal protection challenge was dismissed without a ruling on the merits.</li>
+<li><strong>The state-rights argument cuts the wrong way here.</strong> The plaintiffs argued that family law is traditionally a state matter and ICWA intrudes on state sovereignty. The Court pointed out that the long history of federal Indian law has always included family-law-adjacent provisions. ICWA is not an invasion of state authority; it is part of the longstanding federal trust responsibility to tribal nations, which the Constitution itself contemplates.</li>
+</ol>
+</article>
+<article class="arg-card dissent-arg">
+<div class="arg-label"><span class="arg-label-mark" aria-hidden="true"></span>The Dissents</div>
+<h3 class="arg-headline">Congress's constitutional power over Indian affairs is more limited than the majority claims, and family law is the <em>states' job.</em></h3>
+<ol class="arg-points">
+<li><strong>"Plenary power" over Indian affairs has no textual basis.</strong> Justice Thomas argued at length that the Court's long line of cases recognizing broad federal authority over tribal matters has no real grounding in the Constitution's text. The Indian Commerce Clause covers commerce, not child custody. The Treaty Clause was the basis for early federal-tribal relations but is rarely invoked today. Without those, the dissents argue, Congress has no proper authority over a law like ICWA.</li>
+<li><strong>Family law belongs to the states.</strong> Justice Alito emphasized that domestic relations is one of the most traditional areas of state authority. Federal regulation of child welfare proceedings, especially through detailed placement preferences, intrudes on the states' core function. Even if Congress has some authority in this space, ICWA reaches too far.</li>
+<li><strong>ICWA disadvantages individual children.</strong> The dissents argued that placement preferences may keep some children in unstable situations or away from stable non-Indian homes that are ready to adopt them. From the child's perspective, the dissents said, ICWA's preferences can produce worse outcomes than a pure best-interests analysis would.</li>
+<li><strong>The standing analysis was wrong.</strong> The dissenters thought the plaintiffs had standing to bring the equal protection challenge and that the Court should have reached the merits. Punting on standing leaves the equal protection question open for future litigation but, in the dissenters' view, also lets a constitutionally questionable statute continue to operate.</li>
+</ol>
+</article>
+</div>
+</section>
+<!-- 05 - GUARDRAIL -->
+<section aria-labelledby="s5-title">
+<div class="section-head">
+<div class="section-num">Section <strong>05</strong></div>
+<h2 class="section-title" id="s5-title">What the Court <em>Did Not</em> Decide</h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">Read this<br>carefully</div>
+<div class="body-grid-main">
+<p>Brackeen was a major victory for ICWA, but the ruling is narrower than it might look at first. The Court resolved some questions, declined to reach others, and explicitly left the door open for future challenges. For practitioners, the lesson is that the law remains in force but the legal terrain is not entirely settled.</p>
+</div>
+</div>
+<div class="guardrail" role="note">
+<div class="guardrail-label">Common misreads to avoid</div>
+<h3 class="guardrail-title">ICWA survived. The equal protection question did not.</h3>
+<ul>
+<li><strong>The Court did not rule on the equal protection challenge.</strong> The plaintiffs lacked standing, so the Court vacated and remanded that part of the case with instructions to dismiss. A future plaintiff with proper standing could try again. Several commentators have predicted that future challenges are likely.</li>
+<li><strong>The Court did not address tribal authority to deviate from ICWA's placement preferences.</strong> ICWA lets tribes set their own placement preferences, which courts must follow if different from the statutory order. The plaintiffs raised a nondelegation challenge to that provision. The Court dismissed it on standing grounds without reaching the merits.</li>
+<li><strong>The Court did not require states to implement ICWA perfectly.</strong> Justice Gorsuch noted that many states have struggled with ICWA implementation and some have actively resisted it. The decision protects the statute but does not by itself fix compliance problems in state agencies.</li>
+<li><strong>The Court did not redefine "Indian child."</strong> ICWA applies to a child who is either a member of a federally recognized tribe or eligible for membership and the biological child of a member. That definition remained intact. Some plaintiffs had argued it should be narrowed; the Court did not address that argument.</li>
+<li><strong>The Court did not eliminate the "good cause" exception.</strong> States may still depart from ICWA's placement preferences for good cause. Brackeen did not narrow or clarify what that exception means in practice. Lower courts continue to apply varying standards.</li>
+<li><strong>The Court did not address whether ICWA applies to "existing Indian families."</strong> Some state courts have used a doctrine called the "existing Indian family exception" to refuse to apply ICWA when the child had limited prior contact with tribal culture. That doctrine remains controversial and was not addressed by the Court.</li>
+</ul>
+</div>
+</section>
+<!-- 06 - PROCEDURAL ROUTE -->
+<section aria-labelledby="s6-title">
+<div class="section-head">
+<div class="section-num">Section <strong>06</strong></div>
+<h2 class="section-title" id="s6-title">How It <em>Got Here</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">The path<br>to SCOTUS</div>
+<div class="body-grid-main">
+<p>This case took five years to travel from a single federal lawsuit in Texas to the Supreme Court. Along the way it gathered three state plaintiffs, four tribal intervenors, dozens of amicus briefs, and a fractured Fifth Circuit decision that produced multiple splintered holdings. Few cases in recent memory have been more closely watched in Indian Country.</p>
+</div>
+</div>
+<div class="timeline">
+<div class="timeline-event">
+<div class="timeline-court">November 1978 · Congress</div>
+<div class="timeline-ruling">ICWA enacted</div>
+<div class="timeline-desc">After extensive congressional hearings documenting the wholesale removal of Native children from their families, Congress passes the Indian Child Welfare Act. The law establishes federal standards for state child welfare proceedings involving Indian children, sets placement preferences, and recognizes tribal jurisdiction.</div>
+</div>
+<div class="timeline-event">
+<div class="timeline-court">2016–2018 · State child welfare cases</div>
+<div class="timeline-ruling">The Brackeen, Clifford, and Libretti adoptions</div>
+<div class="timeline-desc">Three non-Native couples encounter ICWA in their attempts to foster or adopt Native children. The Brackeens (Texas), the Cliffords (Minnesota), and the Librettis (Nevada) all experience proceedings shaped by ICWA's placement preferences. The biological mother of the Libretti child, Altagracia Hernandez, also joins.</div>
+</div>
+<div class="timeline-event">
+<div class="timeline-court">March 2018 · Federal District Court (N.D. Texas)</div>
+<div class="timeline-ruling">Lawsuit filed challenging ICWA</div>
+<div class="timeline-desc">The plaintiffs file in federal court, joined by the states of Texas, Louisiana, and Indiana. They argue ICWA exceeds Congress's authority, violates the Tenth Amendment's anti-commandeering doctrine, denies equal protection, and impermissibly delegates federal authority to tribes. Four tribes intervene as defendants alongside the federal government.</div>
+</div>
+<div class="timeline-event">
+<div class="timeline-court">2018 · Federal District Court (N.D. Texas)</div>
+<div class="timeline-ruling">District court strikes down ICWA</div>
+<div class="timeline-desc">Judge Reed O'Connor rules that ICWA's core provisions are unconstitutional on equal protection and anti-commandeering grounds. The decision is appealed.</div>
+</div>
+<div class="timeline-event">
+<div class="timeline-court">2019–2021 · Fifth Circuit Court of Appeals</div>
+<div class="timeline-ruling">En banc Fifth Circuit issues a split decision</div>
+<div class="timeline-desc">After a panel reverses the district court, the full Fifth Circuit hears the case en banc. The result is a fractured opinion: the court upholds some parts of ICWA, strikes down others, and is evenly divided on the equal protection challenge to the placement preferences. Multiple parties appeal to the Supreme Court.</div>
+</div>
+<div class="timeline-event scotus">
+<div class="timeline-court">June 15, 2023 · Supreme Court of the United States</div>
+<div class="timeline-ruling">SCOTUS affirms ICWA, 7–2</div>
+<div class="timeline-desc">The Court upholds ICWA's constitutionality under Congress's Article I authority and rejects the anti-commandeering challenge on the merits. It dismisses the equal protection and nondelegation challenges for lack of standing. Justice Barrett writes for the Court. Justice Gorsuch's concurrence, joined in parts by Sotomayor and Jackson, becomes the most-quoted piece of writing in the decision.</div>
+</div>
+</div>
+</section>
+<!-- 07 - FOR PRACTICE -->
+<section aria-labelledby="s7-title">
+<div class="section-head">
+<div class="section-num">Section <strong>07</strong></div>
+<h2 class="section-title" id="s7-title">For <em>Practice</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">The social<br>work bridge</div>
+<div class="body-grid-main">
+<p>For an MSW student headed into child welfare practice, this case may matter more than any other in the series. ICWA is not a theoretical framework; it is a working statute that applies to every state child welfare proceeding involving a Native American child. Brackeen confirms it is still the law. Three lenses help here.</p>
+</div>
+</div>
+<div class="practice-grid">
+<div class="practice-card">
+<div class="practice-card-tag">Inquiry Lens</div>
+<h3 class="practice-card-title">Ask about tribal heritage in every case. Every single one.</h3>
+<p>The most common ICWA error in state child welfare practice is failing to ask. A child's tribal heritage is not always obvious. Family appearance, name, and current connection to a tribe do not tell you whether the child is or is eligible to be a tribal member. Federal regulations require active inquiry at the outset of any case. Document the inquiry. If there is any reason to think a child may be Native, notify the relevant tribe early. Late notice is one of the most common reasons ICWA cases get reversed on appeal.</p>
+</div>
+<div class="practice-card">
+<div class="practice-card-tag">Compliance Lens</div>
+<h3 class="practice-card-title">Active efforts means active. Reasonable is not enough.</h3>
+<p>The "active efforts" standard requires more than offering services. It requires actively helping families access and use those services: arranging transportation, accompanying parents to appointments, working with tribal social services to coordinate culturally appropriate support. The "reasonable efforts" standard most workers know from non-ICWA cases is a floor below what ICWA requires. Documenting active efforts is essential because it will be reviewed at every stage, including any later TPR hearing where the standard is proof beyond a reasonable doubt.</p>
+</div>
+<div class="practice-card">
+<div class="practice-card-tag">Historical Lens</div>
+<h3 class="practice-card-title">ICWA exists because the system did harm. Carry that.</h3>
+<p>For about a century, federal and state policy worked to break up Native families on purpose. Boarding schools first, then state child welfare agencies. ICWA was Congress's effort to stop it. A practitioner who treats ICWA's requirements as red tape misses what the statute is doing. Cultural competency in this context is not an add-on; it is the actual job. If you work an ICWA case, you are operating inside a remedy for harm your professional ancestors caused. That should change how you do the work.</p>
+</div>
+</div>
+</section>
+<!-- 08 - KEY TERMS -->
+<section aria-labelledby="s8-title">
+<div class="section-head">
+<div class="section-num">Section <strong>08</strong></div>
+<h2 class="section-title" id="s8-title">A Working <em>Vocabulary</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">Legal<br>terms</div>
+<div class="body-grid-main">
+<p>This case introduces vocabulary from two areas: federal Indian law and child welfare practice. The terms below are defined the way they are used in this case and in current practice.</p>
+</div>
+</div>
+<div class="key-terms">
+<div class="key-terms-title">Frequently Used in This Opinion</div>
+<div class="key-terms-list">
+<div class="key-term-item">
+<div class="key-term-name">Indian Child Welfare Act (ICWA)</div>
+<p class="key-term-def">A 1978 federal law that sets minimum standards for state child welfare proceedings involving children who are members of, or eligible to be members of, a federally recognized tribe. It establishes placement preferences, notice requirements, and a higher burden of proof for termination of parental rights.</p>
+</div>
+<div class="key-term-item">
+<div class="key-term-name">Anti-commandeering doctrine</div>
+<p class="key-term-def">A constitutional rule that Congress cannot force state legislatures or state officials to enact or administer a federal regulatory program. The Brackeen plaintiffs argued ICWA violated this rule. The Court disagreed.</p>
+</div>
+<div class="key-term-item">
+<div class="key-term-name">Active efforts</div>
+<p class="key-term-def">ICWA's standard for the efforts a state agency must make to keep an Indian family together or to reunify a family. Higher than the "reasonable efforts" standard in non-ICWA cases. Requires hands-on, culturally informed help, not just offering services.</p>
+</div>
+<div class="key-term-item">
+<div class="key-term-name">Placement preferences</div>
+<p class="key-term-def">ICWA's required order of preferred placements for an Indian child in foster care or adoption. In descending order: (1) extended family, (2) other members of the same tribe, (3) other Indian families. Departure requires "good cause."</p>
+</div>
+<div class="key-term-item">
+<div class="key-term-name">Tribal sovereignty</div>
+<p class="key-term-def">The recognized authority of federally recognized tribes to govern themselves as sovereign political entities. Tribal sovereignty predates the United States and is recognized in the Constitution. It is the doctrinal basis for treating tribal membership as a political, rather than racial, classification.</p>
+</div>
+<div class="key-term-item">
+<div class="key-term-name">Standing</div>
+<p class="key-term-def">The legal requirement that a plaintiff have a concrete, particularized injury that the court can fix. The Brackeen plaintiffs lacked standing on their equal protection challenge because their adoptions were already finalized and the relief they sought could not change their situations.</p>
+</div>
+</div>
+</div>
+</section>
+</main><footer class="colophon" role="contentinfo">
+<div class="colophon-inner">
+<div class="colophon-brand">Understanding SCOTUS Opinions</div>
+<div class="colophon-meta">Austin Peay State University · MSW Program</div>
+</div>
+</footer><!-- TERM POPUPS -->
+<div class="term-popup" id="popup-icwa" role="tooltip" hidden=""><strong>Indian Child Welfare Act</strong> A 1978 federal law that sets minimum standards for state child welfare proceedings involving Native American children. Passed in response to documented wholesale removal of Native children from their families and tribes.</div>
+<div class="term-popup" id="popup-commandeering" role="tooltip" hidden=""><strong>Anti-commandeering doctrine</strong> A constitutional rule, rooted in the Tenth Amendment, that the federal government cannot force state legislatures or state officials to enact or carry out a federal regulatory program. The Court rejected the argument that ICWA violates this rule.</div>
+<p><script>
+  const terms = document.querySelectorAll('.term');
+  let activePopup = null;
+
+  function positionPopup(btn, popup) {
+    const rect = btn.getBoundingClientRect();
+    const popupWidth = popup.offsetWidth || 340;
+    let left = window.scrollX + rect.left;
+    const maxLeft = window.scrollX + document.documentElement.clientWidth - popupWidth - 16;
+    if (left > maxLeft) left = maxLeft;
+    if (left < 16) left = 16;
+    popup.style.left = left + 'px';
+    popup.style.top = (window.scrollY + rect.bottom + 8) + 'px';
+  }
+
+  function showPopup(btn) {
+    const popupId = 'popup-' + btn.dataset.term;
+    const popup = document.getElementById(popupId);
+    if (!popup) return;
+    if (activePopup && activePopup !== popup) activePopup.hidden = true;
+    popup.hidden = false;
+    positionPopup(btn, popup);
+    activePopup = popup;
+  }
+
+  function hidePopup(btn) {
+    const popupId = 'popup-' + btn.dataset.term;
+    const popup = document.getElementById(popupId);
+    if (popup) {
+      popup.hidden = true;
+      if (activePopup === popup) activePopup = null;
+    }
+  }
+
+  terms.forEach(btn => {
+    btn.addEventListener('mouseenter', () => showPopup(btn));
+    btn.addEventListener('mouseleave', () => hidePopup(btn));
+    btn.addEventListener('focus', () => showPopup(btn));
+    btn.addEventListener('blur', () => hidePopup(btn));
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && activePopup) {
+        activePopup.hidden = true;
+        activePopup = null;
+        btn.blur();
+      }
+    });
+  });
+
+  window.addEventListener('scroll', () => {
+    if (activePopup) {
+      const term = document.querySelector('.term[data-term="' + activePopup.id.replace('popup-','') + '"]');
+      if (term) positionPopup(term, activePopup);
+    }
+  });
+</script></p></body></html>

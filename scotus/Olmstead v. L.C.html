@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Olmstead v. L.C., Case Explainer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&amp;family=Inter+Tight:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f4ede0;
+    --paper-2: #ebe2d1;
+    --paper-deep: #e5dac4;
+    --ink: #1c1815;
+    --ink-2: #2d2722;
+    --ink-soft: #4a4239;
+    --ink-mute: #6b6258;
+    --rule: #c9bda6;
+    --rule-soft: #d9cfba;
+    --oxblood: #6b1f2a;
+    --oxblood-deep: #4f1620;
+    --oxblood-tint: #f3e0e2;
+    --brass: #6b5320;
+    --brass-tint: #f1e8cf;
+    --majority: #2d4a3a;
+    --majority-tint: #d9e2d8;
+    --dissent: #6b1f2a;
+    --dissent-tint: #ebd5d6;
+    --concur: #6b5320;
+    --concur-tint: #efe5c8;
+
+    --font-display: 'Fraunces', 'Times New Roman', serif;
+    --font-body: 'Inter Tight', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 17px;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(107,31,42,0.025) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(107,83,32,0.025) 0%, transparent 50%);
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.4;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.11 0 0 0 0 0.09 0 0 0 0 0.08 0 0 0 0.12 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 16px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 12px 18px;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 2px;
+    z-index: 9999;
+    transition: top 0.2s;
+  }
+  .skip-link:focus { top: 16px; outline: 3px solid var(--oxblood); }
+
+  .masthead {
+    border-bottom: 1px solid var(--rule);
+    padding: 24px 0 18px;
+    position: relative;
+    z-index: 2;
+  }
+  .masthead-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .masthead-brand {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .masthead-brand span { color: var(--oxblood); }
+  .masthead-meta {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .masthead-meta strong { color: var(--ink); }
+
+  .hero {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 48px 32px 32px;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--oxblood);
+  }
+  .hero-eyebrow::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+    max-width: 200px;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(40px, 6vw, 84px);
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-bottom: 12px;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+  }
+  .hero-title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--oxblood);
+  }
+  .hero-citation {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--ink-mute);
+    letter-spacing: 0.04em;
+    margin-bottom: 36px;
+  }
+  .hero-citation a { color: var(--oxblood); text-decoration: underline; text-underline-offset: 3px; }
+  .hero-citation a:hover { color: var(--oxblood-deep); }
+
+  .lede {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    padding-top: 28px;
+    border-top: 3px double var(--ink);
+  }
+  .lede-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    padding-top: 6px;
+  }
+  .lede-label-mark {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--oxblood);
+    margin-right: 8px;
+    border-radius: 50%;
+    vertical-align: middle;
+  }
+  .lede-text {
+    font-family: var(--font-display);
+    font-size: clamp(20px, 2.2vw, 26px);
+    line-height: 1.4;
+    font-weight: 400;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .lede-text strong {
+    font-weight: 600;
+    color: var(--oxblood);
+    font-style: italic;
+  }
+  @media (max-width: 720px) {
+    .lede { grid-template-columns: 1fr; gap: 12px; }
+  }
+
+  .bluf {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    margin-top: 28px;
+    padding: 24px 28px 26px;
+    background: var(--paper-2);
+    border-left: 4px solid var(--brass);
+    border-radius: 2px;
+  }
+  .bluf-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--brass);
+    font-weight: 700;
+    padding-top: 4px;
+  }
+  .bluf-label-mark {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--brass);
+    margin-right: 8px;
+    border-radius: 50%;
+    vertical-align: middle;
+  }
+  .bluf-text {
+    font-family: var(--font-body);
+    font-size: 16.5px;
+    line-height: 1.7;
+    color: var(--ink-2);
+  }
+  .bluf-text strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  @media (max-width: 720px) {
+    .bluf { grid-template-columns: 1fr; gap: 8px; padding: 20px 22px; }
+  }
+
+  .dropcap::first-letter {
+    font-family: var(--font-display);
+    font-size: 5em;
+    font-weight: 600;
+    float: left;
+    line-height: 0.85;
+    margin: 0.04em 0.08em 0 0;
+    color: var(--oxblood);
+    font-style: italic;
+  }
+
+  main {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px 80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  section {
+    padding: 56px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  section:last-of-type { border-bottom: none; }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 32px;
+    align-items: baseline;
+    margin-bottom: 32px;
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    border-top: 2px solid var(--ink);
+    padding-top: 8px;
+  }
+  .section-num strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--oxblood);
+    letter-spacing: -0.01em;
+    margin-top: 2px;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .section-title em { font-style: italic; color: var(--oxblood); }
+  @media (max-width: 720px) {
+    .section-head { grid-template-columns: 1fr; gap: 8px; }
+    .section-num { border-top: none; padding-top: 0; }
+  }
+
+  .body-grid {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 32px;
+  }
+  .body-grid-aside {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    padding-top: 8px;
+  }
+  .body-grid-main { max-width: 65ch; }
+  .body-grid-main p { margin-bottom: 1em; font-size: 17px; line-height: 1.7; color: var(--ink-2); }
+  .body-grid-main p:last-child { margin-bottom: 0; }
+  .body-grid-main strong { color: var(--ink); font-weight: 600; }
+  .body-grid-main em { font-style: italic; }
+  @media (max-width: 720px) {
+    .body-grid { grid-template-columns: 1fr; gap: 8px; }
+  }
+
+  .bench {
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 36px 32px 28px;
+    margin-top: 8px;
+  }
+  .bench-title {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .bench-row {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+  .justice {
+    flex: 0 0 auto;
+    width: 88px;
+    text-align: center;
+    padding: 12px 4px;
+    border-radius: 4px;
+    border: 1.5px solid var(--rule);
+    background: var(--paper);
+    position: relative;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .justice:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(28,24,21,0.08);
+  }
+  .justice-seal {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin: 0 auto 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--paper);
+    font-style: italic;
+  }
+  .justice-name {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.15;
+    color: var(--ink);
+  }
+  .justice-role {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-top: 4px;
+  }
+  .justice.majority { border-color: var(--majority); background: var(--majority-tint); }
+  .justice.majority .justice-seal { background: var(--majority); }
+  .justice.dissent { border-color: var(--dissent); background: var(--dissent-tint); }
+  .justice.dissent .justice-seal { background: var(--dissent); }
+  .justice.dissent .justice-role { color: var(--ink); }
+  .justice.concur { border-color: var(--concur); background: var(--concur-tint); }
+  .justice.concur .justice-seal { background: var(--concur); }
+  .justice.concur .justice-role { color: var(--ink); }
+  .justice.author::after {
+    content: '\2726';
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    font-size: 12px;
+    color: var(--oxblood);
+  }
+
+  .bench-legend {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .bench-legend-item { display: flex; align-items: center; gap: 8px; }
+  .bench-legend-swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1.5px solid;
+  }
+  .bench-legend-swatch.maj { background: var(--majority-tint); border-color: var(--majority); }
+  .bench-legend-swatch.con { background: var(--concur-tint); border-color: var(--concur); }
+  .bench-legend-swatch.dis { background: var(--dissent-tint); border-color: var(--dissent); }
+
+  /* PLURALITY NOTE (reused from Troxel) */
+  .plurality-note {
+    background: var(--brass-tint);
+    border-left: 4px solid var(--brass);
+    padding: 16px 20px;
+    margin: 16px 0 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-2);
+    border-radius: 2px;
+  }
+  .plurality-note strong {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--brass);
+    font-size: 14.5px;
+  }
+
+  .arguments {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 8px;
+  }
+  @media (max-width: 720px) { .arguments { grid-template-columns: 1fr; } }
+
+  .arg-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-top: 4px solid;
+    padding: 28px 28px 24px;
+    border-radius: 2px;
+    position: relative;
+  }
+  .arg-card.majority-arg { border-top-color: var(--majority); }
+  .arg-card.dissent-arg { border-top-color: var(--dissent); }
+
+  .arg-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .arg-card.majority-arg .arg-label { color: var(--majority); }
+  .arg-card.dissent-arg .arg-label { color: var(--dissent); }
+  .arg-label-mark {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+  .arg-card.majority-arg .arg-label-mark { background: var(--majority); }
+  .arg-card.dissent-arg .arg-label-mark { background: var(--dissent); }
+
+  .arg-headline {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--ink);
+    margin-bottom: 18px;
+    letter-spacing: -0.01em;
+  }
+  .arg-headline em { font-style: italic; color: var(--oxblood); }
+
+  .arg-points {
+    list-style: none;
+    counter-reset: argp;
+  }
+  .arg-points li {
+    counter-increment: argp;
+    padding: 14px 0 14px 36px;
+    border-bottom: 1px solid var(--rule-soft);
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--ink-2);
+    position: relative;
+  }
+  .arg-points li:last-child { border-bottom: none; padding-bottom: 4px; }
+  .arg-points li::before {
+    content: counter(argp, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 14px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-mute);
+    letter-spacing: 0.05em;
+  }
+  .arg-points li strong {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--ink);
+    margin-bottom: 4px;
+    letter-spacing: -0.005em;
+  }
+
+  .guardrail {
+    background: var(--brass-tint);
+    border: 1px solid var(--brass);
+    border-left: 4px solid var(--brass);
+    padding: 24px 28px;
+    margin-top: 8px;
+    border-radius: 2px;
+    position: relative;
+  }
+  .guardrail-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brass);
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .guardrail-label::before {
+    content: '\26A0';
+    font-size: 16px;
+    color: var(--brass);
+  }
+  .guardrail-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 14px;
+    letter-spacing: -0.01em;
+  }
+  .guardrail ul {
+    list-style: none;
+    padding: 0;
+  }
+  .guardrail li {
+    padding: 8px 0 8px 24px;
+    font-size: 15.5px;
+    color: var(--ink-2);
+    line-height: 1.55;
+    position: relative;
+  }
+  .guardrail li::before {
+    content: '\2715';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    color: var(--brass);
+    font-weight: 700;
+    font-size: 13px;
+  }
+  .guardrail li strong { color: var(--ink); font-weight: 600; }
+
+  .term {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: var(--oxblood);
+    cursor: help;
+    border-bottom: 1.5px dotted var(--oxblood);
+    font-weight: 600;
+  }
+  .term:focus-visible {
+    outline: 2px solid var(--oxblood);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  .term-popup {
+    position: absolute;
+    max-width: 340px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 16px 18px;
+    border-radius: 3px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.55;
+    box-shadow: 0 12px 28px rgba(28,24,21,0.3);
+    z-index: 200;
+    border: 1px solid var(--ink-2);
+  }
+  .term-popup[hidden] { display: none; }
+  .term-popup strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--paper);
+    margin-bottom: 6px;
+    font-style: italic;
+  }
+
+  .timeline {
+    margin-top: 8px;
+    border-left: 2px solid var(--rule);
+    padding-left: 28px;
+    margin-left: 12px;
+  }
+  .timeline-event {
+    position: relative;
+    padding-bottom: 28px;
+  }
+  .timeline-event:last-child { padding-bottom: 0; }
+  .timeline-event::before {
+    content: '';
+    position: absolute;
+    left: -36px;
+    top: 6px;
+    width: 14px;
+    height: 14px;
+    background: var(--paper);
+    border: 2px solid var(--oxblood);
+    border-radius: 50%;
+  }
+  .timeline-event.scotus::before { background: var(--oxblood); }
+  .timeline-court {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+  .timeline-ruling {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+    letter-spacing: -0.005em;
+  }
+  .timeline-desc {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+
+  .practice-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 8px;
+  }
+  @media (max-width: 820px) { .practice-grid { grid-template-columns: 1fr; } }
+
+  .practice-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 24px 22px;
+    border-radius: 2px;
+    border-top: 4px solid var(--oxblood);
+  }
+  .practice-card-tag {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  .practice-card-title {
+    font-family: var(--font-display);
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .practice-card p {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink-2);
+  }
+
+  .pullquote {
+    margin: 48px auto;
+    max-width: 800px;
+    text-align: center;
+    padding: 0 24px;
+  }
+  .pullquote-mark {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 88px;
+    color: var(--oxblood);
+    line-height: 0.6;
+    margin-bottom: 12px;
+    font-weight: 400;
+  }
+  .pullquote-text {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(22px, 2.4vw, 30px);
+    line-height: 1.35;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 16px;
+    letter-spacing: -0.005em;
+  }
+  .pullquote-cite {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+
+  .colophon {
+    background: var(--ink);
+    color: var(--paper-2);
+    padding: 36px 32px;
+    position: relative;
+    z-index: 2;
+  }
+  .colophon-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .colophon-brand {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    font-style: italic;
+    color: var(--paper);
+  }
+  .colophon-meta {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #a89e8e;
+  }
+
+  .key-terms {
+    margin-top: 16px;
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    padding: 28px 32px;
+    border-radius: 2px;
+  }
+  .key-terms-title {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .key-terms-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 32px;
+  }
+  @media (max-width: 720px) { .key-terms-list { grid-template-columns: 1fr; gap: 20px; } }
+  .key-term-item { padding: 0; }
+  .key-term-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-style: italic;
+    color: var(--ink);
+    font-size: 17px;
+    margin-bottom: 8px;
+    letter-spacing: -0.005em;
+  }
+  .key-term-def {
+    font-size: 14.5px;
+    color: var(--ink-2);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* THREE-PART TEST CARDS - new component for Olmstead */
+  .test-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 8px;
+  }
+  @media (max-width: 820px) { .test-cards { grid-template-columns: 1fr; } }
+  .test-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-top: 4px solid var(--majority);
+    padding: 22px 20px;
+    border-radius: 2px;
+    position: relative;
+  }
+  .test-card-num {
+    font-family: var(--font-display);
+    font-size: 36px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--majority);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .test-card-title {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.25;
+    margin-bottom: 10px;
+    letter-spacing: -0.005em;
+  }
+  .test-card-desc {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink-2);
+  }
+
+  @media print {
+    body::before, .skip-link { display: none; }
+    body { background: white; color: black; }
+    section { page-break-inside: avoid; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
+</head><body><p><a class="skip-link" href="#main">Skip to main content</a></p>
+<div class="masthead" role="banner">
+<div class="masthead-inner">
+<div class="masthead-brand">understanding scotus opinions</div>
+<div class="masthead-meta">Dr. Philip Mongan, lcsw, ph.D.</div>
+</div>
+</div>
+<div class="hero">
+<p class="hero-eyebrow">October Term 1998 · Decided June 22, 1999</p>
+<h1 class="hero-title">Olmstead <em>v.</em><br>L.C.</h1>
+<p class="hero-citation">No. 98–536 · 527 U.S. 581 (1999) · <a href="https://www.oyez.org/cases/1998/98-536" target="_blank" rel="noopener">Read the full case on Oyez ↗</a></p>
+<div class="lede">
+<div class="lede-label"><span class="lede-label-mark" aria-hidden="true"></span>The Holding</div>
+<p class="lede-text">The Supreme Court ruled, <strong>6–3</strong>, that under Title II of the Americans with Disabilities Act, the unjustified institutional segregation of people with disabilities is a form of <em>discrimination</em>. States must provide services in the most integrated setting appropriate, subject to a reasonable accommodation analysis.</p>
+</div>
+<div class="bluf">
+<div class="bluf-label"><span class="bluf-label-mark" aria-hidden="true"></span>In plain terms</div>
+<p class="bluf-text">Two women in Georgia, Lois Curtis and Elaine Wilson, had intellectual disabilities and mental health diagnoses. They lived in a state psychiatric institution. Their own treatment team said they could be served in community-based programs. They wanted to live in the community. The state kept them institutionalized anyway, citing a lack of resources. The Supreme Court ruled that Georgia's choice violated the ADA. <strong>Keeping a person with a disability locked in an institution when the state's own professionals say community placement is appropriate, and the person wants it, is illegal discrimination.</strong> Olmstead is the legal foundation for the community integration mandate. It applies to psychiatric hospitals, nursing homes, group homes, and any other setting where people with disabilities are unnecessarily segregated from community life.</p>
+</div>
+</div>
+<main id="main"><!-- 01 - THE QUESTION -->
+<section aria-labelledby="s1-title">
+<div class="section-head">
+<div class="section-num">Section <strong>01</strong></div>
+<h2 class="section-title" id="s1-title">The Question <em>Presented</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">What was<br>at stake</div>
+<div class="body-grid-main">
+<p class="dropcap">Lois Curtis and Elaine Wilson were two women living in Georgia. Both had intellectual disabilities, and both had also been diagnosed with mental health conditions, including schizophrenia. They had been admitted to Georgia Regional Hospital at Atlanta, a state psychiatric facility. They had been treated, and at various points their treatment teams had concluded they were ready to leave the institution and live in community-based programs.</p>
+<p>The state of Georgia did not move them. They remained institutionalized for years after their own clinicians had said community placement was appropriate. The state explained that it lacked the resources to provide community-based services to everyone who needed them, and that the women would have to wait. With representation from the Atlanta Legal Aid Society, the women sued Georgia under Title II of the <button type="button" class="term" data-term="ada" aria-describedby="popup-ada">Americans with Disabilities Act</button>.</p>
+<p>The legal question was specific. The ADA forbids public entities from discriminating against people with disabilities. The Department of Justice had issued a regulation requiring services to be provided in "the most integrated setting appropriate." The question for the Court was whether keeping people with disabilities in institutions when their own treatment professionals had cleared them for community placement counted as discrimination under the statute.</p>
+</div>
+</div>
+</section>
+<!-- 02 - THE BENCH -->
+<section aria-labelledby="s2-title">
+<div class="section-head">
+<div class="section-num">Section <strong>02</strong></div>
+<h2 class="section-title" id="s2-title">The <em>Bench</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">Who joined<br>which side</div>
+<div class="body-grid-main">
+<p>The vote was 6-3, but the reasoning was fractured. Justice Ginsburg wrote the principal opinion. Five Justices joined her on the core holding that unjustified isolation is discrimination. Four joined her on a separate part about how states can defend an Olmstead claim. Justice Stevens wrote separately to say he would have gone further. Justice Kennedy concurred in the judgment but criticized the broader reasoning. Justices Thomas, Rehnquist, and Scalia dissented.</p>
+</div>
+</div>
+<div class="bench" role="figure" aria-label="The nine Justices and how they voted">
+<p class="bench-title">The Rehnquist Court · Vote 6–3</p>
+<div class="bench-row">
+<div class="justice majority author">
+<div class="justice-seal" aria-hidden="true">G</div>
+<div class="justice-name">Ginsburg</div>
+<div class="justice-role">Author</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">S</div>
+<div class="justice-name">Stevens</div>
+<div class="justice-role">Joined</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">O</div>
+<div class="justice-name">O'Connor</div>
+<div class="justice-role">Joined</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">S</div>
+<div class="justice-name">Souter</div>
+<div class="justice-role">Joined</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">B</div>
+<div class="justice-name">Breyer</div>
+<div class="justice-role">Joined</div>
+</div>
+<div class="justice concur">
+<div class="justice-seal" aria-hidden="true">K</div>
+<div class="justice-name">Kennedy</div>
+<div class="justice-role">Concur Judgment</div>
+</div>
+<div class="justice dissent">
+<div class="justice-seal" aria-hidden="true">T</div>
+<div class="justice-name">Thomas</div>
+<div class="justice-role">Dissented</div>
+</div>
+<div class="justice dissent">
+<div class="justice-seal" aria-hidden="true">R</div>
+<div class="justice-name">Rehnquist</div>
+<div class="justice-role">Dissented</div>
+</div>
+<div class="justice dissent">
+<div class="justice-seal" aria-hidden="true">S</div>
+<div class="justice-name">Scalia</div>
+<div class="justice-role">Dissented</div>
+</div>
+</div>
+<div class="bench-legend">
+<div class="bench-legend-item"><span class="bench-legend-swatch maj" aria-hidden="true"></span>Majority (5)</div>
+<div class="bench-legend-item"><span class="bench-legend-swatch con" aria-hidden="true"></span>Concur in Judgment (1)</div>
+<div class="bench-legend-item"><span class="bench-legend-swatch dis" aria-hidden="true"></span>Dissent (3)</div>
+<div class="bench-legend-item">✦ Opinion author</div>
+</div>
+<div class="plurality-note"><strong>A note on the fractured majority:</strong> Five Justices joined the core holding that unjustified isolation is discrimination (Parts I, II, III-A). Only four joined Part III-B, which addressed how states can defend an Olmstead claim with a "fundamental alteration" argument. Justice Kennedy concurred only in the judgment and would have remanded for more development. For everyday practice, what matters is the 6-vote affirmance and the integration mandate it established.</div>
+</div>
+</section>
+<!-- PULL QUOTE -->
+<div class="pullquote">
+<div class="pullquote-mark" aria-hidden="true">“</div>
+<p class="pullquote-text">Unjustified isolation, we hold, is properly regarded as discrimination based on disability.</p>
+<p class="pullquote-cite">Justice Ginsburg, for the Court</p>
+</div>
+<!-- 03 - THE REASONING -->
+<section aria-labelledby="s3-title">
+<div class="section-head">
+<div class="section-num">Section <strong>03</strong></div>
+<h2 class="section-title" id="s3-title">The <em>Reasoning</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">Two<br>positions</div>
+<div class="body-grid-main">
+<p>The majority and the dissent disagreed about something fundamental: what counts as discrimination under the ADA. The majority read the statute and its regulations as recognizing a particular form of discrimination, the unjustified segregation of people with disabilities from community life. The dissent argued that discrimination requires showing that one group is treated worse than a comparable group, and that L.C. and E.W. had not done that.</p>
+</div>
+</div>
+<div class="arguments">
+<article class="arg-card majority-arg">
+<div class="arg-label"><span class="arg-label-mark" aria-hidden="true"></span>The Majority</div>
+<h3 class="arg-headline">Keeping people with disabilities in institutions when their own clinicians have cleared them for the community is not <em>neutral care.</em> It is segregation.</h3>
+<ol class="arg-points">
+<li><strong>Congress identified segregation itself as a form of discrimination.</strong> The text of the ADA names institutional segregation as a recurring form of discrimination against people with disabilities. The statute's findings and the Department of Justice's integration regulation both treat unjustified isolation as the harm Congress meant to address. The Court was not reading discrimination into the statute; it was reading the statute the way Congress wrote it.</li>
+<li><strong>Institutional placement perpetuates stereotypes.</strong> When the state keeps people with disabilities locked away, even when those people could live in the community, it reinforces the assumption that people with disabilities cannot function as members of society. That assumption itself is a discriminatory harm, separate from any difference in treatment between disability groups.</li>
+<li><strong>Institutional confinement diminishes everyday life.</strong> The Court enumerated concrete losses: family relationships, friendships, work options, economic independence, educational advancement, and cultural and recreational participation. These are not abstract harms. They are what people lose when they live in institutions instead of in their communities.</li>
+<li><strong>The three-part test sets limits.</strong> The right is not unconditional. A person is entitled to community placement only when the state's own treatment professionals have determined that community placement is appropriate, the person does not oppose the transfer, and the placement can be reasonably accommodated given the state's resources and the needs of others with disabilities. Ginsburg was explicit that the Court was not requiring the closure of institutions or imposing community placement on anyone who did not want it.</li>
+<li><strong>The state can defend with a "fundamental alteration" argument.</strong> Title II requires public entities to make reasonable modifications to avoid disability discrimination, but not modifications that would fundamentally alter the nature of their services. A state with a comprehensive plan to move people to community settings, and a waiting list that moves at a reasonable pace, can defeat an Olmstead claim. The accommodation has to be reasonable, not impossible.</li>
+</ol>
+</article>
+<article class="arg-card dissent-arg">
+<div class="arg-label"><span class="arg-label-mark" aria-hidden="true"></span>Justice Thomas, dissenting</div>
+<h3 class="arg-headline">Discrimination means treating two groups <em>differently.</em> The plaintiffs did not show another group being treated better.</h3>
+<ol class="arg-points">
+<li><strong>"Discrimination" has a settled meaning.</strong> In every other civil rights statute, discrimination means differential treatment based on a protected characteristic. To prove discrimination, a plaintiff has traditionally had to show that a similarly situated person without the protected characteristic was treated better. L.C. and E.W. did not show that.</li>
+<li><strong>The Court rewrote the statute.</strong> Thomas argued the majority took an ordinary anti-discrimination provision and turned it into something else: a positive obligation to provide a particular kind of service. The ADA was meant to prevent discrimination, not to dictate the form of state-provided medical and social services.</li>
+<li><strong>The federalism costs are significant.</strong> State governments run mental health systems. Imposing a federal rule that requires community-based services in particular forms forces states into spending decisions that should be theirs to make. The dissent saw this as the federal government second-guessing state policy choices through the courts.</li>
+<li><strong>The line between adequate and inadequate care is unclear.</strong> Thomas worried that the Court was setting up an ill-defined judicial role in supervising state services. How fast must a waiting list move? What counts as an integrated setting? When does a state's resource argument carry the day? These questions would require federal courts to make line-drawing calls without clear guidance.</li>
+</ol>
+</article>
+</div>
+</section>
+<!-- 04 - THE THREE-PART TEST -->
+<section aria-labelledby="s4-title">
+<div class="section-head">
+<div class="section-num">Section <strong>04</strong></div>
+<h2 class="section-title" id="s4-title">The Integration <em>Mandate</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">When the<br>right<br>applies</div>
+<div class="body-grid-main">
+<p>The most quoted part of Olmstead is its three-part test. Ginsburg wrote that the ADA requires states to provide community-based services to people with disabilities when three conditions are met. Each part of the test does important work, and understanding all three is essential for anyone applying the case in practice.</p>
+</div>
+</div>
+<div class="test-cards">
+<div class="test-card">
+<div class="test-card-num">I</div>
+<h3 class="test-card-title">The state's treatment professionals say community placement is appropriate.</h3>
+<p class="test-card-desc">This is the clinical judgment side. The state's own clinicians, not the patient and not an outside advocate, must have determined that community placement is appropriate for the person. This deference to treating professionals was important to Justice Kennedy's concurrence and to building the majority.</p>
+</div>
+<div class="test-card">
+<div class="test-card-num">II</div>
+<h3 class="test-card-title">The person does not oppose the transfer.</h3>
+<p class="test-card-desc">Olmstead protects choice. People who prefer institutional care, or who oppose a particular community placement, are not required to leave. The decision does not authorize the state to dump anyone out of an institution against their will, and several Justices emphasized this in concurrences.</p>
+</div>
+<div class="test-card">
+<div class="test-card-num">III</div>
+<h3 class="test-card-title">The placement can be reasonably accommodated.</h3>
+<p class="test-card-desc">The state must be able to provide community placement without fundamentally altering its services. Resources and the needs of others with disabilities are part of this analysis. A state with a comprehensive plan and a waiting list moving at a reasonable pace can defend against an Olmstead claim under this prong.</p>
+</div>
+</div>
+</section>
+<!-- 05 - GUARDRAIL -->
+<section aria-labelledby="s5-title">
+<div class="section-head">
+<div class="section-num">Section <strong>05</strong></div>
+<h2 class="section-title" id="s5-title">What the Court <em>Did Not</em> Decide</h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">Read this<br>carefully</div>
+<div class="body-grid-main">
+<p>Olmstead is broad in principle and narrow in mechanism. The Court announced a major civil rights ruling but built it with significant qualifications. The list below captures what the case did and did not do, which has shaped twenty-five years of Olmstead litigation and continues to drive policy debates today.</p>
+</div>
+</div>
+<div class="guardrail" role="note">
+<div class="guardrail-label">Common misreads to avoid</div>
+<h3 class="guardrail-title">Olmstead recognized a right. It did not abolish institutions or guarantee a particular level of care.</h3>
+<ul>
+<li><strong>It did not require the closure of institutions.</strong> The Court was explicit that institutional settings remain necessary for some people, sometimes for stabilization, sometimes for the long term. Olmstead is about unjustified isolation, not the elimination of all institutional care.</li>
+<li><strong>It did not impose community placement on anyone who opposed it.</strong> Choice is a core part of the three-part test. The decision protects the right to live in the community, not the obligation to do so.</li>
+<li><strong>It did not mandate a specific quality of community-based care.</strong> The Court was clear that the ADA does not impose a "standard of care" on states. Olmstead requires non-discrimination, not any particular service or program model.</li>
+<li><strong>It did not establish a constitutional right.</strong> Olmstead is a statutory ruling under Title II of the ADA. It depends on the ADA continuing to exist and on the integration mandate regulation remaining in force. Both have been subject to ongoing political and legal challenge.</li>
+<li><strong>It did not define "reasonable pace" for waiting list movement.</strong> A state can defend with a comprehensive plan and a waiting list that moves at a reasonable pace, but the Court did not say what "reasonable" means in practice. Lower courts continue to work this out.</li>
+<li><strong>It did not address every population.</strong> The Court's analysis focused on mental disabilities. Subsequent enforcement actions and lower-court rulings have extended Olmstead to people with physical disabilities, older adults in nursing homes, and people with intellectual and developmental disabilities. The contours continue to develop.</li>
+</ul>
+</div>
+</section>
+<!-- 06 - PROCEDURAL ROUTE -->
+<section aria-labelledby="s6-title">
+<div class="section-head">
+<div class="section-num">Section <strong>06</strong></div>
+<h2 class="section-title" id="s6-title">How It <em>Got Here</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">The path<br>to SCOTUS</div>
+<div class="body-grid-main">
+<p>This case began with a single legal aid attorney and two women asking why they had to wait. It became the most consequential ADA decision the Supreme Court has yet issued. The timeline below traces the path.</p>
+</div>
+</div>
+<div class="timeline">
+<div class="timeline-event">
+<div class="timeline-court">July 1990 · Congress</div>
+<div class="timeline-ruling">Americans with Disabilities Act enacted</div>
+<div class="timeline-desc">Congress passes the ADA, the most significant civil rights statute for people with disabilities. Title II prohibits public entities from discriminating against people with disabilities in their services, programs, and activities.</div>
+</div>
+<div class="timeline-event">
+<div class="timeline-court">1991 · Department of Justice</div>
+<div class="timeline-ruling">Integration mandate regulation issued</div>
+<div class="timeline-desc">DOJ issues the regulation that becomes the legal backbone of Olmstead: public entities must "administer services, programs, and activities in the most integrated setting appropriate to the needs of qualified individuals with disabilities." This regulation, 28 C.F.R. § 35.130(d), would later be central to the Court's analysis.</div>
+</div>
+<div class="timeline-event">
+<div class="timeline-court">1995 · Federal District Court (N.D. Georgia)</div>
+<div class="timeline-ruling">Lois Curtis files suit</div>
+<div class="timeline-desc">Lois Curtis, represented by Sue Jamieson of the Atlanta Legal Aid Society, sues Georgia officials. Elaine Wilson joins the litigation. Both women have been in and out of Georgia Regional Hospital at Atlanta and have been determined by state treatment professionals to be candidates for community-based programs.</div>
+</div>
+<div class="timeline-event">
+<div class="timeline-court">1997 · Federal District Court</div>
+<div class="timeline-ruling">District court rules for the plaintiffs</div>
+<div class="timeline-desc">The district court grants partial summary judgment to the plaintiffs, holding that Georgia's failure to place them in community settings violates the ADA. The court rejects Georgia's fundamental-alteration defense based on the state's overall mental health budget.</div>
+</div>
+<div class="timeline-event">
+<div class="timeline-court">1998 · Eleventh Circuit Court of Appeals</div>
+<div class="timeline-ruling">Court of Appeals affirms, with modifications</div>
+<div class="timeline-desc">The Eleventh Circuit affirms but modifies the fundamental-alteration analysis. The Supreme Court grants certiorari to resolve the question of what Title II requires.</div>
+</div>
+<div class="timeline-event scotus">
+<div class="timeline-court">June 22, 1999 · Supreme Court of the United States</div>
+<div class="timeline-ruling">SCOTUS affirms, 6–3</div>
+<div class="timeline-desc">The Court holds that unjustified institutional isolation of people with disabilities is discrimination prohibited by Title II of the ADA, subject to the three-part test. Justice Ginsburg writes for the Court. Justices Stevens and Kennedy each write separately to qualify the analysis. Justices Thomas, Rehnquist, and Scalia dissent. The case is remanded for further proceedings on Georgia's fundamental-alteration defense.</div>
+</div>
+</div>
+</section>
+<!-- 07 - FOR PRACTICE -->
+<section aria-labelledby="s7-title">
+<div class="section-head">
+<div class="section-num">Section <strong>07</strong></div>
+<h2 class="section-title" id="s7-title">For <em>Practice</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">The social<br>work bridge</div>
+<div class="body-grid-main">
+<p>Olmstead shapes the work of social workers across almost every setting that touches people with disabilities. Discharge planners in psychiatric hospitals, nursing home social workers, case managers running waiver programs, advocates working with intellectual and developmental disability populations, and clinicians in mental health agencies are all operating inside the Olmstead framework. Three lenses help.</p>
+</div>
+</div>
+<div class="practice-grid">
+<div class="practice-card">
+<div class="practice-card-tag">Integration Mandate Lens</div>
+<h3 class="practice-card-title">Community placement is the legal default for people who meet the three-part test.</h3>
+<p>A worker doing discharge planning, transition planning, or case management for someone with a disability needs to understand the integration mandate. When clinicians have determined that community placement is appropriate and the person agrees, the burden shifts to the state to show why community placement cannot reasonably be accommodated. Workers can document the clinical determination and the person's preference, which builds the record that Olmstead requires.</p>
+</div>
+<div class="practice-card">
+<div class="practice-card-tag">Continuum of Care Lens</div>
+<h3 class="practice-card-title">Olmstead protects choice, not a single model.</h3>
+<p>Some clients need institutional care, sometimes acutely, sometimes for the long term. The case explicitly preserves that. Effective practice means matching the right setting to the right person at the right time, and respecting the person's preferences within the limits of what is clinically appropriate. The integration mandate is a floor for what people are entitled to, not a ceiling on what they can choose.</p>
+</div>
+<div class="practice-card">
+<div class="practice-card-tag">Waiting List Lens</div>
+<h3 class="practice-card-title">Most states have HCBS waiting lists. Helping clients navigate them is part of the job.</h3>
+<p>Hundreds of thousands of people sit on state Medicaid Home and Community-Based Services waiting lists at any given time. Olmstead gives advocates a legal foothold, but the day-to-day reality is that workers help clients apply, document their needs, contest priority categorizations, and stay on the list. Knowing how the system works in your state, including what an "Olmstead plan" looks like and what counts as "reasonable pace," is part of basic competence in this area of practice.</p>
+</div>
+</div>
+</section>
+<!-- 08 - KEY TERMS -->
+<section aria-labelledby="s8-title">
+<div class="section-head">
+<div class="section-num">Section <strong>08</strong></div>
+<h2 class="section-title" id="s8-title">A Working <em>Vocabulary</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">Legal<br>terms</div>
+<div class="body-grid-main">
+<p>Olmstead introduces vocabulary from disability rights law and federal Medicaid policy. The terms below are defined the way they are used in this case and in current practice.</p>
+</div>
+</div>
+<div class="key-terms">
+<div class="key-terms-title">Frequently Used in This Opinion</div>
+<div class="key-terms-list">
+<div class="key-term-item">
+<div class="key-term-name">Americans with Disabilities Act (ADA)</div>
+<p class="key-term-def">A 1990 federal civil rights statute prohibiting discrimination against people with disabilities. Title II applies to state and local governments and their services, programs, and activities. Olmstead interpreted Title II to require community-based services in certain circumstances.</p>
+</div>
+<div class="key-term-item">
+<div class="key-term-name">Integration mandate</div>
+<p class="key-term-def">The Department of Justice regulation requiring public entities to administer services, programs, and activities "in the most integrated setting appropriate to the needs of qualified individuals with disabilities." 28 C.F.R. § 35.130(d). The legal backbone of Olmstead.</p>
+</div>
+<div class="key-term-item">
+<div class="key-term-name">Most integrated setting</div>
+<p class="key-term-def">A setting that enables people with disabilities to interact with people without disabilities to the fullest extent possible. The standard is functional, not literal: it focuses on whether the person can participate in community life.</p>
+</div>
+<div class="key-term-item">
+<div class="key-term-name">Fundamental alteration defense</div>
+<p class="key-term-def">A state's defense to an Olmstead claim. The state can avoid liability by showing that the requested modification would fundamentally alter the nature of its services, given available resources and the needs of others with disabilities. A comprehensive plan with a reasonably moving waiting list is the safe-harbor formulation.</p>
+</div>
+<div class="key-term-item">
+<div class="key-term-name">Home and Community-Based Services (HCBS)</div>
+<p class="key-term-def">Medicaid-funded services that allow people who would otherwise be institutionalized to live in their own homes or in community settings. Most states operate HCBS programs under Medicaid waivers. Waiting lists are common.</p>
+</div>
+<div class="key-term-item">
+<div class="key-term-name">Olmstead plan</div>
+<p class="key-term-def">A state's documented plan for complying with the integration mandate. Typically includes goals for moving people from institutions to community settings, expanding community services, and managing waiting lists. Often developed in response to litigation or DOJ enforcement.</p>
+</div>
+</div>
+</div>
+</section>
+</main><footer class="colophon" role="contentinfo">
+<div class="colophon-inner">
+<div class="colophon-brand">Understanding SCOTUS Opinions</div>
+<div class="colophon-meta">Austin Peay State University · MSW Program</div>
+</div>
+</footer><!-- TERM POPUPS -->
+<div class="term-popup" id="popup-ada" role="tooltip" hidden=""><strong>Americans with Disabilities Act</strong> A 1990 federal civil rights law prohibiting discrimination against people with disabilities in employment, public services, public accommodations, and telecommunications. Title II covers state and local government services and was the basis for the Olmstead decision.</div>
+<p><script>
+  const terms = document.querySelectorAll('.term');
+  let activePopup = null;
+
+  function positionPopup(btn, popup) {
+    const rect = btn.getBoundingClientRect();
+    const popupWidth = popup.offsetWidth || 340;
+    let left = window.scrollX + rect.left;
+    const maxLeft = window.scrollX + document.documentElement.clientWidth - popupWidth - 16;
+    if (left > maxLeft) left = maxLeft;
+    if (left < 16) left = 16;
+    popup.style.left = left + 'px';
+    popup.style.top = (window.scrollY + rect.bottom + 8) + 'px';
+  }
+
+  function showPopup(btn) {
+    const popupId = 'popup-' + btn.dataset.term;
+    const popup = document.getElementById(popupId);
+    if (!popup) return;
+    if (activePopup && activePopup !== popup) activePopup.hidden = true;
+    popup.hidden = false;
+    positionPopup(btn, popup);
+    activePopup = popup;
+  }
+
+  function hidePopup(btn) {
+    const popupId = 'popup-' + btn.dataset.term;
+    const popup = document.getElementById(popupId);
+    if (popup) {
+      popup.hidden = true;
+      if (activePopup === popup) activePopup = null;
+    }
+  }
+
+  terms.forEach(btn => {
+    btn.addEventListener('mouseenter', () => showPopup(btn));
+    btn.addEventListener('mouseleave', () => hidePopup(btn));
+    btn.addEventListener('focus', () => showPopup(btn));
+    btn.addEventListener('blur', () => hidePopup(btn));
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && activePopup) {
+        activePopup.hidden = true;
+        activePopup = null;
+        btn.blur();
+      }
+    });
+  });
+
+  window.addEventListener('scroll', () => {
+    if (activePopup) {
+      const term = document.querySelector('.term[data-term="' + activePopup.id.replace('popup-','') + '"]');
+      if (term) positionPopup(term, activePopup);
+    }
+  });
+</script></p></body></html>

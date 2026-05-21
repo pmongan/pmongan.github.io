@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Addington v. Texas, Case Explainer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&amp;family=Inter+Tight:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f4ede0;
+    --paper-2: #ebe2d1;
+    --paper-deep: #e5dac4;
+    --ink: #1c1815;
+    --ink-2: #2d2722;
+    --ink-soft: #4a4239;
+    --ink-mute: #6b6258;
+    --rule: #c9bda6;
+    --rule-soft: #d9cfba;
+    --oxblood: #6b1f2a;
+    --oxblood-deep: #4f1620;
+    --oxblood-tint: #f3e0e2;
+    --brass: #6b5320;
+    --brass-tint: #f1e8cf;
+    --majority: #2d4a3a;
+    --majority-tint: #d9e2d8;
+    --dissent: #6b1f2a;
+    --dissent-tint: #ebd5d6;
+    --concur: #6b5320;
+    --concur-tint: #efe5c8;
+
+    --font-display: 'Fraunces', 'Times New Roman', serif;
+    --font-body: 'Inter Tight', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 17px;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(107,31,42,0.025) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(107,83,32,0.025) 0%, transparent 50%);
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.4;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.11 0 0 0 0 0.09 0 0 0 0 0.08 0 0 0 0.12 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 16px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 12px 18px;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 2px;
+    z-index: 9999;
+    transition: top 0.2s;
+  }
+  .skip-link:focus { top: 16px; outline: 3px solid var(--oxblood); }
+
+  .masthead {
+    border-bottom: 1px solid var(--rule);
+    padding: 24px 0 18px;
+    position: relative;
+    z-index: 2;
+  }
+  .masthead-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .masthead-brand {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .masthead-brand span { color: var(--oxblood); }
+  .masthead-meta {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .masthead-meta strong { color: var(--ink); }
+
+  .hero {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 48px 32px 32px;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--oxblood);
+  }
+  .hero-eyebrow::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+    max-width: 200px;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(40px, 6vw, 84px);
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-bottom: 12px;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+  }
+  .hero-title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--oxblood);
+  }
+  .hero-citation {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--ink-mute);
+    letter-spacing: 0.04em;
+    margin-bottom: 36px;
+  }
+  .hero-citation a { color: var(--oxblood); text-decoration: underline; text-underline-offset: 3px; }
+  .hero-citation a:hover { color: var(--oxblood-deep); }
+
+  .lede {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    padding-top: 28px;
+    border-top: 3px double var(--ink);
+  }
+  .lede-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    padding-top: 6px;
+  }
+  .lede-label-mark {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--oxblood);
+    margin-right: 8px;
+    border-radius: 50%;
+    vertical-align: middle;
+  }
+  .lede-text {
+    font-family: var(--font-display);
+    font-size: clamp(20px, 2.2vw, 26px);
+    line-height: 1.4;
+    font-weight: 400;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .lede-text strong {
+    font-weight: 600;
+    color: var(--oxblood);
+    font-style: italic;
+  }
+  @media (max-width: 720px) {
+    .lede { grid-template-columns: 1fr; gap: 12px; }
+  }
+
+  .bluf {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    margin-top: 28px;
+    padding: 24px 28px 26px;
+    background: var(--paper-2);
+    border-left: 4px solid var(--brass);
+    border-radius: 2px;
+  }
+  .bluf-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--brass);
+    font-weight: 700;
+    padding-top: 4px;
+  }
+  .bluf-label-mark {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--brass);
+    margin-right: 8px;
+    border-radius: 50%;
+    vertical-align: middle;
+  }
+  .bluf-text {
+    font-family: var(--font-body);
+    font-size: 16.5px;
+    line-height: 1.7;
+    color: var(--ink-2);
+  }
+  .bluf-text strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  @media (max-width: 720px) {
+    .bluf { grid-template-columns: 1fr; gap: 8px; padding: 20px 22px; }
+  }
+
+  .dropcap::first-letter {
+    font-family: var(--font-display);
+    font-size: 5em;
+    font-weight: 600;
+    float: left;
+    line-height: 0.85;
+    margin: 0.04em 0.08em 0 0;
+    color: var(--oxblood);
+    font-style: italic;
+  }
+
+  main {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px 80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  section {
+    padding: 56px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  section:last-of-type { border-bottom: none; }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 32px;
+    align-items: baseline;
+    margin-bottom: 32px;
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    border-top: 2px solid var(--ink);
+    padding-top: 8px;
+  }
+  .section-num strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--oxblood);
+    letter-spacing: -0.01em;
+    margin-top: 2px;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .section-title em { font-style: italic; color: var(--oxblood); }
+  @media (max-width: 720px) {
+    .section-head { grid-template-columns: 1fr; gap: 8px; }
+    .section-num { border-top: none; padding-top: 0; }
+  }
+
+  .body-grid {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 32px;
+  }
+  .body-grid-aside {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    padding-top: 8px;
+  }
+  .body-grid-main { max-width: 65ch; }
+  .body-grid-main p { margin-bottom: 1em; font-size: 17px; line-height: 1.7; color: var(--ink-2); }
+  .body-grid-main p:last-child { margin-bottom: 0; }
+  .body-grid-main strong { color: var(--ink); font-weight: 600; }
+  .body-grid-main em { font-style: italic; }
+  @media (max-width: 720px) {
+    .body-grid { grid-template-columns: 1fr; gap: 8px; }
+  }
+
+  .bench {
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 36px 32px 28px;
+    margin-top: 8px;
+  }
+  .bench-title {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .bench-row {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+  .justice {
+    flex: 0 0 auto;
+    width: 88px;
+    text-align: center;
+    padding: 12px 4px;
+    border-radius: 4px;
+    border: 1.5px solid var(--rule);
+    background: var(--paper);
+    position: relative;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .justice:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(28,24,21,0.08);
+  }
+  .justice-seal {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin: 0 auto 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--paper);
+    font-style: italic;
+  }
+  .justice-name {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.15;
+    color: var(--ink);
+  }
+  .justice-role {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-top: 4px;
+  }
+  .justice.majority { border-color: var(--majority); background: var(--majority-tint); }
+  .justice.majority .justice-seal { background: var(--majority); }
+  .justice.dissent { border-color: var(--dissent); background: var(--dissent-tint); }
+  .justice.dissent .justice-seal { background: var(--dissent); }
+  .justice.dissent .justice-role { color: var(--ink); }
+  .justice.concur { border-color: var(--concur); background: var(--concur-tint); }
+  .justice.concur .justice-seal { background: var(--concur); }
+  .justice.concur .justice-role { color: var(--ink); }
+  .justice.recused { border-color: var(--rule); background: var(--paper); opacity: 0.55; }
+  .justice.recused .justice-seal { background: var(--ink-mute); }
+  .justice.recused .justice-role { color: var(--ink-mute); }
+  .justice.author::after {
+    content: '\2726';
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    font-size: 12px;
+    color: var(--oxblood);
+  }
+
+  .bench-legend {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .bench-legend-item { display: flex; align-items: center; gap: 8px; }
+  .bench-legend-swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1.5px solid;
+  }
+  .bench-legend-swatch.maj { background: var(--majority-tint); border-color: var(--majority); }
+  .bench-legend-swatch.con { background: var(--concur-tint); border-color: var(--concur); }
+  .bench-legend-swatch.dis { background: var(--dissent-tint); border-color: var(--dissent); }
+  .bench-legend-swatch.rec { background: var(--paper); border-color: var(--rule); }
+
+  .arguments {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 8px;
+  }
+  @media (max-width: 720px) { .arguments { grid-template-columns: 1fr; } }
+
+  .arg-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-top: 4px solid;
+    padding: 28px 28px 24px;
+    border-radius: 2px;
+    position: relative;
+  }
+  .arg-card.majority-arg { border-top-color: var(--majority); }
+  .arg-card.dissent-arg { border-top-color: var(--dissent); }
+
+  .arg-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .arg-card.majority-arg .arg-label { color: var(--majority); }
+  .arg-card.dissent-arg .arg-label { color: var(--dissent); }
+  .arg-label-mark {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+  .arg-card.majority-arg .arg-label-mark { background: var(--majority); }
+  .arg-card.dissent-arg .arg-label-mark { background: var(--dissent); }
+
+  .arg-headline {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--ink);
+    margin-bottom: 18px;
+    letter-spacing: -0.01em;
+  }
+  .arg-headline em { font-style: italic; color: var(--oxblood); }
+
+  .arg-points {
+    list-style: none;
+    counter-reset: argp;
+  }
+  .arg-points li {
+    counter-increment: argp;
+    padding: 14px 0 14px 36px;
+    border-bottom: 1px solid var(--rule-soft);
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--ink-2);
+    position: relative;
+  }
+  .arg-points li:last-child { border-bottom: none; padding-bottom: 4px; }
+  .arg-points li::before {
+    content: counter(argp, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 14px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-mute);
+    letter-spacing: 0.05em;
+  }
+  .arg-points li strong {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--ink);
+    margin-bottom: 4px;
+    letter-spacing: -0.005em;
+  }
+
+  .guardrail {
+    background: var(--brass-tint);
+    border: 1px solid var(--brass);
+    border-left: 4px solid var(--brass);
+    padding: 24px 28px;
+    margin-top: 8px;
+    border-radius: 2px;
+    position: relative;
+  }
+  .guardrail-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brass);
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .guardrail-label::before {
+    content: '\26A0';
+    font-size: 16px;
+    color: var(--brass);
+  }
+  .guardrail-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 14px;
+    letter-spacing: -0.01em;
+  }
+  .guardrail ul {
+    list-style: none;
+    padding: 0;
+  }
+  .guardrail li {
+    padding: 8px 0 8px 24px;
+    font-size: 15.5px;
+    color: var(--ink-2);
+    line-height: 1.55;
+    position: relative;
+  }
+  .guardrail li::before {
+    content: '\2715';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    color: var(--brass);
+    font-weight: 700;
+    font-size: 13px;
+  }
+  .guardrail li strong { color: var(--ink); font-weight: 600; }
+
+  .term {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: var(--oxblood);
+    cursor: help;
+    border-bottom: 1.5px dotted var(--oxblood);
+    font-weight: 600;
+  }
+  .term:focus-visible {
+    outline: 2px solid var(--oxblood);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  .term-popup {
+    position: absolute;
+    max-width: 340px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 16px 18px;
+    border-radius: 3px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.55;
+    box-shadow: 0 12px 28px rgba(28,24,21,0.3);
+    z-index: 200;
+    border: 1px solid var(--ink-2);
+  }
+  .term-popup[hidden] { display: none; }
+  .term-popup strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--paper);
+    margin-bottom: 6px;
+    font-style: italic;
+  }
+
+  .timeline {
+    margin-top: 8px;
+    border-left: 2px solid var(--rule);
+    padding-left: 28px;
+    margin-left: 12px;
+  }
+  .timeline-event {
+    position: relative;
+    padding-bottom: 28px;
+  }
+  .timeline-event:last-child { padding-bottom: 0; }
+  .timeline-event::before {
+    content: '';
+    position: absolute;
+    left: -36px;
+    top: 6px;
+    width: 14px;
+    height: 14px;
+    background: var(--paper);
+    border: 2px solid var(--oxblood);
+    border-radius: 50%;
+  }
+  .timeline-event.scotus::before { background: var(--oxblood); }
+  .timeline-court {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+  .timeline-ruling {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+    letter-spacing: -0.005em;
+  }
+  .timeline-desc {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+
+  .practice-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 8px;
+  }
+  @media (max-width: 820px) { .practice-grid { grid-template-columns: 1fr; } }
+
+  .practice-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 24px 22px;
+    border-radius: 2px;
+    border-top: 4px solid var(--oxblood);
+  }
+  .practice-card-tag {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  .practice-card-title {
+    font-family: var(--font-display);
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .practice-card p {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink-2);
+  }
+
+  .pullquote {
+    margin: 48px auto;
+    max-width: 800px;
+    text-align: center;
+    padding: 0 24px;
+  }
+  .pullquote-mark {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 88px;
+    color: var(--oxblood);
+    line-height: 0.6;
+    margin-bottom: 12px;
+    font-weight: 400;
+  }
+  .pullquote-text {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(22px, 2.4vw, 30px);
+    line-height: 1.35;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 16px;
+    letter-spacing: -0.005em;
+  }
+  .pullquote-cite {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+
+  .colophon {
+    background: var(--ink);
+    color: var(--paper-2);
+    padding: 36px 32px;
+    position: relative;
+    z-index: 2;
+  }
+  .colophon-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .colophon-brand {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    font-style: italic;
+    color: var(--paper);
+  }
+  .colophon-meta {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #a89e8e;
+  }
+
+  .key-terms {
+    margin-top: 16px;
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    padding: 28px 32px;
+    border-radius: 2px;
+  }
+  .key-terms-title {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .key-terms-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 32px;
+  }
+  @media (max-width: 720px) { .key-terms-list { grid-template-columns: 1fr; gap: 20px; } }
+  .key-term-item { padding: 0; }
+  .key-term-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-style: italic;
+    color: var(--ink);
+    font-size: 17px;
+    margin-bottom: 8px;
+    letter-spacing: -0.005em;
+  }
+  .key-term-def {
+    font-size: 14.5px;
+    color: var(--ink-2);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* STANDARDS COMPARISON TABLE (reused from Santosky pattern) */
+  .standards-table {
+    margin-top: 8px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .standards-row {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1.5fr;
+    gap: 0;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .standards-row:last-child { border-bottom: none; }
+  .standards-row.header {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .standards-row.highlight {
+    background: var(--oxblood-tint);
+  }
+  .standards-cell {
+    padding: 16px 20px;
+    font-size: 14.5px;
+    line-height: 1.55;
+    border-right: 1px solid var(--rule-soft);
+  }
+  .standards-cell:last-child { border-right: none; }
+  .standards-row.header .standards-cell {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--paper);
+    font-weight: 700;
+    border-right-color: var(--ink-soft);
+  }
+  .standards-cell.standard-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--ink);
+    font-size: 16px;
+    letter-spacing: -0.005em;
+  }
+  .standards-row.highlight .standards-cell.usage {
+    color: var(--oxblood);
+    font-weight: 700;
+  }
+  .standards-cell.usage {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+  }
+  @media (max-width: 720px) {
+    .standards-row { grid-template-columns: 1fr; }
+    .standards-cell { border-right: none; border-bottom: 1px solid var(--rule-soft); }
+    .standards-row.header { display: none; }
+  }
+
+  @media print {
+    body::before, .skip-link { display: none; }
+    body { background: white; color: black; }
+    section { page-break-inside: avoid; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
+</head><body><p><a class="skip-link" href="#main">Skip to main content</a></p>
+<div class="masthead" role="banner">
+<div class="masthead-inner">
+<div class="masthead-brand">understanding scotus opinions</div>
+<div class="masthead-meta">Dr. Philip Mongan, lcsw, ph.D.</div>
+</div>
+</div>
+<div class="hero">
+<p class="hero-eyebrow">October Term 1978 · Decided April 30, 1979</p>
+<h1 class="hero-title">Addington <em>v.</em><br>Texas</h1>
+<p class="hero-citation">No. 77–5992 · 441 U.S. 418 (1979) · <a href="https://www.oyez.org/cases/1978/77-5992" target="_blank" rel="noopener">Read the full case on Oyez ↗</a></p>
+<div class="lede">
+<div class="lede-label"><span class="lede-label-mark" aria-hidden="true"></span>The Holding</div>
+<p class="lede-text">A unanimous Supreme Court ruled, <strong>8–0</strong>, that before a state may involuntarily commit a person to a psychiatric hospital for an indefinite period, the Due Process Clause requires proof by <em>clear and convincing evidence</em>. A simple preponderance is not enough; "beyond a reasonable doubt" is not constitutionally required.</p>
+</div>
+<div class="bluf">
+<div class="bluf-label"><span class="bluf-label-mark" aria-hidden="true"></span>In plain terms</div>
+<p class="bluf-text">Frank Addington had a long history of mental illness, hospitalizations, and threatening behavior, including threats and assaults against his mother. After his mother petitioned for indefinite commitment, a Texas jury committed him. He appealed, arguing that civil commitment should require the same proof as a criminal conviction. The Supreme Court split the difference. <strong>Civil commitment is too serious a deprivation of liberty for a "more likely than not" standard, but the uncertainties of psychiatric diagnosis make "beyond a reasonable doubt" unrealistic.</strong> The constitutional floor sits in the middle: clear and convincing evidence. This is the procedural rule that governs every involuntary commitment hearing in the country.</p>
+</div>
+</div>
+<main id="main"><!-- 01 - THE QUESTION -->
+<section aria-labelledby="s1-title">
+<div class="section-head">
+<div class="section-num">Section <strong>01</strong></div>
+<h2 class="section-title" id="s1-title">The Question <em>Presented</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">What was<br>at stake</div>
+<div class="body-grid-main">
+<p class="dropcap">Between 1969 and 1975, Frank Addington was committed temporarily to Texas state psychiatric hospitals on seven occasions and committed indefinitely to Austin State Hospital three times. He had a documented history of psychotic schizophrenia and paranoid tendencies. On December 18, 1975, he was arrested for a misdemeanor of "assault by threat" against his mother. His mother then filed a petition seeking his indefinite commitment.</p>
+<p>A six-day jury trial followed. The state presented evidence that Addington suffered from serious delusions, had repeatedly threatened to injure his parents and others, had been involved in assaultive episodes during prior hospitalizations, and had caused substantial property damage at his apartment and at his parents' home. Two psychiatrists testified as experts for the state. The jury was instructed to commit Addington if there was "clear, unequivocal and convincing evidence" that he was mentally ill and required hospitalization. The jury answered yes to both questions, and the trial court ordered indefinite commitment to Austin State Hospital.</p>
+<p>Addington did not argue that he was being wrongly committed in fact. He argued that the constitutional <button type="button" class="term" data-term="standardofproof" aria-describedby="popup-standardofproof">standard of proof</button> was wrong in law. He wanted the jury to be instructed under the "beyond a reasonable doubt" standard used in criminal cases. The Texas Supreme Court eventually held that a mere preponderance was constitutionally sufficient, but ruled that Addington's commitment could stand because the actual instructions had used a higher standard anyway. The U.S. Supreme Court took the case to settle the constitutional question.</p>
+</div>
+</div>
+</section>
+<!-- 02 - THE BENCH -->
+<section aria-labelledby="s2-title">
+<div class="section-head">
+<div class="section-num">Section <strong>02</strong></div>
+<h2 class="section-title" id="s2-title">The <em>Bench</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">Who joined<br>which side</div>
+<div class="body-grid-main">
+<p>The decision was unanimous among the eight participating Justices. Chief Justice Burger wrote for the Court. Justice Powell did not take part in the case, so the eight-Justice Court ruled with one seat empty.</p>
+</div>
+</div>
+<div class="bench" role="figure" aria-label="The nine Justices and how they voted">
+<p class="bench-title">The Burger Court · Vote 8–0 (one recused)</p>
+<div class="bench-row">
+<div class="justice majority author">
+<div class="justice-seal" aria-hidden="true">B</div>
+<div class="justice-name">Burger</div>
+<div class="justice-role">Author</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">B</div>
+<div class="justice-name">Brennan</div>
+<div class="justice-role">Joined</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">S</div>
+<div class="justice-name">Stewart</div>
+<div class="justice-role">Joined</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">W</div>
+<div class="justice-name">White</div>
+<div class="justice-role">Joined</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">M</div>
+<div class="justice-name">Marshall</div>
+<div class="justice-role">Joined</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">B</div>
+<div class="justice-name">Blackmun</div>
+<div class="justice-role">Joined</div>
+</div>
+<div class="justice recused">
+<div class="justice-seal" aria-hidden="true">P</div>
+<div class="justice-name">Powell</div>
+<div class="justice-role">Recused</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">R</div>
+<div class="justice-name">Rehnquist</div>
+<div class="justice-role">Joined</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">S</div>
+<div class="justice-name">Stevens</div>
+<div class="justice-role">Joined</div>
+</div>
+</div>
+<div class="bench-legend">
+<div class="bench-legend-item"><span class="bench-legend-swatch maj" aria-hidden="true"></span>Unanimous (8)</div>
+<div class="bench-legend-item"><span class="bench-legend-swatch rec" aria-hidden="true"></span>Did not participate</div>
+<div class="bench-legend-item">✦ Opinion author</div>
+</div>
+</div>
+</section>
+<!-- PULL QUOTE -->
+<div class="pullquote">
+<div class="pullquote-mark" aria-hidden="true">“</div>
+<p class="pullquote-text">The individual should not be asked to share equally with society the risk of error.</p>
+<p class="pullquote-cite">Chief Justice Burger, for the Court</p>
+</div>
+<!-- 03 - THE REASONING -->
+<section aria-labelledby="s3-title">
+<div class="section-head">
+<div class="section-num">Section <strong>03</strong></div>
+<h2 class="section-title" id="s3-title">The <em>Reasoning</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">Two<br>questions</div>
+<div class="body-grid-main">
+<p>Because the case was unanimous, there is no dissent to lay against the majority. The Court's analysis had two parts, each addressing a different question: was the existing "preponderance" standard enough, and if not, was the criminal "beyond a reasonable doubt" standard required? The Court answered no to both, then explained why "clear and convincing" was the right floor.</p>
+</div>
+</div>
+<div class="arguments">
+<article class="arg-card majority-arg">
+<div class="arg-label"><span class="arg-label-mark" aria-hidden="true"></span>Why preponderance is too low</div>
+<h3 class="arg-headline">Civil commitment is too serious a loss to share the risk of error <em>equally</em> with the state.</h3>
+<ol class="arg-points">
+<li><strong>Commitment is a significant deprivation of liberty.</strong> The Court returned to the principle established in O'Connor v. Donaldson: locking someone in a psychiatric hospital is a major loss of physical freedom. The fact that the setting is medical rather than penal does not change that. The constitutional analysis has to take the actual loss seriously.</li>
+<li><strong>The stigma is real and lasting.</strong> Burger emphasized that beyond the physical confinement itself, civil commitment carries serious social consequences that can follow a person for the rest of their life. Employment, housing, insurance, and family relationships are all affected. The label of "committed" does not come off easily.</li>
+<li><strong>Preponderance is the standard for ordinary civil disputes.</strong> That standard, "more likely than not," is designed for cases where the parties are roughly equal and the risk of being wrong should be split between them. A car accident lawsuit fits that mold. A commitment hearing does not. The interests are not equivalent.</li>
+<li><strong>The state must do more than tip the scales.</strong> The conclusion follows from the others: when the deprivation is this serious, the state must do more than show that commitment is more likely justified than not. The risk of error has to be allocated in a way that reflects what is being taken from the person.</li>
+</ol>
+</article>
+<article class="arg-card majority-arg">
+<div class="arg-label"><span class="arg-label-mark" aria-hidden="true"></span>Why "beyond a reasonable doubt" is not required</div>
+<h3 class="arg-headline">Psychiatric diagnosis is too uncertain to require the criminal standard, and using it would lock people <em>out</em> of needed treatment.</h3>
+<ol class="arg-points">
+<li><strong>The criminal standard is reserved for criminal cases.</strong> "Beyond a reasonable doubt" is, in the Court's words, a critical part of the moral force of the criminal law. The Court was reluctant to extend it casually to civil proceedings. Civil commitment is not punishment, and the analogy to criminal conviction is imperfect.</li>
+<li><strong>Psychiatric diagnosis is inherently uncertain.</strong> Burger noted that mental illness is rarely susceptible to absolute proof. Diagnoses are clinical judgments based on observation, history, and pattern, not laboratory tests with crisp results. Requiring the state to prove these matters beyond a reasonable doubt could make commitment effectively impossible even when it would clearly help the person.</li>
+<li><strong>The state has legitimate interests on both sides.</strong> The state has a parens patriae interest in helping people who cannot care for themselves, and a police power interest in protecting the public from dangerous individuals. A standard so strict that it blocks commitment of people who genuinely need it would undercut those interests without a corresponding benefit to liberty.</li>
+<li><strong>The middle level fits.</strong> "Clear and convincing evidence" is the standard already used in other cases involving particularly important individual interests, including deportation, denaturalization, and certain fraud cases. The Court placed civil commitment in this same category, where the state must carry a heavy burden but not an impossible one. Twenty states already used this standard at the time the case was decided.</li>
+</ol>
+</article>
+</div>
+</section>
+<!-- 04 - STANDARDS COMPARISON -->
+<section aria-labelledby="s4-title">
+<div class="section-head">
+<div class="section-num">Section <strong>04</strong></div>
+<h2 class="section-title" id="s4-title">The Three <em>Standards of Proof</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">A quick<br>reference</div>
+<div class="body-grid-main">
+<p>Addington is one of two cases in this series that turn on the standard of proof. The other is Santosky v. Kramer, decided three years later, which used Addington as authority to place termination of parental rights in the same middle tier. The chart below shows where Addington placed civil commitment relative to the other major standards in American law.</p>
+</div>
+</div>
+<div class="standards-table" role="table" aria-label="Standards of proof in American law">
+<div class="standards-row header" role="row">
+<div class="standards-cell" role="columnheader">Standard</div>
+<div class="standards-cell" role="columnheader">What it requires</div>
+<div class="standards-cell" role="columnheader">Where it applies</div>
+</div>
+<div class="standards-row" role="row">
+<div class="standards-cell standard-name" role="cell">Preponderance of the evidence</div>
+<div class="standards-cell" role="cell">More likely than not. Just over 50%. The risk of error is split roughly equally between the parties.</div>
+<div class="standards-cell usage" role="cell">Routine civil cases · Money damages</div>
+</div>
+<div class="standards-row highlight" role="row">
+<div class="standards-cell standard-name" role="cell">Clear and convincing evidence</div>
+<div class="standards-cell" role="cell">A high degree of subjective certainty. More than "more likely than not," less than absolute. Risk of error tilts toward the party seeking to deprive the individual of liberty.</div>
+<div class="standards-cell usage" role="cell">Civil commitment · TPR · Deportation</div>
+</div>
+<div class="standards-row" role="row">
+<div class="standards-cell standard-name" role="cell">Beyond a reasonable doubt</div>
+<div class="standards-cell" role="cell">The factfinder must have no reasonable doubt about the facts. Almost the entire risk of error rests on the state.</div>
+<div class="standards-cell usage" role="cell">Criminal cases · ICWA TPR</div>
+</div>
+</div>
+</section>
+<!-- 05 - GUARDRAIL -->
+<section aria-labelledby="s5-title">
+<div class="section-head">
+<div class="section-num">Section <strong>05</strong></div>
+<h2 class="section-title" id="s5-title">What the Court <em>Did Not</em> Decide</h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">Read this<br>carefully</div>
+<div class="body-grid-main">
+<p>Addington is a narrow procedural ruling. It set a floor for the standard of proof in civil commitment hearings and stopped there. The substantive criteria for commitment, the procedures around it, and many related questions about confinement of people with mental illness were left for other cases.</p>
+</div>
+</div>
+<div class="guardrail" role="note">
+<div class="guardrail-label">Common misreads to avoid</div>
+<h3 class="guardrail-title">Addington set the standard of proof, not the substantive rules. The work happens at both levels.</h3>
+<ul>
+<li><strong>It did not define what counts as "mentally ill" or "dangerous."</strong> Each state writes its own substantive criteria for civil commitment. Addington said only that whatever those criteria are, they must be proven by clear and convincing evidence.</li>
+<li><strong>It did not apply to short-term emergency holds.</strong> Most states have a separate, lower-threshold process for short emergency commitments (often 72 hours), used to stabilize people in crisis. Addington's higher standard applies to longer-term and indefinite commitments.</li>
+<li><strong>It did not address commitment of minors.</strong> Parham v. J.R., decided two months after Addington, held that parents can commit their minor children with reduced procedural protections, on the theory that parents are presumed to act in the child's interest.</li>
+<li><strong>It did not address commitment after a criminal acquittal.</strong> The standards for commitment of people found not guilty by reason of insanity, or found incompetent to stand trial, are different and have been worked out in later cases like Jones v. United States and Foucha v. Louisiana.</li>
+<li><strong>It did not require any specific procedure beyond the standard of proof.</strong> Right to counsel, right to a hearing, right to cross-examine witnesses, and other procedural questions are governed by state law and other constitutional doctrines, not by Addington itself.</li>
+<li><strong>It did not bar states from using a higher standard.</strong> The Court was explicit that "clear and convincing" is a floor, not a ceiling. States are free to use a higher standard if they choose, and several do.</li>
+</ul>
+</div>
+</section>
+<!-- 06 - PROCEDURAL ROUTE -->
+<section aria-labelledby="s6-title">
+<div class="section-head">
+<div class="section-num">Section <strong>06</strong></div>
+<h2 class="section-title" id="s6-title">How It <em>Got Here</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">The path<br>to SCOTUS</div>
+<div class="body-grid-main">
+<p>This case ran through Texas state courts before reaching the Supreme Court on a question of federal constitutional law. The procedural history matters because the Texas courts changed their position on the standard of proof along the way, and Addington's commitment was ultimately upheld even when he won the constitutional argument.</p>
+</div>
+</div>
+<div class="timeline">
+<div class="timeline-event">
+<div class="timeline-court">1969–1975 · Texas state hospitals</div>
+<div class="timeline-ruling">Repeated commitments</div>
+<div class="timeline-desc">Frank Addington is committed temporarily to various Texas state mental hospitals on seven occasions, and committed indefinitely to Austin State Hospital on three occasions. He has a documented history of psychotic schizophrenia and paranoid tendencies.</div>
+</div>
+<div class="timeline-event">
+<div class="timeline-court">December 1975 · Texas state court</div>
+<div class="timeline-ruling">Arrest and commitment petition</div>
+<div class="timeline-desc">Addington is arrested for the misdemeanor of "assault by threat" against his mother. His mother then files a petition seeking his indefinite commitment. A county psychiatric examiner interviews him in custody and certifies him as mentally ill.</div>
+</div>
+<div class="timeline-event">
+<div class="timeline-court">1976 · Texas Trial Court</div>
+<div class="timeline-ruling">Six-day jury trial; jury orders commitment</div>
+<div class="timeline-desc">Addington has counsel. The state presents evidence of delusions, threats, assaultive episodes during prior hospitalizations, and substantial property damage. Two psychiatrists testify as expert witnesses. The jury is instructed to commit Addington if there is "clear, unequivocal and convincing evidence" that he is mentally ill and requires hospitalization. The jury answers yes. The trial court orders indefinite commitment.</div>
+</div>
+<div class="timeline-event">
+<div class="timeline-court">Texas Court of Civil Appeals (1977)</div>
+<div class="timeline-ruling">Court of Appeals reverses</div>
+<div class="timeline-desc">The intermediate appellate court agrees with Addington that the standard of proof should be "beyond a reasonable doubt" and reverses the commitment order.</div>
+</div>
+<div class="timeline-event">
+<div class="timeline-court">Texas Supreme Court (1977)</div>
+<div class="timeline-ruling">State supreme court reinstates commitment</div>
+<div class="timeline-desc">The Texas Supreme Court holds that mere preponderance of the evidence is constitutionally sufficient for civil commitment but upholds Addington's commitment anyway, because the actual jury instructions had used a higher standard. Addington appeals to the U.S. Supreme Court.</div>
+</div>
+<div class="timeline-event scotus">
+<div class="timeline-court">April 30, 1979 · Supreme Court of the United States</div>
+<div class="timeline-ruling">SCOTUS vacates and remands, 8–0</div>
+<div class="timeline-desc">A unanimous Court holds that due process requires at least clear and convincing evidence for involuntary commitment, but rejects Addington's argument that the criminal "beyond a reasonable doubt" standard is required. The Court notes that the jury instructions actually used in Addington's case, "clear, unequivocal and convincing," were constitutionally adequate. The case is vacated and remanded for further proceedings consistent with the Court's opinion.</div>
+</div>
+</div>
+</section>
+<!-- 07 - FOR PRACTICE -->
+<section aria-labelledby="s7-title">
+<div class="section-head">
+<div class="section-num">Section <strong>07</strong></div>
+<h2 class="section-title" id="s7-title">For <em>Practice</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">The social<br>work bridge</div>
+<div class="body-grid-main">
+<p>Addington is a procedural ruling, but its effects show up in everyday practice. Social workers participating in commitment hearings, evaluations, or court testimony are operating inside the framework Addington built. Three lenses help here.</p>
+</div>
+</div>
+<div class="practice-grid">
+<div class="practice-card">
+<div class="practice-card-tag">Procedural Lens</div>
+<h3 class="practice-card-title">Know the standard your state uses, and know it is at least clear and convincing.</h3>
+<p>Every state has its own commitment statute, and the exact criteria vary. Some states use "clear and convincing," some use higher standards like "clear, cogent, and convincing." None can use less. When you are participating in a commitment hearing or preparing for one, knowing which standard applies in your jurisdiction is part of basic procedural competence. The standard of proof shapes what evidence will be enough.</p>
+</div>
+<div class="practice-card">
+<div class="practice-card-tag">Documentation Lens</div>
+<h3 class="practice-card-title">Clear and convincing evidence requires specific, observable documentation.</h3>
+<p>This rule is the same one that runs through Santosky and through every other "clear and convincing" context. Generalized observations ("client seems unstable," "patient appears unsafe to himself") are not enough. The record must include specific behaviors, dated observations, quoted statements, and named witnesses. The same documentation discipline that supports a TPR case supports a commitment case. Vague impressions lose under this standard.</p>
+</div>
+<div class="practice-card">
+<div class="practice-card-tag">Expert Witness Lens</div>
+<h3 class="practice-card-title">Psychiatric expertise has weight, but it has to be articulated.</h3>
+<p>Burger noted that civil commitment hearings depend heavily on psychiatric testimony because the factfinder generally lacks the expertise to evaluate clinical judgment without it. If you testify in a commitment hearing, your job is to translate clinical reasoning into terms the court can understand and weigh. "I am concerned about him" is not testimony. "He has reported auditory hallucinations commanding him to harm a named family member, and his refusal of medication has been documented in three recent encounters" is testimony. The first does not meet the standard. The second can.</p>
+</div>
+</div>
+</section>
+<!-- 08 - KEY TERMS -->
+<section aria-labelledby="s8-title">
+<div class="section-head">
+<div class="section-num">Section <strong>08</strong></div>
+<h2 class="section-title" id="s8-title">A Working <em>Vocabulary</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">Legal<br>terms</div>
+<div class="body-grid-main">
+<p>Addington uses the same procedural vocabulary that appears in many other due process cases. The terms below are defined the way they are used here.</p>
+</div>
+</div>
+<div class="key-terms">
+<div class="key-terms-title">Frequently Used in This Opinion</div>
+<div class="key-terms-list">
+<div class="key-term-item">
+<div class="key-term-name">Standard of proof</div>
+<p class="key-term-def">The level of certainty a factfinder must reach before deciding in favor of the party with the burden of proof. The three main standards in American law are preponderance of the evidence, clear and convincing evidence, and beyond a reasonable doubt.</p>
+</div>
+<div class="key-term-item">
+<div class="key-term-name">Clear and convincing evidence</div>
+<p class="key-term-def">The middle standard of proof. Requires a high degree of subjective certainty, more than "more likely than not" but less than absolute. The constitutional floor for civil commitment after Addington.</p>
+</div>
+<div class="key-term-item">
+<div class="key-term-name">Civil commitment</div>
+<p class="key-term-def">The process by which a state confines a person to a psychiatric facility against their will. Distinct from criminal incarceration. Governed by state statutes that must comply with the constitutional standards set by O'Connor v. Donaldson and Addington v. Texas.</p>
+</div>
+<div class="key-term-item">
+<div class="key-term-name">Mathews v. Eldridge balancing</div>
+<p class="key-term-def">The standard test for procedural due process questions. Courts weigh the private interest at stake, the risk of erroneous deprivation under current procedures, and the state's interests. Addington applied this test to civil commitment.</p>
+</div>
+<div class="key-term-item">
+<div class="key-term-name">Parens patriae</div>
+<p class="key-term-def">Latin for "parent of the country." The doctrine that the state has authority to protect those who cannot protect themselves. One of two state interests recognized in civil commitment, alongside the police power.</p>
+</div>
+<div class="key-term-item">
+<div class="key-term-name">Police power</div>
+<p class="key-term-def">The authority of the state to enact laws protecting public health, safety, and welfare. In civil commitment, the police power justifies confining people who pose a danger to others.</p>
+</div>
+</div>
+</div>
+</section>
+</main><footer class="colophon" role="contentinfo">
+<div class="colophon-inner">
+<div class="colophon-brand">Understanding SCOTUS Opinions</div>
+<div class="colophon-meta">Austin Peay State University · MSW Program</div>
+</div>
+</footer><!-- TERM POPUPS -->
+<div class="term-popup" id="popup-standardofproof" role="tooltip" hidden=""><strong>Standard of proof</strong> The level of certainty a factfinder must reach before ruling in favor of the party with the burden of proof. American law uses three main standards: preponderance of the evidence, clear and convincing evidence, and beyond a reasonable doubt.</div>
+<p><script>
+  const terms = document.querySelectorAll('.term');
+  let activePopup = null;
+
+  function positionPopup(btn, popup) {
+    const rect = btn.getBoundingClientRect();
+    const popupWidth = popup.offsetWidth || 340;
+    let left = window.scrollX + rect.left;
+    const maxLeft = window.scrollX + document.documentElement.clientWidth - popupWidth - 16;
+    if (left > maxLeft) left = maxLeft;
+    if (left < 16) left = 16;
+    popup.style.left = left + 'px';
+    popup.style.top = (window.scrollY + rect.bottom + 8) + 'px';
+  }
+
+  function showPopup(btn) {
+    const popupId = 'popup-' + btn.dataset.term;
+    const popup = document.getElementById(popupId);
+    if (!popup) return;
+    if (activePopup && activePopup !== popup) activePopup.hidden = true;
+    popup.hidden = false;
+    positionPopup(btn, popup);
+    activePopup = popup;
+  }
+
+  function hidePopup(btn) {
+    const popupId = 'popup-' + btn.dataset.term;
+    const popup = document.getElementById(popupId);
+    if (popup) {
+      popup.hidden = true;
+      if (activePopup === popup) activePopup = null;
+    }
+  }
+
+  terms.forEach(btn => {
+    btn.addEventListener('mouseenter', () => showPopup(btn));
+    btn.addEventListener('mouseleave', () => hidePopup(btn));
+    btn.addEventListener('focus', () => showPopup(btn));
+    btn.addEventListener('blur', () => hidePopup(btn));
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && activePopup) {
+        activePopup.hidden = true;
+        activePopup = null;
+        btn.blur();
+      }
+    });
+  });
+
+  window.addEventListener('scroll', () => {
+    if (activePopup) {
+      const term = document.querySelector('.term[data-term="' + activePopup.id.replace('popup-','') + '"]');
+      if (term) positionPopup(term, activePopup);
+    }
+  });
+</script></p></body></html>

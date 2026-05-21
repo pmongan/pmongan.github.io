@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Endrew F. v. Douglas County, Case Explainer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&amp;family=Inter+Tight:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f4ede0;
+    --paper-2: #ebe2d1;
+    --paper-deep: #e5dac4;
+    --ink: #1c1815;
+    --ink-2: #2d2722;
+    --ink-soft: #4a4239;
+    --ink-mute: #6b6258;
+    --rule: #c9bda6;
+    --rule-soft: #d9cfba;
+    --oxblood: #6b1f2a;
+    --oxblood-deep: #4f1620;
+    --oxblood-tint: #f3e0e2;
+    --brass: #6b5320;
+    --brass-tint: #f1e8cf;
+    --majority: #2d4a3a;
+    --majority-tint: #d9e2d8;
+    --dissent: #6b1f2a;
+    --dissent-tint: #ebd5d6;
+    --concur: #6b5320;
+    --concur-tint: #efe5c8;
+
+    --font-display: 'Fraunces', 'Times New Roman', serif;
+    --font-body: 'Inter Tight', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 17px;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(107,31,42,0.025) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(107,83,32,0.025) 0%, transparent 50%);
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.4;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.11 0 0 0 0 0.09 0 0 0 0 0.08 0 0 0 0.12 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 16px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 12px 18px;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 2px;
+    z-index: 9999;
+    transition: top 0.2s;
+  }
+  .skip-link:focus { top: 16px; outline: 3px solid var(--oxblood); }
+
+  .masthead {
+    border-bottom: 1px solid var(--rule);
+    padding: 24px 0 18px;
+    position: relative;
+    z-index: 2;
+  }
+  .masthead-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .masthead-brand {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .masthead-brand span { color: var(--oxblood); }
+  .masthead-meta {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .masthead-meta strong { color: var(--ink); }
+
+  .hero {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 48px 32px 32px;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--oxblood);
+  }
+  .hero-eyebrow::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+    max-width: 200px;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(40px, 6vw, 84px);
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-bottom: 12px;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+  }
+  .hero-title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--oxblood);
+  }
+  .hero-citation {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--ink-mute);
+    letter-spacing: 0.04em;
+    margin-bottom: 36px;
+  }
+  .hero-citation a { color: var(--oxblood); text-decoration: underline; text-underline-offset: 3px; }
+  .hero-citation a:hover { color: var(--oxblood-deep); }
+
+  .lede {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    padding-top: 28px;
+    border-top: 3px double var(--ink);
+  }
+  .lede-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    padding-top: 6px;
+  }
+  .lede-label-mark {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--oxblood);
+    margin-right: 8px;
+    border-radius: 50%;
+    vertical-align: middle;
+  }
+  .lede-text {
+    font-family: var(--font-display);
+    font-size: clamp(20px, 2.2vw, 26px);
+    line-height: 1.4;
+    font-weight: 400;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .lede-text strong {
+    font-weight: 600;
+    color: var(--oxblood);
+    font-style: italic;
+  }
+  @media (max-width: 720px) {
+    .lede { grid-template-columns: 1fr; gap: 12px; }
+  }
+
+  .bluf {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    margin-top: 28px;
+    padding: 24px 28px 26px;
+    background: var(--paper-2);
+    border-left: 4px solid var(--brass);
+    border-radius: 2px;
+  }
+  .bluf-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--brass);
+    font-weight: 700;
+    padding-top: 4px;
+  }
+  .bluf-label-mark {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--brass);
+    margin-right: 8px;
+    border-radius: 50%;
+    vertical-align: middle;
+  }
+  .bluf-text {
+    font-family: var(--font-body);
+    font-size: 16.5px;
+    line-height: 1.7;
+    color: var(--ink-2);
+  }
+  .bluf-text strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  @media (max-width: 720px) {
+    .bluf { grid-template-columns: 1fr; gap: 8px; padding: 20px 22px; }
+  }
+
+  .dropcap::first-letter {
+    font-family: var(--font-display);
+    font-size: 5em;
+    font-weight: 600;
+    float: left;
+    line-height: 0.85;
+    margin: 0.04em 0.08em 0 0;
+    color: var(--oxblood);
+    font-style: italic;
+  }
+
+  main {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px 80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  section {
+    padding: 56px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  section:last-of-type { border-bottom: none; }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 32px;
+    align-items: baseline;
+    margin-bottom: 32px;
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    border-top: 2px solid var(--ink);
+    padding-top: 8px;
+  }
+  .section-num strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--oxblood);
+    letter-spacing: -0.01em;
+    margin-top: 2px;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .section-title em { font-style: italic; color: var(--oxblood); }
+  @media (max-width: 720px) {
+    .section-head { grid-template-columns: 1fr; gap: 8px; }
+    .section-num { border-top: none; padding-top: 0; }
+  }
+
+  .body-grid {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 32px;
+  }
+  .body-grid-aside {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    padding-top: 8px;
+  }
+  .body-grid-main { max-width: 65ch; }
+  .body-grid-main p { margin-bottom: 1em; font-size: 17px; line-height: 1.7; color: var(--ink-2); }
+  .body-grid-main p:last-child { margin-bottom: 0; }
+  .body-grid-main strong { color: var(--ink); font-weight: 600; }
+  .body-grid-main em { font-style: italic; }
+  @media (max-width: 720px) {
+    .body-grid { grid-template-columns: 1fr; gap: 8px; }
+  }
+
+  .bench {
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 36px 32px 28px;
+    margin-top: 8px;
+  }
+  .bench-title {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .bench-row {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+  .justice {
+    flex: 0 0 auto;
+    width: 88px;
+    text-align: center;
+    padding: 12px 4px;
+    border-radius: 4px;
+    border: 1.5px solid var(--rule);
+    background: var(--paper);
+    position: relative;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .justice:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(28,24,21,0.08);
+  }
+  .justice-seal {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin: 0 auto 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--paper);
+    font-style: italic;
+  }
+  .justice-name {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.15;
+    color: var(--ink);
+  }
+  .justice-role {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-top: 4px;
+  }
+  .justice.majority { border-color: var(--majority); background: var(--majority-tint); }
+  .justice.majority .justice-seal { background: var(--majority); }
+  .justice.dissent { border-color: var(--dissent); background: var(--dissent-tint); }
+  .justice.dissent .justice-seal { background: var(--dissent); }
+  .justice.dissent .justice-role { color: var(--ink); }
+  .justice.concur { border-color: var(--concur); background: var(--concur-tint); }
+  .justice.concur .justice-seal { background: var(--concur); }
+  .justice.concur .justice-role { color: var(--ink); }
+  .justice.vacant { border-color: var(--rule); background: var(--paper); opacity: 0.45; border-style: dashed; }
+  .justice.vacant .justice-seal { background: var(--ink-mute); }
+  .justice.vacant .justice-role { color: var(--ink-mute); }
+  .justice.author::after {
+    content: '\2726';
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    font-size: 12px;
+    color: var(--oxblood);
+  }
+
+  .bench-legend {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .bench-legend-item { display: flex; align-items: center; gap: 8px; }
+  .bench-legend-swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1.5px solid;
+  }
+  .bench-legend-swatch.maj { background: var(--majority-tint); border-color: var(--majority); }
+  .bench-legend-swatch.con { background: var(--concur-tint); border-color: var(--concur); }
+  .bench-legend-swatch.dis { background: var(--dissent-tint); border-color: var(--dissent); }
+  .bench-legend-swatch.vac { background: var(--paper); border-color: var(--rule); border-style: dashed; }
+
+  .arguments {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 8px;
+  }
+  @media (max-width: 720px) { .arguments { grid-template-columns: 1fr; } }
+
+  .arg-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-top: 4px solid;
+    padding: 28px 28px 24px;
+    border-radius: 2px;
+    position: relative;
+  }
+  .arg-card.majority-arg { border-top-color: var(--majority); }
+  .arg-card.dissent-arg { border-top-color: var(--dissent); }
+
+  .arg-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .arg-card.majority-arg .arg-label { color: var(--majority); }
+  .arg-card.dissent-arg .arg-label { color: var(--dissent); }
+  .arg-label-mark {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+  .arg-card.majority-arg .arg-label-mark { background: var(--majority); }
+  .arg-card.dissent-arg .arg-label-mark { background: var(--dissent); }
+
+  .arg-headline {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--ink);
+    margin-bottom: 18px;
+    letter-spacing: -0.01em;
+  }
+  .arg-headline em { font-style: italic; color: var(--oxblood); }
+
+  .arg-points {
+    list-style: none;
+    counter-reset: argp;
+  }
+  .arg-points li {
+    counter-increment: argp;
+    padding: 14px 0 14px 36px;
+    border-bottom: 1px solid var(--rule-soft);
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--ink-2);
+    position: relative;
+  }
+  .arg-points li:last-child { border-bottom: none; padding-bottom: 4px; }
+  .arg-points li::before {
+    content: counter(argp, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 14px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-mute);
+    letter-spacing: 0.05em;
+  }
+  .arg-points li strong {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--ink);
+    margin-bottom: 4px;
+    letter-spacing: -0.005em;
+  }
+
+  .guardrail {
+    background: var(--brass-tint);
+    border: 1px solid var(--brass);
+    border-left: 4px solid var(--brass);
+    padding: 24px 28px;
+    margin-top: 8px;
+    border-radius: 2px;
+    position: relative;
+  }
+  .guardrail-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brass);
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .guardrail-label::before {
+    content: '\26A0';
+    font-size: 16px;
+    color: var(--brass);
+  }
+  .guardrail-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 14px;
+    letter-spacing: -0.01em;
+  }
+  .guardrail ul {
+    list-style: none;
+    padding: 0;
+  }
+  .guardrail li {
+    padding: 8px 0 8px 24px;
+    font-size: 15.5px;
+    color: var(--ink-2);
+    line-height: 1.55;
+    position: relative;
+  }
+  .guardrail li::before {
+    content: '\2715';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    color: var(--brass);
+    font-weight: 700;
+    font-size: 13px;
+  }
+  .guardrail li strong { color: var(--ink); font-weight: 600; }
+
+  .term {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: var(--oxblood);
+    cursor: help;
+    border-bottom: 1.5px dotted var(--oxblood);
+    font-weight: 600;
+  }
+  .term:focus-visible {
+    outline: 2px solid var(--oxblood);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  .term-popup {
+    position: absolute;
+    max-width: 340px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 16px 18px;
+    border-radius: 3px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.55;
+    box-shadow: 0 12px 28px rgba(28,24,21,0.3);
+    z-index: 200;
+    border: 1px solid var(--ink-2);
+  }
+  .term-popup[hidden] { display: none; }
+  .term-popup strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--paper);
+    margin-bottom: 6px;
+    font-style: italic;
+  }
+
+  .timeline {
+    margin-top: 8px;
+    border-left: 2px solid var(--rule);
+    padding-left: 28px;
+    margin-left: 12px;
+  }
+  .timeline-event {
+    position: relative;
+    padding-bottom: 28px;
+  }
+  .timeline-event:last-child { padding-bottom: 0; }
+  .timeline-event::before {
+    content: '';
+    position: absolute;
+    left: -36px;
+    top: 6px;
+    width: 14px;
+    height: 14px;
+    background: var(--paper);
+    border: 2px solid var(--oxblood);
+    border-radius: 50%;
+  }
+  .timeline-event.scotus::before { background: var(--oxblood); }
+  .timeline-court {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+  .timeline-ruling {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+    letter-spacing: -0.005em;
+  }
+  .timeline-desc {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+
+  .practice-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 8px;
+  }
+  @media (max-width: 820px) { .practice-grid { grid-template-columns: 1fr; } }
+
+  .practice-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 24px 22px;
+    border-radius: 2px;
+    border-top: 4px solid var(--oxblood);
+  }
+  .practice-card-tag {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  .practice-card-title {
+    font-family: var(--font-display);
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .practice-card p {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink-2);
+  }
+
+  .pullquote {
+    margin: 48px auto;
+    max-width: 800px;
+    text-align: center;
+    padding: 0 24px;
+  }
+  .pullquote-mark {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 88px;
+    color: var(--oxblood);
+    line-height: 0.6;
+    margin-bottom: 12px;
+    font-weight: 400;
+  }
+  .pullquote-text {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(22px, 2.4vw, 30px);
+    line-height: 1.35;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 16px;
+    letter-spacing: -0.005em;
+  }
+  .pullquote-cite {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+
+  .colophon {
+    background: var(--ink);
+    color: var(--paper-2);
+    padding: 36px 32px;
+    position: relative;
+    z-index: 2;
+  }
+  .colophon-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .colophon-brand {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    font-style: italic;
+    color: var(--paper);
+  }
+  .colophon-meta {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #a89e8e;
+  }
+
+  .key-terms {
+    margin-top: 16px;
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    padding: 28px 32px;
+    border-radius: 2px;
+  }
+  .key-terms-title {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .key-terms-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 32px;
+  }
+  @media (max-width: 720px) { .key-terms-list { grid-template-columns: 1fr; gap: 20px; } }
+  .key-term-item { padding: 0; }
+  .key-term-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-style: italic;
+    color: var(--ink);
+    font-size: 17px;
+    margin-bottom: 8px;
+    letter-spacing: -0.005em;
+  }
+  .key-term-def {
+    font-size: 14.5px;
+    color: var(--ink-2);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* STANDARDS COMPARISON - the three FAPE standards considered in the case */
+  .fape-table {
+    margin-top: 8px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .fape-row {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1.5fr;
+    gap: 0;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .fape-row:last-child { border-bottom: none; }
+  .fape-row.header {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .fape-row.highlight {
+    background: var(--oxblood-tint);
+  }
+  .fape-cell {
+    padding: 16px 20px;
+    font-size: 14.5px;
+    line-height: 1.55;
+    border-right: 1px solid var(--rule-soft);
+  }
+  .fape-cell:last-child { border-right: none; }
+  .fape-row.header .fape-cell {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--paper);
+    font-weight: 700;
+    border-right-color: var(--ink-soft);
+  }
+  .fape-cell.label {
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--ink);
+    font-size: 16px;
+    letter-spacing: -0.005em;
+  }
+  .fape-cell.outcome {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+  }
+  .fape-row.highlight .fape-cell.outcome { color: var(--oxblood); font-weight: 700; }
+  @media (max-width: 720px) {
+    .fape-row { grid-template-columns: 1fr; }
+    .fape-cell { border-right: none; border-bottom: 1px solid var(--rule-soft); }
+    .fape-row.header { display: none; }
+  }
+
+  @media print {
+    body::before, .skip-link { display: none; }
+    body { background: white; color: black; }
+    section { page-break-inside: avoid; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
+</head><body><p><a class="skip-link" href="#main">Skip to main content</a></p>
+<div class="masthead" role="banner">
+<div class="masthead-inner">
+<div class="masthead-brand">understanding scotus opinions</div>
+<div class="masthead-meta">Dr. Philip Mongan, lcsw, ph.D.</div>
+</div>
+</div>
+<div class="hero">
+<p class="hero-eyebrow">October Term 2016 · Decided March 22, 2017</p>
+<h1 class="hero-title">Endrew F. <em>v.</em><br>Douglas County</h1>
+<p class="hero-citation">No. 15–827 · 580 U.S. 386 (2017) · <a href="https://www.oyez.org/cases/2016/15-827" target="_blank" rel="noopener">Read the full case on Oyez ↗</a></p>
+<div class="lede">
+<div class="lede-label"><span class="lede-label-mark" aria-hidden="true"></span>The Holding</div>
+<p class="lede-text">A unanimous Supreme Court ruled, <strong>8–0</strong>, that to satisfy the Individuals with Disabilities Education Act, a school must offer an IEP <em>reasonably calculated to enable a child to make progress appropriate in light of the child's circumstances.</em> "Merely more than de minimis" progress is not enough.</p>
+</div>
+<div class="bluf">
+<div class="bluf-label"><span class="bluf-label-mark" aria-hidden="true"></span>In plain terms</div>
+<p class="bluf-text">A boy named Endrew, called Drew by his family, has autism and ADHD. He attended public school in Douglas County, Colorado, where each year his individualized education program looked essentially the same as the year before, and each year he made minimal progress. By 4th grade, his parents pulled him out and enrolled him in a private school where he made significant gains. They sought reimbursement under the IDEA, the federal special education law. The Tenth Circuit said the public school's IEP was good enough because it provided "more than de minimis" benefit, a phrase that means barely more than nothing. <strong>The Supreme Court unanimously rejected that standard.</strong> Schools have to do more than provide trivial educational gains. Every child with a disability is entitled to an education that is appropriately ambitious for that child. This is the standard that governs every IEP in the country.</p>
+</div>
+</div>
+<main id="main"><!-- 01 - THE QUESTION -->
+<section aria-labelledby="s1-title">
+<div class="section-head">
+<div class="section-num">Section <strong>01</strong></div>
+<h2 class="section-title" id="s1-title">The Question <em>Presented</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">What was<br>at stake</div>
+<div class="body-grid-main">
+<p class="dropcap">Endrew F., known to his family as Drew, was diagnosed with autism at age two. He attended public school in the Douglas County School District in Colorado from preschool through fourth grade. Each year, his IEP team produced a new <button type="button" class="term" data-term="iep" aria-describedby="popup-iep">individualized education program</button> for him. By Drew's fourth grade year, his parents had become deeply concerned. The IEPs largely carried over the same goals and objectives from one year to the next. He was making minimal progress. He screamed in class, climbed over furniture and other students, ran from school. He had severe fears of ordinary things like flies, spills, and public restrooms.</p>
+<p>Drew's parents pulled him out of public school and enrolled him in a private school that specialized in educating children with autism. He made significant progress there. Six months later, the school district offered a new IEP, which his parents considered no better than the original. They filed for tuition reimbursement under the IDEA, arguing that the district had not provided Drew with a <button type="button" class="term" data-term="fape" aria-describedby="popup-fape">free appropriate public education</button>.</p>
+<p>The administrative hearing officer denied the claim. The district court affirmed. The Tenth Circuit affirmed. All three relied on the same standard: an IEP is adequate as long as it provides educational benefit that is "merely more than de minimis," a Latin phrase meaning barely more than trivial. The legal question for the Supreme Court was whether that was the correct standard under the IDEA. The answer turned on what level of educational benefit federal special education law actually requires.</p>
+</div>
+</div>
+</section>
+<!-- 02 - THE BENCH -->
+<section aria-labelledby="s2-title">
+<div class="section-head">
+<div class="section-num">Section <strong>02</strong></div>
+<h2 class="section-title" id="s2-title">The <em>Bench</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">Who joined<br>which side</div>
+<div class="body-grid-main">
+<p>The Court was unanimous. Chief Justice Roberts wrote for all eight participating Justices. The ninth seat was vacant at the time of oral argument and decision: Justice Scalia had died in February 2016, and Justice Gorsuch was not confirmed until April 2017, three weeks after this decision came down. So Endrew F. is one of the cases decided by the eight-Justice Court during that long interregnum.</p>
+</div>
+</div>
+<div class="bench" role="figure" aria-label="The nine Justices and how they voted">
+<p class="bench-title">The Roberts Court · Vote 8–0 (one seat vacant)</p>
+<div class="bench-row">
+<div class="justice majority author">
+<div class="justice-seal" aria-hidden="true">R</div>
+<div class="justice-name">Roberts</div>
+<div class="justice-role">Author</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">K</div>
+<div class="justice-name">Kennedy</div>
+<div class="justice-role">Joined</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">T</div>
+<div class="justice-name">Thomas</div>
+<div class="justice-role">Joined</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">G</div>
+<div class="justice-name">Ginsburg</div>
+<div class="justice-role">Joined</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">B</div>
+<div class="justice-name">Breyer</div>
+<div class="justice-role">Joined</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">A</div>
+<div class="justice-name">Alito</div>
+<div class="justice-role">Joined</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">S</div>
+<div class="justice-name">Sotomayor</div>
+<div class="justice-role">Joined</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">K</div>
+<div class="justice-name">Kagan</div>
+<div class="justice-role">Joined</div>
+</div>
+<div class="justice vacant">
+<div class="justice-seal" aria-hidden="true">·</div>
+<div class="justice-name">Vacant</div>
+<div class="justice-role">Seat Empty</div>
+</div>
+</div>
+<div class="bench-legend">
+<div class="bench-legend-item"><span class="bench-legend-swatch maj" aria-hidden="true"></span>Unanimous (8)</div>
+<div class="bench-legend-item"><span class="bench-legend-swatch vac" aria-hidden="true"></span>Seat Vacant</div>
+<div class="bench-legend-item">✦ Opinion author</div>
+</div>
+</div>
+</section>
+<!-- PULL QUOTE -->
+<div class="pullquote">
+<div class="pullquote-mark" aria-hidden="true">“</div>
+<p class="pullquote-text">Every child should have the chance to meet challenging objectives.</p>
+<p class="pullquote-cite">Chief Justice Roberts, for the Court</p>
+</div>
+<!-- 03 - THE REASONING -->
+<section aria-labelledby="s3-title">
+<div class="section-head">
+<div class="section-num">Section <strong>03</strong></div>
+<h2 class="section-title" id="s3-title">The <em>Reasoning</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">Two<br>questions</div>
+<div class="body-grid-main">
+<p>Because the Court was unanimous, there is no dissent to lay against the majority. The Court had two questions to answer. First, was the Tenth Circuit's "merely more than de minimis" standard correct? Second, if not, what is the right standard? The Court rejected the Tenth Circuit's standard and rejected the higher standard Drew's parents proposed. It built a third path that has become the law in every IEP meeting in the country.</p>
+</div>
+</div>
+<div class="arguments">
+<article class="arg-card majority-arg">
+<div class="arg-label"><span class="arg-label-mark" aria-hidden="true"></span>Why "more than de minimis" is wrong</div>
+<h3 class="arg-headline">An IEP that produces almost no progress year after year is not the education the IDEA <em>promises.</em></h3>
+<ol class="arg-points">
+<li><strong>The IDEA aims higher than trivial progress.</strong> The text of the IDEA promises a free appropriate public education, individualized to each child, with measurable goals and a meaningful review process. A standard that treats anything more than nothing as sufficient drains the law of its content. Congress would not have built such an elaborate framework to require so little.</li>
+<li><strong>The Tenth Circuit misread Rowley.</strong> The Supreme Court's 1982 decision in Board of Education v. Rowley had said the IDEA does not guarantee any particular educational outcome. The Tenth Circuit read that as meaning any educational benefit counts. The Court explained that Rowley was a case about a child who was thriving in a regular classroom; it was not announcing a minimum threshold for children with more significant disabilities. The "de minimis" standard misapplied the earlier case.</li>
+<li><strong>The standard has to work for the full range of students.</strong> The IDEA covers students across an extraordinary range of abilities and needs. A single rigid test cannot capture what counts as appropriate progress for every child. But the standard does have a unifying principle: the goals must be appropriate in light of the child's circumstances, and progress toward them must be reasonably calculated.</li>
+<li><strong>Carrying over the same goals year after year is a warning sign.</strong> The Court took particular note of the fact that Drew's IEPs had largely repeated themselves from year to year. When goals stay the same and progress stays minimal, the system is failing the child. An IEP that delivers that kind of educational holding pattern does not satisfy the IDEA.</li>
+</ol>
+</article>
+<article class="arg-card majority-arg">
+<div class="arg-label"><span class="arg-label-mark" aria-hidden="true"></span>What the right standard is</div>
+<h3 class="arg-headline">An IEP must be reasonably calculated to enable the child to make progress that is <em>appropriately ambitious</em> for that child.</h3>
+<ol class="arg-points">
+<li><strong>For students in the regular classroom, that usually means grade-level advancement.</strong> For a child like Anna Rowley, who was integrated into a regular classroom, "appropriate progress" generally means passing grades and advancing from grade to grade. That is the standard Rowley had articulated. The Court reaffirmed it for students in that situation.</li>
+<li><strong>For students not in the regular classroom, the standard is "appropriately ambitious in light of the child's circumstances."</strong> For a child like Drew, who could not be fully integrated into the regular classroom, the IEP need not aim for grade-level advancement. But it still must be appropriately ambitious. The Court chose these words carefully. "Appropriate" anchors the standard to each child's individual situation. "Ambitious" makes clear that schools cannot settle for minimal progress.</li>
+<li><strong>The Court rejected the "equal opportunity" standard Drew's parents proposed.</strong> The parents wanted a standard requiring substantially equal opportunities with non-disabled peers. The Court declined to go that far. The IDEA does not guarantee any particular outcome. It requires a reasonably calculated, individualized plan.</li>
+<li><strong>The standard demands explanation.</strong> Roberts emphasized that an IEP team must be able to articulate why the program is appropriate for the child. Vague reassurances are not enough. The reasoning must be coherent. If a parent challenges an IEP, the school's burden is to show that its program reflects a reasoned judgment about how to enable the child to make progress.</li>
+<li><strong>"General standard, not a formula."</strong> The Court was honest that the standard does not produce automatic answers. Whether a particular IEP satisfies the standard for a particular child is a fact-intensive question. Courts should give appropriate weight to the expertise of school officials and the considered judgment of IEP teams. The standard sets a floor for the work, not a script.</li>
+</ol>
+</article>
+</div>
+</section>
+<!-- 04 - THE THREE STANDARDS -->
+<section aria-labelledby="s4-title">
+<div class="section-head">
+<div class="section-num">Section <strong>04</strong></div>
+<h2 class="section-title" id="s4-title">The Three <em>Standards on the Table</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">How the<br>Court chose</div>
+<div class="body-grid-main">
+<p>The case offered the Court three possible answers to one question: how much benefit does a school have to provide to satisfy IDEA? Each standard came with a different vision of what the federal special education law is doing. The Court chose the middle path, but only after explaining why the two extremes did not fit the statute.</p>
+</div>
+</div>
+<div class="fape-table" role="table" aria-label="The three FAPE standards considered in Endrew F.">
+<div class="fape-row header" role="row">
+<div class="fape-cell" role="columnheader">Standard</div>
+<div class="fape-cell" role="columnheader">What it would require</div>
+<div class="fape-cell" role="columnheader">Court's response</div>
+</div>
+<div class="fape-row" role="row">
+<div class="fape-cell label" role="cell">Merely more than de minimis</div>
+<div class="fape-cell" role="cell">An IEP is adequate as long as it provides any benefit greater than trivial. The standard applied by the Tenth Circuit and some other lower courts.</div>
+<div class="fape-cell outcome" role="cell">Rejected as too low</div>
+</div>
+<div class="fape-row highlight" role="row">
+<div class="fape-cell label" role="cell">Reasonably calculated for appropriate progress</div>
+<div class="fape-cell" role="cell">An IEP must be reasonably calculated to enable progress appropriate in light of the child's circumstances. For most children, this means grade-level progress; for others, it means appropriately ambitious goals tailored to the child.</div>
+<div class="fape-cell outcome" role="cell">Adopted by the Court</div>
+</div>
+<div class="fape-row" role="row">
+<div class="fape-cell label" role="cell">Substantially equal opportunity</div>
+<div class="fape-cell" role="cell">An IEP must provide opportunities to achieve academic success, attain self-sufficiency, and contribute to society that are substantially equal to those afforded children without disabilities. The standard urged by Drew's parents.</div>
+<div class="fape-cell outcome" role="cell">Rejected as too high</div>
+</div>
+</div>
+</section>
+<!-- 05 - GUARDRAIL -->
+<section aria-labelledby="s5-title">
+<div class="section-head">
+<div class="section-num">Section <strong>05</strong></div>
+<h2 class="section-title" id="s5-title">What the Court <em>Did Not</em> Decide</h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">Read this<br>carefully</div>
+<div class="body-grid-main">
+<p>Endrew F. changed the standard, but it was careful to limit what else it changed. The Court raised the floor without setting the ceiling, and it left many specific questions for later cases and for the day-to-day work of IEP teams. The list below covers what the case did and did not do.</p>
+</div>
+</div>
+<div class="guardrail" role="note">
+<div class="guardrail-label">Common misreads to avoid</div>
+<h3 class="guardrail-title">Endrew F. raised the standard. It did not promise any specific outcome.</h3>
+<ul>
+<li><strong>It did not guarantee any particular educational result.</strong> The Court was explicit that the IDEA does not promise any specific level of academic achievement. It requires a reasonable plan, not a guaranteed outcome.</li>
+<li><strong>It did not define "appropriately ambitious" with precision.</strong> The Court acknowledged that the standard is general rather than a formula. What counts as appropriate progress for a particular child remains a fact-intensive judgment for IEP teams and, if disputed, for courts.</li>
+<li><strong>It did not rule that Drew's IEP failed.</strong> The case was vacated and remanded for the lower courts to apply the new standard. The Tenth Circuit had to reconsider Drew's specific situation under the correct legal test. The Supreme Court did not declare that Drew necessarily wins on remand.</li>
+<li><strong>It did not change the procedural requirements of the IDEA.</strong> The notice requirements, IEP team composition, evaluation timelines, dispute resolution procedures, and other procedural protections of the IDEA were not at issue and were not affected.</li>
+<li><strong>It did not adopt the "equal opportunity" standard.</strong> Some advocates hoped the case would establish that children with disabilities must have substantially equal opportunities to children without disabilities. The Court explicitly declined to go that far.</li>
+<li><strong>It did not address private school tuition reimbursement standards.</strong> The mechanics of how parents recover tuition when they unilaterally place a child in private school, governed by earlier cases like Florence County and Burlington, were not at issue here.</li>
+<li><strong>It did not establish a constitutional right.</strong> Endrew F. is a statutory ruling under the IDEA. It depends on the IDEA continuing to exist and on Congress continuing to fund federal special education law.</li>
+</ul>
+</div>
+</section>
+<!-- 06 - PROCEDURAL ROUTE -->
+<section aria-labelledby="s6-title">
+<div class="section-head">
+<div class="section-num">Section <strong>06</strong></div>
+<h2 class="section-title" id="s6-title">How It <em>Got Here</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">The path<br>to SCOTUS</div>
+<div class="body-grid-main">
+<p>This case took roughly seven years to travel from the family's first concerns about Drew's IEP to the Supreme Court ruling. Along the way, it ran into a circuit split that had been simmering for decades: federal courts of appeals had been disagreeing about how much educational benefit the IDEA actually requires. The Court took the case to resolve the split, and the resolution applies in every state.</p>
+</div>
+</div>
+<div class="timeline">
+<div class="timeline-event">
+<div class="timeline-court">1975 · Congress</div>
+<div class="timeline-ruling">The IDEA is enacted</div>
+<div class="timeline-desc">Congress passes the Education for All Handicapped Children Act (later renamed the Individuals with Disabilities Education Act). The law makes federal funding for public education conditional on providing a free appropriate public education to all children with disabilities, with each child's program governed by an individualized education program.</div>
+</div>
+<div class="timeline-event">
+<div class="timeline-court">1982 · Supreme Court</div>
+<div class="timeline-ruling">Board of Education v. Rowley</div>
+<div class="timeline-desc">The Supreme Court first addresses what FAPE means. Anna Rowley, a deaf student doing well in a regular classroom, was found to be receiving FAPE without a sign-language interpreter. The Court said the IDEA does not guarantee any particular educational outcome. The decision was confined to its facts, but lower courts spent decades disagreeing about what it meant.</div>
+</div>
+<div class="timeline-event">
+<div class="timeline-court">Through 4th grade · Douglas County, Colorado</div>
+<div class="timeline-ruling">Endrew "Drew" F. attends public school</div>
+<div class="timeline-desc">Drew, diagnosed with autism at age two, receives an IEP each year. By 4th grade, his parents are deeply concerned. His IEPs largely repeat from one year to the next. Progress is minimal. His behaviors are escalating. They pull him from public school and enroll him in a private school specializing in autism, where he makes significant gains.</div>
+</div>
+<div class="timeline-event">
+<div class="timeline-court">Administrative and lower courts (Colorado)</div>
+<div class="timeline-ruling">Drew loses at every level</div>
+<div class="timeline-desc">Drew's parents file an IDEA complaint with the Colorado Department of Education seeking tuition reimbursement. An administrative law judge rules against them. The federal district court affirms. Drew's IEP, the lower tribunals conclude, was reasonably calculated to provide "more than de minimis" educational benefit, and that was enough.</div>
+</div>
+<div class="timeline-event">
+<div class="timeline-court">2015 · Tenth Circuit Court of Appeals</div>
+<div class="timeline-ruling">Tenth Circuit affirms under the "de minimis" standard</div>
+<div class="timeline-desc">The Tenth Circuit reads Rowley as setting a "merely more than de minimis" floor and concludes that Drew's IEP cleared it. Other federal courts of appeals had adopted higher standards, creating a circuit split on a major question of federal special education law.</div>
+</div>
+<div class="timeline-event scotus">
+<div class="timeline-court">March 22, 2017 · Supreme Court of the United States</div>
+<div class="timeline-ruling">SCOTUS vacates and remands, 8–0</div>
+<div class="timeline-desc">A unanimous Court, with Chief Justice Roberts writing, vacates the Tenth Circuit's judgment and announces a new standard: an IEP must be reasonably calculated to enable a child to make progress appropriate in light of the child's circumstances. The Court rejects both the "de minimis" standard the Tenth Circuit had used and the "substantially equal" standard Drew's parents had proposed. The case is remanded for application of the new standard.</div>
+</div>
+</div>
+</section>
+<!-- 07 - FOR PRACTICE -->
+<section aria-labelledby="s7-title">
+<div class="section-head">
+<div class="section-num">Section <strong>07</strong></div>
+<h2 class="section-title" id="s7-title">For <em>Practice</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">The social<br>work bridge</div>
+<div class="body-grid-main">
+<p>Endrew F. shows up wherever social workers and special education intersect. School social workers participate directly in IEP meetings. Mental health clinicians, child welfare workers, and behavioral health providers all support clients whose educational needs are governed by IDEA. Three lenses help.</p>
+</div>
+</div>
+<div class="practice-grid">
+<div class="practice-card">
+<div class="practice-card-tag">IEP Team Lens</div>
+<h3 class="practice-card-title">Goals carried over year after year are a warning sign.</h3>
+<p>The Court took specific note of the fact that Drew's IEPs essentially repeated themselves. If a worker is participating in IEP meetings or reviewing a student's file, that pattern matters. Endrew F. tells IEP teams to set goals that are appropriately ambitious for the child and to track real progress against them. Goals that have been the same for three years, with minimal documented progress, are a sign the IEP is not doing the work the statute requires.</p>
+</div>
+<div class="practice-card">
+<div class="practice-card-tag">Cross-System Lens</div>
+<h3 class="practice-card-title">IDEA touches every system social workers operate in.</h3>
+<p>Children in foster care, mental health treatment, juvenile justice, and family preservation services may all have IEPs that drive their educational outcomes. A child welfare worker who never reads a client's IEP is missing critical information. A mental health clinician treating a child for emotional disturbance may also be the documentation source for that child's IDEA eligibility. Effective practice requires knowing what an IEP is, what it should contain, and what to do when it is not working.</p>
+</div>
+<div class="practice-card">
+<div class="practice-card-tag">Family Advocacy Lens</div>
+<h3 class="practice-card-title">Parents are equal members of the IEP team. Workers can help them act that way.</h3>
+<p>The IDEA gives parents legal standing as equal members of the IEP team, but many parents do not feel equal in the room. Workers supporting families can help parents prepare for meetings, understand their procedural rights, and articulate concerns in terms the school will hear. Endrew F. gives families a stronger argument when an IEP is inadequate, but it does not change the basic dynamic that schools have more institutional power than individual families do. Bridging that gap is part of the work.</p>
+</div>
+</div>
+</section>
+<!-- 08 - KEY TERMS -->
+<section aria-labelledby="s8-title">
+<div class="section-head">
+<div class="section-num">Section <strong>08</strong></div>
+<h2 class="section-title" id="s8-title">A Working <em>Vocabulary</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">Legal<br>terms</div>
+<div class="body-grid-main">
+<p>Endrew F. uses the specialized vocabulary of federal special education law. The terms below appear throughout IEP practice and IDEA litigation.</p>
+</div>
+</div>
+<div class="key-terms">
+<div class="key-terms-title">Frequently Used in This Opinion</div>
+<div class="key-terms-list">
+<div class="key-term-item">
+<div class="key-term-name">Individuals with Disabilities Education Act (IDEA)</div>
+<p class="key-term-def">A federal statute, first enacted in 1975, that conditions federal education funding on the state's provision of a free appropriate public education to all eligible children with disabilities. The statute drives nearly all special education practice in the United States.</p>
+</div>
+<div class="key-term-item">
+<div class="key-term-name">Free Appropriate Public Education (FAPE)</div>
+<p class="key-term-def">The substantive entitlement at the center of the IDEA. A FAPE includes special education and related services provided at public expense, under public supervision, and consistent with the child's IEP.</p>
+</div>
+<div class="key-term-item">
+<div class="key-term-name">Individualized Education Program (IEP)</div>
+<p class="key-term-def">A written plan developed for each eligible child by an IEP team that includes the parents, the child's teachers, school officials, and others. The IEP must include the child's present levels of performance, measurable annual goals, and a description of services to be provided.</p>
+</div>
+<div class="key-term-item">
+<div class="key-term-name">De minimis</div>
+<p class="key-term-def">A Latin phrase meaning trivial or minimal. The Tenth Circuit's "merely more than de minimis" standard required only the smallest measurable benefit. The Supreme Court rejected this standard as too low to satisfy the IDEA.</p>
+</div>
+<div class="key-term-item">
+<div class="key-term-name">Reasonably calculated</div>
+<p class="key-term-def">The standard from Rowley, reaffirmed in Endrew F., for evaluating an IEP. The plan must be reasonably calculated to enable the child to make appropriate progress. The judgment is prospective, not measured by hindsight on outcomes.</p>
+</div>
+<div class="key-term-item">
+<div class="key-term-name">Appropriately ambitious</div>
+<p class="key-term-def">The Court's phrase for the standard of progress required for a student who cannot be educated in the regular classroom. The goals must be appropriate to the child's circumstances and ambitious enough to push for real progress, not merely satisfy a minimum.</p>
+</div>
+</div>
+</div>
+</section>
+</main><footer class="colophon" role="contentinfo">
+<div class="colophon-inner">
+<div class="colophon-brand">Understanding SCOTUS Opinions</div>
+<div class="colophon-meta">Austin Peay State University · MSW Program</div>
+</div>
+</footer><!-- TERM POPUPS -->
+<div class="term-popup" id="popup-iep" role="tooltip" hidden=""><strong>Individualized Education Program (IEP)</strong> A written plan developed for each eligible child with a disability by a team that includes the parents and school staff. The IEP describes the child's present levels of performance, annual goals, and the services the school will provide.</div>
+<div class="term-popup" id="popup-fape" role="tooltip" hidden=""><strong>Free Appropriate Public Education (FAPE)</strong> The entitlement at the center of the IDEA. Special education and related services at public expense, under public supervision, that meet standards set by the state and conform to the child's IEP.</div>
+<p><script>
+  const terms = document.querySelectorAll('.term');
+  let activePopup = null;
+
+  function positionPopup(btn, popup) {
+    const rect = btn.getBoundingClientRect();
+    const popupWidth = popup.offsetWidth || 340;
+    let left = window.scrollX + rect.left;
+    const maxLeft = window.scrollX + document.documentElement.clientWidth - popupWidth - 16;
+    if (left > maxLeft) left = maxLeft;
+    if (left < 16) left = 16;
+    popup.style.left = left + 'px';
+    popup.style.top = (window.scrollY + rect.bottom + 8) + 'px';
+  }
+
+  function showPopup(btn) {
+    const popupId = 'popup-' + btn.dataset.term;
+    const popup = document.getElementById(popupId);
+    if (!popup) return;
+    if (activePopup && activePopup !== popup) activePopup.hidden = true;
+    popup.hidden = false;
+    positionPopup(btn, popup);
+    activePopup = popup;
+  }
+
+  function hidePopup(btn) {
+    const popupId = 'popup-' + btn.dataset.term;
+    const popup = document.getElementById(popupId);
+    if (popup) {
+      popup.hidden = true;
+      if (activePopup === popup) activePopup = null;
+    }
+  }
+
+  terms.forEach(btn => {
+    btn.addEventListener('mouseenter', () => showPopup(btn));
+    btn.addEventListener('mouseleave', () => hidePopup(btn));
+    btn.addEventListener('focus', () => showPopup(btn));
+    btn.addEventListener('blur', () => hidePopup(btn));
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && activePopup) {
+        activePopup.hidden = true;
+        activePopup = null;
+        btn.blur();
+      }
+    });
+  });
+
+  window.addEventListener('scroll', () => {
+    if (activePopup) {
+      const term = document.querySelector('.term[data-term="' + activePopup.id.replace('popup-','') + '"]');
+      if (term) positionPopup(term, activePopup);
+    }
+  });
+</script></p></body></html>

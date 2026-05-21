@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Youngberg v. Romeo, Case Explainer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&amp;family=Inter+Tight:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f4ede0;
+    --paper-2: #ebe2d1;
+    --paper-deep: #e5dac4;
+    --ink: #1c1815;
+    --ink-2: #2d2722;
+    --ink-soft: #4a4239;
+    --ink-mute: #6b6258;
+    --rule: #c9bda6;
+    --rule-soft: #d9cfba;
+    --oxblood: #6b1f2a;
+    --oxblood-deep: #4f1620;
+    --oxblood-tint: #f3e0e2;
+    --brass: #6b5320;
+    --brass-tint: #f1e8cf;
+    --majority: #2d4a3a;
+    --majority-tint: #d9e2d8;
+    --dissent: #6b1f2a;
+    --dissent-tint: #ebd5d6;
+    --concur: #6b5320;
+    --concur-tint: #efe5c8;
+
+    --font-display: 'Fraunces', 'Times New Roman', serif;
+    --font-body: 'Inter Tight', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 17px;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(107,31,42,0.025) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(107,83,32,0.025) 0%, transparent 50%);
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.4;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.11 0 0 0 0 0.09 0 0 0 0 0.08 0 0 0 0.12 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 16px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 12px 18px;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 2px;
+    z-index: 9999;
+    transition: top 0.2s;
+  }
+  .skip-link:focus { top: 16px; outline: 3px solid var(--oxblood); }
+
+  .masthead {
+    border-bottom: 1px solid var(--rule);
+    padding: 24px 0 18px;
+    position: relative;
+    z-index: 2;
+  }
+  .masthead-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .masthead-brand {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .masthead-brand span { color: var(--oxblood); }
+  .masthead-meta {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .masthead-meta strong { color: var(--ink); }
+
+  .hero {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 48px 32px 32px;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--oxblood);
+  }
+  .hero-eyebrow::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+    max-width: 200px;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(40px, 6vw, 84px);
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-bottom: 12px;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+  }
+  .hero-title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--oxblood);
+  }
+  .hero-citation {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--ink-mute);
+    letter-spacing: 0.04em;
+    margin-bottom: 36px;
+  }
+  .hero-citation a { color: var(--oxblood); text-decoration: underline; text-underline-offset: 3px; }
+  .hero-citation a:hover { color: var(--oxblood-deep); }
+
+  .lede {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    padding-top: 28px;
+    border-top: 3px double var(--ink);
+  }
+  .lede-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    padding-top: 6px;
+  }
+  .lede-label-mark {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--oxblood);
+    margin-right: 8px;
+    border-radius: 50%;
+    vertical-align: middle;
+  }
+  .lede-text {
+    font-family: var(--font-display);
+    font-size: clamp(20px, 2.2vw, 26px);
+    line-height: 1.4;
+    font-weight: 400;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .lede-text strong {
+    font-weight: 600;
+    color: var(--oxblood);
+    font-style: italic;
+  }
+  @media (max-width: 720px) {
+    .lede { grid-template-columns: 1fr; gap: 12px; }
+  }
+
+  .bluf {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    margin-top: 28px;
+    padding: 24px 28px 26px;
+    background: var(--paper-2);
+    border-left: 4px solid var(--brass);
+    border-radius: 2px;
+  }
+  .bluf-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--brass);
+    font-weight: 700;
+    padding-top: 4px;
+  }
+  .bluf-label-mark {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--brass);
+    margin-right: 8px;
+    border-radius: 50%;
+    vertical-align: middle;
+  }
+  .bluf-text {
+    font-family: var(--font-body);
+    font-size: 16.5px;
+    line-height: 1.7;
+    color: var(--ink-2);
+  }
+  .bluf-text strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  @media (max-width: 720px) {
+    .bluf { grid-template-columns: 1fr; gap: 8px; padding: 20px 22px; }
+  }
+
+  .dropcap::first-letter {
+    font-family: var(--font-display);
+    font-size: 5em;
+    font-weight: 600;
+    float: left;
+    line-height: 0.85;
+    margin: 0.04em 0.08em 0 0;
+    color: var(--oxblood);
+    font-style: italic;
+  }
+
+  main {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px 80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  section {
+    padding: 56px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  section:last-of-type { border-bottom: none; }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 32px;
+    align-items: baseline;
+    margin-bottom: 32px;
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    border-top: 2px solid var(--ink);
+    padding-top: 8px;
+  }
+  .section-num strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--oxblood);
+    letter-spacing: -0.01em;
+    margin-top: 2px;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .section-title em { font-style: italic; color: var(--oxblood); }
+  @media (max-width: 720px) {
+    .section-head { grid-template-columns: 1fr; gap: 8px; }
+    .section-num { border-top: none; padding-top: 0; }
+  }
+
+  .body-grid {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 32px;
+  }
+  .body-grid-aside {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    padding-top: 8px;
+  }
+  .body-grid-main { max-width: 65ch; }
+  .body-grid-main p { margin-bottom: 1em; font-size: 17px; line-height: 1.7; color: var(--ink-2); }
+  .body-grid-main p:last-child { margin-bottom: 0; }
+  .body-grid-main strong { color: var(--ink); font-weight: 600; }
+  .body-grid-main em { font-style: italic; }
+  @media (max-width: 720px) {
+    .body-grid { grid-template-columns: 1fr; gap: 8px; }
+  }
+
+  .bench {
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 36px 32px 28px;
+    margin-top: 8px;
+  }
+  .bench-title {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .bench-row {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+  .justice {
+    flex: 0 0 auto;
+    width: 88px;
+    text-align: center;
+    padding: 12px 4px;
+    border-radius: 4px;
+    border: 1.5px solid var(--rule);
+    background: var(--paper);
+    position: relative;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .justice:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(28,24,21,0.08);
+  }
+  .justice-seal {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin: 0 auto 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--paper);
+    font-style: italic;
+  }
+  .justice-name {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.15;
+    color: var(--ink);
+  }
+  .justice-role {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-top: 4px;
+  }
+  .justice.majority { border-color: var(--majority); background: var(--majority-tint); }
+  .justice.majority .justice-seal { background: var(--majority); }
+  .justice.dissent { border-color: var(--dissent); background: var(--dissent-tint); }
+  .justice.dissent .justice-seal { background: var(--dissent); }
+  .justice.dissent .justice-role { color: var(--ink); }
+  .justice.concur { border-color: var(--concur); background: var(--concur-tint); }
+  .justice.concur .justice-seal { background: var(--concur); }
+  .justice.concur .justice-role { color: var(--ink); }
+  .justice.author::after {
+    content: '\2726';
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    font-size: 12px;
+    color: var(--oxblood);
+  }
+  .justice.author-2::before {
+    content: '\2735';
+    position: absolute;
+    top: 4px;
+    left: 6px;
+    font-size: 12px;
+    color: var(--concur);
+  }
+
+  .bench-legend {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .bench-legend-item { display: flex; align-items: center; gap: 8px; }
+  .bench-legend-swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1.5px solid;
+  }
+  .bench-legend-swatch.maj { background: var(--majority-tint); border-color: var(--majority); }
+  .bench-legend-swatch.con { background: var(--concur-tint); border-color: var(--concur); }
+  .bench-legend-swatch.dis { background: var(--dissent-tint); border-color: var(--dissent); }
+
+  .arguments {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 8px;
+  }
+  @media (max-width: 720px) { .arguments { grid-template-columns: 1fr; } }
+
+  .arg-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-top: 4px solid;
+    padding: 28px 28px 24px;
+    border-radius: 2px;
+    position: relative;
+  }
+  .arg-card.majority-arg { border-top-color: var(--majority); }
+  .arg-card.concur-arg { border-top-color: var(--concur); }
+
+  .arg-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .arg-card.majority-arg .arg-label { color: var(--majority); }
+  .arg-card.concur-arg .arg-label { color: var(--concur); }
+  .arg-label-mark {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+  .arg-card.majority-arg .arg-label-mark { background: var(--majority); }
+  .arg-card.concur-arg .arg-label-mark { background: var(--concur); }
+
+  .arg-headline {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--ink);
+    margin-bottom: 18px;
+    letter-spacing: -0.01em;
+  }
+  .arg-headline em { font-style: italic; color: var(--oxblood); }
+
+  .arg-points {
+    list-style: none;
+    counter-reset: argp;
+  }
+  .arg-points li {
+    counter-increment: argp;
+    padding: 14px 0 14px 36px;
+    border-bottom: 1px solid var(--rule-soft);
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--ink-2);
+    position: relative;
+  }
+  .arg-points li:last-child { border-bottom: none; padding-bottom: 4px; }
+  .arg-points li::before {
+    content: counter(argp, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 14px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-mute);
+    letter-spacing: 0.05em;
+  }
+  .arg-points li strong {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--ink);
+    margin-bottom: 4px;
+    letter-spacing: -0.005em;
+  }
+
+  .guardrail {
+    background: var(--brass-tint);
+    border: 1px solid var(--brass);
+    border-left: 4px solid var(--brass);
+    padding: 24px 28px;
+    margin-top: 8px;
+    border-radius: 2px;
+    position: relative;
+  }
+  .guardrail-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brass);
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .guardrail-label::before {
+    content: '\26A0';
+    font-size: 16px;
+    color: var(--brass);
+  }
+  .guardrail-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 14px;
+    letter-spacing: -0.01em;
+  }
+  .guardrail ul {
+    list-style: none;
+    padding: 0;
+  }
+  .guardrail li {
+    padding: 8px 0 8px 24px;
+    font-size: 15.5px;
+    color: var(--ink-2);
+    line-height: 1.55;
+    position: relative;
+  }
+  .guardrail li::before {
+    content: '\2715';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    color: var(--brass);
+    font-weight: 700;
+    font-size: 13px;
+  }
+  .guardrail li strong { color: var(--ink); font-weight: 600; }
+
+  .term {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: var(--oxblood);
+    cursor: help;
+    border-bottom: 1.5px dotted var(--oxblood);
+    font-weight: 600;
+  }
+  .term:focus-visible {
+    outline: 2px solid var(--oxblood);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  .term-popup {
+    position: absolute;
+    max-width: 340px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 16px 18px;
+    border-radius: 3px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.55;
+    box-shadow: 0 12px 28px rgba(28,24,21,0.3);
+    z-index: 200;
+    border: 1px solid var(--ink-2);
+  }
+  .term-popup[hidden] { display: none; }
+  .term-popup strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--paper);
+    margin-bottom: 6px;
+    font-style: italic;
+  }
+
+  .timeline {
+    margin-top: 8px;
+    border-left: 2px solid var(--rule);
+    padding-left: 28px;
+    margin-left: 12px;
+  }
+  .timeline-event {
+    position: relative;
+    padding-bottom: 28px;
+  }
+  .timeline-event:last-child { padding-bottom: 0; }
+  .timeline-event::before {
+    content: '';
+    position: absolute;
+    left: -36px;
+    top: 6px;
+    width: 14px;
+    height: 14px;
+    background: var(--paper);
+    border: 2px solid var(--oxblood);
+    border-radius: 50%;
+  }
+  .timeline-event.scotus::before { background: var(--oxblood); }
+  .timeline-court {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+  .timeline-ruling {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+    letter-spacing: -0.005em;
+  }
+  .timeline-desc {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+
+  .practice-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 8px;
+  }
+  @media (max-width: 820px) { .practice-grid { grid-template-columns: 1fr; } }
+
+  .practice-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 24px 22px;
+    border-radius: 2px;
+    border-top: 4px solid var(--oxblood);
+  }
+  .practice-card-tag {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  .practice-card-title {
+    font-family: var(--font-display);
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .practice-card p {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink-2);
+  }
+
+  .pullquote {
+    margin: 48px auto;
+    max-width: 800px;
+    text-align: center;
+    padding: 0 24px;
+  }
+  .pullquote-mark {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 88px;
+    color: var(--oxblood);
+    line-height: 0.6;
+    margin-bottom: 12px;
+    font-weight: 400;
+  }
+  .pullquote-text {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(22px, 2.4vw, 30px);
+    line-height: 1.35;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 16px;
+    letter-spacing: -0.005em;
+  }
+  .pullquote-cite {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+
+  .colophon {
+    background: var(--ink);
+    color: var(--paper-2);
+    padding: 36px 32px;
+    position: relative;
+    z-index: 2;
+  }
+  .colophon-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .colophon-brand {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    font-style: italic;
+    color: var(--paper);
+  }
+  .colophon-meta {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #a89e8e;
+  }
+
+  .key-terms {
+    margin-top: 16px;
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    padding: 28px 32px;
+    border-radius: 2px;
+  }
+  .key-terms-title {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .key-terms-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 32px;
+  }
+  @media (max-width: 720px) { .key-terms-list { grid-template-columns: 1fr; gap: 20px; } }
+  .key-term-item { padding: 0; }
+  .key-term-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-style: italic;
+    color: var(--ink);
+    font-size: 17px;
+    margin-bottom: 8px;
+    letter-spacing: -0.005em;
+  }
+  .key-term-def {
+    font-size: 14.5px;
+    color: var(--ink-2);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* THREE RIGHTS CARDS - Section 04 */
+  .rights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 8px;
+  }
+  @media (max-width: 820px) { .rights-grid { grid-template-columns: 1fr; } }
+
+  .right-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-top: 4px solid var(--majority);
+    padding: 26px 24px 22px;
+    border-radius: 2px;
+    position: relative;
+  }
+  .right-card-num {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--oxblood);
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+  }
+  .right-card-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.15;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+  .right-card-title em { font-style: italic; color: var(--oxblood); }
+  .right-card-status {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--majority);
+    font-weight: 700;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .right-card p {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink-2);
+    margin-bottom: 10px;
+  }
+  .right-card p:last-child { margin-bottom: 0; }
+  .right-card strong { color: var(--ink); font-weight: 600; }
+  .right-card-caveat {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--rule);
+    font-size: 13.5px;
+    color: var(--ink-mute);
+    font-style: italic;
+    line-height: 1.55;
+  }
+
+  @media print {
+    body::before, .skip-link { display: none; }
+    body { background: white; color: black; }
+    section { page-break-inside: avoid; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
+</head><body><p><a class="skip-link" href="#main">Skip to main content</a></p>
+<div class="masthead" role="banner">
+<div class="masthead-inner">
+<div class="masthead-brand">understanding scotus opinions</div>
+<div class="masthead-meta">Dr. Philip Mongan, lcsw, ph.D.</div>
+</div>
+</div>
+<div class="hero">
+<p class="hero-eyebrow">October Term 1981 · Decided June 18, 1982</p>
+<h1 class="hero-title">Youngberg <em>v.</em><br>Romeo</h1>
+<p class="hero-citation">No. 80–1429 · 457 U.S. 307 (1982) · <a href="https://www.oyez.org/cases/1981/80-1429" target="_blank" rel="noopener">Read the full case on Oyez ↗</a></p>
+<div class="lede">
+<div class="lede-label"><span class="lede-label-mark" aria-hidden="true"></span>The Holding</div>
+<p class="lede-text">A unanimous Supreme Court ruled, <strong>9–0</strong>, that persons involuntarily committed to state institutions have <em>substantive due process rights</em> to safe conditions of confinement, freedom from unreasonable bodily restraints, and the minimally adequate training necessary to secure those rights. The standard for whether the state has met its obligations is whether professional judgment was actually exercised.</p>
+</div>
+<div class="bluf">
+<div class="bluf-label"><span class="bluf-label-mark" aria-hidden="true"></span>In plain terms</div>
+<p class="bluf-text">Nicholas Romeo was a 33-year-old man with profound intellectual disability who had been involuntarily committed to Pennhurst State School and Hospital in Pennsylvania. He had been injured repeatedly at the institution, both by other residents and through self-injury, and had been physically restrained on many occasions. His mother sued institution administrators on his behalf, arguing his constitutional rights had been violated. The Supreme Court agreed, unanimously, that people committed to state institutions have real constitutional rights. <strong>They are entitled to safety, freedom from unreasonable restraints, and the training needed to support those two things.</strong> But the Court also said courts should defer to the professional judgment of qualified staff. If a professional actually exercised judgment in making the decision, courts will not second-guess it. Youngberg is the foundation of constitutional rights for people in state institutions, and it shapes practice in every psychiatric hospital, residential treatment facility, and state-run developmental center in the country.</p>
+</div>
+</div>
+<main id="main"><!-- 01 - THE QUESTION -->
+<section aria-labelledby="s1-title">
+<div class="section-head">
+<div class="section-num">Section <strong>01</strong></div>
+<h2 class="section-title" id="s1-title">The Question <em>Presented</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">What was<br>at stake</div>
+<div class="body-grid-main">
+<p class="dropcap">Nicholas Romeo was 33 years old when this case reached the Supreme Court. He had profound intellectual disability. He had the cognitive functioning of an 18-month-old child, could not speak, and required assistance with basic daily activities. After his father died in 1974, his mother was no longer able to care for him at home. She petitioned for his admission to Pennhurst State School and Hospital, a state-run institution in Pennsylvania for people with intellectual and developmental disabilities. Romeo was committed in 1974 and remained there.</p>
+<p>During his time at Pennhurst, Romeo was injured repeatedly. The court records document multiple bone fractures, bite wounds, lacerations, and other injuries, some caused by other residents, some by staff, and some self-inflicted. He had a history of striking himself, particularly when agitated. Staff frequently placed him in physical restraints, soft arm restraints that prevented him from injuring himself or others. After becoming concerned about a series of injuries, his mother filed a federal lawsuit on his behalf in 1976 against three Pennhurst administrators: the Superintendent, the Director of Resident Life, and the Unit Director for his unit.</p>
+<p>The lawsuit was brought under <button type="button" class="term" data-term="section1983" aria-describedby="popup-1983">42 U.S.C. § 1983</button>, the federal civil rights statute. The mother argued that her son had constitutional rights to safe conditions, freedom from bodily restraint, and training, and that Pennhurst's administrators had violated those rights by failing to take preventive measures. The legal question for the Supreme Court was direct. What substantive due process rights does an involuntarily committed person with intellectual disability have under the Fourteenth Amendment? And how should courts evaluate whether the state has met its constitutional obligations?</p>
+</div>
+</div>
+</section>
+<!-- 02 - THE BENCH -->
+<section aria-labelledby="s2-title">
+<div class="section-head">
+<div class="section-num">Section <strong>02</strong></div>
+<h2 class="section-title" id="s2-title">The <em>Bench</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">Who joined<br>which side</div>
+<div class="body-grid-main">
+<p>Justice Powell wrote for the Court, joined by all eight other Justices. The case is unanimous on the result. But it produced two separate concurring opinions that disagreed with parts of Powell's reasoning.</p>
+<p>Justice Blackmun wrote a concurring opinion joined by Brennan and O'Connor. They would have gone further than the majority on the right to habilitation. Blackmun argued that institutionalization should not cause regression in skills a person had developed before admission, and that the constitutional right to training should be broader than the majority recognized.</p>
+<p>Chief Justice Burger filed an opinion concurring in the judgment only. He agreed with the result but would have gone narrower. Burger objected to recognizing any constitutional right to habilitation, even the limited one the majority adopted. He thought the question of habilitation should be left to legislatures and to the professionals running the institutions.</p>
+</div>
+</div>
+<div class="bench" role="figure" aria-label="The nine Justices and how they voted">
+<p class="bench-title">The Burger Court · Vote 9–0 (with two concurrences)</p>
+<div class="bench-row">
+<div class="justice majority author">
+<div class="justice-seal" aria-hidden="true">P</div>
+<div class="justice-name">Powell</div>
+<div class="justice-role">Author</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">B</div>
+<div class="justice-name">Brennan</div>
+<div class="justice-role">Joined &amp; Concur</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">W</div>
+<div class="justice-name">White</div>
+<div class="justice-role">Joined</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">M</div>
+<div class="justice-name">Marshall</div>
+<div class="justice-role">Joined</div>
+</div>
+<div class="justice majority author-2">
+<div class="justice-seal" aria-hidden="true">B</div>
+<div class="justice-name">Blackmun</div>
+<div class="justice-role">Concur Author</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">R</div>
+<div class="justice-name">Rehnquist</div>
+<div class="justice-role">Joined</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">S</div>
+<div class="justice-name">Stevens</div>
+<div class="justice-role">Joined</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">O</div>
+<div class="justice-name">O'Connor</div>
+<div class="justice-role">Joined &amp; Concur</div>
+</div>
+<div class="justice concur">
+<div class="justice-seal" aria-hidden="true">B</div>
+<div class="justice-name">Burger</div>
+<div class="justice-role">In Judgment</div>
+</div>
+</div>
+<div class="bench-legend">
+<div class="bench-legend-item"><span class="bench-legend-swatch maj" aria-hidden="true"></span>Majority (8)</div>
+<div class="bench-legend-item"><span class="bench-legend-swatch con" aria-hidden="true"></span>Concur in Judgment (1)</div>
+<div class="bench-legend-item">✦ Majority author</div>
+<div class="bench-legend-item">✵ Concurrence author</div>
+</div>
+</div>
+</section>
+<!-- PULL QUOTE -->
+<div class="pullquote">
+<div class="pullquote-mark" aria-hidden="true">“</div>
+<p class="pullquote-text">Persons involuntarily committed are entitled to more considerate treatment than criminals.</p>
+<p class="pullquote-cite">Justice Powell, for the Court</p>
+</div>
+<!-- 03 - THE REASONING -->
+<section aria-labelledby="s3-title">
+<div class="section-head">
+<div class="section-num">Section <strong>03</strong></div>
+<h2 class="section-title" id="s3-title">The <em>Reasoning</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">Two<br>positions</div>
+<div class="body-grid-main">
+<p>Because the Court was unanimous on the result, there is no dissent to lay against the majority. But the case produced separate concurrences that disagreed with the majority on how far the constitutional rights should reach. The majority drew the line in one place. Blackmun would have drawn it further out. Burger would have drawn it closer in. The framework that won is Powell's, but understanding the spread of views helps explain where the law has moved since.</p>
+</div>
+</div>
+<div class="arguments">
+<article class="arg-card majority-arg">
+<div class="arg-label"><span class="arg-label-mark" aria-hidden="true"></span>The Majority</div>
+<h3 class="arg-headline">Committed persons have real liberty interests, but courts must defer to <em>professional judgment.</em></h3>
+<ol class="arg-points">
+<li><strong>The Fourteenth Amendment is the right framework.</strong> The lower court had analyzed the case under the Eighth Amendment's prohibition on cruel and unusual punishment. The Supreme Court corrected that. Romeo was not being punished; he was being treated. The Fourteenth Amendment's Due Process Clause, which protects against deprivation of liberty without due process, was the proper constitutional basis.</li>
+<li><strong>Safe conditions of confinement are a liberty interest.</strong> The Court accepted this without much difficulty. If convicted criminals have an Eighth Amendment right to humane conditions, then people who have been committed civilly, without any criminal conviction, must have at least as much. This is the foundation of the dignity argument that runs through the whole opinion.</li>
+<li><strong>Freedom from unreasonable bodily restraints is a liberty interest.</strong> The right to be free from physical restraint is a core component of liberty. Restraints are not categorically forbidden, but they cannot be used arbitrarily. The use of restraints must be justified by a professional's assessment that they are necessary, not by convenience or institutional preference.</li>
+<li><strong>Training is required, but only as needed to protect the other two rights.</strong> The Court declined to recognize a freestanding constitutional right to habilitation. But because some training is necessary to ensure safety and minimize the need for restraint, the Court held that committed persons have a right to "minimally adequate or reasonable training" tied to those two underlying interests. Habilitation as a freestanding right was left for another case.</li>
+<li><strong>The professional judgment standard is the test.</strong> To determine whether the state has met its obligations, courts ask whether professional judgment was actually exercised. If the decision was based on the judgment of a qualified professional, it is presumptively valid. Liability attaches only when the decision is "such a substantial departure from accepted professional judgment, practice, or standards" that it shows no professional judgment was actually applied. This is a deferential standard. Courts will not second-guess clinicians; they will only confirm that clinicians did the thinking.</li>
+<li><strong>Balance is built into the standard.</strong> Powell was explicit that liberty interests have to be balanced against legitimate state interests, including efficient operation of institutions, safety of other residents and staff, and the practical realities of running a large facility. The professional judgment standard is the procedural mechanism for striking that balance.</li>
+</ol>
+</article>
+<article class="arg-card concur-arg">
+<div class="arg-label"><span class="arg-label-mark" aria-hidden="true"></span>The Concurrences</div>
+<h3 class="arg-headline">Two separate visions of how far the constitutional protection should <em>reach.</em></h3>
+<ol class="arg-points">
+<li><strong>Blackmun, joined by Brennan and O'Connor: training should prevent regression.</strong> Blackmun would have gone further than Powell on the right to habilitation. He emphasized that Romeo had participated in feeding, showering, dressing, self-control, and toilet training programs before his transfer to the hospital ward. The implication was that institutionalization should not be allowed to cause regression in skills a person had at admission. Training, in this view, is not just a means to protect other rights; it is itself a component of liberty when its absence would cause a person to lose abilities they previously had.</li>
+<li><strong>Burger, concurring in judgment only: the right to habilitation is too much.</strong> The Chief Justice agreed Romeo should win, but on narrower grounds. He objected to recognizing any constitutional right to training or habilitation, even the limited version the majority adopted. Burger argued that habilitation is a legislative and professional matter, not a constitutional one. The Court, in his view, was reading too much into the Due Process Clause. He would have decided the case on the safety and restraint issues alone and left training to legislatures and professionals.</li>
+<li><strong>The spread of views matters for later law.</strong> The Blackmun concurrence has been cited by disability rights advocates ever since for the proposition that institutionalization should not cause regression. The Burger concurrence has been cited by those who argue Youngberg already overreached. The majority's middle position has held, but the law is still being worked out at the edges where Blackmun and Burger marked the boundaries.</li>
+<li><strong>Unanimous on the result, divided on the doctrine.</strong> The 9–0 vote count tells you Romeo won. It does not tell you that the Justices agreed on why. When you see Youngberg cited in subsequent cases, it is worth knowing which Youngberg opinion is being cited. The majority's professional judgment standard is the rule, but Blackmun's anti-regression principle and Burger's anti-habilitation skepticism both still influence how the case gets applied.</li>
+</ol>
+</article>
+</div>
+</section>
+<!-- 04 - THE THREE RIGHTS -->
+<section aria-labelledby="s4-title">
+<div class="section-head">
+<div class="section-num">Section <strong>04</strong></div>
+<h2 class="section-title" id="s4-title">The <em>Three Rights</em> Youngberg Created</h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">The<br>substantive<br>core</div>
+<div class="body-grid-main">
+<p>The constitutional rights Youngberg recognized are the floor for every state institution. They apply to psychiatric hospitals, intellectual and developmental disability centers, residential treatment facilities, and any other state-run facility holding people involuntarily. Each right has limits, and each right is enforced through the professional judgment standard. The three rights are listed below in the order the Court addressed them.</p>
+</div>
+</div>
+<div class="rights-grid">
+<article class="right-card">
+<p class="right-card-num">Right 01</p>
+<h3 class="right-card-title">Safe <em>Conditions</em></h3>
+<p class="right-card-status">Liberty interest, balanced</p>
+<p>An involuntarily committed person has a constitutional right to reasonably safe conditions of confinement. This includes protection from physical harm by other residents, by staff, and from self-injury where staff can reasonably intervene.</p>
+<p>The duty is not absolute. The Court recognized that no institution can prevent all harm if it allows residents any freedom of movement. The question is whether staff exercised professional judgment in providing reasonable protection.</p>
+<div class="right-card-caveat">Source: Powell drew on Eighth Amendment cases protecting prisoners from harm and reasoned that civilly committed persons must have at least equivalent protection.</div>
+</article>
+<article class="right-card">
+<p class="right-card-num">Right 02</p>
+<h3 class="right-card-title">Freedom from Unreasonable <em>Restraint</em></h3>
+<p class="right-card-status">Liberty interest, balanced</p>
+<p>An involuntarily committed person has a constitutional right to freedom from unreasonable bodily restraints. Restraints cannot be used arbitrarily, as punishment, or as a substitute for adequate staffing.</p>
+<p>Restraints can be used when professional judgment finds them necessary to prevent harm to the resident or others. The test is whether the decision to restrain was based on the actual professional judgment of a qualified staff member.</p>
+<div class="right-card-caveat">Source: Freedom from physical restraint is described in the opinion as a core component of personal liberty that survives both criminal conviction and civil commitment.</div>
+</article>
+<article class="right-card">
+<p class="right-card-num">Right 03</p>
+<h3 class="right-card-title">Minimally Adequate <em>Training</em></h3>
+<p class="right-card-status">Limited, derivative</p>
+<p>An involuntarily committed person has a constitutional right to training that is minimally adequate to ensure safety and freedom from undue restraint. This is not a freestanding right to habilitation.</p>
+<p>The Court explicitly declined to recognize a broader right to training. The right exists only insofar as training is necessary to make the other two rights real. The Blackmun concurrence would have gone further; the Burger concurrence would have gone nowhere at all.</p>
+<div class="right-card-caveat">Source: Powell limited the training right to what the other two rights require. A broader habilitation right has been pursued in subsequent litigation, with mixed results.</div>
+</article>
+</div>
+</section>
+<!-- 05 - GUARDRAIL -->
+<section aria-labelledby="s5-title">
+<div class="section-head">
+<div class="section-num">Section <strong>05</strong></div>
+<h2 class="section-title" id="s5-title">What the Court <em>Did Not</em> Decide</h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">Read this<br>carefully</div>
+<div class="body-grid-main">
+<p>Youngberg established the constitutional floor for state institutions, but the floor it set is lower than people sometimes think. The professional judgment standard creates real rights but also makes those rights difficult to enforce against documented professional decisions. Several large questions were left open.</p>
+</div>
+</div>
+<div class="guardrail" role="note">
+<div class="guardrail-label">Common misreads to avoid</div>
+<h3 class="guardrail-title">Real rights, deferential enforcement.</h3>
+<ul>
+<li><strong>It did not establish a right to community placement.</strong> Youngberg is about conditions inside the institution, not about whether a person should be in an institution at all. The right to community-based services in the most integrated setting appropriate did not come until Olmstead v. L.C. in 1999.</li>
+<li><strong>It did not establish a freestanding right to habilitation.</strong> The training right is tied to safety and freedom from restraint. A broader right, as Blackmun's concurrence would have recognized, was deliberately not addressed by the majority. Subsequent cases have explored this but the Court has never gone beyond Youngberg.</li>
+<li><strong>It did not define how often professional judgment must be revisited.</strong> Decisions about restraint, treatment, and training need to reflect actual professional judgment, but the Court did not say how often that judgment must be updated as a person's situation changes. This is left to professional standards and to lower courts.</li>
+<li><strong>It did not address what happens when professionals disagree.</strong> The standard is whether a professional exercised judgment. When two qualified professionals reach different conclusions about a resident, the case does not say how that conflict should be resolved.</li>
+<li><strong>It did not extend to non-institutional contexts.</strong> Youngberg applies to people who are involuntarily committed to state institutions. It does not directly govern community-based services, in-home care, or voluntary admissions. Those contexts are shaped by other doctrines and statutes.</li>
+<li><strong>It did not address the right to refuse treatment.</strong> Whether a committed person can refuse psychiatric medications, behavioral interventions, or other treatments was not before the Court. That question has been litigated extensively in later cases under both due process and other constitutional theories.</li>
+<li><strong>It did not specify what counts as a "qualified professional."</strong> The Court used the term but left its meaning to the lower courts and to the institutions. In practice this has included psychiatrists, psychologists, physicians, and various other clinical staff depending on the context.</li>
+</ul>
+</div>
+</section>
+<!-- 06 - PROCEDURAL ROUTE -->
+<section aria-labelledby="s6-title">
+<div class="section-head">
+<div class="section-num">Section <strong>06</strong></div>
+<h2 class="section-title" id="s6-title">How It <em>Got Here</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">The path<br>to SCOTUS</div>
+<div class="body-grid-main">
+<p>The case took six years from the original federal lawsuit to the Supreme Court decision. It came up at a moment when conditions at Pennhurst and similar institutions were under intense legal scrutiny. The same year Romeo's case began moving through the courts, the Halderman v. Pennhurst litigation was producing damning findings about systemic abuse and neglect at the institution. Youngberg is part of that broader legal moment, even though it focuses on individual rights rather than the institution as a whole.</p>
+</div>
+</div>
+<div class="timeline">
+<div class="timeline-event">
+<div class="timeline-court">1974 · Pennsylvania</div>
+<div class="timeline-ruling">Nicholas Romeo is committed to Pennhurst</div>
+<div class="timeline-desc">After his father's death, Romeo's mother is no longer able to care for him at home. She petitions for his admission to Pennhurst State School and Hospital, a state-run facility for people with intellectual and developmental disabilities. He is 26 years old at the time of commitment.</div>
+</div>
+<div class="timeline-event">
+<div class="timeline-court">1976 · Eastern District of Pennsylvania</div>
+<div class="timeline-ruling">Section 1983 lawsuit filed</div>
+<div class="timeline-desc">Romeo's mother, acting as his next friend, files a federal civil rights lawsuit against three Pennhurst administrators. She alleges that Romeo has been injured repeatedly, that he has been physically restrained without justification, and that he is not receiving adequate training. She amends the complaint to add the habilitation claim later.</div>
+</div>
+<div class="timeline-event">
+<div class="timeline-court">1977–1981 · Separate Pennhurst litigation</div>
+<div class="timeline-ruling">Halderman v. Pennhurst exposes systemic conditions</div>
+<div class="timeline-desc">A separate class-action lawsuit against Pennhurst itself documents systemic abuse, neglect, and substandard conditions. The Halderman case produces a federal court order to close Pennhurst, which is eventually implemented. Romeo's case proceeds on a parallel track focused on his individual constitutional rights.</div>
+</div>
+<div class="timeline-event">
+<div class="timeline-court">1980 · District Court</div>
+<div class="timeline-ruling">Jury verdict for the defendants</div>
+<div class="timeline-desc">The district court instructs the jury under the Eighth Amendment's cruel and unusual punishment standard. Under that standard, the jury finds for the Pennhurst administrators. Romeo's mother appeals.</div>
+</div>
+<div class="timeline-event">
+<div class="timeline-court">1980 · Third Circuit Court of Appeals</div>
+<div class="timeline-ruling">Third Circuit reverses and remands</div>
+<div class="timeline-desc">The Third Circuit, sitting en banc, holds that the Fourteenth Amendment, not the Eighth, provides the proper constitutional basis for the claims. It remands for a new trial under that framework. Pennhurst administrators appeal to the Supreme Court.</div>
+</div>
+<div class="timeline-event">
+<div class="timeline-court">January 11, 1982 · Supreme Court</div>
+<div class="timeline-ruling">Oral argument</div>
+<div class="timeline-desc">The case is argued before the full nine-Justice Court. David Allshouse argues for Pennhurst. Edmond Tiryak argues for Romeo. The case is decided unusually quickly: about five months from argument to decision.</div>
+</div>
+<div class="timeline-event scotus">
+<div class="timeline-court">June 18, 1982 · Supreme Court of the United States</div>
+<div class="timeline-ruling">SCOTUS affirms, 9–0</div>
+<div class="timeline-desc">Justice Powell writes for the Court, joined by all eight other Justices on the result. The Court recognizes substantive due process rights to safe conditions, freedom from unreasonable restraint, and minimally adequate training. The professional judgment standard governs enforcement. Justice Blackmun, joined by Brennan and O'Connor, writes a concurrence. Chief Justice Burger concurs in the judgment only. The case is remanded for application of the new standard.</div>
+</div>
+</div>
+</section>
+<!-- 07 - FOR PRACTICE -->
+<section aria-labelledby="s7-title">
+<div class="section-head">
+<div class="section-num">Section <strong>07</strong></div>
+<h2 class="section-title" id="s7-title">For <em>Practice</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">The social<br>work bridge</div>
+<div class="body-grid-main">
+<p>Youngberg is the constitutional framework that governs every state-run institution. Social workers in psychiatric hospitals, intellectual and developmental disability centers, residential treatment facilities, and state-run developmental centers all operate inside this framework. Three lenses help.</p>
+</div>
+</div>
+<div class="practice-grid">
+<div class="practice-card">
+<div class="practice-card-tag">Institutional Settings Lens</div>
+<h3 class="practice-card-title">Safety, restraint, and training are not just clinical concerns. They are constitutional rights.</h3>
+<p>Workers in state institutions need to know what Youngberg requires. Reasonable steps to keep residents safe from injury, justified use of restraint, and the training that supports both. When a resident is repeatedly injured, when restraints are used as a default rather than as a last resort, or when training programs are cut, those are not just bad practice. They may be constitutional violations. Workers who understand the framework can recognize when a facility is operating below the floor and document accordingly.</p>
+</div>
+<div class="practice-card">
+<div class="practice-card-tag">Professional Judgment Lens</div>
+<h3 class="practice-card-title">Documentation is the legal protection.</h3>
+<p>The professional judgment standard is deferential, which means decisions that show actual professional thinking are presumptively valid. The flip side is that decisions made without documented reasoning are exposed. For workers participating in treatment teams, restraint decisions, or training plans, the documentation of the reasoning is the legal protection. It protects residents because it ensures decisions are actually thought through. It protects staff and institutions because it satisfies the standard the Court set.</p>
+</div>
+<div class="practice-card">
+<div class="practice-card-tag">Disability Rights Lens</div>
+<h3 class="practice-card-title">Youngberg is the foundation. Olmstead is the ceiling.</h3>
+<p>Youngberg recognized rights inside the institution. Seventeen years later, Olmstead recognized a right to community-based services in the most integrated setting appropriate. The two cases work together. Workers serving people with serious mental illness or developmental disabilities need both. Youngberg protects residents while they are institutionalized. Olmstead pushes toward integration when institutionalization is no longer necessary. Together they shape the modern landscape of disability rights in social work practice.</p>
+</div>
+</div>
+</section>
+<!-- 08 - KEY TERMS -->
+<section aria-labelledby="s8-title">
+<div class="section-head">
+<div class="section-num">Section <strong>08</strong></div>
+<h2 class="section-title" id="s8-title">A Working <em>Vocabulary</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">Legal<br>terms</div>
+<div class="body-grid-main">
+<p>Youngberg uses vocabulary specific to substantive due process and to the law of state institutions. The terms below appear throughout the opinion and throughout the broader disability rights and institutional law literature.</p>
+</div>
+</div>
+<div class="key-terms">
+<div class="key-terms-title">Frequently Used in This Opinion</div>
+<div class="key-terms-list">
+<div class="key-term-item">
+<div class="key-term-name">Substantive due process</div>
+<p class="key-term-def">The constitutional doctrine protecting fundamental liberty interests from government action regardless of the procedures used. Distinct from procedural due process, which is about the fairness of the process used. Youngberg is a substantive due process case about what rights survive involuntary commitment.</p>
+</div>
+<div class="key-term-item">
+<div class="key-term-name">Habilitation</div>
+<p class="key-term-def">A term used primarily in the intellectual and developmental disability context, referring to training and development of skills the person never had, as opposed to rehabilitation, which restores skills lost to injury or illness. The Court's holding limited the constitutional right to habilitation tied to safety and freedom from restraint.</p>
+</div>
+<div class="key-term-item">
+<div class="key-term-name">Professional judgment standard</div>
+<p class="key-term-def">The Youngberg test for whether a state institution has met its constitutional obligations. Courts ask whether a qualified professional actually exercised judgment. A decision based on professional judgment is presumptively valid. The standard is deferential by design.</p>
+</div>
+<div class="key-term-item">
+<div class="key-term-name">Section 1983</div>
+<p class="key-term-def">42 U.S.C. § 1983, the federal civil rights statute. It allows individuals to sue state actors for damages when their constitutional rights are violated under color of state law. Romeo's lawsuit was brought under this statute against the Pennhurst administrators in their personal capacities.</p>
+</div>
+<div class="key-term-item">
+<div class="key-term-name">Liberty interest</div>
+<p class="key-term-def">A constitutionally protected freedom from government interference. The Due Process Clause forbids the deprivation of liberty without due process. Youngberg identifies safety, freedom from unreasonable restraint, and (in a limited way) training as liberty interests that survive involuntary commitment.</p>
+</div>
+<div class="key-term-item">
+<div class="key-term-name">Pennhurst State School and Hospital</div>
+<p class="key-term-def">A state-run institution in southeastern Pennsylvania for people with intellectual and developmental disabilities. By the late 1970s and early 1980s, Pennhurst had become notorious for documented abuse and neglect, and was the subject of major federal litigation that led to its eventual closure. Romeo lived there at the time of this case.</p>
+</div>
+</div>
+</div>
+</section>
+</main><footer class="colophon" role="contentinfo">
+<div class="colophon-inner">
+<div class="colophon-brand">Understanding SCOTUS Opinions</div>
+<div class="colophon-meta">Austin Peay State University · MSW Program</div>
+</div>
+</footer><!-- TERM POPUPS -->
+<div class="term-popup" id="popup-1983" role="tooltip" hidden=""><strong>42 U.S.C. § 1983</strong> The federal civil rights statute that allows individuals to sue state actors for damages when their constitutional rights are violated under color of state law. Originally part of the Civil Rights Act of 1871, passed during Reconstruction to protect newly freed people from state-sanctioned violence. Now the workhorse statute for constitutional litigation against state and local government.</div>
+<p><script>
+  const terms = document.querySelectorAll('.term');
+  let activePopup = null;
+
+  function positionPopup(btn, popup) {
+    const rect = btn.getBoundingClientRect();
+    const popupWidth = popup.offsetWidth || 340;
+    let left = window.scrollX + rect.left;
+    const maxLeft = window.scrollX + document.documentElement.clientWidth - popupWidth - 16;
+    if (left > maxLeft) left = maxLeft;
+    if (left < 16) left = 16;
+    popup.style.left = left + 'px';
+    popup.style.top = (window.scrollY + rect.bottom + 8) + 'px';
+  }
+
+  function showPopup(btn) {
+    const popupId = 'popup-' + btn.dataset.term;
+    const popup = document.getElementById(popupId);
+    if (!popup) return;
+    if (activePopup && activePopup !== popup) activePopup.hidden = true;
+    popup.hidden = false;
+    positionPopup(btn, popup);
+    activePopup = popup;
+  }
+
+  function hidePopup(btn) {
+    const popupId = 'popup-' + btn.dataset.term;
+    const popup = document.getElementById(popupId);
+    if (popup) {
+      popup.hidden = true;
+      if (activePopup === popup) activePopup = null;
+    }
+  }
+
+  terms.forEach(btn => {
+    btn.addEventListener('mouseenter', () => showPopup(btn));
+    btn.addEventListener('mouseleave', () => hidePopup(btn));
+    btn.addEventListener('focus', () => showPopup(btn));
+    btn.addEventListener('blur', () => hidePopup(btn));
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && activePopup) {
+        activePopup.hidden = true;
+        activePopup = null;
+        btn.blur();
+      }
+    });
+  });
+
+  window.addEventListener('scroll', () => {
+    if (activePopup) {
+      const term = document.querySelector('.term[data-term="' + activePopup.id.replace('popup-','') + '"]');
+      if (term) positionPopup(term, activePopup);
+    }
+  });
+</script></p></body></html>

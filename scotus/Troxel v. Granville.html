@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Troxel v. Granville, Case Explainer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&amp;family=Inter+Tight:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f4ede0;
+    --paper-2: #ebe2d1;
+    --paper-deep: #e5dac4;
+    --ink: #1c1815;
+    --ink-2: #2d2722;
+    --ink-soft: #4a4239;
+    --ink-mute: #6b6258;
+    --rule: #c9bda6;
+    --rule-soft: #d9cfba;
+    --oxblood: #6b1f2a;
+    --oxblood-deep: #4f1620;
+    --oxblood-tint: #f3e0e2;
+    --brass: #6b5320;
+    --brass-tint: #f1e8cf;
+    --majority: #2d4a3a;
+    --majority-tint: #d9e2d8;
+    --dissent: #6b1f2a;
+    --dissent-tint: #ebd5d6;
+    --concur: #6b5320;
+    --concur-tint: #efe5c8;
+
+    --font-display: 'Fraunces', 'Times New Roman', serif;
+    --font-body: 'Inter Tight', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 17px;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(107,31,42,0.025) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(107,83,32,0.025) 0%, transparent 50%);
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.4;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.11 0 0 0 0 0.09 0 0 0 0 0.08 0 0 0 0.12 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 16px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 12px 18px;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 2px;
+    z-index: 9999;
+    transition: top 0.2s;
+  }
+  .skip-link:focus { top: 16px; outline: 3px solid var(--oxblood); }
+
+  .masthead {
+    border-bottom: 1px solid var(--rule);
+    padding: 24px 0 18px;
+    position: relative;
+    z-index: 2;
+  }
+  .masthead-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .masthead-brand {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .masthead-brand span { color: var(--oxblood); }
+  .masthead-meta {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .masthead-meta strong { color: var(--ink); }
+
+  .hero {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 48px 32px 32px;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--oxblood);
+  }
+  .hero-eyebrow::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+    max-width: 200px;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(40px, 6vw, 84px);
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-bottom: 12px;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+  }
+  .hero-title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--oxblood);
+  }
+  .hero-citation {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--ink-mute);
+    letter-spacing: 0.04em;
+    margin-bottom: 36px;
+  }
+  .hero-citation a { color: var(--oxblood); text-decoration: underline; text-underline-offset: 3px; }
+  .hero-citation a:hover { color: var(--oxblood-deep); }
+
+  .lede {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    padding-top: 28px;
+    border-top: 3px double var(--ink);
+  }
+  .lede-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    padding-top: 6px;
+  }
+  .lede-label-mark {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--oxblood);
+    margin-right: 8px;
+    border-radius: 50%;
+    vertical-align: middle;
+  }
+  .lede-text {
+    font-family: var(--font-display);
+    font-size: clamp(20px, 2.2vw, 26px);
+    line-height: 1.4;
+    font-weight: 400;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .lede-text strong {
+    font-weight: 600;
+    color: var(--oxblood);
+    font-style: italic;
+  }
+  @media (max-width: 720px) {
+    .lede { grid-template-columns: 1fr; gap: 12px; }
+  }
+
+  .bluf {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    margin-top: 28px;
+    padding: 24px 28px 26px;
+    background: var(--paper-2);
+    border-left: 4px solid var(--brass);
+    border-radius: 2px;
+  }
+  .bluf-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--brass);
+    font-weight: 700;
+    padding-top: 4px;
+  }
+  .bluf-label-mark {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--brass);
+    margin-right: 8px;
+    border-radius: 50%;
+    vertical-align: middle;
+  }
+  .bluf-text {
+    font-family: var(--font-body);
+    font-size: 16.5px;
+    line-height: 1.7;
+    color: var(--ink-2);
+  }
+  .bluf-text strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  @media (max-width: 720px) {
+    .bluf { grid-template-columns: 1fr; gap: 8px; padding: 20px 22px; }
+  }
+
+  .dropcap::first-letter {
+    font-family: var(--font-display);
+    font-size: 5em;
+    font-weight: 600;
+    float: left;
+    line-height: 0.85;
+    margin: 0.04em 0.08em 0 0;
+    color: var(--oxblood);
+    font-style: italic;
+  }
+
+  main {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px 80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  section {
+    padding: 56px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  section:last-of-type { border-bottom: none; }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 32px;
+    align-items: baseline;
+    margin-bottom: 32px;
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    border-top: 2px solid var(--ink);
+    padding-top: 8px;
+  }
+  .section-num strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--oxblood);
+    letter-spacing: -0.01em;
+    margin-top: 2px;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .section-title em { font-style: italic; color: var(--oxblood); }
+  @media (max-width: 720px) {
+    .section-head { grid-template-columns: 1fr; gap: 8px; }
+    .section-num { border-top: none; padding-top: 0; }
+  }
+
+  .body-grid {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 32px;
+  }
+  .body-grid-aside {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    padding-top: 8px;
+  }
+  .body-grid-main { max-width: 65ch; }
+  .body-grid-main p { margin-bottom: 1em; font-size: 17px; line-height: 1.7; color: var(--ink-2); }
+  .body-grid-main p:last-child { margin-bottom: 0; }
+  .body-grid-main strong { color: var(--ink); font-weight: 600; }
+  .body-grid-main em { font-style: italic; }
+  @media (max-width: 720px) {
+    .body-grid { grid-template-columns: 1fr; gap: 8px; }
+  }
+
+  .bench {
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 36px 32px 28px;
+    margin-top: 8px;
+  }
+  .bench-title {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .bench-row {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+  .justice {
+    flex: 0 0 auto;
+    width: 88px;
+    text-align: center;
+    padding: 12px 4px;
+    border-radius: 4px;
+    border: 1.5px solid var(--rule);
+    background: var(--paper);
+    position: relative;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .justice:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(28,24,21,0.08);
+  }
+  .justice-seal {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin: 0 auto 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--paper);
+    font-style: italic;
+  }
+  .justice-name {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.15;
+    color: var(--ink);
+  }
+  .justice-role {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-top: 4px;
+  }
+  .justice.majority { border-color: var(--majority); background: var(--majority-tint); }
+  .justice.majority .justice-seal { background: var(--majority); }
+  .justice.dissent { border-color: var(--dissent); background: var(--dissent-tint); }
+  .justice.dissent .justice-seal { background: var(--dissent); }
+  .justice.dissent .justice-role { color: var(--ink); }
+  .justice.concur { border-color: var(--concur); background: var(--concur-tint); }
+  .justice.concur .justice-seal { background: var(--concur); }
+  .justice.concur .justice-role { color: var(--ink); }
+  .justice.author::after {
+    content: '\2726';
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    font-size: 12px;
+    color: var(--oxblood);
+  }
+
+  .bench-legend {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .bench-legend-item { display: flex; align-items: center; gap: 8px; }
+  .bench-legend-swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1.5px solid;
+  }
+  .bench-legend-swatch.maj { background: var(--majority-tint); border-color: var(--majority); }
+  .bench-legend-swatch.con { background: var(--concur-tint); border-color: var(--concur); }
+  .bench-legend-swatch.dis { background: var(--dissent-tint); border-color: var(--dissent); }
+
+  /* PLURALITY CALLOUT - for explaining fractured opinion */
+  .plurality-note {
+    background: var(--brass-tint);
+    border-left: 4px solid var(--brass);
+    padding: 16px 20px;
+    margin: 16px 0 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-2);
+    border-radius: 2px;
+  }
+  .plurality-note strong {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--brass);
+    font-size: 14.5px;
+  }
+
+  .arguments {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 8px;
+  }
+  @media (max-width: 720px) { .arguments { grid-template-columns: 1fr; } }
+
+  .arg-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-top: 4px solid;
+    padding: 28px 28px 24px;
+    border-radius: 2px;
+    position: relative;
+  }
+  .arg-card.majority-arg { border-top-color: var(--majority); }
+  .arg-card.dissent-arg { border-top-color: var(--dissent); }
+
+  .arg-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .arg-card.majority-arg .arg-label { color: var(--majority); }
+  .arg-card.dissent-arg .arg-label { color: var(--dissent); }
+  .arg-label-mark {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+  .arg-card.majority-arg .arg-label-mark { background: var(--majority); }
+  .arg-card.dissent-arg .arg-label-mark { background: var(--dissent); }
+
+  .arg-headline {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--ink);
+    margin-bottom: 18px;
+    letter-spacing: -0.01em;
+  }
+  .arg-headline em { font-style: italic; color: var(--oxblood); }
+
+  .arg-points {
+    list-style: none;
+    counter-reset: argp;
+  }
+  .arg-points li {
+    counter-increment: argp;
+    padding: 14px 0 14px 36px;
+    border-bottom: 1px solid var(--rule-soft);
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--ink-2);
+    position: relative;
+  }
+  .arg-points li:last-child { border-bottom: none; padding-bottom: 4px; }
+  .arg-points li::before {
+    content: counter(argp, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 14px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-mute);
+    letter-spacing: 0.05em;
+  }
+  .arg-points li strong {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--ink);
+    margin-bottom: 4px;
+    letter-spacing: -0.005em;
+  }
+
+  .guardrail {
+    background: var(--brass-tint);
+    border: 1px solid var(--brass);
+    border-left: 4px solid var(--brass);
+    padding: 24px 28px;
+    margin-top: 8px;
+    border-radius: 2px;
+    position: relative;
+  }
+  .guardrail-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brass);
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .guardrail-label::before {
+    content: '\26A0';
+    font-size: 16px;
+    color: var(--brass);
+  }
+  .guardrail-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 14px;
+    letter-spacing: -0.01em;
+  }
+  .guardrail ul {
+    list-style: none;
+    padding: 0;
+  }
+  .guardrail li {
+    padding: 8px 0 8px 24px;
+    font-size: 15.5px;
+    color: var(--ink-2);
+    line-height: 1.55;
+    position: relative;
+  }
+  .guardrail li::before {
+    content: '\2715';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    color: var(--brass);
+    font-weight: 700;
+    font-size: 13px;
+  }
+  .guardrail li strong { color: var(--ink); font-weight: 600; }
+
+  .term {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: var(--oxblood);
+    cursor: help;
+    border-bottom: 1.5px dotted var(--oxblood);
+    font-weight: 600;
+  }
+  .term:focus-visible {
+    outline: 2px solid var(--oxblood);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  .term-popup {
+    position: absolute;
+    max-width: 340px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 16px 18px;
+    border-radius: 3px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.55;
+    box-shadow: 0 12px 28px rgba(28,24,21,0.3);
+    z-index: 200;
+    border: 1px solid var(--ink-2);
+  }
+  .term-popup[hidden] { display: none; }
+  .term-popup strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--paper);
+    margin-bottom: 6px;
+    font-style: italic;
+  }
+
+  .timeline {
+    margin-top: 8px;
+    border-left: 2px solid var(--rule);
+    padding-left: 28px;
+    margin-left: 12px;
+  }
+  .timeline-event {
+    position: relative;
+    padding-bottom: 28px;
+  }
+  .timeline-event:last-child { padding-bottom: 0; }
+  .timeline-event::before {
+    content: '';
+    position: absolute;
+    left: -36px;
+    top: 6px;
+    width: 14px;
+    height: 14px;
+    background: var(--paper);
+    border: 2px solid var(--oxblood);
+    border-radius: 50%;
+  }
+  .timeline-event.scotus::before { background: var(--oxblood); }
+  .timeline-court {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+  .timeline-ruling {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+    letter-spacing: -0.005em;
+  }
+  .timeline-desc {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+
+  .practice-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 8px;
+  }
+  @media (max-width: 820px) { .practice-grid { grid-template-columns: 1fr; } }
+
+  .practice-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 24px 22px;
+    border-radius: 2px;
+    border-top: 4px solid var(--oxblood);
+  }
+  .practice-card-tag {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  .practice-card-title {
+    font-family: var(--font-display);
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .practice-card p {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink-2);
+  }
+
+  .pullquote {
+    margin: 48px auto;
+    max-width: 800px;
+    text-align: center;
+    padding: 0 24px;
+  }
+  .pullquote-mark {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 88px;
+    color: var(--oxblood);
+    line-height: 0.6;
+    margin-bottom: 12px;
+    font-weight: 400;
+  }
+  .pullquote-text {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(22px, 2.4vw, 30px);
+    line-height: 1.35;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 16px;
+    letter-spacing: -0.005em;
+  }
+  .pullquote-cite {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+
+  .colophon {
+    background: var(--ink);
+    color: var(--paper-2);
+    padding: 36px 32px;
+    position: relative;
+    z-index: 2;
+  }
+  .colophon-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .colophon-brand {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    font-style: italic;
+    color: var(--paper);
+  }
+  .colophon-meta {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #a89e8e;
+  }
+  .colophon-meta strong { color: var(--paper-2); }
+
+  .key-terms {
+    margin-top: 16px;
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    padding: 28px 32px;
+    border-radius: 2px;
+  }
+  .key-terms-title {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .key-terms-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 32px;
+  }
+  @media (max-width: 720px) { .key-terms-list { grid-template-columns: 1fr; gap: 20px; } }
+  .key-term-item { padding: 0; }
+  .key-term-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-style: italic;
+    color: var(--ink);
+    font-size: 17px;
+    margin-bottom: 8px;
+    letter-spacing: -0.005em;
+  }
+  .key-term-def {
+    font-size: 14.5px;
+    color: var(--ink-2);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @media print {
+    body::before, .skip-link { display: none; }
+    body { background: white; color: black; }
+    section { page-break-inside: avoid; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
+</head><body><p><a class="skip-link" href="#main">Skip to main content</a></p>
+<div class="masthead" role="banner">
+<div class="masthead-inner">
+<div class="masthead-brand">understanding scotus opinions</div>
+<div class="masthead-meta">Dr. Philip Mongan, lcsw, ph.D.</div>
+</div>
+</div>
+<div class="hero">
+<p class="hero-eyebrow">October Term 1999 · Decided June 5, 2000</p>
+<h1 class="hero-title">Troxel <em>v.</em><br>Granville</h1>
+<p class="hero-citation">No. 99–138 · 530 U.S. 57 (2000) · <a href="https://www.oyez.org/cases/1999/99-138" target="_blank" rel="noopener">Read the full case on Oyez ↗</a></p>
+<div class="lede">
+<div class="lede-label"><span class="lede-label-mark" aria-hidden="true"></span>The Holding</div>
+<p class="lede-text">The Supreme Court ruled, <strong>6–3</strong>, that a Washington state visitation statute, as applied to a fit mother, violated her due process right to make decisions about her children. State courts must give <em>special weight</em> to a fit parent's decisions and may not simply substitute their own judgment about what is best for the child.</p>
+</div>
+<div class="bluf">
+<div class="bluf-label"><span class="bluf-label-mark" aria-hidden="true"></span>In plain terms</div>
+<p class="bluf-text">A mother named Tommie Granville told her ex-partner's parents that she wanted to limit their visits with her two daughters to one short visit per month. They sued under a Washington law that let "any person" petition for visitation rights "at any time" if a judge thought it was in the child's best interest. The trial judge ordered far more visitation than the mother wanted, basically because he personally thought time with grandparents was good for kids. The Supreme Court reversed. <strong>The Constitution protects a fit parent's right to decide who their child sees, and a judge cannot just override that judgment because the judge would have decided differently.</strong> The case did not eliminate grandparent visitation laws. It set a constitutional floor: courts must start from the presumption that fit parents are acting in their children's best interest.</p>
+</div>
+</div>
+<main id="main"><!-- 01 - THE QUESTION -->
+<section aria-labelledby="s1-title">
+<div class="section-head">
+<div class="section-num">Section <strong>01</strong></div>
+<h2 class="section-title" id="s1-title">The Question <em>Presented</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">What was<br>at stake</div>
+<div class="body-grid-main">
+<p class="dropcap">Tommie Granville and Brad Troxel had two daughters together, Isabelle and Natalie. They never married. Their relationship ended in 1991. Brad lived with his parents, Jenifer and Gary Troxel, and regularly brought the girls there for weekend visits. In May 1993, Brad died by suicide. After his death, Granville continued to allow the Troxels to see the girls, but in October 1993 she told them she wanted to limit their visits to one short visit per month.</p>
+<p>The Troxels did not want less time. They wanted more. They filed a petition in Washington Superior Court asking for two weekends of overnight visitation per month and two weeks each summer. Granville did not oppose visitation entirely. She offered one day per month, no overnight. The trial judge picked a middle ground that was much closer to what the Troxels wanted: one weekend per month, one week in summer, and four hours on each grandparent's birthday.</p>
+<p>The legal question was not whether grandparent visitation is generally a good idea. It was about who decides. Washington's statute let any person petition for visitation at any time and authorized the court to order it whenever it was in the child's best interest. The trial judge had used that authority to override a fit mother's decision about her own children, based largely on his personal view that time with grandparents is good for kids. The Supreme Court was asked whether the Constitution allowed that.</p>
+</div>
+</div>
+</section>
+<!-- 02 - THE BENCH -->
+<section aria-labelledby="s2-title">
+<div class="section-head">
+<div class="section-num">Section <strong>02</strong></div>
+<h2 class="section-title" id="s2-title">The <em>Bench</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">Who joined<br>which side</div>
+<div class="body-grid-main">
+<p>This is a fractured opinion. Six Justices voted to affirm, but the reasoning splintered. Justice O'Connor wrote what is called a plurality opinion, joined by only three other Justices. Justice Souter and Justice Thomas each wrote separately to say they agreed the statute was unconstitutional but for different reasons. Three Justices dissented, each writing their own opinion.</p>
+</div>
+</div>
+<div class="bench" role="figure" aria-label="The nine Justices and how they voted">
+<p class="bench-title">The Rehnquist Court · Vote 6–3</p>
+<div class="bench-row">
+<div class="justice majority author">
+<div class="justice-seal" aria-hidden="true">O</div>
+<div class="justice-name">O'Connor</div>
+<div class="justice-role">Plurality</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">R</div>
+<div class="justice-name">Rehnquist</div>
+<div class="justice-role">Plurality</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">G</div>
+<div class="justice-name">Ginsburg</div>
+<div class="justice-role">Plurality</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">B</div>
+<div class="justice-name">Breyer</div>
+<div class="justice-role">Plurality</div>
+</div>
+<div class="justice concur">
+<div class="justice-seal" aria-hidden="true">S</div>
+<div class="justice-name">Souter</div>
+<div class="justice-role">Concur Judgment</div>
+</div>
+<div class="justice concur">
+<div class="justice-seal" aria-hidden="true">T</div>
+<div class="justice-name">Thomas</div>
+<div class="justice-role">Concur Judgment</div>
+</div>
+<div class="justice dissent">
+<div class="justice-seal" aria-hidden="true">S</div>
+<div class="justice-name">Stevens</div>
+<div class="justice-role">Dissented</div>
+</div>
+<div class="justice dissent">
+<div class="justice-seal" aria-hidden="true">S</div>
+<div class="justice-name">Scalia</div>
+<div class="justice-role">Dissented</div>
+</div>
+<div class="justice dissent">
+<div class="justice-seal" aria-hidden="true">K</div>
+<div class="justice-name">Kennedy</div>
+<div class="justice-role">Dissented</div>
+</div>
+</div>
+<div class="bench-legend">
+<div class="bench-legend-item"><span class="bench-legend-swatch maj" aria-hidden="true"></span>Plurality (4)</div>
+<div class="bench-legend-item"><span class="bench-legend-swatch con" aria-hidden="true"></span>Concur in Judgment (2)</div>
+<div class="bench-legend-item"><span class="bench-legend-swatch dis" aria-hidden="true"></span>Dissent (3)</div>
+<div class="bench-legend-item">✦ Opinion author</div>
+</div>
+<div class="plurality-note"><strong>A note on "plurality":</strong> When a case is decided 6–3 but no single opinion has five votes, the most-joined opinion is called a "plurality." It controls the result of the case but carries less weight as precedent than a majority. The Troxel plurality has only four votes. The legal rule the case stands for is therefore a little softer than a 6–3 majority would have made it, which is why lower courts have varied in how they apply it.</div>
+</div>
+</section>
+<!-- PULL QUOTE -->
+<div class="pullquote">
+<div class="pullquote-mark" aria-hidden="true">“</div>
+<p class="pullquote-text">There is a presumption that fit parents act in the best interests of their children.</p>
+<p class="pullquote-cite">Justice O'Connor, for the plurality</p>
+</div>
+<!-- 03 - THE REASONING -->
+<section aria-labelledby="s3-title">
+<div class="section-head">
+<div class="section-num">Section <strong>03</strong></div>
+<h2 class="section-title" id="s3-title">The <em>Reasoning</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">Two<br>positions</div>
+<div class="body-grid-main">
+<p>Both the plurality and the dissents recognize that parents have a fundamental liberty interest in raising their children. They disagree about how to draw the line when a third party, like a grandparent, has their own interest in maintaining a relationship with a child. The plurality focused on the fit-parent presumption. The dissents focused on the role of the child's own interests and the states' authority to write family law.</p>
+</div>
+</div>
+<div class="arguments">
+<article class="arg-card majority-arg">
+<div class="arg-label"><span class="arg-label-mark" aria-hidden="true"></span>The Plurality</div>
+<h3 class="arg-headline">A judge cannot override a fit parent's decision just because the judge thinks <em>more visitation</em> would be better for the child.</h3>
+<ol class="arg-points">
+<li><strong>Parental rights are among the oldest fundamental liberties.</strong> For more than 75 years, going back to Meyer v. Nebraska in 1923, the Court has recognized that parents have a constitutional right to direct the upbringing of their children. This right is protected by the Due Process Clause of the Fourteenth Amendment. The fact that grandparent visitation laws are well-intentioned does not exempt them from that constitutional analysis.</li>
+<li><strong>The Washington statute was "breathtakingly broad."</strong> The statute let "any person" petition for visitation "at any time" if a judge thought it served the child's "best interest." That meant a fit parent's decision about who saw their child could be overridden by anyone willing to file a petition. The statute gave the parent's decision no weight, no presumption of validity, no protection at all.</li>
+<li><strong>Fit parents get a presumption.</strong> When parents are fit, courts must presume that the decisions they make about their children are in those children's best interest. That presumption can be rebutted, but it must be the starting point. In this case, the trial judge actually inverted the presumption, requiring Granville to show that visitation would <em>not</em> be in her daughters' best interest.</li>
+<li><strong>The judge's reason was personal preference, not constitutional grounds.</strong> The trial judge explained his decision by recounting that, growing up, he had spent a week each summer with each set of grandparents and it had been good for him. That kind of "mere disagreement" with a fit parent's choice cannot justify state interference with a constitutional right.</li>
+<li><strong>The decision is narrow.</strong> The plurality did not strike down the Washington statute on its face. It did not say states cannot have grandparent visitation laws. It did not require a showing of harm before any visitation can be ordered. It said only that, as applied to Granville and her family, this statute violated the Constitution because it gave a fit parent's decision no weight at all.</li>
+</ol>
+</article>
+<article class="arg-card dissent-arg">
+<div class="arg-label"><span class="arg-label-mark" aria-hidden="true"></span>The Dissents</div>
+<h3 class="arg-headline">Family law belongs to the states, children have their own interests, and the Court should not have decided this case the way it did.</h3>
+<ol class="arg-points">
+<li><strong>Children have interests too.</strong> Justice Stevens argued that the case did not present a simple two-sided dispute between parents and the state. A third person was involved: the child. Children have their own interests in maintaining relationships with caregivers who have been part of their lives, and those interests should be part of the analysis. Treating parental rights as a rigid shield that protects every parental decision risks treating children as the parents' property.</li>
+<li><strong>Family law belongs to the states.</strong> All three dissents emphasized that domestic relations is traditionally a state matter. Family law develops slowly, in response to local conditions, and through legislatures that can balance competing interests. Federal constitutional rulings in this area are blunt instruments that can disrupt carefully designed state systems.</li>
+<li><strong>The Court should have waited for a cleaner case.</strong> Justice Kennedy thought the Court should have sent the case back to the Washington courts to apply a proper standard before ruling. Justice Stevens thought the Court should not have taken the case at all. The trial court's reasoning was thin, the state appellate courts had not had a real opportunity to interpret the statute carefully, and the Court was deciding important constitutional questions on a weak record.</li>
+<li><strong>"Special weight" is not a standard.</strong> The dissents pointed out that requiring courts to give a fit parent's decision "special weight" without saying how much weight or what could overcome it gives lower courts no clear guidance. Twenty-five years later, courts still disagree about exactly what Troxel requires.</li>
+</ol>
+</article>
+</div>
+</section>
+<!-- 04 - GUARDRAIL -->
+<section aria-labelledby="s4-title">
+<div class="section-head">
+<div class="section-num">Section <strong>04</strong></div>
+<h2 class="section-title" id="s4-title">What the Court <em>Did Not</em> Decide</h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">Read this<br>carefully</div>
+<div class="body-grid-main">
+<p>Troxel is one of the narrower constitutional rulings in family law. The plurality intentionally avoided several questions that a clearer majority might have answered. That narrowness has produced years of continued litigation in lower courts about exactly what the case requires. The list below covers the questions Troxel did not resolve.</p>
+</div>
+</div>
+<div class="guardrail" role="note">
+<div class="guardrail-label">Common misreads to avoid</div>
+<h3 class="guardrail-title">Troxel set a floor, not a ceiling. It left more open than it closed.</h3>
+<ul>
+<li><strong>It did not strike down grandparent visitation laws.</strong> All 50 states have some form of nonparent visitation statute. Most survived Troxel by being interpreted narrowly: requiring a substantial existing relationship, applying a fit-parent presumption, or limiting eligible petitioners to specific categories of caregivers.</li>
+<li><strong>It did not require proof of harm.</strong> The Washington Supreme Court had held that the Constitution required a showing that lack of visitation would harm the child before a court could order visitation. The plurality declined to adopt or reject that requirement, leaving it as an open question.</li>
+<li><strong>It did not define "special weight."</strong> Courts must give a fit parent's decision "special weight," but how much weight and what kind of evidence can overcome it were not specified. Lower courts have read this language differently from one state to another.</li>
+<li><strong>It did not apply to unfit parents.</strong> The entire analysis assumes a fit parent. When a parent has been adjudicated unfit, or when there are documented concerns about parenting capacity, the fit-parent presumption does not apply in the same way.</li>
+<li><strong>It did not address de facto parents.</strong> The plurality did not address the situation where a third party has functioned as a parent for an extended period (stepparents, long-term caregivers, or non-biological co-parents in same-sex relationships). Lower courts have been working out those questions ever since, with varying results.</li>
+<li><strong>It did not strike down the Washington statute facially.</strong> The plurality ruled only that the statute was unconstitutional <em>as applied</em> to Granville and her daughters. The statute itself remained on the books and could potentially be applied constitutionally in other cases, though Washington later revised it.</li>
+</ul>
+</div>
+</section>
+<!-- 05 - PROCEDURAL ROUTE -->
+<section aria-labelledby="s5-title">
+<div class="section-head">
+<div class="section-num">Section <strong>05</strong></div>
+<h2 class="section-title" id="s5-title">How It <em>Got Here</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">The path<br>to SCOTUS</div>
+<div class="body-grid-main">
+<p>This case traveled the standard appellate path. It began as a state-court family law dispute in Washington, moved through the Washington appellate courts, and was eventually accepted by the Supreme Court because grandparent visitation statutes were proliferating across the country and creating constitutional questions in many states at once. The timeline below tracks the case from the personal tragedy that set it in motion to the Supreme Court ruling.</p>
+</div>
+</div>
+<div class="timeline">
+<div class="timeline-event">
+<div class="timeline-court">May 1993 · Skagit County, Washington</div>
+<div class="timeline-ruling">Brad Troxel dies</div>
+<div class="timeline-desc">Brad Troxel, the father of Isabelle and Natalie, dies by suicide. He and Tommie Granville had never married but had been raising the children together. Brad had been living with his parents, Jenifer and Gary Troxel, and bringing the girls there regularly. In October 1993, Granville tells the grandparents she wants to limit visits to one short visit per month.</div>
+</div>
+<div class="timeline-event">
+<div class="timeline-court">December 1993 · Washington Superior Court</div>
+<div class="timeline-ruling">Grandparents petition for visitation</div>
+<div class="timeline-desc">The Troxels file a petition under Washington's "any person, at any time" visitation statute. They ask for two weekends of overnight visitation each month and two weeks each summer. Granville offers one day per month, no overnights. In 1995, the trial judge orders one weekend per month, one week in summer, and four hours on each grandparent's birthday.</div>
+</div>
+<div class="timeline-event">
+<div class="timeline-court">Washington Court of Appeals (1997)</div>
+<div class="timeline-ruling">Appeals court reverses on statutory grounds</div>
+<div class="timeline-desc">The Court of Appeals reverses, holding that nonparents lack standing to sue under the statute unless a custody action is already pending. The court does not reach the constitutional question.</div>
+</div>
+<div class="timeline-event">
+<div class="timeline-court">Washington Supreme Court (1998)</div>
+<div class="timeline-ruling">State supreme court strikes down statute on federal constitutional grounds</div>
+<div class="timeline-desc">The Washington Supreme Court disagrees with the appeals court on standing but reaches the constitutional question. It holds that the statute, on its face, violates parents' fundamental due process right to raise their children. The court reasons that the statute lacks a harm requirement and sweeps too broadly. Four justices dissent.</div>
+</div>
+<div class="timeline-event scotus">
+<div class="timeline-court">June 5, 2000 · Supreme Court of the United States</div>
+<div class="timeline-ruling">SCOTUS affirms, 6–3, plurality opinion</div>
+<div class="timeline-desc">The Court affirms the Washington Supreme Court's judgment but on narrower grounds. Justice O'Connor's plurality opinion holds the statute unconstitutional "as applied" to Granville, rather than facially. The reasoning has only four votes, with two more Justices concurring in the judgment on different grounds. Three Justices dissent, each writing separately.</div>
+</div>
+</div>
+</section>
+<!-- 06 - FOR PRACTICE -->
+<section aria-labelledby="s6-title">
+<div class="section-head">
+<div class="section-num">Section <strong>06</strong></div>
+<h2 class="section-title" id="s6-title">For <em>Practice</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">The social<br>work bridge</div>
+<div class="body-grid-main">
+<p>Most MSW students will not litigate visitation cases, but Troxel shows up in clinical practice all the time. Families come to social workers with disputes about who should see the children: an estranged grandparent, a stepparent left out after divorce, a long-term partner with no biological tie. The fit-parent presumption shapes how clinicians think about those disputes and how they engage with the families involved. Three lenses help here.</p>
+</div>
+</div>
+<div class="practice-grid">
+<div class="practice-card">
+<div class="practice-card-tag">Parental Authority Lens</div>
+<h3 class="practice-card-title">Fit parents get the benefit of the doubt.</h3>
+<p>Unless a parent has been adjudicated unfit, the legal default is that their decisions about their children are in those children's best interest. That includes decisions other people, including clinicians, might disagree with. A grandmother who is heartbroken about limited access is feeling something real, but her feelings do not override a fit parent's authority. The clinical work is often helping family members metabolize that reality, not changing it.</p>
+</div>
+<div class="practice-card">
+<div class="practice-card-tag">Family Dynamics Lens</div>
+<h3 class="practice-card-title">Grief, loss, and grandparent conflict travel together.</h3>
+<p>Troxel itself grew out of a son's suicide. Many real-world grandparent visitation disputes follow a death, a divorce, or an addiction crisis. The legal fight is often a downstream symptom of unresolved grief or family-of-origin conflict. Clinicians working with these families can help name what is actually being mourned and what the visitation dispute is really about. Sometimes that opens space the courts cannot reach.</p>
+</div>
+<div class="practice-card">
+<div class="practice-card-tag">Court Involvement Lens</div>
+<h3 class="practice-card-title">Clinicians can get pulled into custody disputes. Be careful what role you take.</h3>
+<p>If you are providing therapy to a child or family member, you should generally not also be doing forensic custody evaluations or making recommendations about visitation schedules. The roles are different, and conflating them is an ethics problem under the NASW Code and most state licensure laws. If a court subpoenas you, consult your agency's legal counsel before responding. Treatment records may contain information that a custody fight will use in ways you did not intend.</p>
+</div>
+</div>
+</section>
+<!-- 07 - KEY TERMS -->
+<section aria-labelledby="s7-title">
+<div class="section-head">
+<div class="section-num">Section <strong>07</strong></div>
+<h2 class="section-title" id="s7-title">A Working <em>Vocabulary</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">Legal<br>terms</div>
+<div class="body-grid-main">
+<p>Troxel introduces several terms that come up regularly in family law. The vocabulary below is defined the way it is used in this case.</p>
+</div>
+</div>
+<div class="key-terms">
+<div class="key-terms-title">Frequently Used in This Opinion</div>
+<div class="key-terms-list">
+<div class="key-term-item">
+<div class="key-term-name">Fit parent presumption</div>
+<p class="key-term-def">The constitutional rule, established by Troxel, that courts must start from the assumption that a fit parent's decisions about their children are in those children's best interest. The presumption can be overcome but it cannot be ignored.</p>
+</div>
+<div class="key-term-item">
+<div class="key-term-name">Special weight</div>
+<p class="key-term-def">The deference a court must give to a fit parent's decision under Troxel. The plurality did not define exactly how much weight is required, which has produced varied lower-court interpretations.</p>
+</div>
+<div class="key-term-item">
+<div class="key-term-name">Best interest of the child standard</div>
+<p class="key-term-def">The standard most state courts use to decide custody, visitation, and similar disputes. Troxel did not eliminate the standard but ruled that, when a fit parent is involved, the standard cannot be applied without giving special weight to the parent's view.</p>
+</div>
+<div class="key-term-item">
+<div class="key-term-name">Plurality opinion</div>
+<p class="key-term-def">An opinion that controls the outcome of a case but does not have five Justices joining its reasoning. The result is binding; the reasoning is influential but less authoritative than a majority opinion. Troxel's plurality has four votes.</p>
+</div>
+<div class="key-term-item">
+<div class="key-term-name">As-applied challenge</div>
+<p class="key-term-def">A constitutional challenge that argues a law is unconstitutional in the way it has been applied to a particular person, even if the law could be applied constitutionally to others. Compare to a "facial" challenge, which argues the law is unconstitutional in all of its applications.</p>
+</div>
+<div class="key-term-item">
+<div class="key-term-name">Substantive due process</div>
+<p class="key-term-def">A constitutional doctrine that says the Due Process Clause protects not only procedural fairness but also certain fundamental rights from government interference. The right of parents to raise their children is one of those fundamental rights.</p>
+</div>
+</div>
+</div>
+</section>
+</main><footer class="colophon" role="contentinfo">
+<div class="colophon-inner">
+<div class="colophon-brand">Understanding SCOTUS Opinions</div>
+<div class="colophon-meta">Austin Peay State University · MSW Program</div>
+</div>
+</footer>
+<p><script>
+  const terms = document.querySelectorAll('.term');
+  let activePopup = null;
+
+  function positionPopup(btn, popup) {
+    const rect = btn.getBoundingClientRect();
+    const popupWidth = popup.offsetWidth || 340;
+    let left = window.scrollX + rect.left;
+    const maxLeft = window.scrollX + document.documentElement.clientWidth - popupWidth - 16;
+    if (left > maxLeft) left = maxLeft;
+    if (left < 16) left = 16;
+    popup.style.left = left + 'px';
+    popup.style.top = (window.scrollY + rect.bottom + 8) + 'px';
+  }
+
+  function showPopup(btn) {
+    const popupId = 'popup-' + btn.dataset.term;
+    const popup = document.getElementById(popupId);
+    if (!popup) return;
+    if (activePopup && activePopup !== popup) activePopup.hidden = true;
+    popup.hidden = false;
+    positionPopup(btn, popup);
+    activePopup = popup;
+  }
+
+  function hidePopup(btn) {
+    const popupId = 'popup-' + btn.dataset.term;
+    const popup = document.getElementById(popupId);
+    if (popup) {
+      popup.hidden = true;
+      if (activePopup === popup) activePopup = null;
+    }
+  }
+
+  terms.forEach(btn => {
+    btn.addEventListener('mouseenter', () => showPopup(btn));
+    btn.addEventListener('mouseleave', () => hidePopup(btn));
+    btn.addEventListener('focus', () => showPopup(btn));
+    btn.addEventListener('blur', () => hidePopup(btn));
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && activePopup) {
+        activePopup.hidden = true;
+        activePopup = null;
+        btn.blur();
+      }
+    });
+  });
+
+  window.addEventListener('scroll', () => {
+    if (activePopup) {
+      const term = document.querySelector('.term[data-term="' + activePopup.id.replace('popup-','') + '"]');
+      if (term) positionPopup(term, activePopup);
+    }
+  });
+</script></p></body></html>

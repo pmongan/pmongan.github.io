@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Understanding SCOTUS Opinions, Case Index</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&amp;family=Inter+Tight:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f4ede0;
+    --paper-2: #ebe2d1;
+    --paper-deep: #e5dac4;
+    --ink: #1c1815;
+    --ink-2: #2d2722;
+    --ink-soft: #4a4239;
+    --ink-mute: #6b6258;
+    --rule: #c9bda6;
+    --rule-soft: #d9cfba;
+    --oxblood: #6b1f2a;
+    --oxblood-deep: #4f1620;
+    --oxblood-tint: #f3e0e2;
+    --brass: #6b5320;
+    --brass-tint: #f1e8cf;
+    --majority: #2d4a3a;
+    --majority-tint: #d9e2d8;
+    --dissent: #6b1f2a;
+    --dissent-tint: #ebd5d6;
+
+    --font-display: 'Fraunces', 'Times New Roman', serif;
+    --font-body: 'Inter Tight', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 17px;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(107,31,42,0.025) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(107,83,32,0.025) 0%, transparent 50%);
+  }
+
+  /* PAPER TEXTURE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.4;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.11 0 0 0 0 0.09 0 0 0 0 0.08 0 0 0 0.12 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* SKIP LINK */
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 16px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 12px 18px;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 2px;
+    z-index: 9999;
+    transition: top 0.2s;
+  }
+  .skip-link:focus { top: 16px; outline: 3px solid var(--oxblood); }
+
+  /* MASTHEAD */
+  .masthead {
+    border-bottom: 1px solid var(--rule);
+    padding: 24px 0 18px;
+    position: relative;
+    z-index: 2;
+  }
+  .masthead-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .masthead-brand {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .masthead-brand span { color: var(--oxblood); }
+  .masthead-meta {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .masthead-meta strong { color: var(--ink); }
+
+  /* HERO */
+  .hero {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 56px 32px 40px;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--oxblood);
+  }
+  .hero-eyebrow::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+    max-width: 220px;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(44px, 6.5vw, 88px);
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-bottom: 14px;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+  }
+  .hero-title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--oxblood);
+  }
+  .hero-subtitle {
+    font-family: var(--font-display);
+    font-size: clamp(20px, 2.2vw, 26px);
+    line-height: 1.4;
+    font-weight: 400;
+    color: var(--ink-soft);
+    font-style: italic;
+    max-width: 30ch;
+    margin-bottom: 40px;
+  }
+
+  /* INTRO LEDE */
+  .intro {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    padding-top: 28px;
+    border-top: 3px double var(--ink);
+  }
+  .intro-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    padding-top: 6px;
+  }
+  .intro-label-mark {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--oxblood);
+    margin-right: 8px;
+    border-radius: 50%;
+    vertical-align: middle;
+  }
+  .intro-text {
+    font-family: var(--font-display);
+    font-size: clamp(19px, 1.9vw, 23px);
+    line-height: 1.45;
+    font-weight: 400;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .intro-text strong {
+    font-weight: 600;
+    color: var(--oxblood);
+    font-style: italic;
+  }
+  @media (max-width: 720px) {
+    .intro { grid-template-columns: 1fr; gap: 12px; }
+  }
+
+  /* HOW TO USE BLUF */
+  .bluf {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    margin-top: 28px;
+    padding: 24px 28px 26px;
+    background: var(--paper-2);
+    border-left: 4px solid var(--brass);
+    border-radius: 2px;
+  }
+  .bluf-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--brass);
+    font-weight: 700;
+    padding-top: 4px;
+  }
+  .bluf-label-mark {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--brass);
+    margin-right: 8px;
+    border-radius: 50%;
+    vertical-align: middle;
+  }
+  .bluf-text {
+    font-family: var(--font-body);
+    font-size: 16.5px;
+    line-height: 1.7;
+    color: var(--ink-2);
+  }
+  .bluf-text strong { color: var(--ink); font-weight: 600; }
+  @media (max-width: 720px) {
+    .bluf { grid-template-columns: 1fr; gap: 8px; padding: 20px 22px; }
+  }
+
+  /* MAIN */
+  main {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px 80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* PRACTICE AREA SECTION */
+  .area {
+    padding: 56px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .area:last-of-type { border-bottom: none; }
+
+  .area-head {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 32px;
+    align-items: baseline;
+    margin-bottom: 40px;
+  }
+  .area-tag {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    border-top: 2px solid var(--ink);
+    padding-top: 8px;
+  }
+  .area-tag strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--oxblood);
+    letter-spacing: -0.01em;
+    margin-top: 2px;
+  }
+  .area-title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .area-title em { font-style: italic; color: var(--oxblood); }
+  .area-blurb {
+    font-size: 16px;
+    color: var(--ink-soft);
+    margin-top: 14px;
+    line-height: 1.65;
+    max-width: 65ch;
+  }
+  @media (max-width: 720px) {
+    .area-head { grid-template-columns: 1fr; gap: 10px; }
+    .area-tag { border-top: none; padding-top: 0; }
+  }
+
+  /* CASE ENTRY */
+  .case {
+    display: grid;
+    grid-template-columns: 160px 1fr auto;
+    gap: 32px;
+    padding: 28px 0;
+    border-top: 1px solid var(--rule-soft);
+    position: relative;
+    transition: background 0.15s;
+  }
+  .case:first-of-type { border-top: none; padding-top: 8px; }
+  .case-num {
+    font-family: var(--font-display);
+    font-size: 38px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--oxblood);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .case-body { max-width: 65ch; }
+  .case-name {
+    font-family: var(--font-display);
+    font-size: clamp(22px, 2.4vw, 30px);
+    line-height: 1.15;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 8px;
+    letter-spacing: -0.015em;
+  }
+  .case-name em {
+    font-style: italic;
+    color: var(--oxblood);
+    font-weight: 400;
+  }
+  .case-citation {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--ink-mute);
+    letter-spacing: 0.04em;
+    margin-bottom: 14px;
+  }
+  .case-citation .vote {
+    color: var(--ink-soft);
+    font-weight: 700;
+  }
+  .case-takeaway {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--ink-2);
+    margin-bottom: 14px;
+  }
+  .case-takeaway strong { color: var(--ink); font-weight: 600; }
+  .case-impact {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--brass);
+    font-weight: 700;
+    margin-bottom: 4px;
+    display: block;
+  }
+  .case-impact-text {
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+  .case-link-col {
+    align-self: start;
+    padding-top: 8px;
+  }
+  .case-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    text-decoration: none;
+    border: 1.5px solid var(--oxblood);
+    padding: 10px 14px;
+    border-radius: 2px;
+    font-weight: 700;
+    transition: background 0.15s, color 0.15s;
+    white-space: nowrap;
+  }
+  .case-link:hover {
+    background: var(--oxblood);
+    color: var(--paper);
+  }
+  .case-link-arrow {
+    font-size: 14px;
+    line-height: 1;
+  }
+  .case-link.pending {
+    color: var(--ink-mute);
+    border-color: var(--rule);
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  .case-link.pending::before {
+    content: '\25CB';
+    margin-right: 4px;
+    font-size: 12px;
+  }
+  .case-link.available::before {
+    content: '\25CF';
+    margin-right: 4px;
+    font-size: 12px;
+    color: var(--oxblood);
+  }
+  .case-link.available:hover::before {
+    color: var(--paper);
+  }
+
+  @media (max-width: 920px) {
+    .case {
+      grid-template-columns: 60px 1fr;
+      gap: 20px;
+    }
+    .case-link-col {
+      grid-column: 2;
+      padding-top: 4px;
+    }
+    .case-num { font-size: 28px; }
+  }
+
+  /* HONORABLE MENTIONS */
+  .honorable {
+    padding: 56px 0 32px;
+    border-top: 3px double var(--ink);
+    margin-top: 16px;
+  }
+  .honorable-head {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 32px;
+    align-items: baseline;
+    margin-bottom: 32px;
+  }
+  .honorable-blurb {
+    font-size: 16px;
+    color: var(--ink-soft);
+    margin-top: 14px;
+    line-height: 1.65;
+    max-width: 65ch;
+  }
+  @media (max-width: 720px) {
+    .honorable-head { grid-template-columns: 1fr; gap: 10px; }
+  }
+
+  .honorable-group {
+    margin-bottom: 36px;
+  }
+  .honorable-group-title {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    font-weight: 700;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .honorable-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px 32px;
+    list-style: none;
+  }
+  @media (max-width: 720px) {
+    .honorable-list { grid-template-columns: 1fr; }
+  }
+  .honorable-item {
+    padding: 0;
+  }
+  .honorable-item-name {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--ink);
+    line-height: 1.25;
+    margin-bottom: 4px;
+  }
+  .honorable-item-meta {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-mute);
+    letter-spacing: 0.04em;
+    margin-bottom: 6px;
+  }
+  .honorable-item-desc {
+    font-size: 14.5px;
+    color: var(--ink-2);
+    line-height: 1.55;
+  }
+
+  /* COLOPHON */
+  .colophon {
+    background: var(--ink);
+    color: var(--paper-2);
+    padding: 36px 32px;
+    position: relative;
+    z-index: 2;
+  }
+  .colophon-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .colophon-brand {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    font-style: italic;
+    color: var(--paper);
+  }
+  .colophon-meta {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #a89e8e;
+  }
+  .colophon-meta strong { color: var(--paper-2); }
+
+  /* PRINT */
+  @media print {
+    body::before, .skip-link { display: none; }
+    body { background: white; color: black; }
+    .area, .case { page-break-inside: avoid; }
+  }
+
+  /* REDUCED MOTION */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+
+  /* SR ONLY */
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+</style>
+</head><body><p><a class="skip-link" href="#main">Skip to main content</a></p>
+<!-- MASTHEAD -->
+<div class="masthead" role="banner">
+<div class="masthead-inner">
+<div class="masthead-brand">understanding scotus opinions</div>
+<div class="masthead-meta">Dr. Philip Mongan, lcsw, ph.D.</div>
+</div>
+</div>
+<!-- HERO -->
+<div class="hero">
+<p class="hero-eyebrow">A Reference Series · For SW 6030: Social Welfare Policies &amp; services</p>
+<h1 class="hero-title">The <em>Cases</em><br>That Shape Social Work Practice</h1>
+<p class="hero-subtitle">Ten Supreme Court decisions every social worker should know.</p>
+<div class="intro">
+<div class="intro-label"><span class="intro-label-mark" aria-hidden="true"></span>About This Series</div>
+<p class="intro-text">Most social work students will never read a Supreme Court opinion. They will, however, work inside the systems those opinions built.&nbsp; For example, child welfare, civil commitment, special education, public benefits, and mental health all operate under the rules created by many of the cases you will cover in this course. This series translates the cases that matter to social workers into a language that is easier to understand, so you can recognize them when they show up in your work.&nbsp; If you're unfamiliar with how the Supreme Court of the United States (SCOTUS) works, please review <span style="color: #6b1f2a;"><strong><a href="/d2l/le/content/10702732/viewContent/115583237/View" target="_blank" rel="noopener" style="color: #6b1f2a;">Understanding How SCOTUS Works</a></strong></span><span style="color: #e60017;"><strong> </strong></span>before going through these 10 cases.</p>
+</div>
+<div class="bluf">
+<div class="bluf-label"><span class="bluf-label-mark" aria-hidden="true"></span>How to Use This Page</div>
+<p class="bluf-text">Cases are grouped by practice area. Each entry shows the case name, citation, vote, a one-sentence holding, and what it changes about your daily work. <strong>Click any case name to open the full case explainer.</strong> The honorable mentions at the bottom round out the list with cases worth knowing about, even if they don't get a full treatment.</p>
+</div>
+</div>
+<main id="main"><!-- AREA 01 - CONFIDENTIALITY & PRIVILEGE -->
+<section class="area" aria-labelledby="area-1">
+<div class="area-head">
+<div class="area-tag">Practice Area<strong>01</strong></div>
+<div>
+<h2 class="area-title" id="area-1">Confidentiality &amp; <em>Privilege</em></h2>
+<p class="area-blurb">The legal protection of what a client tells you in a counseling session. This is the doctrinal foundation of clinical practice and the case below is the single most important Supreme Court decision for clinical social workers.</p>
+</div>
+</div>
+<article class="case">
+<div class="case-num">Case 01</div>
+<div class="case-body">
+<h3 class="case-name"><span style="color: #6b1f2a;"><a href="/d2l/le/content/10702732/viewContent/115527474/View" target="_blank" rel="noopener" style="color: #6b1f2a;">Jaffee <em>v.</em> Redmond</a></span></h3>
+<p class="case-citation">518 U.S. 1 (1996) · <span class="vote">Vote: 7–2</span></p>
+<p class="case-takeaway">Confidential communications between a licensed psychotherapist, <strong>explicitly including a licensed clinical social worker</strong>, and a client are privileged from compelled disclosure in federal court.</p>
+<span class="case-impact">Why it matters</span>
+<p class="case-impact-text">Your therapy notes and session content are presumptively protected. Anchors NASW Code of Ethics §1.07 in evidentiary law. Shapes how you document, respond to subpoenas, and explain the limits of confidentiality to clients.</p>
+</div>
+<div class="case-link-col"></div>
+</article>
+</section>
+<!-- AREA 02 - CHILD WELFARE -->
+<section class="area" aria-labelledby="area-2">
+<div class="area-head">
+<div class="area-tag">Practice Area<strong>02</strong></div>
+<div>
+<h2 class="area-title" id="area-2">Child Welfare &amp; <em>Family Integrity</em></h2>
+<p class="area-blurb">CPS, foster care, termination of parental rights, parental autonomy, and tribal sovereignty. These four cases form the constitutional architecture of every child welfare proceeding in the country.</p>
+</div>
+</div>
+<article class="case">
+<div class="case-num">Case 02</div>
+<div class="case-body">
+<h3 class="case-name"><span style="color: #6b1f2a;"><a href="/d2l/le/content/10702732/viewContent/115527475/View" target="_blank" rel="noopener" style="color: #6b1f2a;">DeShaney <em>v.</em> Winnebago County DSS</a></span></h3>
+<p class="case-citation">489 U.S. 189 (1989) · <span class="vote">Vote: 6–3</span></p>
+<p class="case-takeaway">The Constitution does not impose an affirmative duty on the state to protect a child from harm by a private actor, <strong>even when caseworkers know about the abuse and fail to intervene.</strong></p>
+<span class="case-impact">Why it matters</span>
+<p class="case-impact-text">Sets the rule that federal §1983 claims against CPS for failing to act almost always fail. Defines the “special relationship” doctrine that does apply once a child is in state custody. Famous for Blackmun's “Poor Joshua!” dissent.</p>
+</div>
+<div class="case-link-col"></div>
+</article>
+<article class="case">
+<div class="case-num">Case 03</div>
+<div class="case-body">
+<h3 class="case-name"><span style="color: #6b1f2a;"><a href="/d2l/le/content/10702732/viewContent/115527476/View" target="_blank" rel="noopener" style="color: #6b1f2a;">Santosky <em>v.</em> Kramer</a></span></h3>
+<p class="case-citation">455 U.S. 745 (1982) · <span class="vote">Vote: 5–4</span></p>
+<p class="case-takeaway">Before a state may permanently terminate parental rights, it must prove its grounds by <strong>at least clear and convincing evidence</strong>. Preponderance is constitutionally insufficient.</p>
+<span class="case-impact">Why it matters</span>
+<p class="case-impact-text">Sets the constitutional floor for the burden of proof in every TPR case. Your documentation, case notes, and testimony must be capable of supporting that elevated standard. ICWA cases require beyond a reasonable doubt, which is even higher.</p>
+</div>
+<div class="case-link-col"></div>
+</article>
+<article class="case">
+<div class="case-num">Case 04</div>
+<div class="case-body">
+<h3 class="case-name"><span style="color: #6b1f2a;"><a href="/d2l/le/content/10702732/viewContent/115527477/View" target="_blank" rel="noopener" style="color: #6b1f2a;">Troxel <em>v.</em> Granville</a></span></h3>
+<p class="case-citation">530 U.S. 57 (2000) · <span class="vote">Vote: 6–3</span></p>
+<p class="case-takeaway">A fit parent's decision about who has contact with their child is presumed correct, and courts cannot override it through a simple <strong>“best interests of the child”</strong> balancing test.</p>
+<span class="case-impact">Why it matters</span>
+<p class="case-impact-text">Operationalizes the “fit parent presumption” in family law. Until a parent has been adjudicated unfit, courts assume their decisions about their child are correct. Constrains how casework recommendations can be framed in intact families.</p>
+</div>
+<div class="case-link-col"></div>
+</article>
+<article class="case">
+<div class="case-num">Case 05</div>
+<div class="case-body">
+<h3 class="case-name"><span style="color: #6b1f2a;"><a href="/d2l/le/content/10702732/viewContent/115527478/View" target="_blank" rel="noopener" style="color: #6b1f2a;">Haaland <em>v.</em> Brackeen</a></span></h3>
+<p class="case-citation">599 U.S. 255 (2023) · <span class="vote">Vote: 7–2</span></p>
+<p class="case-takeaway">The Indian Child Welfare Act (ICWA) is constitutional. <strong>Tribal placement preferences, “active efforts,” and the beyond-a-reasonable-doubt TPR standard for Indian children</strong> remain federal law.</p>
+<span class="case-impact">Why it matters</span>
+<p class="case-impact-text">Screen every child welfare case for ICWA applicability from first contact. Provide notice to tribes. Honor jurisdictional transfer rights. ICWA is called the “gold standard” of child welfare practice for good reason.</p>
+</div>
+<div class="case-link-col"></div>
+</article>
+</section>
+<!-- AREA 03 - MENTAL HEALTH & DISABILITY -->
+<section class="area" aria-labelledby="area-3">
+<div class="area-head">
+<div class="area-tag">Practice Area<strong>03</strong></div>
+<div>
+<h2 class="area-title" id="area-3">Mental Health &amp; <em>Disability Rights</em></h2>
+<p class="area-blurb">Civil commitment, deinstitutionalization, community integration. These three cases together set the constitutional rules for when the state can confine someone with mental illness, what it must prove, and what it owes them when they're ready to come out.</p>
+</div>
+</div>
+<article class="case">
+<div class="case-num">Case 06</div>
+<div class="case-body">
+<h3 class="case-name"><span style="color: #6b1f2a;"><a href="/d2l/le/content/10702732/viewContent/115528092/View" target="_blank" rel="noopener" style="color: #6b1f2a;">O'Connor <em>v.</em> Donaldson</a></span></h3>
+<p class="case-citation">422 U.S. 563 (1975) · <span class="vote">Vote: 9–0</span></p>
+<p class="case-takeaway">A state cannot confine a non-dangerous person who can survive safely in the community in a psychiatric institution against their will. <strong>A mental illness diagnosis alone is not enough.</strong></p>
+<span class="case-impact">Why it matters</span>
+<p class="case-impact-text">Established dangerousness (or grave disability) as a constitutional prerequisite for continued involuntary commitment. The legal foundation of deinstitutionalization and modern least-restrictive-alternative analysis.</p>
+</div>
+<div class="case-link-col"></div>
+</article>
+<article class="case">
+<div class="case-num">Case 07</div>
+<div class="case-body">
+<h3 class="case-name"><span style="color: #6b1f2a;"><a href="/d2l/le/content/10702732/viewContent/115528093/View" target="_blank" rel="noopener" style="color: #6b1f2a;">Addington <em>v.</em> Texas</a></span></h3>
+<p class="case-citation">441 U.S. 418 (1979) · <span class="vote">Vote: 8–0</span></p>
+<p class="case-takeaway">Due process requires the state to prove the grounds for involuntary civil commitment by <strong>at least clear and convincing evidence</strong>. Preponderance is too low; reasonable doubt is too high.</p>
+<span class="case-impact">Why it matters</span>
+<p class="case-impact-text">Sets the evidentiary standard for every involuntary commitment hearing. Your assessments and testimony must support this elevated burden. “Clinical impression” alone is not enough. The same standard applies in TPR and many guardianships.</p>
+</div>
+<div class="case-link-col"></div>
+</article>
+<article class="case">
+<div class="case-num">Case 08</div>
+<div class="case-body">
+<h3 class="case-name"><span style="color: #6b1f2a;"><a href="/d2l/le/content/10702732/viewContent/115528112/View" target="_blank" rel="noopener" style="color: #6b1f2a;">Olmstead <em>v.</em> L.C.</a></span></h3>
+<p class="case-citation">527 U.S. 581 (1999) · <span class="vote">Vote: 6–3</span></p>
+<p class="case-takeaway">Under the ADA, states must provide community-based services for people with disabilities when treatment professionals deem it appropriate, the person doesn't oppose it, and it can be <strong>reasonably accommodated.</strong></p>
+<span class="case-impact">Why it matters</span>
+<p class="case-impact-text">The most important disability-rights case for social work. Discharge planning from psychiatric hospitals, nursing facilities, and state institutions must consider the most integrated setting. Drives Money Follows the Person, HCBS waivers, and state Olmstead plans.</p>
+</div>
+<div class="case-link-col"></div>
+</article>
+</section>
+<!-- AREA 04 - SCHOOLS & SPECIAL EDUCATION -->
+<section class="area" aria-labelledby="area-4">
+<div class="area-head">
+<div class="area-tag">Practice Area<strong>04</strong></div>
+<div>
+<h2 class="area-title" id="area-4">Schools &amp; <em>Special Education</em></h2>
+<p class="area-blurb">For school social workers, behavioral health clinicians, and foster care workers managing educational stability. This case sets the floor every Individualized Education Program must clear.</p>
+</div>
+</div>
+<article class="case">
+<div class="case-num">Case 09</div>
+<div class="case-body">
+<h3 class="case-name"><span style="color: #6b1f2a;"><a href="/d2l/le/content/10702732/viewContent/115528113/View" target="_blank" rel="noopener" style="color: #6b1f2a;">Endrew F. <em>v.</em> Douglas County School District</a></span></h3>
+<p class="case-citation">580 U.S. 386 (2017) · <span class="vote">Vote: 8–0</span></p>
+<p class="case-takeaway">A school's Individualized Education Program (IEP) must be <strong>“reasonably calculated to enable a child to make progress appropriate in light of the child's circumstances”</strong>. Not merely more than trivial progress.</p>
+<span class="case-impact">Why it matters</span>
+<p class="case-impact-text">Raises the IDEA floor. IEPs must be “appropriately ambitious.” When you sit in IEP meetings or write social/developmental histories, schools must offer a “cogent and responsive explanation” for their IEP choices. Modifies but does not overrule Rowley (1982).</p>
+</div>
+<div class="case-link-col"></div>
+</article>
+</section>
+<!-- AREA 05 - PUBLIC BENEFITS & DUE PROCESS -->
+<section class="area" aria-labelledby="area-5">
+<div class="area-head">
+<div class="area-tag">Practice Area<strong>05</strong></div>
+<div>
+<h2 class="area-title" id="area-5">Public Benefits &amp; <em>Due Process</em></h2>
+<p class="area-blurb">When can the government cut off a client's TANF, SNAP, Medicaid, or SSI? Not without notice and a hearing. This foundational case is the doctrinal anchor of every benefits termination procedure your clients will face.</p>
+</div>
+</div>
+<article class="case">
+<div class="case-num">Case 10</div>
+<div class="case-body">
+<h3 class="case-name"><span style="color: #6b1f2a;"><a href="/d2l/le/content/10702732/viewContent/115528114/View" target="_blank" rel="noopener" style="color: #6b1f2a;">Goldberg <em>v.</em> Kelly</a></span></h3>
+<p class="case-citation">397 U.S. 254 (1970) · <span class="vote">Vote: 5–3</span></p>
+<p class="case-takeaway">Welfare benefits are a statutory entitlement protected by the Due Process Clause. <strong>Recipients are entitled to a pre-termination evidentiary hearing</strong> with notice, the right to appear, and continued benefits while they appeal.</p>
+<span class="case-impact">Why it matters</span>
+<p class="case-impact-text">Foundational for public-benefits practice. Goldberg-style procedures appear in nearly every means-tested program. Equips you to recognize when an agency is short-circuiting due process and to refer clients for fair-hearing representation.</p>
+</div>
+<div class="case-link-col"></div>
+</article>
+</section>
+<!-- HONORABLE MENTIONS -->
+<section class="honorable" aria-labelledby="honorable-title">
+<div class="honorable-head">
+<div class="area-tag">Also Worth Knowing<strong>+</strong></div>
+<div>
+<h2 class="area-title" id="honorable-title">Honorable <em>Mentions</em></h2>
+<p class="honorable-blurb">Cases that didn't make the top ten but deserve recognition. Each is still "good law", meaning that they are still in effect today. These cases are most relevant to subsets of practice settings.&nbsp; If any interest you, or if you want to work in any of those areas, go ahead and click on their name for a review of the case.</p>
+</div>
+</div>
+<div class="honorable-group">
+<div class="honorable-group-title">Civil Commitment &amp; Institutional Rights</div>
+<ul class="honorable-list">
+<li class="honorable-item">
+<div class="honorable-item-name"><span style="color: #6b1f2a;"><a href="/d2l/le/content/10702732/viewContent/115584257/View" target="_blank" rel="noopener" style="color: #6b1f2a;">Parham v. J.R.</a></span></div>
+<div class="honorable-item-meta">442 U.S. 584 (1979) · 6–3</div>
+<p class="honorable-item-desc">Parents may “voluntarily” commit a minor to a psychiatric facility with only a neutral physician's confirmation. No adversary hearing required. Crucial for adolescent inpatient social work.</p>
+</li>
+<li class="honorable-item">
+<div class="honorable-item-name"><span style="color: #6b1f2a;"><a href="/d2l/le/content/10702732/viewContent/115587650/View" target="_blank" rel="noopener" style="color: #6b1f2a;">Youngberg v. Romeo</a></span></div>
+<div class="honorable-item-meta">457 U.S. 307 (1982) · 9–0</div>
+<p class="honorable-item-desc">Persons involuntarily committed to state institutions have constitutional rights to safe conditions, freedom from undue restraint, and minimally adequate training. Essential for ID/DD social work.</p>
+</li>
+</ul>
+</div>
+<div class="honorable-group">
+<div class="honorable-group-title">Parental Rights &amp; Family Integrity</div>
+<ul class="honorable-list">
+<li class="honorable-item">
+<div class="honorable-item-name">Stanley v. Illinois</div>
+<div class="honorable-item-meta">405 U.S. 645 (1972) · 5–2</div>
+<p class="honorable-item-desc">An unwed biological father is entitled to a hearing on his fitness before the state can take his children. Foundation of putative-father rights. Pairs with Santosky and Troxel.</p>
+</li>
+<li class="honorable-item">
+<div class="honorable-item-name">Pierce v. Society of Sisters</div>
+<div class="honorable-item-meta">268 U.S. 510 (1925) · 9–0</div>
+<p class="honorable-item-desc">Historical anchor of parents' rights to direct the upbringing and education of their children. Foundational substantive due-process case underlying Troxel.</p>
+</li>
+<li class="honorable-item">
+<div class="honorable-item-name">Wisconsin v. Yoder</div>
+<div class="honorable-item-meta">406 U.S. 205 (1972) · 6–1</div>
+<p class="honorable-item-desc">Amish parents' free-exercise rights allowed exemption from compulsory schooling beyond eighth grade. Companion historical case to Pierce on parental autonomy in education.</p>
+</li>
+<li class="honorable-item">
+<div class="honorable-item-name">Adoptive Couple v. Baby Girl</div>
+<div class="honorable-item-meta">570 U.S. 637 (2013) · 5–4</div>
+<p class="honorable-item-desc">Narrows ICWA's TPR provisions in a specific factual posture involving a noncustodial biological father whose paternal rights had not vested. Pairs with Brackeen.</p>
+</li>
+</ul>
+</div>
+<div class="honorable-group">
+<div class="honorable-group-title">Benefits &amp; Procedural Due Process</div>
+<ul class="honorable-list">
+<li class="honorable-item">
+<div class="honorable-item-name">Mathews v. Eldridge</div>
+<div class="honorable-item-meta">424 U.S. 319 (1976) · 6–2</div>
+<p class="honorable-item-desc">Three-factor due-process balancing test that governs most benefits-termination cases today. Explains why Social Security disability uses lighter procedures than Goldberg required for welfare.</p>
+</li>
+</ul>
+</div>
+<div class="honorable-group">
+<div class="honorable-group-title">Special Education</div>
+<ul class="honorable-list">
+<li class="honorable-item">
+<div class="honorable-item-name">Board of Education v. Rowley</div>
+<div class="honorable-item-meta">458 U.S. 176 (1982) · 6–3</div>
+<p class="honorable-item-desc">The original IDEA / FAPE case. Now read through the Endrew F. lens but still good law. Worth teaching as the doctrinal pair to Endrew F.</p>
+</li>
+</ul>
+</div>
+<div class="honorable-group">
+<div class="honorable-group-title">Immigrant Clients &amp; School Social Work</div>
+<ul class="honorable-list">
+<li class="honorable-item">
+<div class="honorable-item-name">Plyler v. Doe</div>
+<div class="honorable-item-meta">457 U.S. 202 (1982) · 5–4</div>
+<p class="honorable-item-desc">States may not deny free public K–12 education to undocumented children. Important for school social workers and any worker serving immigrant families.</p>
+</li>
+</ul>
+</div>
+<div class="honorable-group">
+<div class="honorable-group-title">LGBTQ+ Clients</div>
+<ul class="honorable-list">
+<li class="honorable-item">
+<div class="honorable-item-name">Obergefell v. Hodges</div>
+<div class="honorable-item-meta">576 U.S. 644 (2015) · 5–4</div>
+<p class="honorable-item-desc">Marriage equality nationwide. Affects family-formation work, foster and adoptive licensing, and second-parent adoptions.</p>
+</li>
+<li class="honorable-item">
+<div class="honorable-item-name">Bostock v. Clayton County</div>
+<div class="honorable-item-meta">590 U.S. 644 (2020) · 6–3</div>
+<p class="honorable-item-desc">Title VII's ban on sex discrimination protects gay, lesbian, and transgender employees. Relevant to workplace issues for LGBTQ+ clients.</p>
+</li>
+</ul>
+</div>
+<div class="honorable-group">
+<div class="honorable-group-title">Juvenile Justice</div>
+<ul class="honorable-list">
+<li class="honorable-item">
+<div class="honorable-item-name">Roper v. Simmons</div>
+<div class="honorable-item-meta">543 U.S. 551 (2005) · 5–4</div>
+<p class="honorable-item-desc">Eighth Amendment bars the death penalty for offenses committed under age 18. Foundational for adolescent-brain-development arguments in social work testimony.</p>
+</li>
+<li class="honorable-item">
+<div class="honorable-item-name">Graham v. Florida</div>
+<div class="honorable-item-meta">560 U.S. 48 (2010) · 6–3</div>
+<p class="honorable-item-desc">Life without parole is unconstitutional for juveniles convicted of non-homicide offenses. Part of the juvenile-sentencing trilogy with Roper and Miller.</p>
+</li>
+<li class="honorable-item">
+<div class="honorable-item-name">Miller v. Alabama</div>
+<div class="honorable-item-meta">567 U.S. 460 (2012) · 5–4</div>
+<p class="honorable-item-desc">Mandatory life without parole for juvenile homicide offenders is unconstitutional. Requires individualized sentencing considering youth. Made retroactive by Montgomery (2016).</p>
+</li>
+</ul>
+</div>
+<div class="honorable-group">
+<div class="honorable-group-title">Intellectual Disability &amp; Sentencing</div>
+<ul class="honorable-list">
+<li class="honorable-item">
+<div class="honorable-item-name">Atkins v. Virginia</div>
+<div class="honorable-item-meta">536 U.S. 304 (2002) · 6–3</div>
+<p class="honorable-item-desc">Executing a person with intellectual disability violates the Eighth Amendment. Relevant when social workers conduct adaptive-functioning assessments in capital-mitigation work.</p>
+</li>
+<li class="honorable-item">
+<div class="honorable-item-name">Hall v. Florida</div>
+<div class="honorable-item-meta">572 U.S. 701 (2014) · 5–4</div>
+<p class="honorable-item-desc">States cannot use a strict IQ-score cutoff to deny an Atkins claim. Standard error of measurement must be considered. Reinforced by Moore v. Texas (2017, 2019).</p>
+</li>
+</ul>
+</div>
+</section>
+</main><!-- COLOPHON --><footer class="colophon" role="contentinfo">
+<div class="colophon-inner">
+<div class="colophon-brand">Understanding SCOTUS Opinions</div>
+<div class="colophon-meta">Austin Peay State University · MSW Program</div>
+</div>
+</footer></body></html>

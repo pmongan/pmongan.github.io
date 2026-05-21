@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How the Supreme Court Works, A Primer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&amp;family=Inter+Tight:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f4ede0;
+    --paper-2: #ebe2d1;
+    --paper-deep: #e5dac4;
+    --ink: #1c1815;
+    --ink-2: #2d2722;
+    --ink-soft: #4a4239;
+    --ink-mute: #6b6258;
+    --rule: #c9bda6;
+    --rule-soft: #d9cfba;
+    --oxblood: #6b1f2a;
+    --oxblood-deep: #4f1620;
+    --oxblood-tint: #f3e0e2;
+    --brass: #6b5320;
+    --brass-tint: #f1e8cf;
+    --majority: #2d4a3a;
+    --majority-tint: #d9e2d8;
+    --dissent: #6b1f2a;
+    --dissent-tint: #ebd5d6;
+
+    --font-display: 'Fraunces', 'Times New Roman', serif;
+    --font-body: 'Inter Tight', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 17px;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(107,31,42,0.025) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(107,83,32,0.025) 0%, transparent 50%);
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.4;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.11 0 0 0 0 0.09 0 0 0 0 0.08 0 0 0 0.12 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 16px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 12px 18px;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 2px;
+    z-index: 9999;
+    transition: top 0.2s;
+  }
+  .skip-link:focus { top: 16px; outline: 3px solid var(--oxblood); }
+
+  .masthead {
+    border-bottom: 1px solid var(--rule);
+    padding: 24px 0 18px;
+    position: relative;
+    z-index: 2;
+  }
+  .masthead-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .masthead-brand {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .masthead-brand span { color: var(--oxblood); }
+  .masthead-meta {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+
+  .hero {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 56px 32px 40px;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--oxblood);
+  }
+  .hero-eyebrow::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+    max-width: 220px;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(44px, 6.5vw, 88px);
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-bottom: 14px;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+  }
+  .hero-title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--oxblood);
+  }
+  .hero-subtitle {
+    font-family: var(--font-display);
+    font-size: clamp(20px, 2.2vw, 26px);
+    line-height: 1.4;
+    font-weight: 400;
+    color: var(--ink-soft);
+    font-style: italic;
+    max-width: 36ch;
+    margin-bottom: 40px;
+  }
+
+  .intro {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    padding-top: 28px;
+    border-top: 3px double var(--ink);
+  }
+  .intro-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    padding-top: 6px;
+  }
+  .intro-label-mark {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--oxblood);
+    margin-right: 8px;
+    border-radius: 50%;
+    vertical-align: middle;
+  }
+  .intro-text {
+    font-family: var(--font-display);
+    font-size: clamp(19px, 1.9vw, 23px);
+    line-height: 1.45;
+    font-weight: 400;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .intro-text strong {
+    font-weight: 600;
+    color: var(--oxblood);
+    font-style: italic;
+  }
+  @media (max-width: 720px) {
+    .intro { grid-template-columns: 1fr; gap: 12px; }
+  }
+
+  main {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px 80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  section {
+    padding: 56px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  section:last-of-type { border-bottom: none; }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 32px;
+    align-items: baseline;
+    margin-bottom: 36px;
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    border-top: 2px solid var(--ink);
+    padding-top: 8px;
+  }
+  .section-num strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--oxblood);
+    letter-spacing: -0.01em;
+    margin-top: 2px;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .section-title em { font-style: italic; color: var(--oxblood); }
+  @media (max-width: 720px) {
+    .section-head { grid-template-columns: 1fr; gap: 8px; }
+    .section-num { border-top: none; padding-top: 0; }
+  }
+
+  .body-grid {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 32px;
+  }
+  .body-grid-aside {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    padding-top: 8px;
+  }
+  .body-grid-main { max-width: 65ch; }
+  .body-grid-main p { margin-bottom: 1em; font-size: 17px; line-height: 1.7; color: var(--ink-2); }
+  .body-grid-main p:last-child { margin-bottom: 0; }
+  .body-grid-main strong { color: var(--ink); font-weight: 600; }
+  .body-grid-main em { font-style: italic; }
+  @media (max-width: 720px) {
+    .body-grid { grid-template-columns: 1fr; gap: 8px; }
+  }
+
+  .dropcap::first-letter {
+    font-family: var(--font-display);
+    font-size: 5em;
+    font-weight: 600;
+    float: left;
+    line-height: 0.85;
+    margin: 0.04em 0.08em 0 0;
+    color: var(--oxblood);
+    font-style: italic;
+  }
+
+  /* TABLE OF CONTENTS */
+  .toc {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px;
+    position: relative;
+    z-index: 2;
+  }
+  .toc-inner {
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: 28px 32px;
+    margin-top: 8px;
+  }
+  .toc-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    font-weight: 700;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .toc-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 32px;
+    list-style: none;
+  }
+  @media (max-width: 720px) { .toc-list { grid-template-columns: 1fr; } }
+  .toc-item {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 12px;
+    align-items: baseline;
+    padding: 6px 0;
+  }
+  .toc-num {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--ink-mute);
+    font-weight: 700;
+  }
+  .toc-link {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.005em;
+    border-bottom: 1px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .toc-link:hover,
+  .toc-link:focus-visible {
+    color: var(--oxblood);
+    border-bottom-color: var(--oxblood);
+    outline: none;
+  }
+  .toc-link em { font-style: italic; color: var(--oxblood); }
+
+  /* SCROLL MARGIN for anchor targets */
+  .section-title {
+    scroll-margin-top: 24px;
+  }
+
+  /* QUICK FACTS BOX */
+  .quick-facts {
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: 24px 28px;
+    margin-top: 24px;
+  }
+  .quick-facts-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    font-weight: 700;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .quick-facts-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px 32px;
+    list-style: none;
+  }
+  @media (max-width: 720px) { .quick-facts-list { grid-template-columns: 1fr; } }
+  .quick-facts-item {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  .quick-facts-key {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    font-weight: 700;
+  }
+  .quick-facts-val {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+
+  /* JUSTICE PROFILE CARDS */
+  .justices-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 8px;
+  }
+  @media (max-width: 920px) { .justices-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .justices-grid { grid-template-columns: 1fr; } }
+
+  .j-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-top: 4px solid var(--ink);
+    padding: 22px 22px 20px;
+    border-radius: 2px;
+    position: relative;
+  }
+  .j-card.chief { border-top-color: var(--oxblood); }
+  .j-card-tag {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  .j-card.chief .j-card-tag { color: var(--oxblood); }
+  .j-card-name {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.1;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+  .j-card-meta {
+    border-top: 1px solid var(--rule-soft);
+    padding-top: 12px;
+    margin-bottom: 12px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .j-card-meta-item .label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 2px;
+    display: block;
+    font-weight: 700;
+  }
+  .j-card-meta-item .value {
+    font-family: var(--font-body);
+    font-size: 14.5px;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .j-card-bio {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-2);
+  }
+
+  /* JOURNEY FLOW */
+  .journey {
+    margin-top: 16px;
+  }
+  .journey-step {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 24px;
+    padding: 20px 0;
+    border-top: 1px solid var(--rule-soft);
+    position: relative;
+  }
+  .journey-step:first-child { border-top: none; padding-top: 4px; }
+  .journey-step-num {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--oxblood);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .journey-step-body { max-width: 65ch; }
+  .journey-step-title {
+    font-family: var(--font-display);
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 6px;
+    letter-spacing: -0.005em;
+  }
+  .journey-step-desc {
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--ink-2);
+  }
+  .journey-step-desc strong { color: var(--ink); }
+
+  /* FUNNEL VISUAL */
+  .funnel {
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: 28px 32px;
+    margin-top: 24px;
+  }
+  .funnel-title {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    font-weight: 700;
+    margin-bottom: 22px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .funnel-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 24px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule-soft);
+    align-items: baseline;
+  }
+  .funnel-row:last-child { border-bottom: none; }
+  .funnel-num {
+    font-family: var(--font-display);
+    font-size: 36px;
+    font-weight: 500;
+    color: var(--oxblood);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    font-style: italic;
+  }
+  .funnel-num-small {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--ink-mute);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: block;
+    margin-top: 6px;
+    font-weight: 700;
+  }
+  .funnel-desc {
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: var(--ink-2);
+  }
+  .funnel-desc strong { color: var(--ink); }
+
+  /* CAN/CANNOT TWO COLUMNS */
+  .canlist {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 8px;
+  }
+  @media (max-width: 720px) { .canlist { grid-template-columns: 1fr; } }
+
+  .canlist-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-top: 4px solid;
+    padding: 24px 26px;
+    border-radius: 2px;
+  }
+  .canlist-card.does { border-top-color: var(--majority); }
+  .canlist-card.does-not { border-top-color: var(--dissent); }
+  .canlist-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    font-weight: 700;
+  }
+  .canlist-card.does .canlist-label { color: var(--majority); }
+  .canlist-card.does-not .canlist-label { color: var(--dissent); }
+  .canlist-headline {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: 16px;
+    letter-spacing: -0.005em;
+  }
+  .canlist-card ul {
+    list-style: none;
+    padding: 0;
+  }
+  .canlist-card li {
+    padding: 10px 0 10px 22px;
+    border-bottom: 1px solid var(--rule-soft);
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    position: relative;
+  }
+  .canlist-card li:last-child { border-bottom: none; }
+  .canlist-card.does li::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    top: 11px;
+    color: var(--majority);
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .canlist-card.does-not li::before {
+    content: '\2715';
+    position: absolute;
+    left: 0;
+    top: 11px;
+    color: var(--dissent);
+    font-weight: 700;
+    font-size: 13px;
+  }
+  .canlist-card li strong { color: var(--ink); font-weight: 600; }
+
+  /* OPINION ANATOMY */
+  .anatomy {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 8px;
+  }
+  @media (max-width: 720px) { .anatomy { grid-template-columns: 1fr; } }
+  .anatomy-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--oxblood);
+    padding: 22px 24px;
+    border-radius: 2px;
+  }
+  .anatomy-card-name {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+    letter-spacing: -0.005em;
+  }
+  .anatomy-card-name em { font-style: italic; color: var(--oxblood); }
+  .anatomy-card-stakes {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  .anatomy-card-desc {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink-2);
+  }
+
+  /* CITATION BREAKDOWN */
+  .citation-block {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 36px 32px;
+    border-radius: 4px;
+    margin-top: 24px;
+    text-align: center;
+  }
+  .citation-big {
+    font-family: var(--font-display);
+    font-size: clamp(30px, 5vw, 52px);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    margin-bottom: 28px;
+    color: var(--paper);
+    line-height: 1.1;
+  }
+  .citation-big em { font-style: italic; color: #c8a87a; font-weight: 400; }
+  .citation-parts {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    text-align: left;
+  }
+  @media (max-width: 720px) { .citation-parts { grid-template-columns: 1fr 1fr; gap: 16px; } }
+  .citation-part {
+    padding-top: 16px;
+    border-top: 1px solid #4a4239;
+  }
+  .citation-part-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #c8a87a;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .citation-part-value {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 18px;
+    color: var(--paper);
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .citation-part-desc {
+    font-size: 13px;
+    color: #d6cdb8;
+    line-height: 1.55;
+  }
+
+  /* MYTH / REALITY */
+  .myth-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 8px;
+  }
+  .myth-card {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  @media (max-width: 720px) { .myth-card { grid-template-columns: 1fr; } }
+  .myth-side {
+    padding: 18px 22px;
+  }
+  .myth-side.myth {
+    background: var(--dissent-tint);
+    border-right: 1px solid var(--rule);
+  }
+  .myth-side.reality {
+    background: var(--paper);
+  }
+  @media (max-width: 720px) {
+    .myth-side.myth { border-right: none; border-bottom: 1px solid var(--rule); }
+  }
+  .myth-side-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--dissent);
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .myth-side.reality .myth-side-label { color: var(--majority); }
+  .myth-side-text {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink-2);
+  }
+  .myth-side.myth .myth-side-text {
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--ink);
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .myth-side-text strong { color: var(--ink); font-weight: 600; }
+
+  /* CHAIN VISUAL */
+  .chain {
+    margin-top: 16px;
+    border-left: 2px solid var(--rule);
+    padding-left: 28px;
+    margin-left: 12px;
+  }
+  .chain-link {
+    position: relative;
+    padding-bottom: 24px;
+  }
+  .chain-link:last-child { padding-bottom: 0; }
+  .chain-link::before {
+    content: '';
+    position: absolute;
+    left: -36px;
+    top: 6px;
+    width: 14px;
+    height: 14px;
+    background: var(--paper);
+    border: 2px solid var(--oxblood);
+    border-radius: 50%;
+  }
+  .chain-link.you::before {
+    background: var(--oxblood);
+  }
+  .chain-link-tag {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+  .chain-link-title {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+    letter-spacing: -0.005em;
+  }
+  .chain-link-desc {
+    font-size: 14.5px;
+    color: var(--ink-2);
+    line-height: 1.6;
+  }
+
+  /* COLOPHON */
+  .colophon {
+    background: var(--ink);
+    color: var(--paper-2);
+    padding: 36px 32px;
+    position: relative;
+    z-index: 2;
+  }
+  .colophon-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .colophon-brand {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    font-style: italic;
+    color: var(--paper);
+  }
+  .colophon-meta {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #a89e8e;
+  }
+
+  @media print {
+    body::before, .skip-link { display: none; }
+    body { background: white; color: black; }
+    section { page-break-inside: avoid; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
+</head><body><p><a class="skip-link" href="#main">Skip to main content</a></p>
+<div class="masthead" role="banner">
+<div class="masthead-inner">
+<div class="masthead-brand">understanding how scotus works</div>
+<div class="masthead-meta">Dr. Philip Mongan, lcsw, ph.D.</div>
+</div>
+</div>
+<div class="hero">
+<p class="hero-eyebrow">A Primer for understanding scotus · For SW 6030: Social Welfare Policies &amp; Services</p>
+<h1><span class="hero-title">How the <em>Supreme Court</em><br>Actually Works</span></h1>
+<p class="hero-subtitle">Everything you need to understand the case explainers in this series, and not much more.</p>
+<div class="intro">
+<div class="intro-label"><span class="intro-label-mark" aria-hidden="true"></span>About this page</div>
+<p class="intro-text">Most social work students will never take a constitutional law class, but most will work inside the systems the Supreme Court (SCOTUS) has shaped. <strong>This page is designed to give you foundational knowledge to understanding how SCOTUS works and it's current makeup.</strong> It explains what the Court is, how it works, how cases reach it, and how its decisions eventually land in your caseload. No prior legal knowledge required.</p>
+</div>
+</div>
+<nav class="toc" aria-label="Table of contents">
+<div class="toc-inner">
+<p class="toc-label">In this primer</p>
+<ol class="toc-list">
+<li class="toc-item"><span class="toc-num">01</span> <a class="toc-link" href="#s1-title">What the Court <em>Actually Is</em></a></li>
+<li class="toc-item"><span class="toc-num">02</span> <a class="toc-link" href="#s2-title">Meet the <em>Current Court</em></a></li>
+<li class="toc-item"><span class="toc-num">03</span> <a class="toc-link" href="#s3-title">How a Justice <em>Gets There</em></a></li>
+<li class="toc-item"><span class="toc-num">04</span> <a class="toc-link" href="#s4-title">How a Case <em>Reaches the Court</em></a></li>
+<li class="toc-item"><span class="toc-num">05</span> <a class="toc-link" href="#s5-title">What the Court <em>Does and Does Not Do</em></a></li>
+<li class="toc-item"><span class="toc-num">06</span> <a class="toc-link" href="#s6-title">Anatomy of an <em>Opinion</em></a></li>
+<li class="toc-item"><span class="toc-num">07</span> <a class="toc-link" href="#s7-title">Reading a <em>Citation</em></a></li>
+<li class="toc-item"><span class="toc-num">08</span> <a class="toc-link" href="#s8-title">Common <em>Misconceptions</em></a></li>
+<li class="toc-item"><span class="toc-num">09</span> <a class="toc-link" href="#s9-title">How a Decision <em>Reaches Your Caseload</em></a></li>
+</ol>
+</div>
+</nav><main id="main"><!-- 01 - WHAT SCOTUS IS -->
+<section aria-labelledby="s1-title">
+<div class="section-head">
+<div class="section-num">Section <strong>01</strong></div>
+<h2 class="section-title" id="s1-title">What the Court <em>Actually Is</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">The basics</div>
+<div class="body-grid-main">
+<p class="dropcap">The Supreme Court of the United States is the country's highest court. There is no appeal from a SCOTUS decision. If you win at the Supreme Court, you win. If you lose, you lose. There is no further court to ask. Other branches can sometimes change the situation through new laws or constitutional amendments, but as a matter of judicial process, SCOTUS is the end of the road.</p>
+<p>The Court has nine members called Justices. One is the Chief Justice of the United States, the other eight are Associate Justices. They sit in the Supreme Court Building in Washington, D.C., across the street from the Capitol. They serve for life, or until they retire, resign, or are impeached and removed from office. Impeachment of a Justice has happened exactly once in American history and that Justice was not removed, so in practice "for life" means until they choose to leave or they die.</p>
+<p>The Court was created by Article III of the Constitution, but the Constitution does not say how many Justices it must have. Congress sets the number. The first Court in 1789 had six members. It has been nine since 1869. There are occasional proposals to add more, often called "court packing" proposals, but the number nine has held for over 150 years.</p>
+<p>The Court hears cases between October and June or July each year. This is called the Court's "term." A term is named for the year it begins, so the cases decided in spring 2024 are part of "October Term 2023" or "OT 2023." That is why you sometimes see two years on a case.</p>
+</div>
+</div>
+<div class="quick-facts">
+<div class="quick-facts-label">Quick Facts</div>
+<ul class="quick-facts-list">
+<li class="quick-facts-item"><span class="quick-facts-key">Number of Justices</span> <span class="quick-facts-val">Nine (1 Chief + 8 Associates)</span></li>
+<li class="quick-facts-item"><span class="quick-facts-key">Constitutional Authority</span> <span class="quick-facts-val">Article III</span></li>
+<li class="quick-facts-item"><span class="quick-facts-key">First Convened</span> <span class="quick-facts-val">February 1790</span></li>
+<li class="quick-facts-item"><span class="quick-facts-key">Location</span> <span class="quick-facts-val">Washington, D.C.</span></li>
+<li class="quick-facts-item"><span class="quick-facts-key">Tenure</span> <span class="quick-facts-val">Life, with good behavior</span></li>
+<li class="quick-facts-item"><span class="quick-facts-key">Annual Term</span> <span class="quick-facts-val">October to June or July</span></li>
+</ul>
+</div>
+</section>
+<!-- 02 - MEET THE CURRENT COURT -->
+<section aria-labelledby="s2-title">
+<div class="section-head">
+<div class="section-num">Section <strong>02</strong></div>
+<h2 class="section-title" id="s2-title">Meet the <em>Current Court</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">As of 2026</div>
+<div class="body-grid-main">
+<p>The current Court, sometimes called "the Roberts Court" because John Roberts is the Chief Justice, has been seated in its present composition since Justice Ketanji Brown Jackson joined in June 2022. That is a long stretch without a vacancy, the longest since the early 1990s. The nine Justices below are the ones who will be deciding cases for the foreseeable future, barring retirements, deaths, or rare other departures.</p>
+<p>Each Justice was nominated by a President and confirmed by the Senate. By tradition, Justices are referred to by the President who appointed them when discussing their ideological leanings, but the actual record is more complicated than that shorthand suggests. Justices can and do surprise the Presidents who appoint them.</p>
+</div>
+</div>
+<div class="justices-grid">
+<article class="j-card chief">
+<p class="j-card-tag">Chief Justice</p>
+<h3 class="j-card-name">John G. Roberts, Jr.</h3>
+<div class="j-card-meta">
+<div class="j-card-meta-item"><span class="label">Appointed By</span> <span class="value">G.W. Bush</span></div>
+<div class="j-card-meta-item"><span class="label">Year</span> <span class="value">2005</span></div>
+</div>
+<p class="j-card-bio">The 17th Chief Justice. Often the swing vote on closely divided cases. Generally conservative but with a strong institutionalist streak, which sometimes leads him to vote with the liberals to preserve the Court's reputation.</p>
+</article>
+<article class="j-card">
+<p class="j-card-tag">Associate Justice</p>
+<h3 class="j-card-name">Clarence Thomas</h3>
+<div class="j-card-meta">
+<div class="j-card-meta-item"><span class="label">Appointed By</span> <span class="value">G.H.W. Bush</span></div>
+<div class="j-card-meta-item"><span class="label">Year</span> <span class="value">1991</span></div>
+</div>
+<p class="j-card-bio">The longest-serving member of the current Court. The most originalist Justice, meaning he interprets the Constitution according to its meaning at the time it was written. Often writes separately to advocate for revisiting older precedents.</p>
+</article>
+<article class="j-card">
+<p class="j-card-tag">Associate Justice</p>
+<h3 class="j-card-name">Samuel A. Alito, Jr.</h3>
+<div class="j-card-meta">
+<div class="j-card-meta-item"><span class="label">Appointed By</span> <span class="value">G.W. Bush</span></div>
+<div class="j-card-meta-item"><span class="label">Year</span> <span class="value">2006</span></div>
+</div>
+<p class="j-card-bio">A consistent conservative voice. Has written some of the Court's most consequential recent opinions, including the 2022 decision overturning Roe v. Wade. Known for sharply worded dissents when in the minority.</p>
+</article>
+<article class="j-card">
+<p class="j-card-tag">Associate Justice</p>
+<h3 class="j-card-name">Sonia Sotomayor</h3>
+<div class="j-card-meta">
+<div class="j-card-meta-item"><span class="label">Appointed By</span> <span class="value">Obama</span></div>
+<div class="j-card-meta-item"><span class="label">Year</span> <span class="value">2009</span></div>
+</div>
+<p class="j-card-bio">The first Latina Justice. A former prosecutor and federal trial judge before joining the Court. Frequently writes dissents on criminal procedure and civil rights cases that draw on her experience with the practical workings of the legal system.</p>
+</article>
+<article class="j-card">
+<p class="j-card-tag">Associate Justice</p>
+<h3 class="j-card-name">Elena Kagan</h3>
+<div class="j-card-meta">
+<div class="j-card-meta-item"><span class="label">Appointed By</span> <span class="value">Obama</span></div>
+<div class="j-card-meta-item"><span class="label">Year</span> <span class="value">2010</span></div>
+</div>
+<p class="j-card-bio">Former dean of Harvard Law School and U.S. Solicitor General. Never served as a judge before joining the Court, which is unusual. Known for clear, accessible writing and for occasionally finding common ground with the conservative wing.</p>
+</article>
+<article class="j-card">
+<p class="j-card-tag">Associate Justice</p>
+<h3 class="j-card-name">Neil M. Gorsuch</h3>
+<div class="j-card-meta">
+<div class="j-card-meta-item"><span class="label">Appointed By</span> <span class="value">Trump</span></div>
+<div class="j-card-meta-item"><span class="label">Year</span> <span class="value">2017</span></div>
+</div>
+<p class="j-card-bio">Filled the seat that had been vacant since Justice Scalia's death in 2016. A textualist in the Scalia tradition. Has surprised some observers by siding with liberal Justices on Native American law cases and some criminal procedure cases.</p>
+</article>
+<article class="j-card">
+<p class="j-card-tag">Associate Justice</p>
+<h3 class="j-card-name">Brett M. Kavanaugh</h3>
+<div class="j-card-meta">
+<div class="j-card-meta-item"><span class="label">Appointed By</span> <span class="value">Trump</span></div>
+<div class="j-card-meta-item"><span class="label">Year</span> <span class="value">2018</span></div>
+</div>
+<p class="j-card-bio">Replaced Justice Kennedy, who had been the Court's swing vote for years. Generally conservative but sometimes joins Roberts in moving toward the middle on procedural and institutional questions. His confirmation was one of the most contested in modern history.</p>
+</article>
+<article class="j-card">
+<p class="j-card-tag">Associate Justice</p>
+<h3 class="j-card-name">Amy Coney Barrett</h3>
+<div class="j-card-meta">
+<div class="j-card-meta-item"><span class="label">Appointed By</span> <span class="value">Trump</span></div>
+<div class="j-card-meta-item"><span class="label">Year</span> <span class="value">2020</span></div>
+</div>
+<p class="j-card-bio">Confirmed just eight days before the 2020 election after the death of Justice Ginsburg. A former Notre Dame law professor and originalist. Has shown some independence from the Court's most conservative wing on procedural and federalism questions.</p>
+</article>
+<article class="j-card">
+<p class="j-card-tag">Associate Justice</p>
+<h3 class="j-card-name">Ketanji Brown Jackson</h3>
+<div class="j-card-meta">
+<div class="j-card-meta-item"><span class="label">Appointed By</span> <span class="value">Biden</span></div>
+<div class="j-card-meta-item"><span class="label">Year</span> <span class="value">2022</span></div>
+</div>
+<p class="j-card-bio">The first Black woman to serve on the Supreme Court. A former federal public defender and trial judge. Has written prominently on criminal procedure, voting rights, and the administrative state, often in dissent on the current Court.</p>
+</article>
+</div>
+</section>
+<!-- 03 - HOW JUSTICES GET THERE -->
+<section aria-labelledby="s3-title">
+<div class="section-head">
+<div class="section-num">Section <strong>03</strong></div>
+<h2 class="section-title" id="s3-title">How a Justice <em>Gets There</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">Appointment<br>and tenure</div>
+<div class="body-grid-main">
+<p>The Constitution gives the President the power to nominate Justices and the Senate the power to confirm them. That is the entire formal process. A President nominates someone. The Senate Judiciary Committee holds hearings. The full Senate votes. A simple majority is enough to confirm. Once confirmed, the new Justice is sworn in and begins work.</p>
+<p>In practice, the process has become deeply political. Confirmation hearings now stretch over multiple days and produce significant media attention. Senate votes increasingly fall along party lines. Recent confirmations have been close, and one nominee in 2016, Merrick Garland, never received a hearing at all because the Senate majority refused to consider any nominee in a presidential election year. The same Senate majority did consider and confirm Amy Coney Barrett during the 2020 election year. The rules around confirmation are mostly Senate norms rather than constitutional requirements, and norms can shift.</p>
+<p>Once a Justice is confirmed, the formal protections of the office are substantial. The Constitution guarantees Justices hold their positions "during good Behaviour," which in practice means for life unless they choose to retire, die in office, or are impeached and removed by Congress. The Constitution also forbids Congress from reducing a Justice's salary while they are in office, which is meant to insulate Justices from political pressure.</p>
+<p>There is no mandatory retirement age. Some Justices have served into their 80s. The decision of when to leave the Court is the Justice's own. Many Justices time their retirements to allow an ideologically aligned President to choose their replacement, though some have done the opposite or have been unable to do so.</p>
+</div>
+</div>
+</section>
+<!-- 04 - HOW A CASE REACHES THE COURT -->
+<section aria-labelledby="s4-title">
+<div class="section-head">
+<div class="section-num">Section <strong>04</strong></div>
+<h2 class="section-title" id="s4-title">How a Case <em>Reaches the Court</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">The journey</div>
+<div class="body-grid-main">
+<p>A case at SCOTUS has usually been to several other courts first. The Supreme Court is almost never the first court to hear a dispute. Understanding the path matters because by the time the Court rules, the case has often been litigated for years, and the Court's decision affects not just the parties but every similar case across the country.</p>
+</div>
+</div>
+<div class="journey">
+<div class="journey-step">
+<div class="journey-step-num">01</div>
+<div class="journey-step-body">
+<h3 class="journey-step-title">Trial Court</h3>
+<p class="journey-step-desc">The case starts in a trial court, either state or federal depending on the issue. This is where evidence is presented, witnesses testify, and the initial decision is made. Most cases that ever reach SCOTUS started here and lost.</p>
+</div>
+</div>
+<div class="journey-step">
+<div class="journey-step-num">02</div>
+<div class="journey-step-body">
+<h3 class="journey-step-title">Court of Appeals</h3>
+<p class="journey-step-desc">The losing party can appeal. In the state system, this goes to an intermediate appellate court, then potentially to the state's highest court. In the federal system, it goes to one of the thirteen U.S. Courts of Appeals (called "circuits"). The appellate court reviews the trial court's legal rulings, usually without taking new evidence.</p>
+</div>
+</div>
+<div class="journey-step">
+<div class="journey-step-num">03</div>
+<div class="journey-step-body">
+<h3 class="journey-step-title">Petition for Certiorari</h3>
+<p class="journey-step-desc">The losing party at the appellate level can ask the Supreme Court to hear the case by filing a <strong>petition for certiorari</strong>, usually shortened to "cert petition." This is the funnel point. The Court receives roughly 7,000 to 8,000 cert petitions per year. It grants fewer than 100.</p>
+</div>
+</div>
+<div class="journey-step">
+<div class="journey-step-num">04</div>
+<div class="journey-step-body">
+<h3 class="journey-step-title">Conference and the "Rule of Four"</h3>
+<p class="journey-step-desc">The Justices meet in private conferences and discuss the cert petitions. A case is granted review if at least four Justices vote to take it. This is called the <strong>Rule of Four</strong>. The Court does not have to explain why it takes or refuses a case, and usually does not.</p>
+</div>
+</div>
+<div class="journey-step">
+<div class="journey-step-num">05</div>
+<div class="journey-step-body">
+<h3 class="journey-step-title">Briefing</h3>
+<p class="journey-step-desc">Once cert is granted, the parties file written legal arguments called <strong>briefs</strong>. Outside groups can also file <strong>amicus curiae</strong> briefs ("friend of the court" briefs) presenting their views. Major cases can attract dozens of amicus briefs from organizations, states, and former government officials.</p>
+</div>
+</div>
+<div class="journey-step">
+<div class="journey-step-num">06</div>
+<div class="journey-step-body">
+<h3 class="journey-step-title">Oral Argument</h3>
+<p class="journey-step-desc">Lawyers for each side appear before the nine Justices and answer questions. Each side typically gets 30 minutes, though the Justices often interrupt and ask far more questions than the time formally allows. Oral arguments are recorded and posted on the Court's website the same day.</p>
+</div>
+</div>
+<div class="journey-step">
+<div class="journey-step-num">07</div>
+<div class="journey-step-body">
+<h3 class="journey-step-title">The Conference Vote</h3>
+<p class="journey-step-desc">After argument, the Justices meet privately to discuss the case and take an initial vote. The most senior Justice in the majority assigns who will write the opinion. If the Chief Justice is in the majority, he assigns. If not, the senior Associate Justice in the majority assigns.</p>
+</div>
+</div>
+<div class="journey-step">
+<div class="journey-step-num">08</div>
+<div class="journey-step-body">
+<h3 class="journey-step-title">Opinion Drafting and Circulation</h3>
+<p class="journey-step-desc">The assigned Justice and their law clerks draft the opinion. Other Justices may also draft concurrences (agreeing with the result for different reasons) or dissents (disagreeing). Drafts circulate among the Justices, who can suggest changes or switch their votes. This can take months.</p>
+</div>
+</div>
+<div class="journey-step">
+<div class="journey-step-num">09</div>
+<div class="journey-step-body">
+<h3 class="journey-step-title">Decision Day</h3>
+<p class="journey-step-desc">When the opinion is ready, the Court announces the decision from the bench on what's called a "decision day." The opinion is posted on the Court's website. From that moment, the decision is the law of the land. Most decisions come out between April and June.</p>
+</div>
+</div>
+</div>
+<div class="funnel">
+<p class="funnel-title">The Funnel: From Petition to Decision</p>
+<div class="funnel-row">
+<div class="funnel-num">7,000+ <span class="funnel-num-small">Per Term</span></div>
+<div class="funnel-desc"><strong>Cert petitions filed.</strong> Roughly seven to eight thousand requests for review come in each year. Anyone who has lost in a lower court and wants Supreme Court review files one of these.</div>
+</div>
+<div class="funnel-row">
+<div class="funnel-num">60-80 <span class="funnel-num-small">Granted</span></div>
+<div class="funnel-desc"><strong>Cases the Court actually decides.</strong> Out of thousands of petitions, fewer than a hundred get full review with oral argument and a written opinion. The Court is choosing roughly one case in every hundred.</div>
+</div>
+<div class="funnel-row">
+<div class="funnel-num">9 <span class="funnel-num-small">Justices</span></div>
+<div class="funnel-desc"><strong>People deciding all of it.</strong> The same nine people read the briefs, hear the arguments, vote, and write or join the opinions for every case the Court takes. The workload is enormous.</div>
+</div>
+</div>
+</section>
+<!-- 05 - WHAT THE COURT DOES AND DOES NOT DO -->
+<section aria-labelledby="s5-title">
+<div class="section-head">
+<div class="section-num">Section <strong>05</strong></div>
+<h2 class="section-title" id="s5-title">What the Court <em>Does and Does Not Do</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">The actual<br>scope</div>
+<div class="body-grid-main">
+<p>One of the most common misconceptions about the Supreme Court is that it can review any case anyone wants reviewed. It cannot. The Court has limited jurisdiction and only takes cases that meet specific criteria. Understanding what kinds of cases the Court hears, and what it explicitly does not do, prevents a lot of confusion about why your client's family court matter is not going to end up at SCOTUS.</p>
+</div>
+</div>
+<div class="canlist">
+<article class="canlist-card does">
+<p class="canlist-label">What the Court Does</p>
+<h3 class="canlist-headline">Decides federal questions of broad significance.</h3>
+<ul>
+<li><strong>Constitutional questions.</strong> Does a state law violate the Constitution? Does federal action exceed congressional authority? These are the cases the Court most often takes.</li>
+<li><strong>Federal statutes.</strong> What does a federal law actually mean? When lower courts disagree, the Court can settle the question.</li>
+<li><strong>Circuit splits.</strong> When different federal appellate courts have reached opposite conclusions on the same legal question, SCOTUS often steps in to create a national rule.</li>
+<li><strong>State-versus-state disputes.</strong> The Court has original jurisdiction over disputes between states. Water rights, boundary disputes, and similar cases come directly to SCOTUS.</li>
+<li><strong>Cases the President asks for.</strong> When the federal government is a party and the Solicitor General asks for review, the Court takes the case at much higher rates than typical.</li>
+</ul>
+</article>
+<article class="canlist-card does-not">
+<p class="canlist-label">What the Court Does Not Do</p>
+<h3 class="canlist-headline">Most of what people think it does.</h3>
+<ul>
+<li><strong>Hear "I lost in family court and it was unfair."</strong> The Court does not exist to correct errors in routine state-court cases. Most disputes end at the state level and never go further.</li>
+<li><strong>Give advisory opinions.</strong> The Court will not answer hypothetical legal questions, even from the President or Congress. There must be an actual case with adverse parties.</li>
+<li><strong>Enforce its own decisions.</strong> The Court has no police, no army, no agency staff. When it rules, it depends on the executive branch and state governments to actually carry the decision out.</li>
+<li><strong>Write laws.</strong> The Court interprets statutes and the Constitution. It cannot create new programs, set tax rates, or fund agencies. Those are legislative functions.</li>
+<li><strong>Decide every important question.</strong> Many huge legal questions are settled in lower federal courts or in state supreme courts and never reach SCOTUS. The Court's silence on an issue is not the same as approval.</li>
+</ul>
+</article>
+</div>
+</section>
+<!-- 06 - ANATOMY OF AN OPINION -->
+<section aria-labelledby="s6-title">
+<div class="section-head">
+<div class="section-num">Section <strong>06</strong></div>
+<h2 class="section-title" id="s6-title">Anatomy of an <em>Opinion</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">The parts<br>that matter</div>
+<div class="body-grid-main">
+<p>When the Court decides a case, it produces an "opinion." But that single word covers several different things, and the distinctions matter for how the decision will be applied later. Reading an opinion intelligently means knowing which parts are binding law and which parts are commentary by individual Justices.</p>
+</div>
+</div>
+<div class="anatomy">
+<div class="anatomy-card">
+<h3 class="anatomy-card-name">Majority <em>Opinion</em></h3>
+<p class="anatomy-card-stakes">Binding law</p>
+<p class="anatomy-card-desc">The opinion joined by at least five of the nine Justices. This is the law of the land. Lower courts must follow it. When people say "the Supreme Court ruled," this is what they mean. The Justice listed first is the "author," but the opinion represents all the Justices who joined it.</p>
+</div>
+<div class="anatomy-card">
+<h3 class="anatomy-card-name">Plurality <em>Opinion</em></h3>
+<p class="anatomy-card-stakes">Persuasive, not strictly binding</p>
+<p class="anatomy-card-desc">When the Justices agree on the outcome but cannot agree on the reasoning, an opinion may have fewer than five votes for any single rationale. The opinion with the most votes is the "plurality." Lower courts try to apply it but are not strictly bound by all of its reasoning. Troxel v. Granville is an example.</p>
+</div>
+<div class="anatomy-card">
+<h3 class="anatomy-card-name">Concurrence</h3>
+<p class="anatomy-card-stakes">Agreement with caveats</p>
+<p class="anatomy-card-desc">A Justice who agrees with the result but wants to write separately, either to emphasize a particular point or to disagree with the majority's reasoning while still reaching the same conclusion. Concurrences are not binding, but influential concurrences can shape how the majority opinion is later read.</p>
+</div>
+<div class="anatomy-card">
+<h3 class="anatomy-card-name">Dissent</h3>
+<p class="anatomy-card-stakes">Disagreement on the record</p>
+<p class="anatomy-card-desc">A Justice who disagrees with the majority. Dissents are not law, but they can be powerful. Some dissents have eventually become majority opinions in later cases as the Court changes composition or rethinks an issue. Reading dissents is how you understand what the legal arguments on the other side were.</p>
+</div>
+<div class="anatomy-card">
+<h3 class="anatomy-card-name">Per <em>Curiam</em></h3>
+<p class="anatomy-card-stakes">By the court, unsigned</p>
+<p class="anatomy-card-desc">A short opinion attributed to the Court as a whole, not signed by any individual Justice. Often used for unanimous or near-unanimous decisions on relatively straightforward questions. Less common than majority opinions but you will see them.</p>
+</div>
+<div class="anatomy-card">
+<h3 class="anatomy-card-name">Slip Opinion</h3>
+<p class="anatomy-card-stakes">The version released first</p>
+<p class="anatomy-card-desc">The version of the opinion released on decision day. It is the official text but can be revised slightly before final publication in the U.S. Reports, the bound volumes where Supreme Court decisions are formally recorded. Citations sometimes refer to the slip opinion before final publication.</p>
+</div>
+</div>
+</section>
+<!-- 07 - READING A CITATION -->
+<section aria-labelledby="s7-title">
+<div class="section-head">
+<div class="section-num">Section <strong>07</strong></div>
+<h2 class="section-title" id="s7-title">Reading a <em>Citation</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">Decoding<br>the numbers</div>
+<div class="body-grid-main">
+<p>Every Supreme Court case has a standard citation format. Once you can read it, you can find the case in seconds. The format looks intimidating but contains only four pieces of information. Here is one of the cases from this series, broken down piece by piece.</p>
+</div>
+</div>
+<div class="citation-block">
+<p class="citation-big">Endrew F. <em>v.</em> Douglas County School District, 580 U.S. 386 (2017)</p>
+<div class="citation-parts">
+<div class="citation-part">
+<p class="citation-part-label">Case Name</p>
+<p class="citation-part-value">Endrew F. v. Douglas County</p>
+<p class="citation-part-desc">The petitioner is listed first, the respondent second. "v." stands for "versus."</p>
+</div>
+<div class="citation-part">
+<p class="citation-part-label">Volume</p>
+<p class="citation-part-value">580</p>
+<p class="citation-part-desc">The volume number in the official reporter. SCOTUS opinions are bound in volumes called U.S. Reports.</p>
+</div>
+<div class="citation-part">
+<p class="citation-part-label">Reporter · Page</p>
+<p class="citation-part-value">U.S. 386</p>
+<p class="citation-part-desc">The opinion appears in the United States Reports starting at page 386. "U.S." identifies the reporter.</p>
+</div>
+<div class="citation-part">
+<p class="citation-part-label">Year Decided</p>
+<p class="citation-part-value">2017</p>
+<p class="citation-part-desc">The year the Court issued the decision. Helps you place the case in time relative to other rulings.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 08 - COMMON MISCONCEPTIONS -->
+<section aria-labelledby="s8-title">
+<div class="section-head">
+<div class="section-num">Section <strong>08</strong></div>
+<h2 class="section-title" id="s8-title">Common <em>Misconceptions</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">Myth and<br>reality</div>
+<div class="body-grid-main">
+<p>A few things people frequently believe about the Supreme Court are not quite right. Some of these are simple oversimplifications, others are misunderstandings that get in the way of actually using SCOTUS decisions in practice. Here are the ones that matter most.</p>
+</div>
+</div>
+<div class="myth-grid">
+<div class="myth-card">
+<div class="myth-side myth">
+<p class="myth-side-label">Myth</p>
+<p class="myth-side-text">"Justices represent the President who appointed them."</p>
+</div>
+<div class="myth-side reality">
+<p class="myth-side-label">Reality</p>
+<p class="myth-side-text">Justices are not representatives of any President or party. They have lifetime tenure precisely so they can decide cases without political pressure. <strong>Justices have surprised the Presidents who appointed them many times,</strong> and the historical record is full of conservative appointees who became more moderate over time, and vice versa.</p>
+</div>
+</div>
+<div class="myth-card">
+<div class="myth-side myth">
+<p class="myth-side-label">Myth</p>
+<p class="myth-side-text">"The Supreme Court has the final word on what the Constitution means."</p>
+</div>
+<div class="myth-side reality">
+<p class="myth-side-label">Reality</p>
+<p class="myth-side-text">The Court has the final word in a particular case, but constitutional meaning has been revised over time as the Court itself changes. Decisions can be overturned by later decisions, by constitutional amendment, or, in the case of statutory rulings, by Congress writing a new law. <strong>"Settled law" is rarely as settled as it sounds.</strong></p>
+</div>
+</div>
+<div class="myth-card">
+<div class="myth-side myth">
+<p class="myth-side-label">Myth</p>
+<p class="myth-side-text">"If the Court rules a certain way, the situation changes immediately on the ground."</p>
+</div>
+<div class="myth-side reality">
+<p class="myth-side-label">Reality</p>
+<p class="myth-side-text">A SCOTUS ruling is the start of a long implementation process, not the end. Lower courts must apply the ruling to specific cases. State agencies must change policies. Caseworkers must adjust practices. <strong>The gap between a Court decision and on-the-ground change can be years</strong>, and sometimes the change never fully arrives.</p>
+</div>
+</div>
+<div class="myth-card">
+<div class="myth-side myth">
+<p class="myth-side-label">Myth</p>
+<p class="myth-side-text">"A 5-4 decision is less binding than a 9-0 decision."</p>
+</div>
+<div class="myth-side reality">
+<p class="myth-side-label">Reality</p>
+<p class="myth-side-text">Legally, they are the same. A majority is a majority. <strong>The vote count is not a measure of the decision's authority.</strong> That said, a unanimous decision is harder to overturn later because there is no dissent on record arguing the other way, and a 5-4 decision can shift if a single Justice retires or changes their mind in a later case.</p>
+</div>
+</div>
+<div class="myth-card">
+<div class="myth-side myth">
+<p class="myth-side-label">Myth</p>
+<p class="myth-side-text">"The Supreme Court can take any case it wants."</p>
+</div>
+<div class="myth-side reality">
+<p class="myth-side-label">Reality</p>
+<p class="myth-side-text">The Court has limited jurisdiction defined by the Constitution and federal statutes. It can only hear cases that involve federal law, the Constitution, or specific other categories. <strong>A case has to come to the Court through the proper channels.</strong> SCOTUS cannot reach down and grab a state criminal case that does not raise a federal issue.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 09 - HOW IT REACHES YOUR CASELOAD -->
+<section aria-labelledby="s9-title">
+<div class="section-head">
+<div class="section-num">Section <strong>09</strong></div>
+<h2 class="section-title" id="s9-title">How a Decision <em>Reaches Your Caseload</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">The chain<br>from the<br>bench to<br>your office</div>
+<div class="body-grid-main">
+<p>This is where the abstract becomes concrete. A Supreme Court decision can feel like distant news, the kind of thing that happens in Washington and does not really touch your work in Tennessee or anywhere else. But the chain from the bench to your office is shorter than it looks. Here is how a SCOTUS decision actually reaches a social worker.</p>
+</div>
+</div>
+<div class="chain">
+<div class="chain-link">
+<p class="chain-link-tag">Step 01</p>
+<h3 class="chain-link-title">SCOTUS issues the opinion</h3>
+<p class="chain-link-desc">The Court announces its decision. The opinion is published. Legal commentators, news outlets, and law firms read it and start writing about what it means.</p>
+</div>
+<div class="chain-link">
+<p class="chain-link-tag">Step 02</p>
+<h3 class="chain-link-title">Lower federal courts begin applying it</h3>
+<p class="chain-link-desc">Federal trial and appellate courts working on similar cases now have new binding precedent to apply. Cases pending on appeal may be sent back for reconsideration. New cases get filed citing the new ruling.</p>
+</div>
+<div class="chain-link">
+<p class="chain-link-tag">Step 03</p>
+<h3 class="chain-link-title">Federal agencies issue guidance</h3>
+<p class="chain-link-desc">Departments like HHS, Education, and Justice analyze the decision and issue guidance documents to states and to their own staff. These guidance documents explain what the agencies think the ruling requires.</p>
+</div>
+<div class="chain-link">
+<p class="chain-link-tag">Step 04</p>
+<h3 class="chain-link-title">State agencies revise their policies</h3>
+<p class="chain-link-desc">State child welfare departments, mental health systems, education agencies, and Medicaid programs revise their policies to comply. This is often where the lag is longest. Some states move quickly, others take years.</p>
+</div>
+<div class="chain-link">
+<p class="chain-link-tag">Step 05</p>
+<h3 class="chain-link-title">Training and practice manuals get updated</h3>
+<p class="chain-link-desc">Staff training materials, intake forms, casework protocols, and decision-making tools are revised. Workers receive in-service training on the new requirements. The decision becomes part of the institutional knowledge of the agency.</p>
+</div>
+<div class="chain-link you">
+<p class="chain-link-tag">Step 06 · You</p>
+<h3 class="chain-link-title">The caseworker applies it</h3>
+<p class="chain-link-desc">A worker in an office somewhere in the country handles a case and follows the procedure the decision requires. The worker may not know the case name. They may not know the decision exists. But the work they do reflects the ruling the Court issued years earlier. That worker may be you.</p>
+</div>
+</div>
+</section>
+</main><footer class="colophon" role="contentinfo">
+<div class="colophon-inner">
+<div class="colophon-brand">Understanding How SCOTUS Works</div>
+<div class="colophon-meta">Austin Peay State University · MSW Program</div>
+</div>
+</footer></body></html>

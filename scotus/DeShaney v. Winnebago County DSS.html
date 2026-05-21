@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DeShaney v. Winnebago County, Case Explainer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&amp;family=Inter+Tight:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f4ede0;
+    --paper-2: #ebe2d1;
+    --paper-deep: #e5dac4;
+    --ink: #1c1815;
+    --ink-2: #2d2722;
+    --ink-soft: #4a4239;
+    --ink-mute: #6b6258;
+    --rule: #c9bda6;
+    --rule-soft: #d9cfba;
+    --oxblood: #6b1f2a;
+    --oxblood-deep: #4f1620;
+    --oxblood-tint: #f3e0e2;
+    --brass: #6b5320;
+    --brass-tint: #f1e8cf;
+    --majority: #2d4a3a;
+    --majority-tint: #d9e2d8;
+    --dissent: #6b1f2a;
+    --dissent-tint: #ebd5d6;
+    --concur: #6b5320;
+    --concur-tint: #efe5c8;
+
+    --font-display: 'Fraunces', 'Times New Roman', serif;
+    --font-body: 'Inter Tight', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 17px;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(107,31,42,0.025) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(107,83,32,0.025) 0%, transparent 50%);
+  }
+
+  /* PAPER TEXTURE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.4;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.11 0 0 0 0 0.09 0 0 0 0 0.08 0 0 0 0.12 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* SKIP LINK */
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 16px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 12px 18px;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 2px;
+    z-index: 9999;
+    transition: top 0.2s;
+  }
+  .skip-link:focus { top: 16px; outline: 3px solid var(--oxblood); }
+
+  /* MASTHEAD */
+  .masthead {
+    border-bottom: 1px solid var(--rule);
+    padding: 24px 0 18px;
+    position: relative;
+    z-index: 2;
+  }
+  .masthead-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .masthead-brand {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .masthead-brand span { color: var(--oxblood); }
+  .masthead-meta {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .masthead-meta strong { color: var(--ink); }
+
+  /* HERO */
+  .hero {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 48px 32px 32px;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--oxblood);
+  }
+  .hero-eyebrow::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+    max-width: 200px;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(40px, 6vw, 84px);
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin-bottom: 12px;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+  }
+  .hero-title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--oxblood);
+  }
+  .hero-citation {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--ink-mute);
+    letter-spacing: 0.04em;
+    margin-bottom: 36px;
+  }
+  .hero-citation a { color: var(--oxblood); text-decoration: underline; text-underline-offset: 3px; }
+  .hero-citation a:hover { color: var(--oxblood-deep); }
+
+  /* LEDE / HOLDING */
+  .lede {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    padding-top: 28px;
+    border-top: 3px double var(--ink);
+  }
+  .lede-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    padding-top: 6px;
+  }
+  .lede-label-mark {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--oxblood);
+    margin-right: 8px;
+    border-radius: 50%;
+    vertical-align: middle;
+  }
+  .lede-text {
+    font-family: var(--font-display);
+    font-size: clamp(20px, 2.2vw, 26px);
+    line-height: 1.4;
+    font-weight: 400;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .lede-text strong {
+    font-weight: 600;
+    color: var(--oxblood);
+    font-style: italic;
+  }
+  @media (max-width: 720px) {
+    .lede { grid-template-columns: 1fr; gap: 12px; }
+  }
+
+  /* BLUF */
+  .bluf {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    margin-top: 28px;
+    padding: 24px 28px 26px;
+    background: var(--paper-2);
+    border-left: 4px solid var(--brass);
+    border-radius: 2px;
+  }
+  .bluf-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--brass);
+    font-weight: 700;
+    padding-top: 4px;
+  }
+  .bluf-label-mark {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--brass);
+    margin-right: 8px;
+    border-radius: 50%;
+    vertical-align: middle;
+  }
+  .bluf-text {
+    font-family: var(--font-body);
+    font-size: 16.5px;
+    line-height: 1.7;
+    color: var(--ink-2);
+  }
+  .bluf-text strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  @media (max-width: 720px) {
+    .bluf { grid-template-columns: 1fr; gap: 8px; padding: 20px 22px; }
+  }
+
+  /* DROP CAP */
+  .dropcap::first-letter {
+    font-family: var(--font-display);
+    font-size: 5em;
+    font-weight: 600;
+    float: left;
+    line-height: 0.85;
+    margin: 0.04em 0.08em 0 0;
+    color: var(--oxblood);
+    font-style: italic;
+  }
+
+  /* MAIN GRID */
+  main {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px 80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* SECTION */
+  section {
+    padding: 56px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  section:last-of-type { border-bottom: none; }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 32px;
+    align-items: baseline;
+    margin-bottom: 32px;
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    border-top: 2px solid var(--ink);
+    padding-top: 8px;
+  }
+  .section-num strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--oxblood);
+    letter-spacing: -0.01em;
+    margin-top: 2px;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .section-title em { font-style: italic; color: var(--oxblood); }
+  @media (max-width: 720px) {
+    .section-head { grid-template-columns: 1fr; gap: 8px; }
+    .section-num { border-top: none; padding-top: 0; }
+  }
+
+  /* BODY COPY */
+  .body-grid {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 32px;
+  }
+  .body-grid-aside {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    padding-top: 8px;
+  }
+  .body-grid-main { max-width: 65ch; }
+  .body-grid-main p { margin-bottom: 1em; font-size: 17px; line-height: 1.7; color: var(--ink-2); }
+  .body-grid-main p:last-child { margin-bottom: 0; }
+  .body-grid-main strong { color: var(--ink); font-weight: 600; }
+  .body-grid-main em { font-style: italic; }
+  @media (max-width: 720px) {
+    .body-grid { grid-template-columns: 1fr; gap: 8px; }
+  }
+
+  /* THE BENCH */
+  .bench {
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 36px 32px 28px;
+    margin-top: 8px;
+  }
+  .bench-title {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  .bench-row {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+  .justice {
+    flex: 0 0 auto;
+    width: 88px;
+    text-align: center;
+    padding: 12px 4px;
+    border-radius: 4px;
+    border: 1.5px solid var(--rule);
+    background: var(--paper);
+    position: relative;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .justice:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(28,24,21,0.08);
+  }
+  .justice-seal {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin: 0 auto 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--paper);
+    font-style: italic;
+  }
+  .justice-name {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.15;
+    color: var(--ink);
+  }
+  .justice-role {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-top: 4px;
+  }
+  .justice.majority { border-color: var(--majority); background: var(--majority-tint); }
+  .justice.majority .justice-seal { background: var(--majority); }
+  .justice.dissent { border-color: var(--dissent); background: var(--dissent-tint); }
+  .justice.dissent .justice-seal { background: var(--dissent); }
+  .justice.dissent .justice-role { color: var(--ink); }
+  .justice.concur { border-color: var(--concur); background: var(--concur-tint); }
+  .justice.concur .justice-seal { background: var(--concur); }
+  .justice.concur .justice-role { color: var(--ink); }
+  .justice.author::after {
+    content: '\2726';
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    font-size: 12px;
+    color: var(--oxblood);
+  }
+
+  .bench-legend {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .bench-legend-item { display: flex; align-items: center; gap: 8px; }
+  .bench-legend-swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1.5px solid;
+  }
+  .bench-legend-swatch.maj { background: var(--majority-tint); border-color: var(--majority); }
+  .bench-legend-swatch.con { background: var(--concur-tint); border-color: var(--concur); }
+  .bench-legend-swatch.dis { background: var(--dissent-tint); border-color: var(--dissent); }
+
+  /* ARGUMENT CARDS */
+  .arguments {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 8px;
+  }
+  @media (max-width: 720px) { .arguments { grid-template-columns: 1fr; } }
+
+  .arg-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-top: 4px solid;
+    padding: 28px 28px 24px;
+    border-radius: 2px;
+    position: relative;
+  }
+  .arg-card.majority-arg { border-top-color: var(--majority); }
+  .arg-card.dissent-arg { border-top-color: var(--dissent); }
+
+  .arg-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .arg-card.majority-arg .arg-label { color: var(--majority); }
+  .arg-card.dissent-arg .arg-label { color: var(--dissent); }
+  .arg-label-mark {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+  .arg-card.majority-arg .arg-label-mark { background: var(--majority); }
+  .arg-card.dissent-arg .arg-label-mark { background: var(--dissent); }
+
+  .arg-headline {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--ink);
+    margin-bottom: 18px;
+    letter-spacing: -0.01em;
+  }
+  .arg-headline em { font-style: italic; color: var(--oxblood); }
+
+  .arg-points {
+    list-style: none;
+    counter-reset: argp;
+  }
+  .arg-points li {
+    counter-increment: argp;
+    padding: 14px 0 14px 36px;
+    border-bottom: 1px solid var(--rule-soft);
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--ink-2);
+    position: relative;
+  }
+  .arg-points li:last-child { border-bottom: none; padding-bottom: 4px; }
+  .arg-points li::before {
+    content: counter(argp, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 14px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-mute);
+    letter-spacing: 0.05em;
+  }
+  .arg-points li strong {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--ink);
+    margin-bottom: 4px;
+    letter-spacing: -0.005em;
+  }
+
+  /* GUARDRAIL */
+  .guardrail {
+    background: var(--brass-tint);
+    border: 1px solid var(--brass);
+    border-left: 4px solid var(--brass);
+    padding: 24px 28px;
+    margin-top: 8px;
+    border-radius: 2px;
+    position: relative;
+  }
+  .guardrail-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brass);
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .guardrail-label::before {
+    content: '\26A0';
+    font-size: 16px;
+    color: var(--brass);
+  }
+  .guardrail-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 14px;
+    letter-spacing: -0.01em;
+  }
+  .guardrail ul {
+    list-style: none;
+    padding: 0;
+  }
+  .guardrail li {
+    padding: 8px 0 8px 24px;
+    font-size: 15.5px;
+    color: var(--ink-2);
+    line-height: 1.55;
+    position: relative;
+  }
+  .guardrail li::before {
+    content: '\2715';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    color: var(--brass);
+    font-weight: 700;
+    font-size: 13px;
+  }
+  .guardrail li strong { color: var(--ink); font-weight: 600; }
+
+  /* GLOSSARY INLINE */
+  .term {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: var(--oxblood);
+    cursor: help;
+    border-bottom: 1.5px dotted var(--oxblood);
+    font-weight: 600;
+  }
+  .term:focus-visible {
+    outline: 2px solid var(--oxblood);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  .term-popup {
+    position: absolute;
+    max-width: 340px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 16px 18px;
+    border-radius: 3px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.55;
+    box-shadow: 0 12px 28px rgba(28,24,21,0.3);
+    z-index: 200;
+    border: 1px solid var(--ink-2);
+  }
+  .term-popup[hidden] { display: none; }
+  .term-popup strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--paper);
+    margin-bottom: 6px;
+    font-style: italic;
+  }
+
+  /* PROCEDURAL TIMELINE */
+  .timeline {
+    margin-top: 8px;
+    border-left: 2px solid var(--rule);
+    padding-left: 28px;
+    margin-left: 12px;
+  }
+  .timeline-event {
+    position: relative;
+    padding-bottom: 28px;
+  }
+  .timeline-event:last-child { padding-bottom: 0; }
+  .timeline-event::before {
+    content: '';
+    position: absolute;
+    left: -36px;
+    top: 6px;
+    width: 14px;
+    height: 14px;
+    background: var(--paper);
+    border: 2px solid var(--oxblood);
+    border-radius: 50%;
+  }
+  .timeline-event.scotus::before { background: var(--oxblood); }
+  .timeline-court {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+  .timeline-ruling {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+    letter-spacing: -0.005em;
+  }
+  .timeline-desc {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+
+  /* PRACTICE IMPLICATIONS */
+  .practice-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 8px;
+  }
+  @media (max-width: 820px) { .practice-grid { grid-template-columns: 1fr; } }
+
+  .practice-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 24px 22px;
+    border-radius: 2px;
+    border-top: 4px solid var(--oxblood);
+  }
+  .practice-card-tag {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  .practice-card-title {
+    font-family: var(--font-display);
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .practice-card p {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink-2);
+  }
+
+  /* PULL QUOTE */
+  .pullquote {
+    margin: 48px auto;
+    max-width: 800px;
+    text-align: center;
+    padding: 0 24px;
+  }
+  .pullquote-mark {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 88px;
+    color: var(--oxblood);
+    line-height: 0.6;
+    margin-bottom: 12px;
+    font-weight: 400;
+  }
+  .pullquote-text {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(22px, 2.4vw, 30px);
+    line-height: 1.35;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 16px;
+    letter-spacing: -0.005em;
+  }
+  .pullquote-cite {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+
+  /* COLOPHON */
+  .colophon {
+    background: var(--ink);
+    color: var(--paper-2);
+    padding: 36px 32px;
+    position: relative;
+    z-index: 2;
+  }
+  .colophon-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .colophon-brand {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    font-style: italic;
+    color: var(--paper);
+  }
+  .colophon-meta {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #a89e8e;
+  }
+  .colophon-meta strong { color: var(--paper-2); }
+
+  /* KEY TERMS */
+  .key-terms {
+    margin-top: 16px;
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    padding: 28px 32px;
+    border-radius: 2px;
+  }
+  .key-terms-title {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .key-terms-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 32px;
+  }
+  @media (max-width: 720px) { .key-terms-list { grid-template-columns: 1fr; gap: 20px; } }
+  .key-term-item { padding: 0; }
+  .key-term-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-style: italic;
+    color: var(--ink);
+    font-size: 17px;
+    margin-bottom: 8px;
+    letter-spacing: -0.005em;
+  }
+  .key-term-def {
+    font-size: 14.5px;
+    color: var(--ink-2);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* PRINT */
+  @media print {
+    body::before, .skip-link { display: none; }
+    body { background: white; color: black; }
+    section { page-break-inside: avoid; }
+  }
+
+  /* REDUCED MOTION */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+
+  /* SR ONLY */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
+</head><body><p><a class="skip-link" href="#main">Skip to main content</a></p>
+<!-- MASTHEAD -->
+<div class="masthead" role="banner">
+<div class="masthead-inner">
+<div class="masthead-brand">understanding scotus opinions</div>
+<div class="masthead-meta">Dr. Philip Mongan, lcsw, ph.D.</div>
+</div>
+</div>
+<!-- HERO -->
+<div class="hero">
+<p class="hero-eyebrow">October Term 1988 · Decided February 22, 1989</p>
+<h1 class="hero-title">DeShaney <em>v.</em><br>Winnebago County</h1>
+<p class="hero-citation">No. 87–154 · 489 U.S. 189 (1989) · <a href="https://www.oyez.org/cases/1988/87-154" target="_blank" rel="noopener">Read the full case on Oyez ↗</a></p>
+<div class="lede">
+<div class="lede-label"><span class="lede-label-mark" aria-hidden="true"></span>The Holding</div>
+<p class="lede-text">The Supreme Court ruled, <strong>6–3</strong>, that the Due Process Clause of the Fourteenth Amendment does not impose an <em>affirmative duty</em> on a state to protect a child from harm by a private actor, even when state child welfare workers know about the abuse and fail to intervene.</p>
+</div>
+<div class="bluf">
+<div class="bluf-label"><span class="bluf-label-mark" aria-hidden="true"></span>In plain terms</div>
+<p class="bluf-text">A four-year-old boy named Joshua DeShaney was beaten by his father for years. The Winnebago County Department of Social Services knew about it. Their caseworker documented suspected abuse in his file for over a year and did nothing to remove him. The father eventually beat Joshua so badly that he went into a coma and was left with permanent brain damage. Joshua's mother sued the agency in federal court, claiming the Constitution required the agency to protect him. The Supreme Court said no. <strong>The Constitution restricts what the government can do to you, not what the government must do for you.</strong> This is the case every CPS worker needs to know, not because it tells you what to do, but because it tells you where federal constitutional liability starts and where it stops.</p>
+</div>
+</div>
+<main id="main"><!-- 01 - THE QUESTION -->
+<section aria-labelledby="s1-title">
+<div class="section-head">
+<div class="section-num">Section <strong>01</strong></div>
+<h2 class="section-title" id="s1-title">The Question <em>Presented</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">What was<br>at stake</div>
+<div class="body-grid-main">
+<p class="dropcap">Joshua DeShaney was born in 1979. After his parents divorced, custody was awarded to his father, who moved with him to Wisconsin. By 1982, Winnebago County DSS had been alerted that Joshua might be a victim of child abuse. By 1983, he had been admitted to a hospital with suspicious injuries. The county convened a child protection team, considered taking him into custody, and then sent him home to his father. Over the next year, the caseworker assigned to his case made about twenty home visits and recorded growing evidence of abuse in her notes. She did not remove him. In March 1984, Joshua's father beat him so severely that he fell into a life-threatening coma. He survived, but with permanent brain damage so severe that he was expected to spend the rest of his life in an institution.</p>
+<p>Joshua and his mother sued the agency under <button type="button" class="term" data-term="section1983" aria-describedby="popup-section1983">42 U.S.C. § 1983</button>, the federal civil rights statute. They argued that DSS had deprived Joshua of his liberty in violation of the <button type="button" class="term" data-term="dueprocess" aria-describedby="popup-dueprocess">Due Process Clause</button> of the Fourteenth Amendment by failing to protect him.</p>
+<p>The trial court dismissed the case. The Seventh Circuit affirmed. The question for the Supreme Court was a foundational one: does the Constitution require the state to protect a child from a private abuser when the state knows about the abuse?</p>
+</div>
+</div>
+</section>
+<!-- 02 - THE BENCH -->
+<section aria-labelledby="s2-title">
+<div class="section-head">
+<div class="section-num">Section <strong>02</strong></div>
+<h2 class="section-title" id="s2-title">The <em>Bench</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">Who joined<br>which side</div>
+<div class="body-grid-main">
+<p>Chief Justice Rehnquist wrote for a six-Justice majority. Justice Brennan wrote the lead dissent, joined by Justices Marshall and Blackmun. Justice Blackmun also wrote a separate dissent of his own, just four paragraphs long, that has become one of the most quoted passages in modern Supreme Court history.</p>
+</div>
+</div>
+<div class="bench" role="figure" aria-label="The nine Justices and how they voted">
+<p class="bench-title">The Rehnquist Court · Vote 6–3</p>
+<div class="bench-row">
+<div class="justice majority author">
+<div class="justice-seal" aria-hidden="true">R</div>
+<div class="justice-name">Rehnquist</div>
+<div class="justice-role">Author</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">W</div>
+<div class="justice-name">White</div>
+<div class="justice-role">Joined</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">S</div>
+<div class="justice-name">Stevens</div>
+<div class="justice-role">Joined</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">O</div>
+<div class="justice-name">O'Connor</div>
+<div class="justice-role">Joined</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">S</div>
+<div class="justice-name">Scalia</div>
+<div class="justice-role">Joined</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">K</div>
+<div class="justice-name">Kennedy</div>
+<div class="justice-role">Joined</div>
+</div>
+<div class="justice dissent">
+<div class="justice-seal" aria-hidden="true">B</div>
+<div class="justice-name">Brennan</div>
+<div class="justice-role">Dissented</div>
+</div>
+<div class="justice dissent">
+<div class="justice-seal" aria-hidden="true">M</div>
+<div class="justice-name">Marshall</div>
+<div class="justice-role">Dissented</div>
+</div>
+<div class="justice dissent">
+<div class="justice-seal" aria-hidden="true">B</div>
+<div class="justice-name">Blackmun</div>
+<div class="justice-role">Dissented</div>
+</div>
+</div>
+<div class="bench-legend">
+<div class="bench-legend-item"><span class="bench-legend-swatch maj" aria-hidden="true"></span>Majority (6)</div>
+<div class="bench-legend-item"><span class="bench-legend-swatch dis" aria-hidden="true"></span>Dissent (3)</div>
+<div class="bench-legend-item">✦ Opinion author</div>
+</div>
+</div>
+</section>
+<!-- PULL QUOTE -->
+<div class="pullquote">
+<div class="pullquote-mark" aria-hidden="true">“</div>
+<p class="pullquote-text">Poor Joshua!</p>
+<p class="pullquote-cite">Justice Blackmun, dissenting</p>
+</div>
+<!-- 03 - THE REASONING -->
+<section aria-labelledby="s3-title">
+<div class="section-head">
+<div class="section-num">Section <strong>03</strong></div>
+<h2 class="section-title" id="s3-title">The <em>Reasoning</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">Two<br>positions</div>
+<div class="body-grid-main">
+<p>The majority and the dissent both agree that what happened to Joshua was terrible. They disagree about whether the Constitution does anything about it. Both sides build careful arguments. The majority focuses on what the Due Process Clause actually says. The dissent focuses on what the State of Wisconsin had actually done before the final beating.</p>
+</div>
+</div>
+<div class="arguments">
+<article class="arg-card majority-arg">
+<div class="arg-label"><span class="arg-label-mark" aria-hidden="true"></span>The Majority</div>
+<h3 class="arg-headline">The Due Process Clause limits what the government <em>does to you,</em> not what it must <em>do for you.</em></h3>
+<ol class="arg-points">
+<li><strong>The Clause is a shield, not a sword.</strong> The Fourteenth Amendment says the state shall not deprive any person of life, liberty, or property without due process of law. That language restricts state action. It does not require the state to protect citizens from harm caused by other private citizens.</li>
+<li><strong>The history backs this up.</strong> The Framers wrote the Due Process Clause to prevent the government from abusing its power, not to require the government to act as a guarantor of safety. The decision about whether the state should be liable for failing to protect citizens was left to legislatures and the political process.</li>
+<li><strong>The "special relationship" exception is narrow.</strong> The Court has previously held that the state owes a duty of care to prisoners (Estelle v. Gamble) and to people involuntarily committed to mental institutions (Youngberg v. Romeo). But in those cases, the state had taken the person into custody and made them unable to care for themselves. Joshua was in his father's custody, not the state's.</li>
+<li><strong>Knowing about the danger is not the same as creating it.</strong> The state may have known Joshua was in danger. But the state did not put him in his father's home. The state did not cause the abuse. Knowledge of a danger does not, by itself, create a constitutional duty to act.</li>
+<li><strong>State tort law is still available.</strong> Wisconsin may have created a duty under state tort law by setting up a child protection system and then failing to use it. That is a different question from whether the federal Constitution was violated. The Due Process Clause does not turn every state tort into a constitutional violation.</li>
+</ol>
+</article>
+<article class="arg-card dissent-arg">
+<div class="arg-label"><span class="arg-label-mark" aria-hidden="true"></span>Justice Brennan, dissenting</div>
+<h3 class="arg-headline">Wisconsin did not stand by and do nothing. It built a system that made <em>everyone else stand by</em> and then it failed.</h3>
+<ol class="arg-points">
+<li><strong>The state actively took control.</strong> Wisconsin law channels every report of child abuse through the county DSS. Police, doctors, neighbors, even other state agencies are directed to report to DSS and wait. DSS decides whether to act. That is not inaction. That is active state involvement that closed off every other source of help for Joshua.</li>
+<li><strong>"Affirmative restraint" should not be read so narrowly.</strong> The majority says the state owes a duty only when it physically restrains a person, like in prison or a mental institution. But the principle behind those cases is broader. When the state cuts off private sources of aid and then refuses aid itself, it cannot wash its hands of the harm.</li>
+<li><strong>The caseworker knew.</strong> Brennan quoted the caseworker's own statement after Joshua was finally hospitalized: she said she always knew the phone would ring one day and Joshua would be dead. She made about twenty visits to the home, recorded the suspicions in her file, and did nothing.</li>
+<li><strong>This makes the program worse than nothing.</strong> By creating a system that promises to protect children and then directs everyone else to step aside, Wisconsin makes children like Joshua worse off than they would have been if no system existed. Other people might have intervened if they had not been told to leave it to DSS.</li>
+</ol>
+</article>
+</div>
+</section>
+<!-- 04 - GUARDRAIL -->
+<section aria-labelledby="s4-title">
+<div class="section-head">
+<div class="section-num">Section <strong>04</strong></div>
+<h2 class="section-title" id="s4-title">What the Court <em>Did Not</em> Decide</h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">Read this<br>carefully</div>
+<div class="body-grid-main">
+<p>This is the case where the gap between law and ethics matters most. The Court ruled that there is no federal constitutional duty to protect Joshua. That is a specific legal holding about one specific kind of liability. It does not mean caseworkers can do nothing. It does not even mean caseworkers cannot be sued. It just means one particular kind of federal constitutional lawsuit will not succeed. Several other forms of accountability remained on the table after this case, and the Court explicitly said so.</p>
+</div>
+</div>
+<div class="guardrail" role="note">
+<div class="guardrail-label">Common misreads to avoid</div>
+<h3 class="guardrail-title">DeShaney did not give CPS workers a free pass. It limited one specific type of federal lawsuit. Several other forms of accountability survived.</h3>
+<ul>
+<li><strong>It did not eliminate state tort liability.</strong> Chief Justice Rehnquist explicitly said that Wisconsin may well have a duty under state tort law to protect children once it agrees to investigate them. State courts handle those claims. State tort law is alive and well after DeShaney.</li>
+<li><strong>It did not eliminate liability when the child is in state custody.</strong> If a child is in foster care, in a state institution, or otherwise taken into custody by the state, the constitutional analysis changes. Most circuits hold that the state then has a "special relationship" duty to protect. That part of the law is settled by later cases.</li>
+<li><strong>It did not eliminate the state-created danger doctrine.</strong> Most federal appeals courts have since recognized that if the state itself creates or significantly worsens the danger to a person, that is different from mere failure to protect. The doctrine has been developed by lower courts after DeShaney and remains a viable theory in most circuits.</li>
+<li><strong>It did not change mandated reporting laws.</strong> Every state has its own mandated reporter statutes. Failing to report suspected child abuse can still result in licensure discipline, criminal charges, employment termination, or civil liability. DeShaney addresses constitutional claims, not statutory reporting duties.</li>
+<li><strong>It did not change the NASW Code of Ethics.</strong> Professional ethical obligations to protect vulnerable clients exist independently of constitutional doctrine. What the Constitution allows is not the same as what the profession requires.</li>
+<li><strong>It did not address equal protection.</strong> In a footnote, the Court noted that selectively denying protection to disfavored minorities would still violate the Equal Protection Clause. That theory was not raised in the case, but the Court left the door open.</li>
+</ul>
+</div>
+</section>
+<!-- 05 - PROCEDURAL ROUTE -->
+<section aria-labelledby="s5-title">
+<div class="section-head">
+<div class="section-num">Section <strong>05</strong></div>
+<h2 class="section-title" id="s5-title">How It <em>Got Here</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">The path<br>to SCOTUS</div>
+<div class="body-grid-main">
+<p>This case did not get a trial. It was thrown out on what is called <button type="button" class="term" data-term="summaryjudgment" aria-describedby="popup-summaryjudgment">summary judgment</button>, meaning the trial court decided that even if everything in the complaint was true, Joshua had no constitutional claim. The federal appeals courts had been disagreeing about whether the Due Process Clause required states to protect children, and the Supreme Court took the case to settle that disagreement.</p>
+</div>
+</div>
+<div class="timeline">
+<div class="timeline-event">
+<div class="timeline-court">1982–1984 · Winnebago County, Wisconsin</div>
+<div class="timeline-ruling">The investigations and the final beating</div>
+<div class="timeline-desc">Over two years, the Winnebago County Department of Social Services received multiple reports that Joshua DeShaney was being abused by his father. The agency briefly took him into temporary custody, then returned him home. The assigned caseworker documented suspicious injuries in her notes during roughly twenty home visits. In March 1984, when Joshua was four, his father beat him into a coma and caused permanent brain damage.</div>
+</div>
+<div class="timeline-event">
+<div class="timeline-court">Federal Trial Court (E.D. Wisconsin)</div>
+<div class="timeline-ruling">Trial court dismisses on summary judgment</div>
+<div class="timeline-desc">Joshua and his mother sued the county and several of its employees under 42 U.S.C. § 1983. They argued the agency had violated Joshua's due process rights by failing to protect him. The trial court ruled that, as a matter of law, the Constitution did not require the agency to protect him from his father. The case was dismissed before trial.</div>
+</div>
+<div class="timeline-event">
+<div class="timeline-court">Federal Appeals Court (7th Circuit)</div>
+<div class="timeline-ruling">Appeals court affirms</div>
+<div class="timeline-desc">The Seventh Circuit upheld the dismissal. The court said the Due Process Clause does not require state agencies to protect people from private violence, and that the connection between what DSS did or did not do and what Joshua's father did was too remote to support a federal civil rights claim.</div>
+</div>
+<div class="timeline-event scotus">
+<div class="timeline-court">February 22, 1989 · Supreme Court of the United States</div>
+<div class="timeline-ruling">Supreme Court affirms, 6–3</div>
+<div class="timeline-desc">The Supreme Court took the case because federal appeals courts across the country had reached different conclusions about whether states had a constitutional duty to protect children from private abuse. Chief Justice Rehnquist wrote for the majority that the Constitution imposes no such duty. Justices Brennan, Marshall, and Blackmun dissented. Blackmun's brief separate dissent ended with the line for which it became famous.</div>
+</div>
+</div>
+</section>
+<!-- 06 - FOR PRACTICE -->
+<section aria-labelledby="s6-title">
+<div class="section-head">
+<div class="section-num">Section <strong>06</strong></div>
+<h2 class="section-title" id="s6-title">For <em>Practice</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">The social<br>work bridge</div>
+<div class="body-grid-main">
+<p>DeShaney is the case where the gap between law and ethics is largest. The Constitution does not require CPS to protect Joshua. The NASW Code of Ethics, professional standards of practice, state mandated reporter laws, state tort law, and licensure boards all do. A first-year MSW student needs to walk out of this module understanding that "the Constitution does not require it" is not the same as "you do not have to do it." Three lenses help here.</p>
+</div>
+</div>
+<div class="practice-grid">
+<div class="practice-card">
+<div class="practice-card-tag">Constitutional Lens</div>
+<h3 class="practice-card-title">Federal §1983 suits for failure to act usually fail.</h3>
+<p>If a worker fails to remove a child and harm follows, a federal constitutional claim against the worker will almost certainly be dismissed under DeShaney. That is the rule. The two main exceptions are the special relationship doctrine (the child was in state custody, like foster care) and the state-created danger doctrine (the state itself made the situation worse). Both exist in most federal circuits, but they are narrow.</p>
+</div>
+<div class="practice-card">
+<div class="practice-card-tag">State Liability Lens</div>
+<h3 class="practice-card-title">State courts, state licensing boards, and state tort law still apply.</h3>
+<p>Rehnquist himself said Wisconsin may have a duty under state tort law to protect the children it agrees to investigate. State courts handle those claims, and most states have. Caseworkers and agencies have been sued, lost, and paid out under state law in cases just like Joshua's. State licensing boards can also discipline workers who fail to follow standards of practice. None of that was changed by DeShaney.</p>
+</div>
+<div class="practice-card">
+<div class="practice-card-tag">Ethical Lens</div>
+<h3 class="practice-card-title">The Code of Ethics is the floor, not the ceiling.</h3>
+<p>NASW Code of Ethics 1.01 says the social worker's primary responsibility is to the well-being of clients. In CPS, the client is the child. Constitutional doctrine does not change that. The professional obligation to protect a vulnerable child exists regardless of what the federal courts will or will not enforce. Documenting concerns in the file, the way Joshua's caseworker did, is not a substitute for acting on them.</p>
+</div>
+</div>
+</section>
+<!-- 07 - KEY TERMS -->
+<section aria-labelledby="s7-title">
+<div class="section-head">
+<div class="section-num">Section <strong>07</strong></div>
+<h2 class="section-title" id="s7-title">A Working <em>Vocabulary</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">Legal<br>terms</div>
+<div class="body-grid-main">
+<p>This case is about constitutional and civil rights law, which has some specific vocabulary. Here are the terms that come up, defined the way they are used in this case.</p>
+</div>
+</div>
+<div class="key-terms">
+<div class="key-terms-title">Frequently Used in This Opinion</div>
+<div class="key-terms-list">
+<div class="key-term-item">
+<div class="key-term-name">Due Process Clause</div>
+<p class="key-term-def">The part of the Fourteenth Amendment that says no state shall deprive any person of life, liberty, or property without due process of law. The Court read this as a restriction on state action, not a requirement that the state act.</p>
+</div>
+<div class="key-term-item">
+<div class="key-term-name">42 U.S.C. § 1983</div>
+<p class="key-term-def">A federal civil rights statute that lets a person sue a state or local government employee for violating their constitutional rights. This is the main way constitutional claims against police, CPS workers, and other government employees get filed in federal court.</p>
+</div>
+<div class="key-term-item">
+<div class="key-term-name">Summary judgment</div>
+<p class="key-term-def">A court ruling that decides a case without a trial because, even if everything in the complaint is true, the law does not allow the plaintiff to win. Joshua's case was dismissed on summary judgment.</p>
+</div>
+<div class="key-term-item">
+<div class="key-term-name">Affirmative duty</div>
+<p class="key-term-def">A legal obligation to take action, as opposed to an obligation to refrain from action. The plaintiffs argued the state had an affirmative duty to protect Joshua. The Court said it did not, at least not as a constitutional matter.</p>
+</div>
+<div class="key-term-item">
+<div class="key-term-name">Special relationship doctrine</div>
+<p class="key-term-def">An exception to DeShaney recognized in later cases. When the state takes someone into its custody (foster care, jail, an involuntary commitment), the state then has a constitutional duty to provide for that person's safety.</p>
+</div>
+<div class="key-term-item">
+<div class="key-term-name">State-created danger doctrine</div>
+<p class="key-term-def">Another exception to DeShaney developed by lower federal courts. When the state itself creates or significantly worsens a danger to a specific person, the state may be liable for the resulting harm even if it did not have the person in custody.</p>
+</div>
+</div>
+</div>
+</section>
+</main><!-- COLOPHON --><footer class="colophon" role="contentinfo">
+<div class="colophon-inner">
+<div class="colophon-brand">Understanding SCOTUS Opinions</div>
+<div class="colophon-meta">Austin Peay State University · MSW Program</div>
+</div>
+</footer><!-- TERM POPUPS -->
+<div class="term-popup" id="popup-section1983" role="tooltip" hidden=""><strong>42 U.S.C. § 1983</strong> A federal statute that allows people to sue state and local government employees for violating their constitutional rights. The standard vehicle for federal civil rights lawsuits against police, CPS, and other government workers.</div>
+<div class="term-popup" id="popup-dueprocess" role="tooltip" hidden=""><strong>Due Process Clause</strong> The part of the Fourteenth Amendment that says no state shall deprive any person of life, liberty, or property without due process of law. In DeShaney, the Court read it as restricting government action, not requiring it.</div>
+<div class="term-popup" id="popup-summaryjudgment" role="tooltip" hidden=""><strong>Summary judgment</strong> A court decision dismissing a case before trial because, even assuming all the plaintiff's facts are true, the law does not allow them to win. Joshua's case was dismissed this way.</div>
+<p><script>
+  const terms = document.querySelectorAll('.term');
+  let activePopup = null;
+
+  function positionPopup(btn, popup) {
+    const rect = btn.getBoundingClientRect();
+    const popupWidth = popup.offsetWidth || 340;
+    let left = window.scrollX + rect.left;
+    const maxLeft = window.scrollX + document.documentElement.clientWidth - popupWidth - 16;
+    if (left > maxLeft) left = maxLeft;
+    if (left < 16) left = 16;
+    popup.style.left = left + 'px';
+    popup.style.top = (window.scrollY + rect.bottom + 8) + 'px';
+  }
+
+  function showPopup(btn) {
+    const popupId = 'popup-' + btn.dataset.term;
+    const popup = document.getElementById(popupId);
+    if (!popup) return;
+    if (activePopup && activePopup !== popup) activePopup.hidden = true;
+    popup.hidden = false;
+    positionPopup(btn, popup);
+    activePopup = popup;
+  }
+
+  function hidePopup(btn) {
+    const popupId = 'popup-' + btn.dataset.term;
+    const popup = document.getElementById(popupId);
+    if (popup) {
+      popup.hidden = true;
+      if (activePopup === popup) activePopup = null;
+    }
+  }
+
+  terms.forEach(btn => {
+    btn.addEventListener('mouseenter', () => showPopup(btn));
+    btn.addEventListener('mouseleave', () => hidePopup(btn));
+    btn.addEventListener('focus', () => showPopup(btn));
+    btn.addEventListener('blur', () => hidePopup(btn));
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && activePopup) {
+        activePopup.hidden = true;
+        activePopup = null;
+        btn.blur();
+      }
+    });
+  });
+
+  window.addEventListener('scroll', () => {
+    if (activePopup) {
+      const term = document.querySelector('.term[data-term="' + activePopup.id.replace('popup-','') + '"]');
+      if (term) positionPopup(term, activePopup);
+    }
+  });
+</script></p></body></html>
