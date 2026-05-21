@@ -117,20 +117,19 @@
     margin-bottom: 22px;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 16px;
   }
   .hero-eyebrow::before {
     content: '';
-    width: 32px;
+    flex: 1;
     height: 1px;
-    background: var(--oxblood);
+    background: var(--rule);
   }
   .hero-eyebrow::after {
     content: '';
     flex: 1;
     height: 1px;
     background: var(--rule);
-    max-width: 220px;
   }
   .hero-title {
     font-family: var(--font-display);
@@ -147,22 +146,25 @@
     font-weight: 400;
     color: var(--oxblood);
   }
-  .hero-rule {
-    border: none;
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    padding-top: 32px;
     border-top: 3px double var(--ink);
-    margin: 32px 0 28px;
+    align-items: start;
   }
-  .hero-lede {
-    max-width: 72ch;
+  @media (max-width: 720px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 24px; }
   }
   .hero-lede-text {
     font-family: var(--font-display);
-    font-size: clamp(20px, 2vw, 25px);
+    font-size: clamp(19px, 1.8vw, 23px);
     line-height: 1.5;
     font-weight: 400;
     color: var(--ink-soft);
     letter-spacing: -0.005em;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
   }
   .hero-lede-text strong {
     font-weight: 600;
@@ -171,10 +173,12 @@
   }
   .hero-lede-sub {
     font-family: var(--font-mono);
-    font-size: 13px;
+    font-size: 12px;
     letter-spacing: 0.1em;
     color: var(--ink-mute);
     text-transform: uppercase;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
   }
 
   /* MAIN */
@@ -411,22 +415,15 @@
 </head><body>
 <a class="skip-link" href="#main">Skip to main content</a>
 
-<!-- MASTHEAD -->
-<div class="masthead" role="banner">
-<div class="masthead-inner">
-<div class="masthead-brand">Mongan's Teaching Archive</div>
-<div class="masthead-meta">For the helping professions</div>
-</div>
-</div>
-
 <!-- HERO -->
 <div class="hero">
 <p class="hero-eyebrow">A free teaching resource</p>
-<h1 class="hero-title">Mongan's <em>Teaching</em> Archive</h1>
-<hr class="hero-rule" aria-hidden="true">
-<div class="hero-lede">
-<p class="hero-lede-text">Free resources for students, faculty, and practitioners across the helping professions. Built from graduate coursework in social work. <strong>No paywall. No login. No strings.</strong> Use whatever is useful.</p>
-<p class="hero-lede-sub">Philip Mongan, LCSW, Ph.D.</p>
+<div class="hero-grid">
+  <h1 class="hero-title">Mongan's<br><em>Teaching</em><br>Archive</h1>
+  <div>
+    <p class="hero-lede-text">Free resources for students, faculty, and practitioners across the helping professions. Built from graduate coursework in social work. <strong>No paywall. No login. No strings.</strong> Use whatever is useful.</p>
+    <p class="hero-lede-sub">Philip Mongan, LCSW, Ph.D.</p>
+  </div>
 </div>
 </div>
 
@@ -443,7 +440,7 @@
   <div class="collection-card">
     <div class="collection-tag">Now Available</div>
     <h2 class="collection-title">Understanding<br><em>SCOTUS</em> Opinions</h2>
-    <p class="collection-desc">Supreme Court decisions every social worker should know. Several full case explainers covering child welfare, civil commitment, special education, public benefits, and more — each translated into plain language with direct practice implications.</p>
+    <p class="collection-desc">Supreme Court decisions every social worker should know. Ten full case explainers covering child welfare, civil commitment, special education, public benefits, and more — each translated into plain language with direct practice implications.</p>
     <div class="collection-meta">14 cases · <span>Primer included</span></div>
     <a class="collection-link" href="/scotus/">Browse the Cases →</a>
   </div>
@@ -453,6 +450,7 @@
     <div class="collection-tag">Coming Soon</div>
     <h2 class="collection-title">Substance Use<br><em>Disorders</em></h2>
     <p class="collection-desc">Graduate-level materials on SUDs assessment, treatment planning, the Transtheoretical Model, pharmacology of commonly abused substances, and evidence-based intervention. Built for MSW students and clinical practitioners.</p>
+    <div class="collection-meta">SW 6460 · <span>In development</span></div>
     <div class="collection-coming">In development</div>
   </div>
 
@@ -461,6 +459,7 @@
     <div class="collection-tag">Coming Soon</div>
     <h2 class="collection-title">Social Welfare<br><em>Policy</em></h2>
     <p class="collection-desc">The history, structure, and politics of the American welfare state. Major legislation, policy analysis frameworks, and the social movements that shaped what exists today. For practitioners who need to understand the systems their clients navigate.</p>
+    <div class="collection-meta">SW 6030 · <span>In development</span></div>
     <div class="collection-coming">In development</div>
   </div>
 
@@ -469,6 +468,7 @@
     <div class="collection-tag">Coming Soon</div>
     <h2 class="collection-title">Psycho-<br><em>pathology</em></h2>
     <p class="collection-desc">DSM-based diagnostic frameworks translated for clinical social work practice. Differential diagnosis, comorbidity, cultural considerations, and the relationship between diagnosis and treatment planning.</p>
+    <div class="collection-meta"><span>In development</span></div>
     <div class="collection-coming">In development</div>
   </div>
 
@@ -478,8 +478,8 @@
 <section class="about" aria-labelledby="about-label">
 <div class="about-label" id="about-label"><span class="about-label-mark" aria-hidden="true"></span>About</div>
 <div class="about-body">
-  <p>This site is maintained by <strong>Philip Mongan, LCSW, Ph.D.</strong>, a social work faculty member and Chair at Austin Peay State University. The materials here are drawn from years of teaching at the BSW and MSW program level and made freely available for anyone who finds them useful.</p>
-  <p>Everything here is written for students and practitioners. The goal is to make complex legal, clinical, and policy material accessible without dumbing it down.  That way you can recognize these concepts when they show up in your actual work.</p>
+  <p>This site is maintained by <strong>Philip Mongan, LCSW, Ph.D.</strong>, a social work faculty member at Austin Peay State University. The materials here are drawn from graduate courses taught in the MSW program and made freely available for anyone who finds them useful.</p>
+  <p>Everything here is written for practitioners, not lawyers or policy scholars. The goal is to make complex legal, clinical, and policy material accessible without dumbing it down — so you can recognize these concepts when they show up in your actual work.</p>
 </div>
 </section>
 
