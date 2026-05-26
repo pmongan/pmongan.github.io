@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mathews v. Eldridge, Case Explainer</title>
+<meta name="description" content="Plain-language explainer of Mathews v. Eldridge (1976), the Supreme Court case establishing the three-factor balancing test that governs every procedural due process claim in American law.">
+<meta name="author" content="Philip Mongan">
+<meta property="og:title" content="Mathews v. Eldridge — Understanding SCOTUS Opinions">
+<meta property="og:description" content="Plain-language explainer of Mathews v. Eldridge (1976), the Supreme Court case establishing the three-factor balancing test that governs every procedural due process claim in American law.">
+<meta property="og:url" content="https://philipmongan.com/scotus/Mathews-Eldridge.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Mongan's Teaching Archive">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter+Tight:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f4ede0;
+    --paper-2: #ebe2d1;
+    --paper-deep: #e5dac4;
+    --ink: #1c1815;
+    --ink-2: #2d2722;
+    --ink-soft: #4a4239;
+    --ink-mute: #6b6258;
+    --rule: #c9bda6;
+    --rule-soft: #d9cfba;
+    --oxblood: #6b1f2a;
+    --oxblood-deep: #4f1620;
+    --oxblood-tint: #f3e0e2;
+    --brass: #6b5320;
+    --brass-tint: #f1e8cf;
+    --majority: #2d4a3a;
+    --majority-tint: #d9e2d8;
+    --dissent: #6b1f2a;
+    --dissent-tint: #ebd5d6;
+    --concur: #6b5320;
+    --concur-tint: #efe5c8;
+    --font-display: 'Fraunces', 'Times New Roman', serif;
+    --font-body: 'Inter Tight', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); background: var(--paper); color: var(--ink); line-height: 1.65; font-size: 17px; background-image: radial-gradient(circle at 20% 30%, rgba(107,31,42,0.025) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(107,83,32,0.025) 0%, transparent 50%); }
+  body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1; opacity: 0.4; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.11 0 0 0 0 0.09 0 0 0 0 0.08 0 0 0 0.12 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  .skip-link { position: absolute; top: -100px; left: 16px; background: var(--ink); color: var(--paper); padding: 12px 18px; text-decoration: none; font-weight: 600; border-radius: 2px; z-index: 9999; transition: top 0.2s; }
+  .skip-link:focus { top: 16px; outline: 3px solid var(--oxblood); }
+  .masthead { border-bottom: 1px solid var(--rule); padding: 24px 0 18px; position: relative; z-index: 2; }
+  .masthead-inner { max-width: 1180px; margin: 0 auto; padding: 0 32px; display: flex; align-items: baseline; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .masthead-brand { font-family: var(--font-display); font-size: 15px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); }
+  .masthead-meta { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mute); }
+  .hero { max-width: 1180px; margin: 0 auto; padding: 48px 32px 32px; position: relative; z-index: 2; }
+  .hero-eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--oxblood); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+  .hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--oxblood); }
+  .hero-eyebrow::after { content: ''; flex: 1; height: 1px; background: var(--rule); max-width: 200px; }
+  .hero-title { font-family: var(--font-display); font-weight: 500; font-size: clamp(40px, 6vw, 84px); line-height: 0.98; letter-spacing: -0.025em; color: var(--ink); margin-bottom: 12px; font-variation-settings: "opsz" 144, "SOFT" 30; }
+  .hero-title em { font-style: italic; font-weight: 400; color: var(--oxblood); }
+  .hero-citation { font-family: var(--font-mono); font-size: 13px; color: var(--ink-mute); letter-spacing: 0.04em; margin-bottom: 36px; }
+  .hero-citation a { color: var(--oxblood); text-decoration: underline; text-underline-offset: 3px; }
+  .hero-citation a:hover { color: var(--oxblood-deep); }
+  .lede { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; padding-top: 28px; border-top: 3px double var(--ink); }
+  .lede-label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-mute); padding-top: 6px; }
+  .lede-label-mark { display: inline-block; width: 6px; height: 6px; background: var(--oxblood); margin-right: 8px; border-radius: 50%; vertical-align: middle; }
+  .lede-text { font-family: var(--font-display); font-size: clamp(20px, 2.2vw, 26px); line-height: 1.4; font-weight: 400; color: var(--ink); letter-spacing: -0.005em; }
+  .lede-text strong { font-weight: 600; color: var(--oxblood); font-style: italic; }
+  @media (max-width: 720px) { .lede { grid-template-columns: 1fr; gap: 12px; } }
+  .bluf { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; margin-top: 28px; padding: 24px 28px 26px; background: var(--paper-2); border-left: 4px solid var(--brass); border-radius: 2px; }
+  .bluf-label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brass); font-weight: 700; padding-top: 4px; }
+  .bluf-label-mark { display: inline-block; width: 6px; height: 6px; background: var(--brass); margin-right: 8px; border-radius: 50%; vertical-align: middle; }
+  .bluf-text { font-family: var(--font-body); font-size: 16.5px; line-height: 1.7; color: var(--ink-2); }
+  .bluf-text strong { color: var(--ink); font-weight: 600; }
+  @media (max-width: 720px) { .bluf { grid-template-columns: 1fr; gap: 8px; padding: 20px 22px; } }
+  .dropcap::first-letter { font-family: var(--font-display); font-size: 5em; font-weight: 600; float: left; line-height: 0.85; margin: 0.04em 0.08em 0 0; color: var(--oxblood); font-style: italic; }
+  main { max-width: 1180px; margin: 0 auto; padding: 0 32px 80px; position: relative; z-index: 2; }
+  section { padding: 56px 0; border-bottom: 1px solid var(--rule); }
+  section:last-of-type { border-bottom: none; }
+  .section-head { display: grid; grid-template-columns: 120px 1fr; gap: 32px; align-items: baseline; margin-bottom: 32px; }
+  .section-num { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.18em; color: var(--ink-mute); text-transform: uppercase; border-top: 2px solid var(--ink); padding-top: 8px; }
+  .section-num strong { display: block; font-family: var(--font-display); font-size: 28px; font-weight: 400; font-style: italic; color: var(--oxblood); letter-spacing: -0.01em; margin-top: 2px; }
+  .section-title { font-family: var(--font-display); font-size: clamp(28px, 3.5vw, 44px); font-weight: 500; line-height: 1.05; letter-spacing: -0.02em; color: var(--ink); }
+  .section-title em { font-style: italic; color: var(--oxblood); }
+  @media (max-width: 720px) { .section-head { grid-template-columns: 1fr; gap: 8px; } .section-num { border-top: none; padding-top: 0; } }
+  .body-grid { display: grid; grid-template-columns: 120px 1fr; gap: 32px; }
+  .body-grid-aside { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-mute); padding-top: 8px; }
+  .body-grid-main { max-width: 65ch; }
+  .body-grid-main p { margin-bottom: 1em; font-size: 17px; line-height: 1.7; color: var(--ink-2); }
+  .body-grid-main p:last-child { margin-bottom: 0; }
+  .body-grid-main strong { color: var(--ink); font-weight: 600; }
+  .body-grid-main em { font-style: italic; }
+  @media (max-width: 720px) { .body-grid { grid-template-columns: 1fr; gap: 8px; } }
+  .bench { background: var(--paper-2); border: 1px solid var(--rule); border-radius: 4px; padding: 36px 32px 28px; margin-top: 8px; }
+  .bench-title { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-mute); text-align: center; margin-bottom: 24px; }
+  .bench-row { display: flex; justify-content: center; gap: 8px; margin-bottom: 28px; flex-wrap: wrap; }
+  .justice { flex: 0 0 auto; width: 88px; text-align: center; padding: 12px 4px; border-radius: 4px; border: 1.5px solid var(--rule); background: var(--paper); position: relative; transition: transform 0.15s, box-shadow 0.15s; }
+  .justice:hover { transform: translateY(-2px); box-shadow: 0 6px 14px rgba(28,24,21,0.08); }
+  .justice-seal { width: 32px; height: 32px; border-radius: 50%; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 14px; font-weight: 600; color: var(--paper); font-style: italic; }
+  .justice-name { font-family: var(--font-display); font-size: 13px; font-weight: 600; line-height: 1.15; color: var(--ink); }
+  .justice-role { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mute); margin-top: 4px; }
+  .justice.majority { border-color: var(--majority); background: var(--majority-tint); }
+  .justice.majority .justice-seal { background: var(--majority); }
+  .justice.dissent { border-color: var(--dissent); background: var(--dissent-tint); }
+  .justice.dissent .justice-seal { background: var(--dissent); }
+  .justice.dissent .justice-role { color: var(--ink); }
+  .justice.recused { opacity: 0.55; }
+  .justice.recused .justice-seal { background: var(--ink-mute); }
+  .justice.author::after { content: '\2726'; position: absolute; top: 4px; right: 6px; font-size: 12px; color: var(--oxblood); }
+  .bench-legend { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; padding-top: 20px; border-top: 1px solid var(--rule); font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); }
+  .bench-legend-item { display: flex; align-items: center; gap: 8px; }
+  .bench-legend-swatch { width: 14px; height: 14px; border-radius: 50%; border: 1.5px solid; }
+  .bench-legend-swatch.maj { background: var(--majority-tint); border-color: var(--majority); }
+  .bench-legend-swatch.dis { background: var(--dissent-tint); border-color: var(--dissent); }
+  .bench-legend-swatch.rec { background: var(--paper); border-color: var(--rule); opacity: 0.55; }
+  .arguments { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 8px; }
+  @media (max-width: 720px) { .arguments { grid-template-columns: 1fr; } }
+  .arg-card { background: var(--paper); border: 1px solid var(--rule); border-top: 4px solid; padding: 28px 28px 24px; border-radius: 2px; }
+  .arg-card.majority-arg { border-top-color: var(--majority); }
+  .arg-card.dissent-arg { border-top-color: var(--dissent); }
+  .arg-label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .arg-card.majority-arg .arg-label { color: var(--majority); }
+  .arg-card.dissent-arg .arg-label { color: var(--dissent); }
+  .arg-label-mark { display: inline-block; width: 6px; height: 6px; border-radius: 50%; }
+  .arg-card.majority-arg .arg-label-mark { background: var(--majority); }
+  .arg-card.dissent-arg .arg-label-mark { background: var(--dissent); }
+  .arg-headline { font-family: var(--font-display); font-size: 22px; font-weight: 500; line-height: 1.3; color: var(--ink); margin-bottom: 18px; letter-spacing: -0.01em; }
+  .arg-headline em { font-style: italic; color: var(--oxblood); }
+  .arg-points { list-style: none; counter-reset: argp; }
+  .arg-points li { counter-increment: argp; padding: 14px 0 14px 36px; border-bottom: 1px solid var(--rule-soft); font-size: 15.5px; line-height: 1.6; color: var(--ink-2); position: relative; }
+  .arg-points li:last-child { border-bottom: none; padding-bottom: 4px; }
+  .arg-points li::before { content: counter(argp, decimal-leading-zero); position: absolute; left: 0; top: 14px; font-family: var(--font-mono); font-size: 12px; color: var(--ink-mute); letter-spacing: 0.05em; }
+  .arg-points li strong { display: block; font-family: var(--font-display); font-weight: 600; font-size: 16px; color: var(--ink); margin-bottom: 4px; letter-spacing: -0.005em; }
+  .guardrail { background: var(--brass-tint); border: 1px solid var(--brass); border-left: 4px solid var(--brass); padding: 24px 28px; margin-top: 8px; border-radius: 2px; }
+  .guardrail-label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--brass); font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+  .guardrail-label::before { content: '\26A0'; font-size: 16px; color: var(--brass); }
+  .guardrail-title { font-family: var(--font-display); font-size: 22px; font-weight: 500; color: var(--ink); margin-bottom: 14px; letter-spacing: -0.01em; }
+  .guardrail ul { list-style: none; padding: 0; }
+  .guardrail li { padding: 8px 0 8px 24px; font-size: 15.5px; color: var(--ink-2); line-height: 1.55; position: relative; }
+  .guardrail li::before { content: '\2715'; position: absolute; left: 0; top: 9px; color: var(--brass); font-weight: 700; font-size: 13px; }
+  .guardrail li strong { color: var(--ink); font-weight: 600; }
+  .term { background: none; border: none; padding: 0; margin: 0; font: inherit; color: var(--oxblood); cursor: help; border-bottom: 1.5px dotted var(--oxblood); font-weight: 600; }
+  .term:focus-visible { outline: 2px solid var(--oxblood); outline-offset: 3px; border-radius: 2px; }
+  .term-popup { position: absolute; max-width: 340px; background: var(--ink); color: var(--paper); padding: 16px 18px; border-radius: 3px; font-family: var(--font-body); font-size: 14px; line-height: 1.55; box-shadow: 0 12px 28px rgba(28,24,21,0.3); z-index: 200; border: 1px solid var(--ink-2); }
+  .term-popup[hidden] { display: none; }
+  .term-popup strong { display: block; font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--paper); margin-bottom: 6px; font-style: italic; }
+  .timeline { margin-top: 8px; border-left: 2px solid var(--rule); padding-left: 28px; margin-left: 12px; }
+  .timeline-event { position: relative; padding-bottom: 28px; }
+  .timeline-event:last-child { padding-bottom: 0; }
+  .timeline-event::before { content: ''; position: absolute; left: -36px; top: 6px; width: 14px; height: 14px; background: var(--paper); border: 2px solid var(--oxblood); border-radius: 50%; }
+  .timeline-event.scotus::before { background: var(--oxblood); }
+  .timeline-court { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--oxblood); margin-bottom: 4px; font-weight: 700; }
+  .timeline-ruling { font-family: var(--font-display); font-size: 17px; font-weight: 500; color: var(--ink); margin-bottom: 4px; letter-spacing: -0.005em; }
+  .timeline-desc { font-size: 14.5px; color: var(--ink-soft); line-height: 1.55; }
+  .practice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 8px; }
+  @media (max-width: 820px) { .practice-grid { grid-template-columns: 1fr; } }
+  .practice-card { background: var(--paper); border: 1px solid var(--rule); padding: 24px 22px; border-radius: 2px; border-top: 4px solid var(--oxblood); }
+  .practice-card-tag { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--oxblood); margin-bottom: 10px; font-weight: 700; }
+  .practice-card-title { font-family: var(--font-display); font-size: 19px; font-weight: 600; line-height: 1.25; color: var(--ink); margin-bottom: 10px; letter-spacing: -0.01em; }
+  .practice-card p { font-size: 14.5px; line-height: 1.6; color: var(--ink-2); }
+  .pullquote { margin: 48px auto; max-width: 800px; text-align: center; padding: 0 24px; }
+  .pullquote-mark { font-family: var(--font-display); font-style: italic; font-size: 88px; color: var(--oxblood); line-height: 0.6; margin-bottom: 12px; font-weight: 400; }
+  .pullquote-text { font-family: var(--font-display); font-style: italic; font-size: clamp(22px, 2.4vw, 30px); line-height: 1.35; font-weight: 400; color: var(--ink); margin-bottom: 16px; letter-spacing: -0.005em; }
+  .pullquote-cite { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-mute); }
+  .colophon { background: var(--ink); color: var(--paper-2); padding: 36px 32px; position: relative; z-index: 2; }
+  .colophon-inner { max-width: 1180px; margin: 0 auto; display: flex; justify-content: space-between; align-items: baseline; gap: 24px; flex-wrap: wrap; }
+  .colophon-brand { font-family: var(--font-display); font-size: 14px; font-weight: 500; letter-spacing: 0.04em; font-style: italic; color: var(--paper); }
+  .colophon-meta { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #a89e8e; }
+  .key-terms { margin-top: 16px; background: var(--paper-2); border: 1px solid var(--rule); padding: 28px 32px; border-radius: 2px; }
+  .key-terms-title { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--oxblood); font-weight: 700; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--rule); }
+  .key-terms-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px 32px; }
+  @media (max-width: 720px) { .key-terms-list { grid-template-columns: 1fr; gap: 20px; } }
+  .key-term-item { padding: 0; }
+  .key-term-name { font-family: var(--font-display); font-weight: 600; font-style: italic; color: var(--ink); font-size: 17px; margin-bottom: 8px; letter-spacing: -0.005em; }
+  .key-term-def { font-size: 14.5px; color: var(--ink-2); line-height: 1.6; margin: 0; }
+  .factor-analysis { margin-top: 8px; background: var(--paper); border: 1px solid var(--rule); border-radius: 2px; overflow: hidden; }
+  .factor-row { display: grid; grid-template-columns: 200px 1fr 1fr; gap: 0; border-bottom: 1px solid var(--rule-soft); }
+  .factor-row:last-child { border-bottom: none; }
+  .factor-row.header { background: var(--ink); color: var(--paper); }
+  .factor-cell { padding: 18px 22px; font-size: 14.5px; line-height: 1.6; border-right: 1px solid var(--rule-soft); vertical-align: top; }
+  .factor-cell:last-child { border-right: none; }
+  .factor-row.header .factor-cell { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--paper); font-weight: 700; border-right-color: var(--ink-soft); }
+  .factor-cell.factor-name { font-family: var(--font-display); font-weight: 600; color: var(--ink); font-size: 16px; letter-spacing: -0.005em; background: var(--paper-2); border-right-color: var(--rule); }
+  .factor-cell.factor-name em { display: block; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--oxblood); font-style: normal; font-weight: 700; margin-top: 4px; }
+  .factor-cell.found { color: var(--ink-2); }
+  .factor-cell.found strong { color: var(--ink); font-weight: 600; }
+  .factor-cell.outcome { color: var(--ink-2); font-style: italic; }
+  .factor-cell.outcome strong { color: var(--majority); font-style: normal; font-weight: 700; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; }
+  @media (max-width: 820px) { .factor-row { grid-template-columns: 1fr; } .factor-cell { border-right: none; border-bottom: 1px solid var(--rule-soft); } .factor-row.header { display: none; } }
+  @media print { body::before, .skip-link { display: none; } body { background: white; color: black; } section { page-break-inside: avoid; } }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<div class="masthead" role="banner">
+  <div class="masthead-inner">
+    <div class="masthead-brand"><a href="/scotus/" style="color: inherit; text-decoration: none;">understanding scotus opinions</a></div>
+    <div class="masthead-meta">Dr. Philip Mongan, lcsw, ph.D.</div>
+  </div>
+</div>
+
+<div class="hero">
+  <p class="hero-eyebrow">October Term 1975 &middot; Decided February 24, 1976</p>
+  <h1 class="hero-title">Mathews <em>v.</em><br>Eldridge</h1>
+  <p class="hero-citation">
+    No. 74&ndash;204 &middot; 424 U.S. 319 (1976) &middot;
+    <a href="https://www.oyez.org/cases/1975/74-204" target="_blank" rel="noopener">Read the full case on Oyez &#8599;</a>
+  </p>
+  <div class="lede">
+    <div class="lede-label"><span class="lede-label-mark" aria-hidden="true"></span>The Holding</div>
+    <p class="lede-text">The Supreme Court ruled, <strong>6&ndash;2</strong>, that the Due Process Clause does not require a pre-termination evidentiary hearing before Social Security disability benefits are cut off. More broadly, the case established a <em>three-factor balancing test</em> that now governs every procedural due process claim in American law.</p>
+  </div>
+  <div class="bluf">
+    <div class="bluf-label"><span class="bluf-label-mark" aria-hidden="true"></span>In plain terms</div>
+    <p class="bluf-text">George Eldridge was receiving Social Security disability benefits for back problems and emotional disorders. In 1972, the federal agency monitoring his condition decided his disability had ceased and cut off his benefits. He had the right to submit written evidence, request reconsideration, and eventually get a full evidentiary hearing before an administrative law judge, but all of this came after the benefits stopped. Eldridge argued that under Goldberg v. Kelly, the 1970 welfare case, he was entitled to a full hearing before his benefits could be cut. The Supreme Court disagreed. <strong>The Court held that what process is due depends on the specific situation, assessed through three factors: the weight of the private interest at stake, the risk that the existing procedures will produce an error, and the cost to the government of providing more process.</strong> That three-factor test, called the Mathews test, is now applied in every procedural due process case in the country, from Social Security terminations to child welfare proceedings to immigration hearings.</p>
+  </div>
+</div>
+
+<main id="main">
+
+<section aria-labelledby="s1-title">
+  <div class="section-head">
+    <div class="section-num">Section <strong>01</strong></div>
+    <h2 class="section-title" id="s1-title">The Question <em>Presented</em></h2>
+  </div>
+  <div class="body-grid">
+    <div class="body-grid-aside">What was<br>at stake</div>
+    <div class="body-grid-main">
+      <p class="dropcap">George Eldridge was a Virginia man who had been receiving Social Security disability benefits since 1968. His condition, which included back trouble and emotional disorders, had qualified him for benefits under the disability insurance program. In March 1972, the state agency monitoring his medical condition sent him a questionnaire. Eldridge responded, indicating his condition had not improved. But the agency reviewed updated reports from his treating physicians and concluded that his disability had ceased. In May 1972, his benefits were terminated.</p>
+      <p>Eldridge received a letter informing him of the tentative termination and of his right to submit written evidence and argument. He did submit a response, but the agency's initial determination stood. He then had the right to request reconsideration within six months, the right to request a full evidentiary hearing before an administrative law judge if dissatisfied with reconsideration, and the right to seek federal court review. All of this post-termination process existed and was available to him.</p>
+      <p>What Eldridge did not have was a hearing before his benefits stopped. He argued that <button type="button" class="term" data-term="goldberg" aria-describedby="popup-goldberg">Goldberg v. Kelly</button>, decided six years earlier, required exactly that. The question was whether the Due Process Clause of the Fifth Amendment extended the same pre-termination hearing requirement to Social Security disability benefits.</p>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="s2-title">
+  <div class="section-head">
+    <div class="section-num">Section <strong>02</strong></div>
+    <h2 class="section-title" id="s2-title">The <em>Bench</em></h2>
+  </div>
+  <div class="body-grid">
+    <div class="body-grid-aside">Who joined<br>which side</div>
+    <div class="body-grid-main">
+      <p>Justice Powell wrote for a six-Justice majority. Justice Brennan filed a dissent joined by Marshall. Justice Stevens did not participate — he had been confirmed in December 1975, after the case was argued in October 1975.</p>
+      <p>The case does not break along predictable ideological lines. Brennan and Marshall, the two most liberal Justices, dissented on behalf of the individual claimant. The other six, spanning a range of views, joined Powell's opinion.</p>
+    </div>
+  </div>
+  <div class="bench" role="figure" aria-label="The nine Justices and how they voted">
+    <p class="bench-title">The Burger Court &middot; Vote 6&ndash;2 (Stevens did not participate)</p>
+    <div class="bench-row">
+      <div class="justice majority">
+        <div class="justice-seal" aria-hidden="true">B</div>
+        <div class="justice-name">Burger</div>
+        <div class="justice-role">Joined</div>
+      </div>
+      <div class="justice dissent author">
+        <div class="justice-seal" aria-hidden="true">B</div>
+        <div class="justice-name">Brennan</div>
+        <div class="justice-role">Dissent Author</div>
+      </div>
+      <div class="justice majority">
+        <div class="justice-seal" aria-hidden="true">S</div>
+        <div class="justice-name">Stewart</div>
+        <div class="justice-role">Joined</div>
+      </div>
+      <div class="justice majority">
+        <div class="justice-seal" aria-hidden="true">W</div>
+        <div class="justice-name">White</div>
+        <div class="justice-role">Joined</div>
+      </div>
+      <div class="justice dissent">
+        <div class="justice-seal" aria-hidden="true">M</div>
+        <div class="justice-name">Marshall</div>
+        <div class="justice-role">Dissented</div>
+      </div>
+      <div class="justice majority">
+        <div class="justice-seal" aria-hidden="true">B</div>
+        <div class="justice-name">Blackmun</div>
+        <div class="justice-role">Joined</div>
+      </div>
+      <div class="justice majority author">
+        <div class="justice-seal" aria-hidden="true">P</div>
+        <div class="justice-name">Powell</div>
+        <div class="justice-role">Author</div>
+      </div>
+      <div class="justice majority">
+        <div class="justice-seal" aria-hidden="true">R</div>
+        <div class="justice-name">Rehnquist</div>
+        <div class="justice-role">Joined</div>
+      </div>
+      <div class="justice recused">
+        <div class="justice-seal" aria-hidden="true">S</div>
+        <div class="justice-name">Stevens</div>
+        <div class="justice-role">No Part</div>
+      </div>
+    </div>
+    <div class="bench-legend">
+      <div class="bench-legend-item"><span class="bench-legend-swatch maj" aria-hidden="true"></span>Majority (6)</div>
+      <div class="bench-legend-item"><span class="bench-legend-swatch dis" aria-hidden="true"></span>Dissent (2)</div>
+      <div class="bench-legend-item"><span class="bench-legend-swatch rec" aria-hidden="true"></span>Did Not Participate</div>
+      <div class="bench-legend-item">&#10022; Opinion author</div>
+    </div>
+  </div>
+</section>
+
+<div class="pullquote">
+  <div class="pullquote-mark" aria-hidden="true">&ldquo;</div>
+  <p class="pullquote-text">Due process is flexible and calls for protections the particular situation demands.</p>
+  <p class="pullquote-cite">Justice Powell, for the Court</p>
+</div>
+
+<section aria-labelledby="s3-title">
+  <div class="section-head">
+    <div class="section-num">Section <strong>03</strong></div>
+    <h2 class="section-title" id="s3-title">The <em>Reasoning</em></h2>
+  </div>
+  <div class="body-grid">
+    <div class="body-grid-aside">Two<br>positions</div>
+    <div class="body-grid-main">
+      <p>The majority and the dissent agreed about the general framework. The disagreement was about how it applied to disability benefits specifically, and about whether the practical impact of termination on disabled people was adequately captured by the majority's analysis.</p>
+    </div>
+  </div>
+  <div class="arguments">
+    <article class="arg-card majority-arg">
+      <div class="arg-label"><span class="arg-label-mark" aria-hidden="true"></span>The Majority</div>
+      <h3 class="arg-headline">What process is due depends on the situation, assessed through <em>three specific factors.</em></h3>
+      <ol class="arg-points">
+        <li><strong>Due process is not one-size-fits-all.</strong> Goldberg v. Kelly required pre-termination hearings for welfare recipients. That was the right result in that case, given the weight of those interests. But Goldberg did not establish a universal rule. Each situation must be analyzed on its own terms.</li>
+        <li><strong>Three factors govern the analysis.</strong> First: the private interest affected. Second: the risk of erroneous deprivation under current procedures and the probable value of additional safeguards. Third: the government's interest, including fiscal and administrative burdens. These three factors are the Mathews test.</li>
+        <li><strong>Disability benefits are important, but not identical to welfare.</strong> Disability payments do not necessarily go to the most destitute recipients. Other government programs remain available. Back pay is available for wrongful terminations. The private interest is real but less urgent than in Goldberg.</li>
+        <li><strong>Medical evidence reduces the risk of error.</strong> Disability determinations are primarily medical questions resolved through written records. Written procedures with the right to submit evidence and seek reconsideration substantially reduce the risk of error without a live hearing.</li>
+        <li><strong>Pre-termination hearings would be costly at scale.</strong> The Social Security Administration handles disability reviews in massive volume. Requiring a full evidentiary hearing before every termination would be administratively expensive without a proportionate reduction in error.</li>
+        <li><strong>The existing procedures pass the test.</strong> Balancing all three factors, the procedures available to Eldridge were constitutionally sufficient. They provided meaningful process without requiring the full pre-termination hearing Goldberg had imposed.</li>
+      </ol>
+    </article>
+    <article class="arg-card dissent-arg">
+      <div class="arg-label"><span class="arg-label-mark" aria-hidden="true"></span>The Dissent</div>
+      <h3 class="arg-headline">The majority underestimates the devastation of wrongful termination for people who cannot <em>work.</em></h3>
+      <ol class="arg-points">
+        <li><strong>Disabled people are economically vulnerable, not merely inconvenienced.</strong> Disability beneficiaries are, by definition, unable to work. Many are desperately poor. The practical impact of sudden benefits termination can be as devastating for a disabled person as for a welfare recipient.</li>
+        <li><strong>Medical determinations are not as objective as the majority suggests.</strong> Credibility of testimony about pain and functional limitations matters. The ability to explain a medical history in person, to present supporting evidence, and to confront adverse medical opinions all make a difference in ways written procedures cannot fully replicate.</li>
+        <li><strong>Back pay is an inadequate substitute for preventing wrong deprivations.</strong> The purpose of procedural protections is to prevent erroneous deprivations in the first place. A person who cannot pay rent or buy food while awaiting a lengthy appeal is not made whole by eventually receiving a lump sum.</li>
+        <li><strong>Goldberg should not be distinguished away so easily.</strong> Both welfare and disability involve deprivation of subsistence-level benefits from people who cannot earn income. The majority has not explained in a convincing way why the constitutional calculus is different. Brennan would have held the Goldberg hearing requirement applicable here.</li>
+      </ol>
+    </article>
+  </div>
+</section>
+
+<section aria-labelledby="s4-title">
+  <div class="section-head">
+    <div class="section-num">Section <strong>04</strong></div>
+    <h2 class="section-title" id="s4-title">The <em>Three Factors</em> Applied</h2>
+  </div>
+  <div class="body-grid">
+    <div class="body-grid-aside">How the<br>test works<br>in practice</div>
+    <div class="body-grid-main">
+      <p>The Mathews test is not just a statement of principle. It is an analytical framework courts apply case by case. The table below shows how the Court worked through each factor in Eldridge's specific situation. Every procedural due process claim since 1976 gets analyzed through these same three questions.</p>
+    </div>
+  </div>
+  <div class="factor-analysis" role="table" aria-label="The three Mathews factors and how the Court applied each to Eldridge's case">
+    <div class="factor-row header" role="row">
+      <div class="factor-cell" role="columnheader">Factor</div>
+      <div class="factor-cell" role="columnheader">What the Court Found</div>
+      <div class="factor-cell" role="columnheader">Result on This Factor</div>
+    </div>
+    <div class="factor-row" role="row">
+      <div class="factor-cell factor-name" role="cell">Factor 1<em>Private Interest</em>How important is the benefit to the individual?</div>
+      <div class="factor-cell found" role="cell">Disability benefits are significant, but not as critical as welfare in Goldberg. Other programs remain available if terminated. Back pay is available for wrongful terminations. <strong>The private interest is real but less urgent than in Goldberg.</strong></div>
+      <div class="factor-cell outcome" role="cell"><strong>MODERATE WEIGHT</strong> Weighs in Eldridge's favor, but not heavily enough to require a pre-termination hearing on its own.</div>
+    </div>
+    <div class="factor-row" role="row">
+      <div class="factor-cell factor-name" role="cell">Factor 2<em>Risk of Error</em>How likely is the current process to get it wrong?</div>
+      <div class="factor-cell found" role="cell">Disability is primarily a medical question decided on written physician records. Written evidence submissions and reconsideration rights substantially reduce error risk. An oral hearing adds relatively little accuracy. <strong>The risk of erroneous termination under existing procedures is low.</strong></div>
+      <div class="factor-cell outcome" role="cell"><strong>WEIGHS AGAINST ELDRIDGE</strong> The existing written-record procedures are adequate. Additional oral process would not substantially reduce error.</div>
+    </div>
+    <div class="factor-row" role="row">
+      <div class="factor-cell factor-name" role="cell">Factor 3<em>Government's Interest</em>What is the cost of more process?</div>
+      <div class="factor-cell found" role="cell">The Social Security Administration conducts disability reviews in enormous volume. Pre-termination evidentiary hearings would be expensive and time-consuming. <strong>The administrative cost of pre-termination hearings is substantial.</strong></div>
+      <div class="factor-cell outcome" role="cell"><strong>WEIGHS AGAINST ELDRIDGE</strong> The government's interest in efficient administration, at this scale, is a significant factor.</div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="s5-title">
+  <div class="section-head">
+    <div class="section-num">Section <strong>05</strong></div>
+    <h2 class="section-title" id="s5-title">What the Court <em>Did Not</em> Decide</h2>
+  </div>
+  <div class="body-grid">
+    <div class="body-grid-aside">Read this<br>carefully</div>
+    <div class="body-grid-main">
+      <p>Mathews established the analytical framework for procedural due process. It did not predetermine every case's outcome. The test is flexible and the three factors can balance in either direction. The most common misread is that Mathews signals agencies can always minimize process in the name of efficiency.</p>
+    </div>
+  </div>
+  <div class="guardrail" role="note">
+    <div class="guardrail-label">Common misreads to avoid</div>
+    <h3 class="guardrail-title">The test is a tool. It does not always favor the government.</h3>
+    <ul>
+      <li><strong>It did not overrule Goldberg v. Kelly.</strong> Welfare pre-termination hearings remain constitutionally required. Goldberg comes out the way it did because, run through the Mathews factors, welfare recipients' interests outweigh the government's efficiency interest. Mathews provides the framework; Goldberg's result still stands.</li>
+      <li><strong>It did not say efficiency always wins on Factor 3.</strong> High government efficiency interests can be outweighed by sufficiently heavy private interests or high risk of error. Hamdi v. Rumsfeld (2004), applying Mathews to enemy combatant detention, found that even in a national security context some procedural protections were required.</li>
+      <li><strong>It did not address what process is due after deprivation.</strong> The case was specifically about pre-termination hearings. What is constitutionally required in the post-deprivation hearing was not before the Court.</li>
+      <li><strong>It did not address situations involving liberty interests.</strong> Eldridge's claim was about a property interest in benefits. When liberty interests are at stake, Factor 1 weighs much more heavily. Cases involving physical custody, parental rights, or immigration removal often come out differently.</li>
+      <li><strong>It did not address emergency exceptions.</strong> Some government actions involving imminent danger can proceed without pre-deprivation hearings regardless of Mathews. Truly emergency situations are handled by separate doctrine.</li>
+      <li><strong>It did not settle how the test applies to child welfare proceedings.</strong> Mathews has been applied in parental rights termination and removal cases, but those applications are governed by a significant body of case law developed independently since 1976. The high private interest in parental rights means the first factor typically weighs heavily for parents.</li>
+    </ul>
+  </div>
+</section>
+
+<section aria-labelledby="s6-title">
+  <div class="section-head">
+    <div class="section-num">Section <strong>06</strong></div>
+    <h2 class="section-title" id="s6-title">How It <em>Got Here</em></h2>
+  </div>
+  <div class="body-grid">
+    <div class="body-grid-aside">The path<br>to SCOTUS</div>
+    <div class="body-grid-main">
+      <p>Instead of exhausting the administrative remedies available to him, Eldridge filed a federal lawsuit directly challenging the constitutionality of the termination procedures. The government argued he had not properly exhausted his administrative options. The Court addressed this as a threshold issue before reaching the merits.</p>
+    </div>
+  </div>
+  <div class="timeline">
+    <div class="timeline-event">
+      <div class="timeline-court">June 1968 &middot; Virginia</div>
+      <div class="timeline-ruling">George Eldridge begins receiving disability benefits</div>
+      <div class="timeline-desc">Eldridge is awarded Social Security disability insurance benefits based on a documented back condition and emotional disorders. He receives benefits for roughly four years.</div>
+    </div>
+    <div class="timeline-event">
+      <div class="timeline-court">May 1972 &middot; State Agency</div>
+      <div class="timeline-ruling">Benefits terminated without a pre-termination hearing</div>
+      <div class="timeline-desc">Based on a medical review, the agency concludes Eldridge's disability has ceased and terminates his benefits. He receives written notice explaining the tentative decision and his right to submit written responses and seek reconsideration. He submits a response but the initial determination is upheld.</div>
+    </div>
+    <div class="timeline-event">
+      <div class="timeline-court">1972 &middot; Western District of Virginia</div>
+      <div class="timeline-ruling">Eldridge files federal lawsuit challenging the procedures</div>
+      <div class="timeline-desc">Rather than seeking administrative reconsideration, Eldridge files suit in federal district court arguing that Goldberg v. Kelly requires a pre-termination hearing.</div>
+    </div>
+    <div class="timeline-event">
+      <div class="timeline-court">1973 &middot; Western District of Virginia</div>
+      <div class="timeline-ruling">District Court finds for Eldridge</div>
+      <div class="timeline-desc">Relying primarily on Goldberg v. Kelly, the district court holds that the termination procedures violate procedural due process. The government appeals.</div>
+    </div>
+    <div class="timeline-event">
+      <div class="timeline-court">1974 &middot; Fourth Circuit Court of Appeals</div>
+      <div class="timeline-ruling">Fourth Circuit affirms</div>
+      <div class="timeline-desc">The Fourth Circuit affirms. The government petitions the Supreme Court for certiorari.</div>
+    </div>
+    <div class="timeline-event">
+      <div class="timeline-court">October 6, 1975 &middot; Supreme Court</div>
+      <div class="timeline-ruling">Oral argument</div>
+      <div class="timeline-desc">Solicitor General Robert Bork argues for the government. Donald Earls argues for Eldridge. Argument takes place before an eight-Justice Court; Stevens has not yet been confirmed.</div>
+    </div>
+    <div class="timeline-event scotus">
+      <div class="timeline-court">February 24, 1976 &middot; Supreme Court of the United States</div>
+      <div class="timeline-ruling">SCOTUS reverses, 6&ndash;2</div>
+      <div class="timeline-desc">Justice Powell writes for the majority. The three-factor balancing test is announced. The existing Social Security disability procedures are held constitutionally sufficient. Justice Brennan dissents, joined by Marshall. Justice Stevens did not participate. The Mathews test becomes the governing framework for procedural due process analysis in American courts.</div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="s7-title">
+  <div class="section-head">
+    <div class="section-num">Section <strong>07</strong></div>
+    <h2 class="section-title" id="s7-title">For <em>Practice</em></h2>
+  </div>
+  <div class="body-grid">
+    <div class="body-grid-aside">The social<br>work bridge</div>
+    <div class="body-grid-main">
+      <p>Mathews is the most widely applied procedural due process framework in American law. Workers serving clients in administrative systems, child welfare, and public benefits encounter it constantly, whether or not they know its name. Three lenses help.</p>
+    </div>
+  </div>
+  <div class="practice-grid">
+    <div class="practice-card">
+      <div class="practice-card-tag">Benefits Practice Lens</div>
+      <h3 class="practice-card-title">Clients facing benefits termination have constitutional procedural rights.</h3>
+      <p>Workers helping clients through Social Security disability, welfare, food assistance, housing subsidies, Medicaid, and other benefits terminations should understand that agency procedures are constitutionally constrained. If a client is being terminated without adequate notice, without a meaningful opportunity to respond, or without access to the evidence against them, those are constitutional problems. Knowing the Mathews framework gives workers a vocabulary for those advocacy arguments, both within the agency and in legal aid referrals.</p>
+    </div>
+    <div class="practice-card">
+      <div class="practice-card-tag">Child Welfare Lens</div>
+      <h3 class="practice-card-title">The test governs removals, hearings, and TPR.</h3>
+      <p>Mathews is applied throughout child welfare proceedings. Emergency removals without pre-removal hearings get analyzed under Factor 2 and the emergency exception. The right to a hearing before foster care placement decisions and the procedures for termination of parental rights are all shaped by the Mathews balance. When parents' liberty interests are at stake, Factor 1 weighs heavily, and courts have required substantial procedural protections in TPR cases as a result.</p>
+    </div>
+    <div class="practice-card">
+      <div class="practice-card-tag">Advocacy Lens</div>
+      <h3 class="practice-card-title">The three factors are an advocacy tool.</h3>
+      <p>Mathews gives workers and legal advocates a structured way to argue for better procedures. High-stakes private interest, combined with a realistic assessment of how often current procedures produce wrong outcomes, and a manageable cost to the government of providing more process, adds up to a strong case for procedural reform. Workers can apply this framework informally when pushing agencies to change practices, and legal advocates can use it explicitly in administrative hearings and court challenges.</p>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="s8-title">
+  <div class="section-head">
+    <div class="section-num">Section <strong>08</strong></div>
+    <h2 class="section-title" id="s8-title">A Working <em>Vocabulary</em></h2>
+  </div>
+  <div class="body-grid">
+    <div class="body-grid-aside">Legal<br>terms</div>
+    <div class="body-grid-main">
+      <p>Mathews uses terminology from administrative law and constitutional due process that appears across a wide range of practice contexts.</p>
+    </div>
+  </div>
+  <div class="key-terms">
+    <div class="key-terms-title">Frequently Used in This Opinion</div>
+    <div class="key-terms-list">
+      <div class="key-term-item">
+        <div class="key-term-name">Procedural due process</div>
+        <p class="key-term-def">The constitutional requirement that before the government deprives a person of life, liberty, or property, it must follow fair procedures. Distinct from substantive due process, which protects the content of decisions. Mathews governs the procedural dimension: how much process is constitutionally required in a given situation.</p>
+      </div>
+      <div class="key-term-item">
+        <div class="key-term-name">The Mathews test</div>
+        <p class="key-term-def">The three-factor balancing test from this case: (1) the private interest affected, (2) the risk of erroneous deprivation under current procedures and the probable value of additional safeguards, and (3) the government's interest including fiscal and administrative burdens. Now the standard framework for all procedural due process analysis.</p>
+      </div>
+      <div class="key-term-item">
+        <div class="key-term-name">Pre-termination hearing</div>
+        <p class="key-term-def">An evidentiary hearing before the government takes action, as opposed to a post-termination hearing held after benefits are cut. Goldberg v. Kelly required pre-termination hearings for welfare. Mathews held they are not constitutionally required for Social Security disability, given the specific balance of the three factors.</p>
+      </div>
+      <div class="key-term-item">
+        <div class="key-term-name">Risk of erroneous deprivation</div>
+        <p class="key-term-def">Factor 2 of the Mathews test. The constitutional concern is not just whether the government might act incorrectly but whether the procedures in place provide adequate protection against incorrect action. Where error rates are high, Factor 2 weighs toward requiring additional process.</p>
+      </div>
+      <div class="key-term-item">
+        <div class="key-term-name">Administrative law judge (ALJ)</div>
+        <p class="key-term-def">A federal or state official who presides over administrative hearings and makes initial rulings on claims, licenses, benefits, and other administrative matters. In the Social Security context, ALJs hear disability appeals after the initial determination and reconsideration process.</p>
+      </div>
+      <div class="key-term-item">
+        <div class="key-term-name">Goldberg v. Kelly (1970)</div>
+        <p class="key-term-def">The 1970 case requiring pre-termination hearings for welfare recipients. Mathews does not overrule Goldberg. Rather, Goldberg is the case that gets the right answer when run through the Mathews factors, because welfare recipients' private interests are weighty enough and the government's interest is not sufficient to outweigh them.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="colophon" role="contentinfo">
+  <div class="colophon-inner">
+    <div class="colophon-brand"><a href="/scotus/" style="color: inherit; text-decoration: none;">Understanding SCOTUS Opinions</a></div>
+    <div class="colophon-meta">Mongan's Teaching Archive</div>
+  </div>
+</footer>
+
+<div class="term-popup" id="popup-goldberg" role="tooltip" hidden>
+  <strong>Goldberg v. Kelly (1970)</strong>
+  Decided six years before Mathews, Goldberg held that welfare recipients are constitutionally entitled to a pre-termination evidentiary hearing before their benefits can be cut off. Mathews does not overrule Goldberg but provides the framework that explains why Goldberg came out the way it did.
+</div>
+
+<script>
+  const terms = document.querySelectorAll('.term');
+  let activePopup = null;
+  function positionPopup(btn, popup) {
+    const rect = btn.getBoundingClientRect();
+    const popupWidth = popup.offsetWidth || 340;
+    let left = window.scrollX + rect.left;
+    const maxLeft = window.scrollX + document.documentElement.clientWidth - popupWidth - 16;
+    if (left > maxLeft) left = maxLeft;
+    if (left < 16) left = 16;
+    popup.style.left = left + 'px';
+    popup.style.top = (window.scrollY + rect.bottom + 8) + 'px';
+  }
+  function showPopup(btn) {
+    const popupId = 'popup-' + btn.dataset.term;
+    const popup = document.getElementById(popupId);
+    if (!popup) return;
+    if (activePopup && activePopup !== popup) activePopup.hidden = true;
+    popup.hidden = false;
+    positionPopup(btn, popup);
+    activePopup = popup;
+  }
+  function hidePopup(btn) {
+    const popupId = 'popup-' + btn.dataset.term;
+    const popup = document.getElementById(popupId);
+    if (popup) { popup.hidden = true; if (activePopup === popup) activePopup = null; }
+  }
+  terms.forEach(btn => {
+    btn.addEventListener('mouseenter', () => showPopup(btn));
+    btn.addEventListener('mouseleave', () => hidePopup(btn));
+    btn.addEventListener('focus', () => showPopup(btn));
+    btn.addEventListener('blur', () => hidePopup(btn));
+    btn.addEventListener('keydown', (e) => { if (e.key === 'Escape' && activePopup) { activePopup.hidden = true; activePopup = null; btn.blur(); } });
+  });
+  window.addEventListener('scroll', () => {
+    if (activePopup) {
+      const term = document.querySelector('.term[data-term="' + activePopup.id.replace('popup-','') + '"]');
+      if (term) positionPopup(term, activePopup);
+    }
+  });
+</script>
+
+</body>
+</html>
