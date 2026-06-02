@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hall v. Florida, Case Explainer</title>
+<meta name="description" content="Plain-language explainer of Hall v. Florida (2014), the Supreme Court case holding that Florida's rigid IQ cutoff for intellectual disability violates the Eighth Amendment.">
+<meta name="author" content="Philip Mongan">
+<meta property="og:title" content="Hall v. Florida — Understanding SCOTUS Opinions">
+<meta property="og:description" content="Plain-language explainer of Hall v. Florida (2014), the Supreme Court case holding that Florida's rigid IQ cutoff for intellectual disability violates the Eighth Amendment.">
+<meta property="og:url" content="https://philipmongan.com/scotus/Hall-Florida.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Mongan's Teaching Archive">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter+Tight:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f4ede0;
+    --paper-2: #ebe2d1;
+    --paper-deep: #e5dac4;
+    --ink: #1c1815;
+    --ink-2: #2d2722;
+    --ink-soft: #4a4239;
+    --ink-mute: #6b6258;
+    --rule: #c9bda6;
+    --rule-soft: #d9cfba;
+    --oxblood: #6b1f2a;
+    --oxblood-deep: #4f1620;
+    --oxblood-tint: #f3e0e2;
+    --brass: #6b5320;
+    --brass-tint: #f1e8cf;
+    --majority: #2d4a3a;
+    --majority-tint: #d9e2d8;
+    --dissent: #6b1f2a;
+    --dissent-tint: #ebd5d6;
+    --concur: #6b5320;
+    --concur-tint: #efe5c8;
+    --font-display: 'Fraunces', 'Times New Roman', serif;
+    --font-body: 'Inter Tight', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); background: var(--paper); color: var(--ink); line-height: 1.65; font-size: 17px; background-image: radial-gradient(circle at 20% 30%, rgba(107,31,42,0.025) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(107,83,32,0.025) 0%, transparent 50%); }
+  body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1; opacity: 0.4; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.11 0 0 0 0 0.09 0 0 0 0 0.08 0 0 0 0.12 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  .skip-link { position: absolute; top: -100px; left: 16px; background: var(--ink); color: var(--paper); padding: 12px 18px; text-decoration: none; font-weight: 600; border-radius: 2px; z-index: 9999; transition: top 0.2s; }
+  .skip-link:focus { top: 16px; outline: 3px solid var(--oxblood); }
+  .masthead { border-bottom: 1px solid var(--rule); padding: 24px 0 18px; position: relative; z-index: 2; }
+  .masthead-inner { max-width: 1180px; margin: 0 auto; padding: 0 32px; display: flex; align-items: baseline; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .masthead-brand { font-family: var(--font-display); font-size: 15px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); }
+  .masthead-meta { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mute); }
+  .hero { max-width: 1180px; margin: 0 auto; padding: 48px 32px 32px; position: relative; z-index: 2; }
+  .hero-eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--oxblood); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+  .hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--oxblood); }
+  .hero-eyebrow::after { content: ''; flex: 1; height: 1px; background: var(--rule); max-width: 200px; }
+  .hero-title { font-family: var(--font-display); font-weight: 500; font-size: clamp(40px, 6vw, 84px); line-height: 0.98; letter-spacing: -0.025em; color: var(--ink); margin-bottom: 12px; font-variation-settings: "opsz" 144, "SOFT" 30; }
+  .hero-title em { font-style: italic; font-weight: 400; color: var(--oxblood); }
+  .hero-citation { font-family: var(--font-mono); font-size: 13px; color: var(--ink-mute); letter-spacing: 0.04em; margin-bottom: 36px; }
+  .hero-citation a { color: var(--oxblood); text-decoration: underline; text-underline-offset: 3px; }
+  .hero-citation a:hover { color: var(--oxblood-deep); }
+  .lede { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; padding-top: 28px; border-top: 3px double var(--ink); }
+  .lede-label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-mute); padding-top: 6px; }
+  .lede-label-mark { display: inline-block; width: 6px; height: 6px; background: var(--oxblood); margin-right: 8px; border-radius: 50%; vertical-align: middle; }
+  .lede-text { font-family: var(--font-display); font-size: clamp(20px, 2.2vw, 26px); line-height: 1.4; font-weight: 400; color: var(--ink); letter-spacing: -0.005em; }
+  .lede-text strong { font-weight: 600; color: var(--oxblood); font-style: italic; }
+  @media (max-width: 720px) { .lede { grid-template-columns: 1fr; gap: 12px; } }
+  .bluf { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; margin-top: 28px; padding: 24px 28px 26px; background: var(--paper-2); border-left: 4px solid var(--brass); border-radius: 2px; }
+  .bluf-label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brass); font-weight: 700; padding-top: 4px; }
+  .bluf-label-mark { display: inline-block; width: 6px; height: 6px; background: var(--brass); margin-right: 8px; border-radius: 50%; vertical-align: middle; }
+  .bluf-text { font-family: var(--font-body); font-size: 16.5px; line-height: 1.7; color: var(--ink-2); }
+  .bluf-text strong { color: var(--ink); font-weight: 600; }
+  @media (max-width: 720px) { .bluf { grid-template-columns: 1fr; gap: 8px; padding: 20px 22px; } }
+  .dropcap::first-letter { font-family: var(--font-display); font-size: 5em; font-weight: 600; float: left; line-height: 0.85; margin: 0.04em 0.08em 0 0; color: var(--oxblood); font-style: italic; }
+  main { max-width: 1180px; margin: 0 auto; padding: 0 32px 80px; position: relative; z-index: 2; }
+  section { padding: 56px 0; border-bottom: 1px solid var(--rule); }
+  section:last-of-type { border-bottom: none; }
+  .section-head { display: grid; grid-template-columns: 120px 1fr; gap: 32px; align-items: baseline; margin-bottom: 32px; }
+  .section-num { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.18em; color: var(--ink-mute); text-transform: uppercase; border-top: 2px solid var(--ink); padding-top: 8px; }
+  .section-num strong { display: block; font-family: var(--font-display); font-size: 28px; font-weight: 400; font-style: italic; color: var(--oxblood); letter-spacing: -0.01em; margin-top: 2px; }
+  .section-title { font-family: var(--font-display); font-size: clamp(28px, 3.5vw, 44px); font-weight: 500; line-height: 1.05; letter-spacing: -0.02em; color: var(--ink); }
+  .section-title em { font-style: italic; color: var(--oxblood); }
+  @media (max-width: 720px) { .section-head { grid-template-columns: 1fr; gap: 8px; } .section-num { border-top: none; padding-top: 0; } }
+  .body-grid { display: grid; grid-template-columns: 120px 1fr; gap: 32px; }
+  .body-grid-aside { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-mute); padding-top: 8px; }
+  .body-grid-main { max-width: 65ch; }
+  .body-grid-main p { margin-bottom: 1em; font-size: 17px; line-height: 1.7; color: var(--ink-2); }
+  .body-grid-main p:last-child { margin-bottom: 0; }
+  .body-grid-main strong { color: var(--ink); font-weight: 600; }
+  .body-grid-main em { font-style: italic; }
+  @media (max-width: 720px) { .body-grid { grid-template-columns: 1fr; gap: 8px; } }
+  .bench { background: var(--paper-2); border: 1px solid var(--rule); border-radius: 4px; padding: 36px 32px 28px; margin-top: 8px; }
+  .bench-title { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-mute); text-align: center; margin-bottom: 24px; }
+  .bench-row { display: flex; justify-content: center; gap: 8px; margin-bottom: 28px; flex-wrap: wrap; }
+  .justice { flex: 0 0 auto; width: 88px; text-align: center; padding: 12px 4px; border-radius: 4px; border: 1.5px solid var(--rule); background: var(--paper); position: relative; transition: transform 0.15s, box-shadow 0.15s; }
+  .justice:hover { transform: translateY(-2px); box-shadow: 0 6px 14px rgba(28,24,21,0.08); }
+  .justice-seal { width: 32px; height: 32px; border-radius: 50%; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 14px; font-weight: 600; color: var(--paper); font-style: italic; }
+  .justice-name { font-family: var(--font-display); font-size: 13px; font-weight: 600; line-height: 1.15; color: var(--ink); }
+  .justice-role { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mute); margin-top: 4px; }
+  .justice.majority { border-color: var(--majority); background: var(--majority-tint); }
+  .justice.majority .justice-seal { background: var(--majority); }
+  .justice.dissent { border-color: var(--dissent); background: var(--dissent-tint); }
+  .justice.dissent .justice-seal { background: var(--dissent); }
+  .justice.dissent .justice-role { color: var(--ink); }
+  .justice.author::after { content: '\2726'; position: absolute; top: 4px; right: 6px; font-size: 12px; color: var(--oxblood); }
+  .bench-legend { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; padding-top: 20px; border-top: 1px solid var(--rule); font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); }
+  .bench-legend-item { display: flex; align-items: center; gap: 8px; }
+  .bench-legend-swatch { width: 14px; height: 14px; border-radius: 50%; border: 1.5px solid; }
+  .bench-legend-swatch.maj { background: var(--majority-tint); border-color: var(--majority); }
+  .bench-legend-swatch.dis { background: var(--dissent-tint); border-color: var(--dissent); }
+  .arguments { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 8px; }
+  @media (max-width: 720px) { .arguments { grid-template-columns: 1fr; } }
+  .arg-card { background: var(--paper); border: 1px solid var(--rule); border-top: 4px solid; padding: 28px 28px 24px; border-radius: 2px; }
+  .arg-card.majority-arg { border-top-color: var(--majority); }
+  .arg-card.dissent-arg { border-top-color: var(--dissent); }
+  .arg-label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .arg-card.majority-arg .arg-label { color: var(--majority); }
+  .arg-card.dissent-arg .arg-label { color: var(--dissent); }
+  .arg-label-mark { display: inline-block; width: 6px; height: 6px; border-radius: 50%; }
+  .arg-card.majority-arg .arg-label-mark { background: var(--majority); }
+  .arg-card.dissent-arg .arg-label-mark { background: var(--dissent); }
+  .arg-headline { font-family: var(--font-display); font-size: 22px; font-weight: 500; line-height: 1.3; color: var(--ink); margin-bottom: 18px; letter-spacing: -0.01em; }
+  .arg-headline em { font-style: italic; color: var(--oxblood); }
+  .arg-points { list-style: none; counter-reset: argp; }
+  .arg-points li { counter-increment: argp; padding: 14px 0 14px 36px; border-bottom: 1px solid var(--rule-soft); font-size: 15.5px; line-height: 1.6; color: var(--ink-2); position: relative; }
+  .arg-points li:last-child { border-bottom: none; padding-bottom: 4px; }
+  .arg-points li::before { content: counter(argp, decimal-leading-zero); position: absolute; left: 0; top: 14px; font-family: var(--font-mono); font-size: 12px; color: var(--ink-mute); letter-spacing: 0.05em; }
+  .arg-points li strong { display: block; font-family: var(--font-display); font-weight: 600; font-size: 16px; color: var(--ink); margin-bottom: 4px; letter-spacing: -0.005em; }
+  .guardrail { background: var(--brass-tint); border: 1px solid var(--brass); border-left: 4px solid var(--brass); padding: 24px 28px; margin-top: 8px; border-radius: 2px; }
+  .guardrail-label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--brass); font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+  .guardrail-label::before { content: '\26A0'; font-size: 16px; color: var(--brass); }
+  .guardrail-title { font-family: var(--font-display); font-size: 22px; font-weight: 500; color: var(--ink); margin-bottom: 14px; letter-spacing: -0.01em; }
+  .guardrail ul { list-style: none; padding: 0; }
+  .guardrail li { padding: 8px 0 8px 24px; font-size: 15.5px; color: var(--ink-2); line-height: 1.55; position: relative; }
+  .guardrail li::before { content: '\2715'; position: absolute; left: 0; top: 9px; color: var(--brass); font-weight: 700; font-size: 13px; }
+  .guardrail li strong { color: var(--ink); font-weight: 600; }
+  .timeline { margin-top: 8px; border-left: 2px solid var(--rule); padding-left: 28px; margin-left: 12px; }
+  .timeline-event { position: relative; padding-bottom: 28px; }
+  .timeline-event:last-child { padding-bottom: 0; }
+  .timeline-event::before { content: ''; position: absolute; left: -36px; top: 6px; width: 14px; height: 14px; background: var(--paper); border: 2px solid var(--oxblood); border-radius: 50%; }
+  .timeline-event.scotus::before { background: var(--oxblood); }
+  .timeline-court { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--oxblood); margin-bottom: 4px; font-weight: 700; }
+  .timeline-ruling { font-family: var(--font-display); font-size: 17px; font-weight: 500; color: var(--ink); margin-bottom: 4px; letter-spacing: -0.005em; }
+  .timeline-desc { font-size: 14.5px; color: var(--ink-soft); line-height: 1.55; }
+  .practice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 8px; }
+  @media (max-width: 820px) { .practice-grid { grid-template-columns: 1fr; } }
+  .practice-card { background: var(--paper); border: 1px solid var(--rule); padding: 24px 22px; border-radius: 2px; border-top: 4px solid var(--oxblood); }
+  .practice-card-tag { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--oxblood); margin-bottom: 10px; font-weight: 700; }
+  .practice-card-title { font-family: var(--font-display); font-size: 19px; font-weight: 600; line-height: 1.25; color: var(--ink); margin-bottom: 10px; letter-spacing: -0.01em; }
+  .practice-card p { font-size: 14.5px; line-height: 1.6; color: var(--ink-2); }
+  .pullquote { margin: 48px auto; max-width: 800px; text-align: center; padding: 0 24px; }
+  .pullquote-mark { font-family: var(--font-display); font-style: italic; font-size: 88px; color: var(--oxblood); line-height: 0.6; margin-bottom: 12px; font-weight: 400; }
+  .pullquote-text { font-family: var(--font-display); font-style: italic; font-size: clamp(22px, 2.4vw, 30px); line-height: 1.35; font-weight: 400; color: var(--ink); margin-bottom: 16px; letter-spacing: -0.005em; }
+  .pullquote-cite { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-mute); }
+  .colophon { background: var(--ink); color: var(--paper-2); padding: 36px 32px; position: relative; z-index: 2; }
+  .colophon-inner { max-width: 1180px; margin: 0 auto; display: flex; justify-content: space-between; align-items: baseline; gap: 24px; flex-wrap: wrap; }
+  .colophon-brand { font-family: var(--font-display); font-size: 14px; font-weight: 500; letter-spacing: 0.04em; font-style: italic; color: var(--paper); }
+  .colophon-meta { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #a89e8e; }
+  .key-terms { margin-top: 16px; background: var(--paper-2); border: 1px solid var(--rule); padding: 28px 32px; border-radius: 2px; }
+  .key-terms-title { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--oxblood); font-weight: 700; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--rule); }
+  .key-terms-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px 32px; }
+  @media (max-width: 720px) { .key-terms-list { grid-template-columns: 1fr; gap: 20px; } }
+  .key-term-item { padding: 0; }
+  .key-term-name { font-family: var(--font-display); font-weight: 600; font-style: italic; color: var(--ink); font-size: 17px; margin-bottom: 8px; letter-spacing: -0.005em; }
+  .key-term-def { font-size: 14.5px; color: var(--ink-2); line-height: 1.6; margin: 0; }
+  .sem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 8px; }
+  @media (max-width: 720px) { .sem-grid { grid-template-columns: 1fr; } }
+  .sem-card { background: var(--paper); border: 1px solid var(--rule); border-top: 4px solid; padding: 26px 24px 22px; border-radius: 2px; }
+  .sem-card.science { border-top-color: var(--majority); }
+  .sem-card.florida { border-top-color: var(--dissent); }
+  .sem-card-label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--rule); }
+  .sem-card.science .sem-card-label { color: var(--majority); }
+  .sem-card.florida .sem-card-label { color: var(--dissent); }
+  .sem-card-title { font-family: var(--font-display); font-size: 20px; font-weight: 600; color: var(--ink); margin-bottom: 12px; letter-spacing: -0.01em; }
+  .sem-card-title em { font-style: italic; color: var(--oxblood); }
+  .sem-card p { font-size: 14.5px; line-height: 1.6; color: var(--ink-2); margin-bottom: 10px; }
+  .sem-card p:last-child { margin-bottom: 0; }
+  .sem-card strong { color: var(--ink); font-weight: 600; }
+  .sem-range-viz { background: var(--paper-2); border: 1px solid var(--rule); border-radius: 2px; padding: 16px 18px; margin: 14px 0; }
+  .sem-range-label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 8px; }
+  .sem-bar-wrap { position: relative; height: 28px; background: var(--paper-deep); border-radius: 3px; overflow: hidden; margin-bottom: 8px; }
+  .sem-bar-range { position: absolute; top: 0; bottom: 0; background: var(--majority); opacity: 0.2; }
+  .sem-bar-cutoff { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--dissent); }
+  .sem-bar-score { position: absolute; top: 0; bottom: 0; width: 3px; background: var(--ink); }
+  .sem-bar-labels { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 12px; color: var(--ink-mute); letter-spacing: 0.06em; }
+  .sem-bar-annotations { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 10px; }
+  .sem-annotation { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--ink-soft); }
+  .sem-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .sem-dot.range { background: var(--majority); opacity: 0.5; }
+  .sem-dot.score { background: var(--ink); }
+  .sem-dot.cutoff { background: var(--dissent); }
+  .id-prong-list { list-style: none; counter-reset: prong; padding: 0; margin-top: 12px; }
+  .id-prong-list li { counter-increment: prong; padding: 10px 0 10px 32px; border-bottom: 1px solid var(--rule-soft); font-size: 14.5px; color: var(--ink-2); line-height: 1.55; position: relative; }
+  .id-prong-list li:last-child { border-bottom: none; }
+  .id-prong-list li::before { content: counter(prong); position: absolute; left: 0; top: 10px; font-family: var(--font-mono); font-size: 12px; color: var(--majority); font-weight: 700; letter-spacing: 0.05em; width: 22px; height: 22px; background: var(--majority-tint); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .id-prong-list li strong { color: var(--ink); font-weight: 600; }
+  @media print { body::before, .skip-link { display: none; } body { background: white; color: black; } section { page-break-inside: avoid; } }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<div class="masthead" role="banner">
+  <div class="masthead-inner">
+    <div class="masthead-brand"><a href="/scotus/" style="color: inherit; text-decoration: none;">understanding scotus opinions</a></div>
+    <div class="masthead-meta">Dr. Philip Mongan, lcsw, ph.D.</div>
+  </div>
+</div>
+
+<div class="hero">
+  <p class="hero-eyebrow">October Term 2013 &middot; Decided May 27, 2014</p>
+  <h1 class="hero-title">Hall <em>v.</em><br>Florida</h1>
+  <p class="hero-citation">
+    No. 12&ndash;10882 &middot; 572 U.S. 701 (2014) &middot;
+    <a href="https://www.oyez.org/cases/2013/12-10882" target="_blank" rel="noopener">Read the full case on Oyez &#8599;</a>
+  </p>
+  <div class="lede">
+    <div class="lede-label"><span class="lede-label-mark" aria-hidden="true"></span>The Holding</div>
+    <p class="lede-text">The Supreme Court ruled, <strong>5&ndash;4</strong>, that Florida's practice of treating an IQ score of 70 as a hard ceiling on intellectual disability claims violates the Eighth Amendment. <em>IQ scores must be understood as ranges, not fixed points</em>, and defendants who score within the margin of error must be allowed to present all evidence of intellectual disability.</p>
+  </div>
+  <div class="bluf">
+    <div class="bluf-label"><span class="bluf-label-mark" aria-hidden="true"></span>In plain terms</div>
+    <p class="bluf-text">After Atkins v. Virginia (2002) barred executing people with intellectual disabilities, Florida's law required a defendant to show an IQ score of 70 or below before courts could consider any other evidence of intellectual disability. Freddie Lee Hall had received nine IQ tests over his lifetime, with scores ranging from 60 to 80. His most recent score was 71. One point above Florida's cutoff. Florida courts refused to look at his school records, adaptive functioning deficits, or decades of evidence that he had been recognized as intellectually disabled his entire life. <strong>The Supreme Court held that treating a single IQ score as the final word contradicts everything the testing science says about how IQ scores work. A score of 71 and a score of 70 may reflect the same underlying intelligence level, because all IQ tests carry a margin of measurement error of approximately five points. "Intellectual disability is a condition, not a number."</strong></p>
+  </div>
+</div>
+
+<main id="main">
+
+<section aria-labelledby="s1-title">
+  <div class="section-head">
+    <div class="section-num">Section <strong>01</strong></div>
+    <h2 class="section-title" id="s1-title">The Question <em>Presented</em></h2>
+  </div>
+  <div class="body-grid">
+    <div class="body-grid-aside">What was<br>at stake</div>
+    <div class="body-grid-main">
+      <p class="dropcap">Freddie Lee Hall was sentenced to death in Florida in 1978 for the kidnapping, rape, and murder of Karol Hurst, a 21-year-old woman who was seven months pregnant when she was abducted from a grocery store parking lot. Hall and his codefendant killed her and later that same day killed a police officer who interrupted their attempt to rob a convenience store. Hall had been on Florida's death row for more than three decades when the question of his intellectual disability finally reached the Supreme Court.</p>
+      <p>Hall's history of intellectual disability was extensive and documented. His mother had subjected him and his siblings to horrific abuse. His teachers had recognized intellectual limitations throughout his schooling. A trial judge had previously stated that Hall had been "mentally retarded his entire life." In the decades he spent on death row, he had received nine IQ tests, with scores ranging from 60 to 80.</p>
+      <p>After Atkins v. Virginia (2002) barred executing people with intellectual disabilities, Hall challenged his sentence. He presented his most recent IQ score of 71. Florida's statute required a score of 70 or below before a defendant could present any additional evidence of intellectual disability. The Florida Supreme Court refused to consider Hall's documented history of adaptive functioning deficits, school records, or the decades of evidence documenting his disability, solely because his IQ score was 71 rather than 70. A single point separated Hall from even having his evidence heard.</p>
+      <p>The question was whether this rigid cutoff was consistent with the Eighth Amendment standard Atkins had established, or whether it violated the Constitution by treating an inherently imprecise number as the determinative and final word on whether someone would live or die.</p>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="s2-title">
+  <div class="section-head">
+    <div class="section-num">Section <strong>02</strong></div>
+    <h2 class="section-title" id="s2-title">The <em>Bench</em></h2>
+  </div>
+  <div class="body-grid">
+    <div class="body-grid-aside">Who joined<br>which side</div>
+    <div class="body-grid-main">
+      <p>Justice Kennedy wrote for a five-Justice majority, joined by Ginsburg, Breyer, Sotomayor, and Kagan. Justice Alito filed the dissent, joined by Roberts, Scalia, and Thomas. The same 5-4 alignment as Roper and Graham: Kennedy with the Court's liberals against the full conservative wing.</p>
+      <p>Kennedy wrote notably in this opinion that he was formally retiring the term "mental retardation" from the Court's usage, replacing it with "intellectual disability" throughout, consistent with clinical practice and the DSM-5's 2013 terminology shift.</p>
+      <p>Alito's dissent made the most pointed methodological argument: the majority had fundamentally changed the evolving standards analysis by using professional association standards (the DSM, the AAIDD) as evidence of national consensus rather than state legislative enactments. He called this a "sea change." Kennedy's response was that clinical standards are inseparable from the Atkins framework because Atkins itself defined intellectual disability in clinical terms; to ignore what clinical science says about measurement is to undermine Atkins from the inside.</p>
+    </div>
+  </div>
+  <div class="bench" role="figure" aria-label="The nine Justices and how they voted">
+    <p class="bench-title">The Roberts Court &middot; Vote 5&ndash;4</p>
+    <div class="bench-row">
+      <div class="justice dissent">
+        <div class="justice-seal" aria-hidden="true">R</div>
+        <div class="justice-name">Roberts</div>
+        <div class="justice-role">Dissented</div>
+      </div>
+      <div class="justice dissent">
+        <div class="justice-seal" aria-hidden="true">S</div>
+        <div class="justice-name">Scalia</div>
+        <div class="justice-role">Dissented</div>
+      </div>
+      <div class="justice majority author">
+        <div class="justice-seal" aria-hidden="true">K</div>
+        <div class="justice-name">Kennedy</div>
+        <div class="justice-role">Author</div>
+      </div>
+      <div class="justice dissent">
+        <div class="justice-seal" aria-hidden="true">T</div>
+        <div class="justice-name">Thomas</div>
+        <div class="justice-role">Dissented</div>
+      </div>
+      <div class="justice majority">
+        <div class="justice-seal" aria-hidden="true">G</div>
+        <div class="justice-name">Ginsburg</div>
+        <div class="justice-role">Joined</div>
+      </div>
+      <div class="justice majority">
+        <div class="justice-seal" aria-hidden="true">B</div>
+        <div class="justice-name">Breyer</div>
+        <div class="justice-role">Joined</div>
+      </div>
+      <div class="justice dissent author">
+        <div class="justice-seal" aria-hidden="true">A</div>
+        <div class="justice-name">Alito</div>
+        <div class="justice-role">Dissented</div>
+      </div>
+      <div class="justice majority">
+        <div class="justice-seal" aria-hidden="true">S</div>
+        <div class="justice-name">Sotomayor</div>
+        <div class="justice-role">Joined</div>
+      </div>
+      <div class="justice majority">
+        <div class="justice-seal" aria-hidden="true">K</div>
+        <div class="justice-name">Kagan</div>
+        <div class="justice-role">Joined</div>
+      </div>
+    </div>
+    <div class="bench-legend">
+      <div class="bench-legend-item"><span class="bench-legend-swatch maj" aria-hidden="true"></span>Majority (5)</div>
+      <div class="bench-legend-item"><span class="bench-legend-swatch dis" aria-hidden="true"></span>Dissent (4)</div>
+      <div class="bench-legend-item">&#10022; Opinion author &nbsp;&nbsp; Kennedy also formally retired "mental retardation" from the Court's usage in this opinion</div>
+    </div>
+  </div>
+</section>
+
+<div class="pullquote">
+  <div class="pullquote-mark" aria-hidden="true">&ldquo;</div>
+  <p class="pullquote-text">Intellectual disability is a condition, not a number.</p>
+  <p class="pullquote-cite">Justice Kennedy, for the Court</p>
+</div>
+
+<section aria-labelledby="s3-title">
+  <div class="section-head">
+    <div class="section-num">Section <strong>03</strong></div>
+    <h2 class="section-title" id="s3-title">The <em>Reasoning</em></h2>
+  </div>
+  <div class="body-grid">
+    <div class="body-grid-aside">Two<br>positions</div>
+    <div class="body-grid-main">
+      <p>The majority and dissent both agreed that Atkins requires states to exempt people with intellectual disabilities from execution. They disagreed about what role clinical science plays in defining the constitutional floor and about how states may implement the Atkins protection. Kennedy argued the science is embedded in the constitutional standard. Alito argued the science is for states and not the Court to decide.</p>
+    </div>
+  </div>
+  <div class="arguments">
+    <article class="arg-card majority-arg">
+      <div class="arg-label"><span class="arg-label-mark" aria-hidden="true"></span>The Majority</div>
+      <h3 class="arg-headline">A rigid IQ cutoff contradicts the test's own design and locks courts into <em>treating a number as a fact</em> when the test never claimed that precision.</h3>
+      <ol class="arg-points">
+        <li><strong>IQ scores are ranges, not fixed points.</strong> Every reputable IQ test carries an inherent margin of measurement error of approximately five points. The DSM, AAIDD, and APA all state that a score should be understood as a range of approximately five points on each side of the recorded number. A person who scores 71 may have a true IQ of 66. The test itself does not claim to distinguish meaningfully between 70 and 71.</li>
+        <li><strong>Florida's rule is in direct opposition to the views of the test's designers.</strong> By treating a score of 70 as categorically different from a score of 71, Florida's law contradicts what the test's creators themselves say about how to interpret scores. This is not contested clinical opinion; it is a basic fact about measurement.</li>
+        <li><strong>The rigid cutoff prevents consideration of adaptive functioning evidence.</strong> Intellectual disability is not diagnosed by IQ alone. Clinical standards define it through three elements: significantly subaverage intellectual functioning, significantly limited adaptive behavior, and onset before age 18. Florida's rule stopped inquiry entirely at the first element, preventing courts from ever reaching the second, regardless of how compelling the evidence of adaptive functioning deficits might be.</li>
+        <li><strong>Clinical standards are embedded in the Atkins framework.</strong> Atkins defined intellectual disability by reference to clinical diagnostic criteria. It cannot be implemented coherently by ignoring what those criteria actually say. Kennedy rejected Alito's argument that courts should defer entirely to states: "When a state law contradicts the clinical knowledge of the testing community, the state law must yield to the Constitution."</li>
+        <li><strong>The holding is narrow: within the SEM range, additional evidence must be heard.</strong> When a defendant's score falls within the acknowledged margin of error for the cutoff, courts must allow additional evidence including adaptive functioning testimony. This does not mean every defendant with a borderline score is automatically exempt. The IQ score cannot be the sole and final word when measurement uncertainty puts the defendant within the constitutional zone.</li>
+        <li><strong>Freddie Lee Hall may or may not be intellectually disabled, but he must be allowed to present his evidence.</strong> Kennedy did not decide whether Hall would ultimately qualify under Atkins. He held that Hall must have the opportunity to make his case, including his decades of documented adaptive functioning deficits.</li>
+      </ol>
+    </article>
+    <article class="arg-card dissent-arg">
+      <div class="arg-label"><span class="arg-label-mark" aria-hidden="true"></span>The Dissent</div>
+      <h3 class="arg-headline">The majority substitutes the views of <em>professional associations</em> for democratic choices about who is eligible for execution.</h3>
+      <ol class="arg-points">
+        <li><strong>Alito: this is a "sea change" in the evolving standards methodology.</strong> The evolving standards analysis has always looked to state legislative choices as evidence of national consensus. The majority looked primarily to professional association standards as its benchmark. This replaces democratic judgment with the views of professional elites. "What counts are our society's standards, which is to say, the standards of the American people, not the standards of professional associations."</li>
+        <li><strong>Alito: the state count does not show a national consensus against Florida's approach.</strong> Kennedy counted all 50 states in his denominator. Alito counted only the 31 states with the death penalty. By that count, 10 of 31 death-penalty states used rigid or near-rigid IQ cutoffs, which is not a fringe position. The two Justices applied different denominators and reached opposite conclusions.</li>
+        <li><strong>Alito: a uniform national rule based on professional standards creates its own problems.</strong> If clinical consensus governs, what happens when clinical consensus changes? The AAIDD and DSM revise their standards periodically. Locking the Eighth Amendment to floating professional standards means constitutional law is governed by committees of clinicians, not by the democratic process.</li>
+        <li><strong>Alito: the SEM argument applies symmetrically.</strong> If a score of 71 must be treated as potentially reflecting a true IQ as low as 66, then a score of 65 must be treated as potentially reflecting a true IQ as high as 70. The SEM argument introduces uncertainty across the entire range. The majority applied it asymmetrically, in only the direction favorable to defendants.</li>
+      </ol>
+    </article>
+  </div>
+</section>
+
+<section aria-labelledby="s4-title">
+  <div class="section-head">
+    <div class="section-num">Section <strong>04</strong></div>
+    <h2 class="section-title" id="s4-title">The Science Behind the <em>Constitutional Rule</em></h2>
+  </div>
+  <div class="body-grid">
+    <div class="body-grid-aside">What the<br>tests actually<br>say</div>
+    <div class="body-grid-main">
+      <p>Hall is unusual in the SCOTUS canon because the constitutional holding turns on applied psychometric science. To apply the case correctly, workers need to understand two things: how IQ scores actually work as statistical estimates (the SEM), and what a complete intellectual disability assessment requires beyond the IQ score.</p>
+    </div>
+  </div>
+  <div class="sem-grid">
+    <div class="sem-card science">
+      <p class="sem-card-label">What the Testing Science Says</p>
+      <h3 class="sem-card-title">IQ Scores Are <em>Ranges</em>, Not Points</h3>
+      <p>Every standardized IQ test carries a statistical margin of measurement error called the <strong>standard error of measurement (SEM)</strong>. For most widely used IQ assessments, the SEM is approximately 5 points. This reflects the inherent imprecision of psychometric testing: different testing conditions, different days, fatigue, and other variables affect performance.</p>
+      <div class="sem-range-viz" role="img" aria-label="Diagram showing Freddie Hall's IQ score of 71 within a range of 66 to 76, overlapping with the below-70 intellectual disability range">
+        <p class="sem-range-label">Hall's Score: 71 &middot; SEM Range: 66 to 76</p>
+        <div class="sem-bar-wrap">
+          <div class="sem-bar-range" style="left:24%;width:40%;" aria-hidden="true"></div>
+          <div class="sem-bar-cutoff" style="left:40%;" aria-hidden="true"></div>
+          <div class="sem-bar-score" style="left:44%;" aria-hidden="true"></div>
+        </div>
+        <div class="sem-bar-labels" aria-hidden="true">
+          <span>60</span><span>65</span><span>70</span><span>75</span><span>80</span><span>85</span>
+        </div>
+        <div class="sem-bar-annotations" aria-hidden="true">
+          <div class="sem-annotation"><div class="sem-dot range"></div>SEM range (66&ndash;76)</div>
+          <div class="sem-annotation"><div class="sem-dot score"></div>Hall's score (71)</div>
+          <div class="sem-annotation"><div class="sem-dot cutoff"></div>Florida's cutoff (70)</div>
+        </div>
+      </div>
+      <p>The DSM, AAIDD, and APA all state that IQ scores should be understood as ranges, not as precise single points. A score of 71 means the person's true intelligence level falls somewhere in a range of roughly 61 to 81 with 95% confidence. The test does not claim to meaningfully distinguish between 70 and 71.</p>
+      <p><strong>Florida's error:</strong> Treating 70 as a hard cutoff ignores what the test itself says about its own precision. Kennedy wrote that Florida's rigid rule "is in direct opposition to the views of those who design, administer, and interpret the IQ test."</p>
+    </div>
+    <div class="sem-card florida">
+      <p class="sem-card-label">What a Complete Assessment Requires</p>
+      <h3 class="sem-card-title">Three Prongs, <em>All Required</em></h3>
+      <p>Clinical diagnostic standards define intellectual disability through three required elements that must all be present. Florida's rigid cutoff stopped inquiry at the first, making the other two legally invisible for anyone scoring above 70.</p>
+      <ol class="id-prong-list">
+        <li><strong>Significantly subaverage intellectual functioning.</strong> Typically indicated by IQ scores approximately two standard deviations below the mean (around 70 or below), but understood as a range accounting for measurement error. This is where the SEM dispute lives.</li>
+        <li><strong>Significant limitations in adaptive behavior.</strong> Deficits in conceptual, social, and practical skills used in everyday life: managing money, reading and writing, understanding social rules, living independently, and making safe decisions. Adaptive functioning must be assessed through standardized instruments, structured interviews, and collateral history, not just IQ testing. Hall had extensive evidence of adaptive deficits that Florida courts never reached.</li>
+        <li><strong>Onset before age 18.</strong> The intellectual and adaptive limitations must have manifested during the developmental period, not as a result of later injury, illness, or other causes. Hall's documented history from childhood and school records directly addressed this prong.</li>
+      </ol>
+      <p style="margin-top:12px;"><strong>The constitutional problem:</strong> Florida's rule made it legally impossible for courts to ever reach Prongs 2 and 3 for any defendant whose single most recent IQ score exceeded 70, no matter how compelling the adaptive functioning and developmental evidence was.</p>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="s5-title">
+  <div class="section-head">
+    <div class="section-num">Section <strong>05</strong></div>
+    <h2 class="section-title" id="s5-title">What the Court <em>Did Not</em> Decide</h2>
+  </div>
+  <div class="body-grid">
+    <div class="body-grid-aside">Read this<br>carefully</div>
+    <div class="body-grid-main">
+      <p>Hall addressed one specific form of definitional abuse: the rigid IQ cutoff. It left intact significant state flexibility in other areas, and subsequent cases have addressed additional forms of definitional manipulation. The full picture of post-Atkins intellectual disability litigation is more extensive than Hall alone.</p>
+    </div>
+  </div>
+  <div class="guardrail" role="note">
+    <div class="guardrail-label">Common misreads to avoid</div>
+    <h3 class="guardrail-title">No rigid cutoffs. But states still have substantial flexibility.</h3>
+    <ul>
+      <li><strong>It did not bar all IQ-based analysis.</strong> Kennedy was careful to preserve IQ testing as a central tool. States may still use IQ scores as important evidence. The holding is that a single score above a rigid cutoff cannot end the inquiry when the score falls within the acknowledged margin of error. IQ testing remains essential; it just cannot be treated as infallible.</li>
+      <li><strong>It did not decide that Freddie Lee Hall is intellectually disabled.</strong> The Court remanded for Florida courts to conduct a proper, complete assessment. Hall may or may not ultimately qualify. The holding is procedural: he must have the opportunity to present all of his evidence.</li>
+      <li><strong>It did not set a specific upper threshold.</strong> Kennedy said that when a score falls within the SEM range, additional evidence must be heard. He did not say exactly what that range means in practice for defendants with scores of 72, 73, 74, and higher, which generated some uncertainty.</li>
+      <li><strong>Moore v. Texas (2017 and 2019) addressed a different form of definitional manipulation.</strong> While Hall addressed the rigid IQ cutoff, Moore addressed Texas's use of non-clinical "Briseno factors" that relied on outdated stereotypes about how intellectually disabled people behave. Moore held that states must use current, professionally approved clinical standards, not their own invented criteria. Together, Hall and Moore establish that states cannot implement Atkins through definitions designed to minimize its reach.</li>
+      <li><strong>The counting dispute about which states use rigid cutoffs remains contested.</strong> Kennedy and Alito applied different denominators to the same legislative data and reached opposite conclusions. This methodological debate continues to affect how courts assess consensus in Eighth Amendment cases.</li>
+      <li><strong>What happened to Freddie Hall.</strong> On remand, Florida courts evaluated Hall's intellectual disability under the broader framework the Supreme Court required. In 2016, after more than 36 years on death row, Hall was found to meet the criteria for intellectual disability. His death sentence was vacated and he was resentenced to life in prison. He died in custody in 2024 at approximately 81 years of age.</li>
+    </ul>
+  </div>
+</section>
+
+<section aria-labelledby="s6-title">
+  <div class="section-head">
+    <div class="section-num">Section <strong>06</strong></div>
+    <h2 class="section-title" id="s6-title">How It <em>Got Here</em></h2>
+  </div>
+  <div class="body-grid">
+    <div class="body-grid-aside">The path<br>to SCOTUS</div>
+    <div class="body-grid-main">
+      <p>Hall spent more than three decades on Florida's death row, with multiple rounds of post-conviction litigation. The Atkins decision in 2002 opened a new avenue that the Florida courts repeatedly closed on procedural grounds before the Supreme Court intervened.</p>
+    </div>
+  </div>
+  <div class="timeline">
+    <div class="timeline-event">
+      <div class="timeline-court">1978 &middot; Florida</div>
+      <div class="timeline-ruling">Hall convicted and sentenced to death</div>
+      <div class="timeline-desc">Freddie Lee Hall and Mack Ruffin kidnap, rape, and kill Karol Hurst, who is seven months pregnant. They kill a police officer later that day. Hall is convicted and sentenced to death. Throughout subsequent decades of appeals, courts and evaluators document Hall's intellectual limitations.</div>
+    </div>
+    <div class="timeline-event">
+      <div class="timeline-court">June 20, 2002 &middot; Supreme Court</div>
+      <div class="timeline-ruling">Atkins v. Virginia bars executing intellectually disabled defendants</div>
+      <div class="timeline-desc">The Supreme Court holds 6-3 that the Eighth Amendment categorically bars executing people with intellectual disabilities, leaving the definition to states. Hall immediately challenges his sentence under the new Atkins standard, citing his IQ scores and history of being identified as intellectually disabled throughout his life.</div>
+    </div>
+    <div class="timeline-event">
+      <div class="timeline-court">2002&ndash;2012 &middot; Florida Courts</div>
+      <div class="timeline-ruling">Florida courts repeatedly reject Hall's Atkins claim</div>
+      <div class="timeline-desc">Hall presents IQ scores ranging from 60 to 80. His most recent score is 71. Under Florida's law, a score above 70 bars any further consideration of intellectual disability evidence. Florida courts refuse to examine Hall's extensive adaptive functioning deficits, school records, or testimonial evidence. The Florida Supreme Court upholds the 70-point threshold as constitutional in 2012.</div>
+    </div>
+    <div class="timeline-event">
+      <div class="timeline-court">March 3, 2014 &middot; Supreme Court</div>
+      <div class="timeline-ruling">Oral argument</div>
+      <div class="timeline-desc">Eric Pinkard argues for Hall, emphasizing that the rigid cutoff contradicts the science of how IQ tests are designed to be interpreted. Allen Winsor argues for Florida. The case draws amicus briefs from the American Psychological Association and the AAIDD supporting Hall's position on measurement science.</div>
+    </div>
+    <div class="timeline-event scotus">
+      <div class="timeline-court">May 27, 2014 &middot; Supreme Court of the United States</div>
+      <div class="timeline-ruling">SCOTUS reverses, 5&ndash;4</div>
+      <div class="timeline-desc">Justice Kennedy writes for the majority. Justice Alito dissents, joined by Roberts, Scalia, and Thomas. Florida's rigid IQ cutoff is struck down. Hall must be given the opportunity to present full evidence of intellectual disability including adaptive functioning deficits. The Court officially retires "mental retardation" from its Eighth Amendment jurisprudence, replacing it with "intellectual disability."</div>
+    </div>
+    <div class="timeline-event">
+      <div class="timeline-court">2016 &middot; Florida Court on Remand</div>
+      <div class="timeline-ruling">Hall found intellectually disabled; death sentence vacated</div>
+      <div class="timeline-desc">Florida courts conduct a full assessment under the Hall framework. After more than 36 years on death row, Hall is found to meet the criteria for intellectual disability. His death sentence is vacated and he is resentenced to life in prison. He dies in custody in 2024.</div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="s7-title">
+  <div class="section-head">
+    <div class="section-num">Section <strong>07</strong></div>
+    <h2 class="section-title" id="s7-title">For <em>Practice</em></h2>
+  </div>
+  <div class="body-grid">
+    <div class="body-grid-aside">The social<br>work bridge</div>
+    <div class="body-grid-main">
+      <p>Hall matters for workers in any context where IQ scores are used to make consequential decisions about people with intellectual disabilities. The case's constitutional holding rests on psychometric principles that apply far beyond capital cases. Three lenses help.</p>
+    </div>
+  </div>
+  <div class="practice-grid">
+    <div class="practice-card">
+      <div class="practice-card-tag">Assessment Literacy Lens</div>
+      <h3 class="practice-card-title">IQ scores are ranges. Hall made this constitutional, not just clinical.</h3>
+      <p>Social workers who administer or use IQ assessments in any setting should understand what Hall established: an IQ score is an estimate with an acknowledged margin of uncertainty, not a precise measurement. This principle applies beyond capital cases to special education eligibility, disability benefits determinations, guardianship, intellectual disability services, and any context where a cutoff score drives a consequential decision. Workers who know the SEM concept can identify when systems are misusing scores as if they were precise measurements and advocate for appropriate uncertainty ranges in decision-making.</p>
+    </div>
+    <div class="practice-card">
+      <div class="practice-card-tag">Adaptive Functioning Lens</div>
+      <h3 class="practice-card-title">Adaptive functioning is the second prong. Workers document it.</h3>
+      <p>Hall established that intellectual disability assessment must include adaptive functioning, not just IQ. Social workers are often best positioned to document adaptive behavior deficits through structured interviews with family members, review of school and service records, observation in real-world settings, and collateral history gathering. In any forensic or capital context involving intellectual disability claims, comprehensive adaptive functioning documentation is the work that Hall's constitutional framework demands. A compelling adaptive functioning assessment can be decisive when IQ scores are borderline.</p>
+    </div>
+    <div class="practice-card">
+      <div class="practice-card-tag">Continuing Litigation Lens</div>
+      <h3 class="practice-card-title">Hall narrowed rigid cutoffs. Moore addressed the next form of evasion.</h3>
+      <p>Each Supreme Court ruling in this line has been followed by state attempts to comply minimally while preserving maximum flexibility to execute defendants who might qualify clinically. Florida's rigid IQ cutoff was struck down in Hall. Texas's use of non-clinical "Briseno factors" was struck down in Moore v. Texas (2017 and 2019). Workers in capital defense should stay current on the state-specific standards in their jurisdictions and understand that Hall and Moore together represent a floor, not a ceiling, on what courts must consider.</p>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="s8-title">
+  <div class="section-head">
+    <div class="section-num">Section <strong>08</strong></div>
+    <h2 class="section-title" id="s8-title">A Working <em>Vocabulary</em></h2>
+  </div>
+  <div class="body-grid">
+    <div class="body-grid-aside">Legal and<br>clinical<br>terms</div>
+    <div class="body-grid-main">
+      <p>Hall sits at the intersection of psychometric science and Eighth Amendment jurisprudence. Understanding both vocabularies is necessary to apply the case correctly.</p>
+    </div>
+  </div>
+  <div class="key-terms">
+    <div class="key-terms-title">Frequently Used in This Opinion</div>
+    <div class="key-terms-list">
+      <div class="key-term-item">
+        <div class="key-term-name">Standard error of measurement (SEM)</div>
+        <p class="key-term-def">The statistical margin of uncertainty inherent in any psychological test, reflecting the fact that a single test score is an estimate of the true underlying ability, not a precise measurement. For most IQ tests, the SEM is approximately five points. A score of 71 reflects a true IQ somewhere in the range of approximately 61 to 81. The majority held that Florida's rigid cutoff violated the Constitution by refusing to acknowledge this inherent imprecision.</p>
+      </div>
+      <div class="key-term-item">
+        <div class="key-term-name">Adaptive functioning</div>
+        <p class="key-term-def">The conceptual, social, and practical skills people use in everyday life. The second required prong of an intellectual disability diagnosis alongside significantly subaverage intellectual functioning. Florida's rigid cutoff prevented courts from ever reaching adaptive functioning evidence for any defendant scoring above 70 on an IQ test.</p>
+      </div>
+      <div class="key-term-item">
+        <div class="key-term-name">AAIDD (American Association on Intellectual and Developmental Disabilities)</div>
+        <p class="key-term-def">The leading professional organization that publishes the clinical definitions and standards for intellectual disability diagnosis. Kennedy cited the AAIDD's standards alongside the DSM-5 as authoritative evidence of professional consensus on how IQ scores should be interpreted. Alito criticized using AAIDD standards as evidence of national consensus, calling it substitution of professional elite opinion for democratic judgment.</p>
+      </div>
+      <div class="key-term-item">
+        <div class="key-term-name">DSM-5 (2013)</div>
+        <p class="key-term-def">The fifth edition of the Diagnostic and Statistical Manual, which replaced "mental retardation" with "intellectual disability" as the preferred terminology. Kennedy explicitly adopted "intellectual disability" as the Court's preferred term in this opinion, citing the DSM-5's 2013 terminology shift.</p>
+      </div>
+      <div class="key-term-item">
+        <div class="key-term-name">Moore v. Texas (2017, 2019)</div>
+        <p class="key-term-def">The follow-on case to Hall that addressed Texas's use of the "Briseno factors," a set of non-clinical criteria for assessing intellectual disability that included behavioral stereotypes derived from the character Lennie in Steinbeck's "Of Mice and Men." The Supreme Court held that states must use current clinical standards, not their own non-clinical criteria, when implementing the Atkins protection.</p>
+      </div>
+      <div class="key-term-item">
+        <div class="key-term-name">Evolving standards of decency</div>
+        <p class="key-term-def">The Eighth Amendment test for what constitutes cruel and unusual punishment. Kennedy applied it in Hall partly through clinical professional standards rather than only through state legislative counts, which Alito called a "sea change." The majority held that clinical consensus is relevant because Atkins itself defined the protected class in clinical terms, and those clinical definitions cannot be implemented coherently without reference to clinical science.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="colophon" role="contentinfo">
+  <div class="colophon-inner">
+    <div class="colophon-brand"><a href="/scotus/" style="color: inherit; text-decoration: none;">Understanding SCOTUS Opinions</a></div>
+    <div class="colophon-meta">Mongan's Teaching Archive</div>
+  </div>
+</footer>
+
+</body>
+</html>
