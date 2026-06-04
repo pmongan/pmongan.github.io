@@ -145,7 +145,9 @@
   .colophon-inner { max-width: 1180px; margin: 0 auto; display: flex; justify-content: space-between; align-items: baseline; gap: 24px; flex-wrap: wrap; }
   .colophon-brand { font-family: var(--font-display); font-size: 14px; font-weight: 500; letter-spacing: 0.04em; font-style: italic; color: var(--paper); }
   .colophon-meta { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #a89e8e; }
-
+  .colophon-meta a { color: inherit; text-decoration: none; }
+  .colophon-meta a:hover { color: var(--paper); }
+  
   @media print { body::before, .skip-link, .subnav { display: none; } body { background: white; color: black; } .area, .case-card { page-break-inside: avoid; } }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
   .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
