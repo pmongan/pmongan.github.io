@@ -29,11 +29,6 @@
     --oxblood-tint: #f3e0e2;
     --brass: #6b5320;
     --brass-tint: #f1e8cf;
-    --majority: #2d4a3a;
-    --majority-tint: #d9e2d8;
-    --dissent: #6b1f2a;
-    --dissent-tint: #ebd5d6;
-
     --font-display: 'Fraunces', 'Times New Roman', serif;
     --font-body: 'Inter Tight', system-ui, sans-serif;
     --font-mono: 'JetBrains Mono', 'Courier New', monospace;
@@ -52,544 +47,114 @@
       radial-gradient(circle at 20% 30%, rgba(107,31,42,0.025) 0%, transparent 50%),
       radial-gradient(circle at 80% 70%, rgba(107,83,32,0.025) 0%, transparent 50%);
   }
-
   body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 1;
-    opacity: 0.4;
+    content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1; opacity: 0.4;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.11 0 0 0 0 0.09 0 0 0 0 0.08 0 0 0 0.12 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
-  .skip-link {
-    position: absolute;
-    top: -100px;
-    left: 16px;
-    background: var(--ink);
-    color: var(--paper);
-    padding: 12px 18px;
-    text-decoration: none;
-    font-weight: 600;
-    border-radius: 2px;
-    z-index: 9999;
-    transition: top 0.2s;
-  }
+  .skip-link { position: absolute; top: -100px; left: 16px; background: var(--ink); color: var(--paper); padding: 12px 18px; text-decoration: none; font-weight: 600; border-radius: 2px; z-index: 9999; transition: top 0.2s; }
   .skip-link:focus { top: 16px; outline: 3px solid var(--oxblood); }
 
-  .masthead {
-    border-bottom: 1px solid var(--rule);
-    padding: 24px 0 18px;
-    position: relative;
-    z-index: 2;
-  }
-  .masthead-inner {
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: 0 32px;
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 24px;
-    flex-wrap: wrap;
-  }
-  .masthead-brand {
-    font-family: var(--font-display);
-    font-size: 15px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink);
-  }
-  .masthead-brand a {
-    color: var(--ink);
-    text-decoration: none;
-  }
+  /* MASTHEAD */
+  .masthead { border-bottom: 1px solid var(--rule); padding: 24px 0 18px; position: relative; z-index: 2; }
+  .masthead-inner { max-width: 1180px; margin: 0 auto; padding: 0 32px; display: flex; align-items: baseline; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .masthead-brand { font-family: var(--font-display); font-size: 15px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); }
+  .masthead-brand a { color: var(--ink); text-decoration: none; }
   .masthead-brand a:hover { color: var(--oxblood); }
-  .masthead-meta {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ink-mute);
-  }
+  .masthead-meta { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mute); }
 
-  .hero {
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: 56px 32px 40px;
-    position: relative;
-    z-index: 2;
-  }
-  .hero-eyebrow {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--oxblood);
-    margin-bottom: 22px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .hero-eyebrow::before {
-    content: '';
-    width: 32px;
-    height: 1px;
-    background: var(--oxblood);
-  }
-  .hero-eyebrow::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--rule);
-    max-width: 220px;
-  }
-  .hero-title {
-    font-family: var(--font-display);
-    font-weight: 500;
-    font-size: clamp(44px, 6.5vw, 88px);
-    line-height: 0.98;
-    letter-spacing: -0.025em;
-    color: var(--ink);
-    margin-bottom: 14px;
-    font-variation-settings: "opsz" 144, "SOFT" 30;
-  }
-  .hero-title em {
-    font-style: italic;
-    font-weight: 400;
-    color: var(--oxblood);
-  }
-  .hero-subtitle {
-    font-family: var(--font-display);
-    font-size: clamp(20px, 2.2vw, 26px);
-    line-height: 1.4;
-    font-weight: 400;
-    color: var(--ink-soft);
-    font-style: italic;
-    max-width: 30ch;
-    margin-bottom: 40px;
-  }
+  /* HERO */
+  .hero { max-width: 1180px; margin: 0 auto; padding: 56px 32px 36px; position: relative; z-index: 2; }
+  .hero-eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--oxblood); margin-bottom: 22px; display: flex; align-items: center; gap: 12px; }
+  .hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--oxblood); }
+  .hero-eyebrow::after { content: ''; flex: 1; height: 1px; background: var(--rule); max-width: 220px; }
+  .hero-title { font-family: var(--font-display); font-weight: 500; font-size: clamp(44px, 6.5vw, 88px); line-height: 0.98; letter-spacing: -0.025em; color: var(--ink); margin-bottom: 14px; font-variation-settings: "opsz" 144, "SOFT" 30; }
+  .hero-title em { font-style: italic; font-weight: 400; color: var(--oxblood); }
+  .hero-subtitle { font-family: var(--font-display); font-size: clamp(20px, 2.2vw, 26px); line-height: 1.4; font-weight: 400; color: var(--ink-soft); font-style: italic; max-width: 30ch; margin-bottom: 36px; }
+  .hero-intro { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; padding-top: 28px; border-top: 3px double var(--ink); }
+  .hero-intro-label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-mute); padding-top: 6px; }
+  .hero-intro-label-mark { display: inline-block; width: 6px; height: 6px; background: var(--oxblood); margin-right: 8px; border-radius: 50%; vertical-align: middle; }
+  .hero-intro-text { font-family: var(--font-display); font-size: clamp(19px, 1.9vw, 23px); line-height: 1.45; font-weight: 400; color: var(--ink); letter-spacing: -0.005em; }
+  .hero-intro-text a { color: var(--oxblood); text-decoration: underline; text-underline-offset: 3px; }
+  .hero-intro-text a:hover { color: var(--oxblood-deep); }
+  @media (max-width: 720px) { .hero-intro { grid-template-columns: 1fr; gap: 12px; } }
 
-  .intro {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 40px;
-    padding-top: 28px;
-    border-top: 3px double var(--ink);
-  }
-  .intro-label {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--ink-mute);
-    padding-top: 6px;
-  }
-  .intro-label-mark {
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    background: var(--oxblood);
-    margin-right: 8px;
-    border-radius: 50%;
-    vertical-align: middle;
-  }
-  .intro-text {
-    font-family: var(--font-display);
-    font-size: clamp(19px, 1.9vw, 23px);
-    line-height: 1.45;
-    font-weight: 400;
-    color: var(--ink);
-    letter-spacing: -0.005em;
-  }
-  .intro-text strong {
-    font-weight: 600;
-    color: var(--oxblood);
-    font-style: italic;
-  }
-  .intro-text a {
-    color: var(--oxblood);
-    text-decoration: underline;
-    text-underline-offset: 3px;
-  }
-  .intro-text a:hover { color: var(--oxblood-deep); }
-  @media (max-width: 720px) {
-    .intro { grid-template-columns: 1fr; gap: 12px; }
-  }
+  /* DIRECTORY (browse by practice area) */
+  .directory { max-width: 1180px; margin: 36px auto 0; padding: 0 32px; position: relative; z-index: 2; }
+  .directory-head { display: flex; align-items: baseline; gap: 16px; margin-bottom: 18px; }
+  .directory-label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-mute); white-space: nowrap; }
+  .directory-rule { flex: 1; height: 1px; background: var(--rule-soft); }
+  .directory-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  @media (max-width: 859px) { .directory-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 540px) { .directory-grid { grid-template-columns: 1fr; } }
+  .dir-tile { display: flex; align-items: baseline; gap: 14px; background: var(--paper); border: 1px solid var(--rule); border-left: 3px solid var(--oxblood); border-radius: 2px; padding: 16px 18px; text-decoration: none; transition: background 0.15s, transform 0.12s; }
+  .dir-tile:hover { background: var(--paper-2); transform: translateX(2px); }
+  .dir-tile.dev { border-left-color: var(--rule); }
+  .dir-num { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; color: var(--ink-mute); padding-top: 3px; flex-shrink: 0; }
+  .dir-body { flex: 1; display: flex; flex-direction: column; }
+  .dir-title { font-family: var(--font-display); font-size: 18px; font-weight: 600; color: var(--ink); line-height: 1.18; letter-spacing: -0.01em; }
+  .dir-tile:hover .dir-title { color: var(--oxblood); }
+  .dir-meta { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-mute); margin-top: 6px; }
+  .dir-meta .dev-flag { color: var(--brass); font-weight: 700; }
 
-  .bluf {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 40px;
-    margin-top: 28px;
-    padding: 24px 28px 26px;
-    background: var(--paper-2);
-    border-left: 4px solid var(--brass);
-    border-radius: 2px;
-  }
-  .bluf-label {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--brass);
-    font-weight: 700;
-    padding-top: 4px;
-  }
-  .bluf-label-mark {
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    background: var(--brass);
-    margin-right: 8px;
-    border-radius: 50%;
-    vertical-align: middle;
-  }
-  .bluf-text {
-    font-family: var(--font-body);
-    font-size: 16.5px;
-    line-height: 1.7;
-    color: var(--ink-2);
-  }
-  .bluf-text strong { color: var(--ink); font-weight: 600; }
-  @media (max-width: 720px) {
-    .bluf { grid-template-columns: 1fr; gap: 8px; padding: 20px 22px; }
-  }
+  /* BACK TO TOP */
+  .backtotop { position: fixed; bottom: 24px; right: 24px; z-index: 80; display: inline-flex; align-items: center; gap: 8px; background: var(--ink); color: var(--paper); border: none; border-radius: 2px; padding: 11px 16px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; cursor: pointer; text-decoration: none; opacity: 0; pointer-events: none; transition: opacity 0.2s, background 0.15s; box-shadow: 0 4px 14px rgba(28,24,21,0.18); }
+  .backtotop.show { opacity: 1; pointer-events: auto; }
+  .backtotop:hover { background: var(--oxblood); }
+  .backtotop:focus { outline: 3px solid var(--oxblood); outline-offset: 2px; }
 
-  main {
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: 0 32px 80px;
-    position: relative;
-    z-index: 2;
-  }
+  main { max-width: 1180px; margin: 0 auto; padding: 0 32px 80px; position: relative; z-index: 2; }
 
-  .area {
-    padding: 56px 0;
-    border-bottom: 1px solid var(--rule);
-  }
+  /* AREA */
+  .area { padding: 52px 0; border-bottom: 1px solid var(--rule); scroll-margin-top: 64px; }
   .area:last-of-type { border-bottom: none; }
-
-  .area-head {
-    display: grid;
-    grid-template-columns: 160px 1fr;
-    gap: 32px;
-    align-items: baseline;
-    margin-bottom: 40px;
-  }
-  .area-tag {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.18em;
-    color: var(--ink-mute);
-    text-transform: uppercase;
-    border-top: 2px solid var(--ink);
-    padding-top: 8px;
-  }
-  .area-tag strong {
-    display: block;
-    font-family: var(--font-display);
-    font-size: 22px;
-    font-weight: 400;
-    font-style: italic;
-    color: var(--oxblood);
-    letter-spacing: -0.01em;
-    margin-top: 2px;
-  }
-  .area-title {
-    font-family: var(--font-display);
-    font-size: clamp(28px, 3.5vw, 42px);
-    font-weight: 500;
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    color: var(--ink);
-  }
+  .area-head { display: grid; grid-template-columns: 160px 1fr; gap: 32px; align-items: baseline; margin-bottom: 32px; }
+  .area-tag { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.18em; color: var(--ink-mute); text-transform: uppercase; border-top: 2px solid var(--ink); padding-top: 8px; }
+  .area-tag strong { display: block; font-family: var(--font-display); font-size: 22px; font-weight: 400; font-style: italic; color: var(--oxblood); letter-spacing: -0.01em; margin-top: 2px; }
+  .area-title { font-family: var(--font-display); font-size: clamp(26px, 3.2vw, 38px); font-weight: 500; line-height: 1.05; letter-spacing: -0.02em; color: var(--ink); }
   .area-title em { font-style: italic; color: var(--oxblood); }
-  .area-blurb {
-    font-size: 16px;
-    color: var(--ink-soft);
-    margin-top: 14px;
-    line-height: 1.65;
-    max-width: 65ch;
-  }
-  .area-soon-badge {
-    display: inline-block;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--ink-mute);
-    background: var(--paper-2);
-    border: 1px solid var(--rule);
-    border-radius: 2px;
-    padding: 5px 11px;
-    margin-top: 16px;
-    font-weight: 700;
-  }
-  @media (max-width: 720px) {
-    .area-head { grid-template-columns: 1fr; gap: 10px; }
-    .area-tag { border-top: none; padding-top: 0; }
-  }
+  .area-blurb { font-size: 15.5px; color: var(--ink-soft); margin-top: 12px; line-height: 1.6; max-width: 70ch; }
+  .area-soon-badge { display: inline-block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); background: var(--paper-2); border: 1px solid var(--rule); border-radius: 2px; padding: 5px 11px; margin-top: 14px; font-weight: 700; }
+  @media (max-width: 720px) { .area-head { grid-template-columns: 1fr; gap: 10px; } .area-tag { border-top: none; padding-top: 0; } }
 
-  .case {
-    display: grid;
-    grid-template-columns: 160px 1fr auto;
-    gap: 32px;
-    padding: 28px 0;
-    border-top: 1px solid var(--rule-soft);
-  }
-  .case:first-of-type { border-top: none; padding-top: 8px; }
-  .case-num {
-    font-family: var(--font-display);
-    font-size: 38px;
-    font-weight: 400;
-    font-style: italic;
-    color: var(--oxblood);
-    line-height: 1;
-    letter-spacing: -0.02em;
-  }
-  .case-body { max-width: 65ch; }
-  .case-name {
-    font-family: var(--font-display);
-    font-size: clamp(22px, 2.4vw, 30px);
-    line-height: 1.15;
-    font-weight: 500;
-    color: var(--ink);
-    margin-bottom: 8px;
-    letter-spacing: -0.015em;
-  }
-  .case-name a {
-    color: var(--ink);
-    text-decoration: none;
-    transition: color 0.15s;
-  }
-  .case-name a:hover { color: var(--oxblood); }
-  .case-name em {
-    font-style: italic;
-    color: var(--oxblood);
-    font-weight: 400;
-  }
-  .case-citation {
-    font-family: var(--font-mono);
-    font-size: 13px;
-    color: var(--ink-mute);
-    letter-spacing: 0.04em;
-    margin-bottom: 14px;
-  }
-  .case-citation .vote {
-    color: var(--ink-soft);
-    font-weight: 700;
-  }
-  .case-takeaway {
-    font-family: var(--font-body);
-    font-size: 16px;
-    line-height: 1.65;
-    color: var(--ink-2);
-    margin-bottom: 14px;
-  }
-  .case-takeaway strong { color: var(--ink); font-weight: 600; }
-  .case-impact {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--brass);
-    font-weight: 700;
-    margin-bottom: 4px;
-    display: block;
-  }
-  .case-impact-text {
-    font-family: var(--font-body);
-    font-size: 15px;
-    line-height: 1.6;
-    color: var(--ink-soft);
-    font-style: italic;
-  }
-  .case-link-col {
-    align-self: start;
-    padding-top: 8px;
-  }
-  .case-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--oxblood);
-    text-decoration: none;
-    border: 1.5px solid var(--oxblood);
-    padding: 10px 14px;
-    border-radius: 2px;
-    font-weight: 700;
-    transition: background 0.15s, color 0.15s;
-    white-space: nowrap;
-  }
-  .case-link:hover {
-    background: var(--oxblood);
-    color: var(--paper);
-  }
+  /* CASE GRID + CARDS */
+  .case-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  @media (max-width: 820px) { .case-grid { grid-template-columns: 1fr; } }
+  .case-card { background: var(--paper); border: 1px solid var(--rule); border-top: 4px solid var(--oxblood); border-radius: 2px; padding: 22px 24px 20px; display: flex; flex-direction: column; scroll-margin-top: 72px; transition: box-shadow 0.18s; }
+  .case-card:hover { box-shadow: 0 5px 18px rgba(28,24,21,0.07); }
+  .case-card.dev { border-top-color: var(--rule); opacity: 0.9; }
+  .case-card.dev:hover { box-shadow: none; }
+  .cc-name { font-family: var(--font-display); font-size: 22px; line-height: 1.15; font-weight: 600; color: var(--ink); margin-bottom: 6px; letter-spacing: -0.01em; }
+  .cc-name a { color: var(--ink); text-decoration: none; transition: color 0.15s; }
+  .cc-name a:hover { color: var(--oxblood); }
+  .cc-name em { font-style: italic; color: var(--oxblood); font-weight: 400; }
+  .case-card.dev .cc-name { color: var(--ink-soft); }
+  .cc-cite { font-family: var(--font-mono); font-size: 12px; color: var(--ink-mute); letter-spacing: 0.03em; margin-bottom: 12px; }
+  .cc-cite .vote { color: var(--ink-soft); font-weight: 700; }
+  .cc-take { font-size: 15px; line-height: 1.6; color: var(--ink-2); margin-bottom: 12px; }
+  .cc-take strong { color: var(--ink); font-weight: 600; }
+  .cc-why-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brass); font-weight: 700; margin-bottom: 3px; display: block; }
+  .cc-why { font-size: 14px; line-height: 1.55; color: var(--ink-soft); font-style: italic; margin-bottom: 16px; }
+  .cc-foot { margin-top: auto; }
+  .cc-link { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--oxblood); text-decoration: none; border: 1.5px solid var(--oxblood); padding: 9px 14px; border-radius: 2px; font-weight: 700; transition: background 0.15s, color 0.15s; }
+  .cc-link:hover { background: var(--oxblood); color: var(--paper); }
+  .cc-soon { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); border: 1.5px dashed var(--rule); padding: 9px 14px; border-radius: 2px; font-weight: 700; }
 
-  /* COMING-SOON CASE STATE */
-  .case.coming-soon { opacity: 0.82; }
-  .case.coming-soon .case-num { color: var(--ink-mute); }
-  .case.coming-soon .case-name { color: var(--ink-soft); }
-  .case-soon {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink-mute);
-    border: 1.5px dashed var(--rule);
-    padding: 10px 14px;
-    border-radius: 2px;
-    font-weight: 700;
-    white-space: nowrap;
-  }
+  /* COLOPHON */
+  .colophon { background: var(--ink); color: var(--paper-2); padding: 36px 32px; position: relative; z-index: 2; }
+  .colophon-inner { max-width: 1180px; margin: 0 auto; display: flex; justify-content: space-between; align-items: baseline; gap: 24px; flex-wrap: wrap; }
+  .colophon-brand { font-family: var(--font-display); font-size: 14px; font-weight: 500; letter-spacing: 0.04em; font-style: italic; color: var(--paper); }
+  .colophon-meta { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #a89e8e; }
 
-  @media (max-width: 920px) {
-    .case {
-      grid-template-columns: 60px 1fr;
-      gap: 20px;
-    }
-    .case-link-col {
-      grid-column: 2;
-      padding-top: 4px;
-    }
-    .case-num { font-size: 28px; }
-  }
-
-  .honorable {
-    padding: 56px 0 32px;
-    border-top: 3px double var(--ink);
-    margin-top: 16px;
-  }
-  .honorable-head {
-    display: grid;
-    grid-template-columns: 160px 1fr;
-    gap: 32px;
-    align-items: baseline;
-    margin-bottom: 32px;
-  }
-  .honorable-blurb {
-    font-size: 16px;
-    color: var(--ink-soft);
-    margin-top: 14px;
-    line-height: 1.65;
-    max-width: 65ch;
-  }
-  @media (max-width: 720px) {
-    .honorable-head { grid-template-columns: 1fr; gap: 10px; }
-  }
-
-  .honorable-group { margin-bottom: 36px; }
-  .honorable-group-title {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--oxblood);
-    font-weight: 700;
-    margin-bottom: 16px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--rule);
-  }
-  .honorable-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px 32px;
-    list-style: none;
-  }
-  @media (max-width: 720px) {
-    .honorable-list { grid-template-columns: 1fr; }
-  }
-  .honorable-item { padding: 0; }
-  .honorable-item-name {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-weight: 600;
-    font-size: 17px;
-    color: var(--ink);
-    line-height: 1.25;
-    margin-bottom: 4px;
-  }
-  .honorable-item-name a {
-    color: var(--oxblood);
-    text-decoration: none;
-  }
-  .honorable-item-name a:hover { text-decoration: underline; }
-  .honorable-item-meta {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    color: var(--ink-mute);
-    letter-spacing: 0.04em;
-    margin-bottom: 6px;
-  }
-  .honorable-item-desc {
-    font-size: 14.5px;
-    color: var(--ink-2);
-    line-height: 1.55;
-  }
-
-  .colophon {
-    background: var(--ink);
-    color: var(--paper-2);
-    padding: 36px 32px;
-    position: relative;
-    z-index: 2;
-  }
-  .colophon-inner {
-    max-width: 1180px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 24px;
-    flex-wrap: wrap;
-  }
-  .colophon-brand {
-    font-family: var(--font-display);
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    font-style: italic;
-    color: var(--paper);
-  }
-  .colophon-meta {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #a89e8e;
-  }
-
-  @media print {
-    body::before, .skip-link { display: none; }
-    body { background: white; color: black; }
-    .area, .case { page-break-inside: avoid; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    * { transition: none !important; }
-  }
-
-  .sr-only {
-    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
-    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
-  }
+  @media print { body::before, .skip-link, .subnav { display: none; } body { background: white; color: black; } .area, .case-card { page-break-inside: avoid; } }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 </style>
 </head><body>
 <a class="skip-link" href="#main">Skip to main content</a>
 
 <!-- MASTHEAD -->
-<div class="masthead" role="banner">
+<div class="masthead" id="top" role="banner">
 <div class="masthead-inner">
 <div class="masthead-brand"><a href="/">Mongan's Teaching Archive</a></div>
 <div class="masthead-meta">Philip Mongan, lcsw, ph.d.</div>
@@ -601,568 +166,491 @@
 <p class="hero-eyebrow">Understanding SCOTUS Opinions · A Reference Series</p>
 <h1 class="hero-title">The <em>Cases</em><br>That Shape Social Work Practice</h1>
 <p class="hero-subtitle">Supreme Court decisions every social worker should know.</p>
-<div class="intro">
-<div class="intro-label"><span class="intro-label-mark" aria-hidden="true"></span>About This Series</div>
-<p class="intro-text">Most social work students will never read a Supreme Court opinion. They will, however, work inside the systems those opinions built. Child welfare, civil commitment, special education, public benefits, and mental health all operate under rules created by the cases on this page. This series translates those cases into plain language, so you can recognize them when they show up in your work. If you're unfamiliar with how the Supreme Court works, start with <a href="/scotus/scotus-primer.html">Understanding How SCOTUS Works</a> before going through the cases.</p>
+<div class="hero-intro">
+<div class="hero-intro-label"><span class="hero-intro-label-mark" aria-hidden="true"></span>About This Series</div>
+<p class="hero-intro-text">Most social work students will never read a Supreme Court opinion. They will, however, work inside the systems those opinions built. This series translates the cases into plain language, grouped by practice area, so you can recognize them when they show up in your work. New to how the Court operates? Start with <a href="/scotus/scotus-primer.html">Understanding How SCOTUS Works</a>.</p>
 </div>
-<div class="bluf">
-<div class="bluf-label"><span class="bluf-label-mark" aria-hidden="true"></span>How to Use This Page</div>
-<p class="bluf-text">Cases are grouped by practice area. Each entry shows the case name, citation, vote, a one-sentence holding, and what it changes about your daily work. <strong>Click any case name or the Read button to open the full explainer.</strong> The honorable mentions at the bottom round out the list with cases worth knowing about, even without a full treatment.</p>
 </div>
+
+<!-- DIRECTORY: BROWSE BY PRACTICE AREA -->
+<div class="directory">
+<div class="directory-head">
+<div class="directory-label">Browse by Practice Area</div>
+<div class="directory-rule" aria-hidden="true"></div>
+</div>
+<nav class="directory-grid" aria-label="Practice areas">
+<a class="dir-tile" href="#area-1"><span class="dir-num">01</span><span class="dir-body"><span class="dir-title">Confidentiality &amp; Privilege</span><span class="dir-meta">1 case</span></span></a>
+<a class="dir-tile" href="#area-2"><span class="dir-num">02</span><span class="dir-body"><span class="dir-title">Child Welfare &amp; Family</span><span class="dir-meta">8 cases</span></span></a>
+<a class="dir-tile" href="#area-3"><span class="dir-num">03</span><span class="dir-body"><span class="dir-title">Mental Health &amp; Commitment</span><span class="dir-meta">5 cases</span></span></a>
+<a class="dir-tile dev" href="#area-4"><span class="dir-num">04</span><span class="dir-body"><span class="dir-title">Forensic &amp; Treatment Rights</span><span class="dir-meta">8 cases · <span class="dev-flag">In development</span></span></span></a>
+<a class="dir-tile dev" href="#area-5"><span class="dir-num">05</span><span class="dir-body"><span class="dir-title">Fourth Amendment in Practice</span><span class="dir-meta">3 cases · <span class="dev-flag">In development</span></span></span></a>
+<a class="dir-tile" href="#area-6"><span class="dir-num">06</span><span class="dir-body"><span class="dir-title">Schools &amp; Special Education</span><span class="dir-meta">3 cases</span></span></a>
+<a class="dir-tile" href="#area-7"><span class="dir-num">07</span><span class="dir-body"><span class="dir-title">Public Benefits &amp; Due Process</span><span class="dir-meta">2 cases</span></span></a>
+<a class="dir-tile" href="#area-8"><span class="dir-num">08</span><span class="dir-body"><span class="dir-title">Sentencing &amp; the 8th Amendment</span><span class="dir-meta">5 cases</span></span></a>
+<a class="dir-tile dev" href="#area-9"><span class="dir-num">09</span><span class="dir-body"><span class="dir-title">End-of-Life &amp; Capacity</span><span class="dir-meta">1 case · <span class="dev-flag">In development</span></span></span></a>
+<a class="dir-tile" href="#area-10"><span class="dir-num">10</span><span class="dir-body"><span class="dir-title">LGBTQ+ Clients &amp; Civil Rights</span><span class="dir-meta">3 cases</span></span></a>
+</nav>
 </div>
 
 <main id="main">
 
-<!-- AREA 01 - CONFIDENTIALITY & PRIVILEGE -->
-<section class="area" aria-labelledby="area-1">
+<!-- AREA 01 -->
+<section class="area" id="area-1" aria-labelledby="area-1-title">
 <div class="area-head">
 <div class="area-tag">Practice Area<strong>01</strong></div>
 <div>
-<h2 class="area-title" id="area-1">Confidentiality &amp; <em>Privilege</em></h2>
-<p class="area-blurb">The legal protection of what a client tells you in a counseling session. This is the doctrinal foundation of clinical practice and the single most important Supreme Court decision for clinical social workers.</p>
+<h2 class="area-title" id="area-1-title">Confidentiality &amp; <em>Privilege</em></h2>
+<p class="area-blurb">The legal protection of what a client tells you in session. The doctrinal foundation of clinical practice, and the single most important decision for clinical social workers.</p>
 </div>
 </div>
-<article class="case">
-<div class="case-num">01</div>
-<div class="case-body">
-<h3 class="case-name"><a href="/scotus/Jaffee-Redmond.html">Jaffee <em>v.</em> Redmond</a></h3>
-<p class="case-citation">518 U.S. 1 (1996) · <span class="vote">Vote: 7–2</span></p>
-<p class="case-takeaway">Confidential communications between a licensed psychotherapist, <strong>explicitly including a licensed clinical social worker</strong>, and a client are privileged from compelled disclosure in federal court.</p>
-<span class="case-impact">Why it matters</span>
-<p class="case-impact-text">Your therapy notes and session content are presumptively protected. Anchors NASW Code of Ethics §1.07 in evidentiary law. Shapes how you document, respond to subpoenas, and explain the limits of confidentiality to clients.</p>
-</div>
-<div class="case-link-col">
-<a class="case-link" href="/scotus/Jaffee-Redmond.html">Read <span class="case-link-arrow">→</span></a>
-</div>
+<div class="case-grid">
+<article class="case-card" id="c-jaffee">
+<h3 class="cc-name"><a href="/scotus/Jaffee-Redmond.html">Jaffee <em>v.</em> Redmond</a></h3>
+<p class="cc-cite">518 U.S. 1 (1996) · <span class="vote">7–2</span></p>
+<p class="cc-take">Confidential communications between a licensed psychotherapist, <strong>explicitly including a licensed clinical social worker</strong>, and a client are privileged from compelled disclosure in federal court.</p>
+<span class="cc-why-label">Why it matters</span>
+<p class="cc-why">Anchors NASW Code of Ethics §1.07 in evidentiary law. Shapes how you document, respond to subpoenas, and explain the limits of confidentiality.</p>
+<div class="cc-foot"><a class="cc-link" href="/scotus/Jaffee-Redmond.html">Read →</a></div>
 </article>
+</div>
 </section>
 
-<!-- AREA 02 - CHILD WELFARE -->
-<section class="area" aria-labelledby="area-2">
+<!-- AREA 02 -->
+<section class="area" id="area-2" aria-labelledby="area-2-title">
 <div class="area-head">
 <div class="area-tag">Practice Area<strong>02</strong></div>
 <div>
-<h2 class="area-title" id="area-2">Child Welfare &amp; <em>Family Integrity</em></h2>
-<p class="area-blurb">CPS, foster care, termination of parental rights, parental autonomy, and tribal sovereignty. These four cases form the constitutional architecture of every child welfare proceeding in the country.</p>
+<h2 class="area-title" id="area-2-title">Child Welfare &amp; <em>Family Integrity</em></h2>
+<p class="area-blurb">CPS, foster care, termination of parental rights, parental autonomy, and tribal sovereignty. The constitutional architecture of every child welfare proceeding in the country.</p>
 </div>
 </div>
-<article class="case">
-<div class="case-num">02</div>
-<div class="case-body">
-<h3 class="case-name"><a href="/scotus/DeShaney-Winnebago-County-DSS.html">DeShaney <em>v.</em> Winnebago County DSS</a></h3>
-<p class="case-citation">489 U.S. 189 (1989) · <span class="vote">Vote: 6–3</span></p>
-<p class="case-takeaway">The Constitution does not impose an affirmative duty on the state to protect a child from harm by a private actor, <strong>even when caseworkers know about the abuse and fail to intervene.</strong></p>
-<span class="case-impact">Why it matters</span>
-<p class="case-impact-text">Sets the rule that federal §1983 claims against CPS for failing to act almost always fail. Defines the "special relationship" doctrine that does apply once a child is in state custody. Famous for Blackmun's "Poor Joshua!" dissent.</p>
-</div>
-<div class="case-link-col">
-<a class="case-link" href="/scotus/DeShaney-Winnebago-County-DSS.html">Read <span class="case-link-arrow">→</span></a>
-</div>
+<div class="case-grid">
+<article class="case-card" id="c-deshaney">
+<h3 class="cc-name"><a href="/scotus/DeShaney-Winnebago-County-DSS.html">DeShaney <em>v.</em> Winnebago County DSS</a></h3>
+<p class="cc-cite">489 U.S. 189 (1989) · <span class="vote">6–3</span></p>
+<p class="cc-take">The Constitution imposes no affirmative duty on the state to protect a child from a private actor, <strong>even when caseworkers know about the abuse and fail to act.</strong></p>
+<span class="cc-why-label">Why it matters</span>
+<p class="cc-why">Federal §1983 claims against CPS for failing to act almost always fail. Defines the "special relationship" doctrine that applies once a child is in state custody.</p>
+<div class="cc-foot"><a class="cc-link" href="/scotus/DeShaney-Winnebago-County-DSS.html">Read →</a></div>
 </article>
-<article class="case">
-<div class="case-num">03</div>
-<div class="case-body">
-<h3 class="case-name"><a href="/scotus/Santosky-Kramer.html">Santosky <em>v.</em> Kramer</a></h3>
-<p class="case-citation">455 U.S. 745 (1982) · <span class="vote">Vote: 5–4</span></p>
-<p class="case-takeaway">Before a state may permanently terminate parental rights, it must prove its grounds by <strong>at least clear and convincing evidence</strong>. Preponderance is constitutionally insufficient.</p>
-<span class="case-impact">Why it matters</span>
-<p class="case-impact-text">Sets the constitutional floor for the burden of proof in every TPR case. Your documentation, case notes, and testimony must be capable of supporting that elevated standard. ICWA cases require beyond a reasonable doubt, which is even higher.</p>
-</div>
-<div class="case-link-col">
-<a class="case-link" href="/scotus/Santosky-Kramer.html">Read <span class="case-link-arrow">→</span></a>
-</div>
+<article class="case-card" id="c-santosky">
+<h3 class="cc-name"><a href="/scotus/Santosky-Kramer.html">Santosky <em>v.</em> Kramer</a></h3>
+<p class="cc-cite">455 U.S. 745 (1982) · <span class="vote">5–4</span></p>
+<p class="cc-take">Before permanently terminating parental rights, a state must prove its grounds by <strong>at least clear and convincing evidence.</strong> Preponderance is insufficient.</p>
+<span class="cc-why-label">Why it matters</span>
+<p class="cc-why">Sets the constitutional floor for the burden of proof in every TPR case. Your documentation and testimony must support that elevated standard.</p>
+<div class="cc-foot"><a class="cc-link" href="/scotus/Santosky-Kramer.html">Read →</a></div>
 </article>
-<article class="case">
-<div class="case-num">04</div>
-<div class="case-body">
-<h3 class="case-name"><a href="/scotus/Troxel-Granville.html">Troxel <em>v.</em> Granville</a></h3>
-<p class="case-citation">530 U.S. 57 (2000) · <span class="vote">Vote: 6–3</span></p>
-<p class="case-takeaway">A fit parent's decision about who has contact with their child is presumed correct, and courts cannot override it through a simple <strong>"best interests of the child"</strong> balancing test.</p>
-<span class="case-impact">Why it matters</span>
-<p class="case-impact-text">Operationalizes the "fit parent presumption" in family law. Until a parent has been adjudicated unfit, courts assume their decisions about their child are correct. Constrains how casework recommendations can be framed in intact families.</p>
-</div>
-<div class="case-link-col">
-<a class="case-link" href="/scotus/Troxel-Granville.html">Read <span class="case-link-arrow">→</span></a>
-</div>
+<article class="case-card" id="c-stanley">
+<h3 class="cc-name"><a href="/scotus/Stanley-Illinois.html">Stanley <em>v.</em> Illinois</a></h3>
+<p class="cc-cite">405 U.S. 645 (1972) · <span class="vote">5–2</span></p>
+<p class="cc-take">An unwed biological father is entitled to a hearing on his fitness <strong>before the state can take his children.</strong> The foundation of putative-father rights.</p>
+<span class="cc-why-label">Why it matters</span>
+<p class="cc-why">Pairs with Santosky and Troxel. Establishes that fitness must be adjudicated, not presumed, before a parent loses a child.</p>
+<div class="cc-foot"><a class="cc-link" href="/scotus/Stanley-Illinois.html">Read →</a></div>
 </article>
-<article class="case">
-<div class="case-num">05</div>
-<div class="case-body">
-<h3 class="case-name"><a href="/scotus/Haaland-Brackeen.html">Haaland <em>v.</em> Brackeen</a></h3>
-<p class="case-citation">599 U.S. 255 (2023) · <span class="vote">Vote: 7–2</span></p>
-<p class="case-takeaway">The Indian Child Welfare Act (ICWA) is constitutional. <strong>Tribal placement preferences, "active efforts," and the beyond-a-reasonable-doubt TPR standard for Indian children</strong> remain federal law.</p>
-<span class="case-impact">Why it matters</span>
-<p class="case-impact-text">Screen every child welfare case for ICWA applicability from first contact. Provide notice to tribes. Honor jurisdictional transfer rights. ICWA is called the "gold standard" of child welfare practice for good reason.</p>
-</div>
-<div class="case-link-col">
-<a class="case-link" href="/scotus/Haaland-Brackeen.html">Read <span class="case-link-arrow">→</span></a>
-</div>
+<article class="case-card" id="c-troxel">
+<h3 class="cc-name"><a href="/scotus/Troxel-Granville.html">Troxel <em>v.</em> Granville</a></h3>
+<p class="cc-cite">530 U.S. 57 (2000) · <span class="vote">6–3</span></p>
+<p class="cc-take">A fit parent's decision about who has contact with their child is presumed correct. Courts cannot override it through a simple <strong>"best interests"</strong> balancing test.</p>
+<span class="cc-why-label">Why it matters</span>
+<p class="cc-why">Operationalizes the fit-parent presumption. Constrains how casework recommendations can be framed in intact families.</p>
+<div class="cc-foot"><a class="cc-link" href="/scotus/Troxel-Granville.html">Read →</a></div>
 </article>
+<article class="case-card" id="c-pierce">
+<h3 class="cc-name"><a href="/scotus/Pierce-Society-of-Sisters.html">Pierce <em>v.</em> Society of Sisters</a></h3>
+<p class="cc-cite">268 U.S. 510 (1925) · <span class="vote">9–0</span></p>
+<p class="cc-take">Parents have a constitutional right to <strong>direct the upbringing and education of their children.</strong> The historical anchor of family-autonomy doctrine.</p>
+<span class="cc-why-label">Why it matters</span>
+<p class="cc-why">The foundational substantive due-process case underlying Troxel and the modern parental-rights line.</p>
+<div class="cc-foot"><a class="cc-link" href="/scotus/Pierce-Society-of-Sisters.html">Read →</a></div>
+</article>
+<article class="case-card" id="c-yoder">
+<h3 class="cc-name"><a href="/scotus/Wisconsin-Yoder.html">Wisconsin <em>v.</em> Yoder</a></h3>
+<p class="cc-cite">406 U.S. 205 (1972) · <span class="vote">6–1</span></p>
+<p class="cc-take">Amish parents' free-exercise rights allowed an exemption from <strong>compulsory schooling beyond eighth grade.</strong></p>
+<span class="cc-why-label">Why it matters</span>
+<p class="cc-why">Companion to Pierce on parental autonomy in education, and the limits of the state's interest in compulsory schooling.</p>
+<div class="cc-foot"><a class="cc-link" href="/scotus/Wisconsin-Yoder.html">Read →</a></div>
+</article>
+<article class="case-card" id="c-brackeen">
+<h3 class="cc-name"><a href="/scotus/Haaland-Brackeen.html">Haaland <em>v.</em> Brackeen</a></h3>
+<p class="cc-cite">599 U.S. 255 (2023) · <span class="vote">7–2</span></p>
+<p class="cc-take">The Indian Child Welfare Act is constitutional. <strong>Tribal placement preferences, "active efforts," and the heightened TPR standard</strong> for Indian children remain federal law.</p>
+<span class="cc-why-label">Why it matters</span>
+<p class="cc-why">Screen every case for ICWA applicability from first contact. Provide tribal notice. Honor jurisdictional transfer rights.</p>
+<div class="cc-foot"><a class="cc-link" href="/scotus/Haaland-Brackeen.html">Read →</a></div>
+</article>
+<article class="case-card" id="c-adoptive">
+<h3 class="cc-name"><a href="/scotus/Adoptive-Couple-Baby-Girl.html">Adoptive Couple <em>v.</em> Baby Girl</a></h3>
+<p class="cc-cite">570 U.S. 637 (2013) · <span class="vote">5–4</span></p>
+<p class="cc-take">Narrows certain ICWA provisions in a specific factual posture involving a <strong>noncustodial biological father.</strong></p>
+<span class="cc-why-label">Why it matters</span>
+<p class="cc-why">Pairs with Brackeen. Shows how ICWA's protections turn on prior custody and the facts of the parental relationship.</p>
+<div class="cc-foot"><a class="cc-link" href="/scotus/Adoptive-Couple-Baby-Girl.html">Read →</a></div>
+</article>
+</div>
 </section>
 
-<!-- AREA 03 - MENTAL HEALTH & DISABILITY -->
-<section class="area" aria-labelledby="area-3">
+<!-- AREA 03 -->
+<section class="area" id="area-3" aria-labelledby="area-3-title">
 <div class="area-head">
 <div class="area-tag">Practice Area<strong>03</strong></div>
 <div>
-<h2 class="area-title" id="area-3">Mental Health &amp; <em>Disability Rights</em></h2>
-<p class="area-blurb">Civil commitment, deinstitutionalization, community integration. These three cases together set the constitutional rules for when the state can confine someone with mental illness, what it must prove, and what it owes them when they're ready to come out.</p>
+<h2 class="area-title" id="area-3-title">Mental Health, Commitment &amp; <em>Disability Rights</em></h2>
+<p class="area-blurb">When the state can confine someone with mental illness, what it must prove, what it owes them inside, and the right to community integration on the way out.</p>
 </div>
 </div>
-<article class="case">
-<div class="case-num">06</div>
-<div class="case-body">
-<h3 class="case-name"><a href="/scotus/OConnor-Donaldson.html">O'Connor <em>v.</em> Donaldson</a></h3>
-<p class="case-citation">422 U.S. 563 (1975) · <span class="vote">Vote: 9–0</span></p>
-<p class="case-takeaway">A state cannot confine a non-dangerous person who can survive safely in the community in a psychiatric institution against their will. <strong>A mental illness diagnosis alone is not enough.</strong></p>
-<span class="case-impact">Why it matters</span>
-<p class="case-impact-text">Established dangerousness (or grave disability) as a constitutional prerequisite for continued involuntary commitment. The legal foundation of deinstitutionalization and modern least-restrictive-alternative analysis.</p>
-</div>
-<div class="case-link-col">
-<a class="case-link" href="/scotus/OConnor-Donaldson.html">Read <span class="case-link-arrow">→</span></a>
-</div>
+<div class="case-grid">
+<article class="case-card" id="c-oconnor">
+<h3 class="cc-name"><a href="/scotus/OConnor-Donaldson.html">O'Connor <em>v.</em> Donaldson</a></h3>
+<p class="cc-cite">422 U.S. 563 (1975) · <span class="vote">9–0</span></p>
+<p class="cc-take">A state cannot confine a non-dangerous person who can survive safely in the community. <strong>A diagnosis alone is not enough.</strong></p>
+<span class="cc-why-label">Why it matters</span>
+<p class="cc-why">The legal foundation of deinstitutionalization and modern least-restrictive-alternative analysis.</p>
+<div class="cc-foot"><a class="cc-link" href="/scotus/OConnor-Donaldson.html">Read →</a></div>
 </article>
-<article class="case">
-<div class="case-num">07</div>
-<div class="case-body">
-<h3 class="case-name"><a href="/scotus/Addington-Texas.html">Addington <em>v.</em> Texas</a></h3>
-<p class="case-citation">441 U.S. 418 (1979) · <span class="vote">Vote: 8–0</span></p>
-<p class="case-takeaway">Due process requires the state to prove the grounds for involuntary civil commitment by <strong>at least clear and convincing evidence</strong>. Preponderance is too low; reasonable doubt is too high.</p>
-<span class="case-impact">Why it matters</span>
-<p class="case-impact-text">Sets the evidentiary standard for every involuntary commitment hearing. Your assessments and testimony must support this elevated burden. The same standard applies in TPR and many guardianships.</p>
-</div>
-<div class="case-link-col">
-<a class="case-link" href="/scotus/Addington-Texas.html">Read <span class="case-link-arrow">→</span></a>
-</div>
+<article class="case-card" id="c-addington">
+<h3 class="cc-name"><a href="/scotus/Addington-Texas.html">Addington <em>v.</em> Texas</a></h3>
+<p class="cc-cite">441 U.S. 418 (1979) · <span class="vote">8–0</span></p>
+<p class="cc-take">Involuntary civil commitment requires proof by <strong>at least clear and convincing evidence.</strong> Preponderance is too low; reasonable doubt is too high.</p>
+<span class="cc-why-label">Why it matters</span>
+<p class="cc-why">Sets the evidentiary standard for every commitment hearing. The same standard runs through TPR and many guardianships.</p>
+<div class="cc-foot"><a class="cc-link" href="/scotus/Addington-Texas.html">Read →</a></div>
 </article>
-<article class="case">
-<div class="case-num">08</div>
-<div class="case-body">
-<h3 class="case-name"><a href="/scotus/Olmstead-LC.html">Olmstead <em>v.</em> L.C.</a></h3>
-<p class="case-citation">527 U.S. 581 (1999) · <span class="vote">Vote: 6–3</span></p>
-<p class="case-takeaway">Under the ADA, states must provide community-based services for people with disabilities when treatment professionals deem it appropriate, the person doesn't oppose it, and it can be <strong>reasonably accommodated.</strong></p>
-<span class="case-impact">Why it matters</span>
-<p class="case-impact-text">The most important disability-rights case for social work. Discharge planning from psychiatric hospitals, nursing facilities, and state institutions must consider the most integrated setting. Drives Money Follows the Person, HCBS waivers, and state Olmstead plans.</p>
-</div>
-<div class="case-link-col">
-<a class="case-link" href="/scotus/Olmstead-LC.html">Read <span class="case-link-arrow">→</span></a>
-</div>
+<article class="case-card" id="c-parham">
+<h3 class="cc-name"><a href="/scotus/Parham-JR.html">Parham <em>v.</em> J.R.</a></h3>
+<p class="cc-cite">442 U.S. 584 (1979) · <span class="vote">6–3</span></p>
+<p class="cc-take">Parents may "voluntarily" commit a minor to a psychiatric facility with only a <strong>neutral physician's confirmation.</strong> No adversary hearing required.</p>
+<span class="cc-why-label">Why it matters</span>
+<p class="cc-why">Crucial for adolescent inpatient social work and understanding minors' limited procedural protections.</p>
+<div class="cc-foot"><a class="cc-link" href="/scotus/Parham-JR.html">Read →</a></div>
 </article>
+<article class="case-card" id="c-youngberg">
+<h3 class="cc-name"><a href="/scotus/Youngberg-Romeo.html">Youngberg <em>v.</em> Romeo</a></h3>
+<p class="cc-cite">457 U.S. 307 (1982) · <span class="vote">9–0</span></p>
+<p class="cc-take">People involuntarily committed to state institutions have rights to <strong>safe conditions, freedom from undue restraint, and minimally adequate training.</strong></p>
+<span class="cc-why-label">Why it matters</span>
+<p class="cc-why">Essential for ID/DD social work and any practice inside state institutional settings.</p>
+<div class="cc-foot"><a class="cc-link" href="/scotus/Youngberg-Romeo.html">Read →</a></div>
+</article>
+<article class="case-card" id="c-olmstead">
+<h3 class="cc-name"><a href="/scotus/Olmstead-LC.html">Olmstead <em>v.</em> L.C.</a></h3>
+<p class="cc-cite">527 U.S. 581 (1999) · <span class="vote">6–3</span></p>
+<p class="cc-take">Under the ADA, states must provide community-based services when appropriate, not opposed, and <strong>reasonably accommodated.</strong></p>
+<span class="cc-why-label">Why it matters</span>
+<p class="cc-why">The most important disability-rights case for social work. Drives discharge planning, Money Follows the Person, and HCBS waivers.</p>
+<div class="cc-foot"><a class="cc-link" href="/scotus/Olmstead-LC.html">Read →</a></div>
+</article>
+</div>
 </section>
 
-<!-- AREA 04 - SCHOOLS & SPECIAL EDUCATION -->
-<section class="area" aria-labelledby="area-4">
+<!-- AREA 04 -->
+<section class="area" id="area-4" aria-labelledby="area-4-title">
 <div class="area-head">
 <div class="area-tag">Practice Area<strong>04</strong></div>
 <div>
-<h2 class="area-title" id="area-4">Schools &amp; <em>Special Education</em></h2>
-<p class="area-blurb">For school social workers, behavioral health clinicians, and foster care workers managing educational stability. This case sets the floor every Individualized Education Program must clear.</p>
+<h2 class="area-title" id="area-4-title">Forensic Mental Health &amp; <em>Treatment Rights</em></h2>
+<p class="area-blurb">What happens around and after commitment: the right to refuse medication, competency to stand trial, transfer to psychiatric hospitals, and the limits on confining insanity acquittees. The daily terrain of clinical, forensic, and correctional work.</p>
+<span class="area-soon-badge">Explainers in development</span>
 </div>
 </div>
-<article class="case">
-<div class="case-num">09</div>
-<div class="case-body">
-<h3 class="case-name"><a href="/scotus/Endrew-F-Douglas-County-School-District.html">Endrew F. <em>v.</em> Douglas County School District</a></h3>
-<p class="case-citation">580 U.S. 386 (2017) · <span class="vote">Vote: 8–0</span></p>
-<p class="case-takeaway">A school's IEP must be <strong>"reasonably calculated to enable a child to make progress appropriate in light of the child's circumstances."</strong> Merely more than trivial progress is not enough.</p>
-<span class="case-impact">Why it matters</span>
-<p class="case-impact-text">Raises the IDEA floor. IEPs must be "appropriately ambitious." When you sit in IEP meetings or write social/developmental histories, schools must offer a cogent explanation for their IEP choices.</p>
-</div>
-<div class="case-link-col">
-<a class="case-link" href="/scotus/Endrew-F-Douglas-County-School-District.html">Read <span class="case-link-arrow">→</span></a>
-</div>
+<div class="case-grid">
+<article class="case-card dev" id="c-harper">
+<!-- When ready: wrap name in <a href="/scotus/Washington-Harper.html">, remove "hidden" from the link, swap .cc-soon for the link, drop the "dev" class. -->
+<h3 class="cc-name">Washington <em>v.</em> Harper</h3>
+<p class="cc-cite">494 U.S. 210 (1990) · <span class="vote">6–3</span></p>
+<p class="cc-take">A state may medicate a mentally ill inmate with antipsychotics against his will if he is <strong>dangerous and treatment is in his medical interest.</strong> An administrative hearing suffices.</p>
+<span class="cc-why-label">Why it matters</span>
+<p class="cc-why">The constitutional floor for involuntary medication. Workers on treatment teams need the "dangerous plus medical interest" standard.</p>
+<div class="cc-foot"><span class="cc-soon">In Development</span><a class="cc-link" href="/scotus/Washington-Harper.html" hidden>Read →</a></div>
 </article>
+<article class="case-card dev" id="c-riggins">
+<!-- When ready: wrap name in <a href="/scotus/Riggins-Nevada.html">, remove "hidden", swap .cc-soon for the link, drop "dev". -->
+<h3 class="cc-name">Riggins <em>v.</em> Nevada</h3>
+<p class="cc-cite">504 U.S. 127 (1992) · <span class="vote">7–2</span></p>
+<p class="cc-take">Forcibly medicating a defendant during trial <strong>violates due process when the state makes no findings</strong> that the medication is appropriate and necessary.</p>
+<span class="cc-why-label">Why it matters</span>
+<p class="cc-why">Establishes the liberty interest in refusing psychotropic medication and the state's burden to override it.</p>
+<div class="cc-foot"><span class="cc-soon">In Development</span><a class="cc-link" href="/scotus/Riggins-Nevada.html" hidden>Read →</a></div>
+</article>
+<article class="case-card dev" id="c-sell">
+<!-- When ready: wrap name in <a href="/scotus/Sell-United-States.html">, remove "hidden", swap .cc-soon for the link, drop "dev". -->
+<h3 class="cc-name">Sell <em>v.</em> United States</h3>
+<p class="cc-cite">539 U.S. 166 (2003) · <span class="vote">6–3</span></p>
+<p class="cc-take">The government may medicate a non-dangerous defendant <strong>solely to restore competency only in rare cases</strong> meeting a strict four-part test.</p>
+<span class="cc-why-label">Why it matters</span>
+<p class="cc-why">The governing standard for competency-restoration medication, relevant to forensic evaluators and treatment planners.</p>
+<div class="cc-foot"><span class="cc-soon">In Development</span><a class="cc-link" href="/scotus/Sell-United-States.html" hidden>Read →</a></div>
+</article>
+<article class="case-card dev" id="c-jackson">
+<!-- When ready: wrap name in <a href="/scotus/Jackson-Indiana.html">, remove "hidden", swap .cc-soon for the link, drop "dev". -->
+<h3 class="cc-name">Jackson <em>v.</em> Indiana</h3>
+<p class="cc-cite">406 U.S. 715 (1972) · <span class="vote">9–0</span></p>
+<p class="cc-take">A person committed only because they are incompetent to stand trial <strong>cannot be held indefinitely.</strong> The state must treat, civilly commit, or release within a reasonable time.</p>
+<span class="cc-why-label">Why it matters</span>
+<p class="cc-why">Protects people with cognitive and developmental disabilities from being warehoused on a competency hold.</p>
+<div class="cc-foot"><span class="cc-soon">In Development</span><a class="cc-link" href="/scotus/Jackson-Indiana.html" hidden>Read →</a></div>
+</article>
+<article class="case-card dev" id="c-vitek">
+<!-- When ready: wrap name in <a href="/scotus/Vitek-Jones.html">, remove "hidden", swap .cc-soon for the link, drop "dev". -->
+<h3 class="cc-name">Vitek <em>v.</em> Jones</h3>
+<p class="cc-cite">445 U.S. 480 (1980) · <span class="vote">6–3</span></p>
+<p class="cc-take">A prisoner has a liberty interest requiring <strong>notice and a hearing before involuntary transfer</strong> to a state psychiatric hospital.</p>
+<span class="cc-why-label">Why it matters</span>
+<p class="cc-why">Governs the prison-to-psychiatric-hospital transfer process correctional social workers help coordinate.</p>
+<div class="cc-foot"><span class="cc-soon">In Development</span><a class="cc-link" href="/scotus/Vitek-Jones.html" hidden>Read →</a></div>
+</article>
+<article class="case-card dev" id="c-foucha">
+<!-- When ready: wrap name in <a href="/scotus/Foucha-Louisiana.html">, remove "hidden", swap .cc-soon for the link, drop "dev". -->
+<h3 class="cc-name">Foucha <em>v.</em> Louisiana</h3>
+<p class="cc-cite">504 U.S. 71 (1992) · <span class="vote">5–4</span></p>
+<p class="cc-take">A state cannot keep an insanity acquittee confined on <strong>dangerousness alone once they are no longer mentally ill.</strong> Both are required.</p>
+<span class="cc-why-label">Why it matters</span>
+<p class="cc-why">Defines release rights for people found not guilty by reason of insanity, and the limits of "dangerousness."</p>
+<div class="cc-foot"><span class="cc-soon">In Development</span><a class="cc-link" href="/scotus/Foucha-Louisiana.html" hidden>Read →</a></div>
+</article>
+<article class="case-card dev" id="c-hendricks">
+<!-- When ready: wrap name in <a href="/scotus/Kansas-Hendricks.html">, remove "hidden", swap .cc-soon for the link, drop "dev". -->
+<h3 class="cc-name">Kansas <em>v.</em> Hendricks</h3>
+<p class="cc-cite">521 U.S. 346 (1997) · <span class="vote">5–4</span></p>
+<p class="cc-take">Civil commitment of "sexually violent predators" likely to reoffend is constitutional and is <strong>not double jeopardy or punishment.</strong></p>
+<span class="cc-why-label">Why it matters</span>
+<p class="cc-why">Governs SVP commitment programs and the ethical tension between treatment and indefinite incapacitation.</p>
+<div class="cc-foot"><span class="cc-soon">In Development</span><a class="cc-link" href="/scotus/Kansas-Hendricks.html" hidden>Read →</a></div>
+</article>
+<article class="case-card dev" id="c-ford-panetti">
+<!-- When ready: wrap name in <a href="/scotus/Ford-Panetti.html">, remove "hidden", swap .cc-soon for the link, drop "dev". -->
+<h3 class="cc-name">Ford <em>v.</em> Wainwright &amp; Panetti <em>v.</em> Quarterman</h3>
+<p class="cc-cite">477 U.S. 399 (1986) · 7–2 / 551 U.S. 930 (2007) · <span class="vote">5–4</span></p>
+<p class="cc-take">The Eighth Amendment bars executing a person who is insane. Panetti requires a <strong>rational understanding of why,</strong> not mere awareness.</p>
+<span class="cc-why-label">Why it matters</span>
+<p class="cc-why">Forensic mental-health work; pairs with the intellectual-disability sentencing cases below.</p>
+<div class="cc-foot"><span class="cc-soon">In Development</span><a class="cc-link" href="/scotus/Ford-Panetti.html" hidden>Read →</a></div>
+</article>
+</div>
 </section>
 
-<!-- AREA 05 - PUBLIC BENEFITS & DUE PROCESS -->
-<section class="area" aria-labelledby="area-5">
+<!-- AREA 05 -->
+<section class="area" id="area-5" aria-labelledby="area-5-title">
 <div class="area-head">
 <div class="area-tag">Practice Area<strong>05</strong></div>
 <div>
-<h2 class="area-title" id="area-5">Public Benefits &amp; <em>Due Process</em></h2>
-<p class="area-blurb">When can the government cut off a client's TANF, SNAP, Medicaid, or SSI? Not without notice and a hearing. This foundational case is the doctrinal anchor of every benefits termination procedure your clients will face.</p>
+<h2 class="area-title" id="area-5-title">The Fourth Amendment <em>in Practice</em></h2>
+<p class="area-blurb">The cases that govern the social worker's own conduct during home visits, child abuse investigations, and medical settings. What you may legally do, and where the limits sit.</p>
+<span class="area-soon-badge">Explainers in development</span>
 </div>
 </div>
-<article class="case">
-<div class="case-num">10</div>
-<div class="case-body">
-<h3 class="case-name"><a href="/scotus/Goldberg-Kelly.html">Goldberg <em>v.</em> Kelly</a></h3>
-<p class="case-citation">397 U.S. 254 (1970) · <span class="vote">Vote: 5–3</span></p>
-<p class="case-takeaway">Welfare benefits are a statutory entitlement protected by the Due Process Clause. <strong>Recipients are entitled to a pre-termination evidentiary hearing</strong> with notice, the right to appear, and continued benefits while they appeal.</p>
-<span class="case-impact">Why it matters</span>
-<p class="case-impact-text">Foundational for public-benefits practice. Goldberg-style procedures appear in nearly every means-tested program. Equips you to recognize when an agency is short-circuiting due process and to refer clients for fair-hearing representation.</p>
-</div>
-<div class="case-link-col">
-<a class="case-link" href="/scotus/Goldberg-Kelly.html">Read <span class="case-link-arrow">→</span></a>
-</div>
+<div class="case-grid">
+<article class="case-card dev" id="c-wyman">
+<!-- When ready: wrap name in <a href="/scotus/Wyman-James.html">, remove "hidden", swap .cc-soon for the link, drop "dev". -->
+<h3 class="cc-name">Wyman <em>v.</em> James</h3>
+<p class="cc-cite">400 U.S. 309 (1971) · <span class="vote">6–3</span></p>
+<p class="cc-take">A mandatory home visit as a condition of public assistance is <strong>not an unreasonable search.</strong> Refusal can cost benefits, but not criminal penalty.</p>
+<span class="cc-why-label">Why it matters</span>
+<p class="cc-why">The foundational case on caseworker home visits, and the helping-versus-gatekeeping tension at the center of the profession.</p>
+<div class="cc-foot"><span class="cc-soon">In Development</span><a class="cc-link" href="/scotus/Wyman-James.html" hidden>Read →</a></div>
 </article>
+<article class="case-card dev" id="c-camreta">
+<!-- When ready: wrap name in <a href="/scotus/Camreta-Greene.html">, remove "hidden", swap .cc-soon for the link, drop "dev". -->
+<h3 class="cc-name">Camreta <em>v.</em> Greene</h3>
+<p class="cc-cite">563 U.S. 692 (2011) · <span class="vote">Vacated as moot</span></p>
+<p class="cc-take">The Court vacated the ruling as moot, leaving <strong>unsettled whether a caseworker needs a warrant, consent, or an emergency</strong> to interview a suspected abuse victim at school.</p>
+<span class="cc-why-label">Why it matters</span>
+<p class="cc-why">Directly on point for CPS interview practice. The unsettled law is itself the lesson and a documentation caution.</p>
+<div class="cc-foot"><span class="cc-soon">In Development</span><a class="cc-link" href="/scotus/Camreta-Greene.html" hidden>Read →</a></div>
+</article>
+<article class="case-card dev" id="c-ferguson">
+<!-- When ready: wrap name in <a href="/scotus/Ferguson-Charleston.html">, remove "hidden", swap .cc-soon for the link, drop "dev". -->
+<h3 class="cc-name">Ferguson <em>v.</em> City of Charleston</h3>
+<p class="cc-cite">532 U.S. 67 (2001) · <span class="vote">6–3</span></p>
+<p class="cc-take">A public hospital cannot secretly drug-test pregnant patients and hand results to police without consent. <strong>That is an unreasonable search.</strong></p>
+<span class="cc-why-label">Why it matters</span>
+<p class="cc-why">Central to practice with pregnant women who use substances, and the tension between mandated reporting and patient privacy.</p>
+<div class="cc-foot"><span class="cc-soon">In Development</span><a class="cc-link" href="/scotus/Ferguson-Charleston.html" hidden>Read →</a></div>
+</article>
+</div>
 </section>
 
-<!-- AREA 06 - FORENSIC & TREATMENT RIGHTS -->
-<section class="area" aria-labelledby="area-6">
+<!-- AREA 06 -->
+<section class="area" id="area-6" aria-labelledby="area-6-title">
 <div class="area-head">
 <div class="area-tag">Practice Area<strong>06</strong></div>
 <div>
-<h2 class="area-title" id="area-6">Forensic Mental Health &amp; <em>Treatment Rights</em></h2>
-<p class="area-blurb">The rules that govern what happens around and after commitment: the right to refuse medication, competency to stand trial, transfer to psychiatric hospitals, and the limits on confining people found not guilty by reason of insanity. This is the daily terrain of clinical, forensic, and correctional social work.</p>
-<span class="area-soon-badge">Explainers in development</span>
+<h2 class="area-title" id="area-6-title">Schools &amp; <em>Special Education</em></h2>
+<p class="area-blurb">For school social workers, behavioral health clinicians, and foster care workers managing educational stability. The floor every IEP must clear, and the right to education itself.</p>
 </div>
 </div>
-<article class="case coming-soon">
-<div class="case-num">11</div>
-<div class="case-body">
-<h3 class="case-name">Washington <em>v.</em> Harper</h3>
-<!-- When ready: wrap the name above in <a href="/scotus/Washington-Harper.html">...</a> and remove "hidden" from the Read link below; delete the .case-soon badge and the coming-soon class. -->
-<p class="case-citation">494 U.S. 210 (1990) · <span class="vote">Vote: 6–3</span></p>
-<p class="case-takeaway">A state may medicate a mentally ill prison inmate with antipsychotic drugs against his will if he is <strong>dangerous to himself or others and the treatment is in his medical interest.</strong> An administrative hearing, not a court hearing, satisfies due process.</p>
-<span class="case-impact">Why it matters</span>
-<p class="case-impact-text">Sets the constitutional floor for involuntary medication. Workers on treatment teams need to understand the "dangerous plus medical interest" standard and the procedural protections a client is owed before being medicated against their will.</p>
-</div>
-<div class="case-link-col">
-<span class="case-soon">In Development</span>
-<a class="case-link" href="/scotus/Washington-Harper.html" hidden>Read <span class="case-link-arrow">→</span></a>
-</div>
+<div class="case-grid">
+<article class="case-card" id="c-endrew">
+<h3 class="cc-name"><a href="/scotus/Endrew-F-Douglas-County-School-District.html">Endrew F. <em>v.</em> Douglas County</a></h3>
+<p class="cc-cite">580 U.S. 386 (2017) · <span class="vote">8–0</span></p>
+<p class="cc-take">An IEP must be <strong>"reasonably calculated to enable a child to make progress appropriate in light of the child's circumstances."</strong> More than trivial is not enough.</p>
+<span class="cc-why-label">Why it matters</span>
+<p class="cc-why">Raises the IDEA floor. IEPs must be "appropriately ambitious," and schools must explain their choices.</p>
+<div class="cc-foot"><a class="cc-link" href="/scotus/Endrew-F-Douglas-County-School-District.html">Read →</a></div>
 </article>
-<article class="case coming-soon">
-<div class="case-num">12</div>
-<div class="case-body">
-<h3 class="case-name">Riggins <em>v.</em> Nevada</h3>
-<!-- When ready: wrap the name above in <a href="/scotus/Riggins-Nevada.html">...</a> and remove "hidden" from the Read link below; delete the .case-soon badge and the coming-soon class. -->
-<p class="case-citation">504 U.S. 127 (1992) · <span class="vote">Vote: 7–2</span></p>
-<p class="case-takeaway">Forcibly medicating a defendant with antipsychotics during trial <strong>violates due process when the state makes no findings</strong> that the medication is medically appropriate and necessary.</p>
-<span class="case-impact">Why it matters</span>
-<p class="case-impact-text">Establishes a person's liberty interest in refusing psychotropic medication and the state's burden to justify overriding it. Central to forensic practice and to client self-determination.</p>
-</div>
-<div class="case-link-col">
-<span class="case-soon">In Development</span>
-<a class="case-link" href="/scotus/Riggins-Nevada.html" hidden>Read <span class="case-link-arrow">→</span></a>
-</div>
+<article class="case-card" id="c-rowley">
+<h3 class="cc-name"><a href="/scotus/Board-of-Education-Rowley.html">Board of Education <em>v.</em> Rowley</a></h3>
+<p class="cc-cite">458 U.S. 176 (1982) · <span class="vote">6–3</span></p>
+<p class="cc-take">The original IDEA / FAPE case, defining the baseline for a <strong>free appropriate public education.</strong> Now read through the Endrew F. lens, but still good law.</p>
+<span class="cc-why-label">Why it matters</span>
+<p class="cc-why">The doctrinal foundation Endrew F. built on. Worth knowing to understand how the standard evolved.</p>
+<div class="cc-foot"><a class="cc-link" href="/scotus/Board-of-Education-Rowley.html">Read →</a></div>
 </article>
-<article class="case coming-soon">
-<div class="case-num">13</div>
-<div class="case-body">
-<h3 class="case-name">Sell <em>v.</em> United States</h3>
-<!-- When ready: wrap the name above in <a href="/scotus/Sell-United-States.html">...</a> and remove "hidden" from the Read link below; delete the .case-soon badge and the coming-soon class. -->
-<p class="case-citation">539 U.S. 166 (2003) · <span class="vote">Vote: 6–3</span></p>
-<p class="case-takeaway">The government may medicate a non-dangerous defendant against their will <strong>solely to restore competency for trial only in rare cases</strong> that meet a strict four-part test.</p>
-<span class="case-impact">Why it matters</span>
-<p class="case-impact-text">The governing standard for competency-restoration medication. Relevant to forensic evaluators and treatment planners working in jails and forensic units.</p>
-</div>
-<div class="case-link-col">
-<span class="case-soon">In Development</span>
-<a class="case-link" href="/scotus/Sell-United-States.html" hidden>Read <span class="case-link-arrow">→</span></a>
-</div>
+<article class="case-card" id="c-plyler">
+<h3 class="cc-name"><a href="/scotus/Plyler-Doe.html">Plyler <em>v.</em> Doe</a></h3>
+<p class="cc-cite">457 U.S. 202 (1982) · <span class="vote">5–4</span></p>
+<p class="cc-take">States may not deny free public K–12 education to <strong>undocumented children.</strong></p>
+<span class="cc-why-label">Why it matters</span>
+<p class="cc-why">Important for school social workers and any worker serving immigrant families.</p>
+<div class="cc-foot"><a class="cc-link" href="/scotus/Plyler-Doe.html">Read →</a></div>
 </article>
-<article class="case coming-soon">
-<div class="case-num">14</div>
-<div class="case-body">
-<h3 class="case-name">Jackson <em>v.</em> Indiana</h3>
-<!-- When ready: wrap the name above in <a href="/scotus/Jackson-Indiana.html">...</a> and remove "hidden" from the Read link below; delete the .case-soon badge and the coming-soon class. -->
-<p class="case-citation">406 U.S. 715 (1972) · <span class="vote">Vote: 9–0</span></p>
-<p class="case-takeaway">A person committed only because they are incompetent to stand trial <strong>cannot be held indefinitely.</strong> The state must move toward treatment, civil commitment, or release within a reasonable time.</p>
-<span class="case-impact">Why it matters</span>
-<p class="case-impact-text">Protects people with cognitive and developmental disabilities from being warehoused indefinitely on a competency hold. Foundational for forensic and disability practice.</p>
 </div>
-<div class="case-link-col">
-<span class="case-soon">In Development</span>
-<a class="case-link" href="/scotus/Jackson-Indiana.html" hidden>Read <span class="case-link-arrow">→</span></a>
-</div>
-</article>
-<article class="case coming-soon">
-<div class="case-num">15</div>
-<div class="case-body">
-<h3 class="case-name">Vitek <em>v.</em> Jones</h3>
-<!-- When ready: wrap the name above in <a href="/scotus/Vitek-Jones.html">...</a> and remove "hidden" from the Read link below; delete the .case-soon badge and the coming-soon class. -->
-<p class="case-citation">445 U.S. 480 (1980) · <span class="vote">Vote: 6–3</span></p>
-<p class="case-takeaway">A prisoner has a liberty interest that requires <strong>notice and a hearing before being involuntarily transferred</strong> to a state psychiatric hospital.</p>
-<span class="case-impact">Why it matters</span>
-<p class="case-impact-text">Governs the prison-to-psychiatric-hospital transfer process that correctional social workers help coordinate.</p>
-</div>
-<div class="case-link-col">
-<span class="case-soon">In Development</span>
-<a class="case-link" href="/scotus/Vitek-Jones.html" hidden>Read <span class="case-link-arrow">→</span></a>
-</div>
-</article>
-<article class="case coming-soon">
-<div class="case-num">16</div>
-<div class="case-body">
-<h3 class="case-name">Foucha <em>v.</em> Louisiana</h3>
-<!-- When ready: wrap the name above in <a href="/scotus/Foucha-Louisiana.html">...</a> and remove "hidden" from the Read link below; delete the .case-soon badge and the coming-soon class. -->
-<p class="case-citation">504 U.S. 71 (1992) · <span class="vote">Vote: 5–4</span></p>
-<p class="case-takeaway">A state cannot keep an insanity acquittee confined on <strong>dangerousness alone once they are no longer mentally ill.</strong> Continued commitment requires both mental illness and dangerousness.</p>
-<span class="case-impact">Why it matters</span>
-<p class="case-impact-text">Defines release rights for people found not guilty by reason of insanity and the limits of "dangerousness" as a basis for confinement.</p>
-</div>
-<div class="case-link-col">
-<span class="case-soon">In Development</span>
-<a class="case-link" href="/scotus/Foucha-Louisiana.html" hidden>Read <span class="case-link-arrow">→</span></a>
-</div>
-</article>
-<article class="case coming-soon">
-<div class="case-num">17</div>
-<div class="case-body">
-<h3 class="case-name">Kansas <em>v.</em> Hendricks</h3>
-<!-- When ready: wrap the name above in <a href="/scotus/Kansas-Hendricks.html">...</a> and remove "hidden" from the Read link below; delete the .case-soon badge and the coming-soon class. -->
-<p class="case-citation">521 U.S. 346 (1997) · <span class="vote">Vote: 5–4</span></p>
-<p class="case-takeaway">Civil commitment of "sexually violent predators" who have a mental abnormality making them likely to reoffend is constitutional and is <strong>not double jeopardy or punishment.</strong></p>
-<span class="case-impact">Why it matters</span>
-<p class="case-impact-text">Governs the SVP civil-commitment programs that employ forensic social workers, and raises a real ethical tension between treatment and indefinite incapacitation.</p>
-</div>
-<div class="case-link-col">
-<span class="case-soon">In Development</span>
-<a class="case-link" href="/scotus/Kansas-Hendricks.html" hidden>Read <span class="case-link-arrow">→</span></a>
-</div>
-</article>
-<article class="case coming-soon">
-<div class="case-num">18</div>
-<div class="case-body">
-<h3 class="case-name">Ford <em>v.</em> Wainwright &amp; Panetti <em>v.</em> Quarterman</h3>
-<!-- When ready: wrap the name above in <a href="/scotus/Ford-Panetti.html">...</a> and remove "hidden" from the Read link below; delete the .case-soon badge and the coming-soon class. -->
-<p class="case-citation">477 U.S. 399 (1986) · 7–2 &nbsp;/&nbsp; 551 U.S. 930 (2007) · <span class="vote">5–4</span></p>
-<p class="case-takeaway">The Eighth Amendment bars executing a person who is insane. Panetti added that the person must have a <strong>rational understanding of why they are being executed,</strong> not just an awareness of it.</p>
-<span class="case-impact">Why it matters</span>
-<p class="case-impact-text">Relevant to forensic mental-health work and pairs directly with the intellectual disability and sentencing cases (Atkins, Hall) already in this series.</p>
-</div>
-<div class="case-link-col">
-<span class="case-soon">In Development</span>
-<a class="case-link" href="/scotus/Ford-Panetti.html" hidden>Read <span class="case-link-arrow">→</span></a>
-</div>
-</article>
 </section>
 
-<!-- AREA 07 - FOURTH AMENDMENT IN PRACTICE -->
-<section class="area" aria-labelledby="area-7">
+<!-- AREA 07 -->
+<section class="area" id="area-7" aria-labelledby="area-7-title">
 <div class="area-head">
 <div class="area-tag">Practice Area<strong>07</strong></div>
 <div>
-<h2 class="area-title" id="area-7">The Fourth Amendment <em>in Practice</em></h2>
-<p class="area-blurb">These cases govern the social worker's own conduct during home visits, child abuse investigations, and medical settings. They define what you may legally do and where the constitutional limits on searches and investigations sit.</p>
-<span class="area-soon-badge">Explainers in development</span>
+<h2 class="area-title" id="area-7-title">Public Benefits &amp; <em>Due Process</em></h2>
+<p class="area-blurb">When can the government cut off a client's TANF, SNAP, Medicaid, or SSI? Not without process. The doctrinal anchors of every benefits-termination procedure your clients will face.</p>
 </div>
 </div>
-<article class="case coming-soon">
-<div class="case-num">19</div>
-<div class="case-body">
-<h3 class="case-name">Wyman <em>v.</em> James</h3>
-<!-- When ready: wrap the name above in <a href="/scotus/Wyman-James.html">...</a> and remove "hidden" from the Read link below; delete the .case-soon badge and the coming-soon class. -->
-<p class="case-citation">400 U.S. 309 (1971) · <span class="vote">Vote: 6–3</span></p>
-<p class="case-takeaway">A mandatory home visit by a caseworker as a condition of public assistance is <strong>not an unreasonable search.</strong> A client who refuses can lose benefits, but cannot be criminally punished.</p>
-<span class="case-impact">Why it matters</span>
-<p class="case-impact-text">The foundational case on caseworker home visits. Every child welfare and public benefits worker operates in its shadow. It also captures the helping-versus-gatekeeping tension at the center of the profession.</p>
-</div>
-<div class="case-link-col">
-<span class="case-soon">In Development</span>
-<a class="case-link" href="/scotus/Wyman-James.html" hidden>Read <span class="case-link-arrow">→</span></a>
-</div>
+<div class="case-grid">
+<article class="case-card" id="c-goldberg">
+<h3 class="cc-name"><a href="/scotus/Goldberg-Kelly.html">Goldberg <em>v.</em> Kelly</a></h3>
+<p class="cc-cite">397 U.S. 254 (1970) · <span class="vote">5–3</span></p>
+<p class="cc-take">Welfare benefits are a statutory entitlement protected by due process. Recipients are entitled to a <strong>pre-termination evidentiary hearing</strong> with continued benefits pending appeal.</p>
+<span class="cc-why-label">Why it matters</span>
+<p class="cc-why">Foundational for public-benefits practice. Equips you to spot when an agency short-circuits due process.</p>
+<div class="cc-foot"><a class="cc-link" href="/scotus/Goldberg-Kelly.html">Read →</a></div>
 </article>
-<article class="case coming-soon">
-<div class="case-num">20</div>
-<div class="case-body">
-<h3 class="case-name">Camreta <em>v.</em> Greene</h3>
-<!-- When ready: wrap the name above in <a href="/scotus/Camreta-Greene.html">...</a> and remove "hidden" from the Read link below; delete the .case-soon badge and the coming-soon class. -->
-<p class="case-citation">563 U.S. 692 (2011) · <span class="vote">Vacated as moot</span></p>
-<p class="case-takeaway">The Court vacated the lower court's ruling as moot, leaving <strong>unsettled whether a caseworker needs a warrant, consent, or an emergency</strong> before interviewing a suspected child abuse victim at school.</p>
-<span class="case-impact">Why it matters</span>
-<p class="case-impact-text">Directly on point for CPS interview practice. The fact that the law here is unsettled is itself the lesson, and a caution for how to document and justify interview decisions.</p>
-</div>
-<div class="case-link-col">
-<span class="case-soon">In Development</span>
-<a class="case-link" href="/scotus/Camreta-Greene.html" hidden>Read <span class="case-link-arrow">→</span></a>
-</div>
+<article class="case-card" id="c-mathews">
+<h3 class="cc-name"><a href="/scotus/Mathews-Eldridge.html">Mathews <em>v.</em> Eldridge</a></h3>
+<p class="cc-cite">424 U.S. 319 (1976) · <span class="vote">6–2</span></p>
+<p class="cc-take">The <strong>three-factor balancing test</strong> that governs how much process is due in most benefits-termination cases today.</p>
+<span class="cc-why-label">Why it matters</span>
+<p class="cc-why">Explains why Social Security disability uses lighter procedures than Goldberg required for welfare.</p>
+<div class="cc-foot"><a class="cc-link" href="/scotus/Mathews-Eldridge.html">Read →</a></div>
 </article>
-<article class="case coming-soon">
-<div class="case-num">21</div>
-<div class="case-body">
-<h3 class="case-name">Ferguson <em>v.</em> City of Charleston</h3>
-<!-- When ready: wrap the name above in <a href="/scotus/Ferguson-Charleston.html">...</a> and remove "hidden" from the Read link below; delete the .case-soon badge and the coming-soon class. -->
-<p class="case-citation">532 U.S. 67 (2001) · <span class="vote">Vote: 6–3</span></p>
-<p class="case-takeaway">A public hospital cannot secretly drug-test pregnant patients and hand the results to police without consent. <strong>That is an unreasonable search.</strong></p>
-<span class="case-impact">Why it matters</span>
-<p class="case-impact-text">Central to practice with pregnant women who use substances, the medical and social work interface, and the tension between mandated reporting and patient privacy.</p>
 </div>
-<div class="case-link-col">
-<span class="case-soon">In Development</span>
-<a class="case-link" href="/scotus/Ferguson-Charleston.html" hidden>Read <span class="case-link-arrow">→</span></a>
-</div>
-</article>
 </section>
 
-<!-- AREA 08 - END-OF-LIFE & MEDICAL DECISION-MAKING -->
-<section class="area" aria-labelledby="area-8">
+<!-- AREA 08 -->
+<section class="area" id="area-8" aria-labelledby="area-8-title">
 <div class="area-head">
 <div class="area-tag">Practice Area<strong>08</strong></div>
 <div>
-<h2 class="area-title" id="area-8">End-of-Life &amp; <em>Medical Decision-Making</em></h2>
-<p class="area-blurb">The constitutional rules for refusing treatment, surrogate decision-making, and capacity. Core territory for medical, hospice, and gerontological social work, and for any worker who helps clients and families plan ahead.</p>
+<h2 class="area-title" id="area-8-title">Sentencing &amp; the <em>Eighth Amendment</em></h2>
+<p class="area-blurb">Constitutional limits on the harshest sentences for less-culpable people: juveniles and those with intellectual disability. The cases behind adolescent-brain-development testimony and adaptive-functioning assessment in mitigation work.</p>
+</div>
+</div>
+<div class="case-grid">
+<article class="case-card" id="c-roper">
+<h3 class="cc-name"><a href="/scotus/Roper-Simmons.html">Roper <em>v.</em> Simmons</a></h3>
+<p class="cc-cite">543 U.S. 551 (2005) · <span class="vote">5–4</span></p>
+<p class="cc-take">The Eighth Amendment bars the death penalty for offenses <strong>committed under age 18.</strong></p>
+<span class="cc-why-label">Why it matters</span>
+<p class="cc-why">Foundational for adolescent-brain-development arguments in social work testimony.</p>
+<div class="cc-foot"><a class="cc-link" href="/scotus/Roper-Simmons.html">Read →</a></div>
+</article>
+<article class="case-card" id="c-graham">
+<h3 class="cc-name"><a href="/scotus/Graham-Florida.html">Graham <em>v.</em> Florida</a></h3>
+<p class="cc-cite">560 U.S. 48 (2010) · <span class="vote">6–3</span></p>
+<p class="cc-take">Life without parole is unconstitutional for juveniles convicted of <strong>non-homicide offenses.</strong></p>
+<span class="cc-why-label">Why it matters</span>
+<p class="cc-why">Part of the juvenile-sentencing trilogy with Roper and Miller. Created the "meaningful opportunity for release" requirement.</p>
+<div class="cc-foot"><a class="cc-link" href="/scotus/Graham-Florida.html">Read →</a></div>
+</article>
+<article class="case-card" id="c-miller">
+<h3 class="cc-name"><a href="/scotus/Miller-Alabama.html">Miller <em>v.</em> Alabama</a></h3>
+<p class="cc-cite">567 U.S. 460 (2012) · <span class="vote">5–4</span></p>
+<p class="cc-take">Mandatory life without parole for juvenile homicide offenders is unconstitutional. Sentencing must be <strong>individualized and consider youth.</strong></p>
+<span class="cc-why-label">Why it matters</span>
+<p class="cc-why">Made retroactive by Montgomery (2016). Makes comprehensive social history constitutionally significant at resentencing.</p>
+<div class="cc-foot"><a class="cc-link" href="/scotus/Miller-Alabama.html">Read →</a></div>
+</article>
+<article class="case-card" id="c-atkins">
+<h3 class="cc-name"><a href="/scotus/Atkins-Virginia.html">Atkins <em>v.</em> Virginia</a></h3>
+<p class="cc-cite">536 U.S. 304 (2002) · <span class="vote">6–3</span></p>
+<p class="cc-take">Executing a person with <strong>intellectual disability</strong> violates the Eighth Amendment.</p>
+<span class="cc-why-label">Why it matters</span>
+<p class="cc-why">Relevant when social workers conduct adaptive-functioning assessments in capital-mitigation work.</p>
+<div class="cc-foot"><a class="cc-link" href="/scotus/Atkins-Virginia.html">Read →</a></div>
+</article>
+<article class="case-card" id="c-hall">
+<h3 class="cc-name"><a href="/scotus/Hall-Florida.html">Hall <em>v.</em> Florida</a></h3>
+<p class="cc-cite">572 U.S. 701 (2014) · <span class="vote">5–4</span></p>
+<p class="cc-take">States cannot use a <strong>strict IQ-score cutoff</strong> to deny an Atkins claim. The standard error of measurement must be considered.</p>
+<span class="cc-why-label">Why it matters</span>
+<p class="cc-why">Sharpens how IQ and adaptive functioning are assessed. "Intellectual disability is a condition, not a number."</p>
+<div class="cc-foot"><a class="cc-link" href="/scotus/Hall-Florida.html">Read →</a></div>
+</article>
+</div>
+</section>
+
+<!-- AREA 09 -->
+<section class="area" id="area-9" aria-labelledby="area-9-title">
+<div class="area-head">
+<div class="area-tag">Practice Area<strong>09</strong></div>
+<div>
+<h2 class="area-title" id="area-9-title">End-of-Life &amp; <em>Medical Decision-Making</em></h2>
+<p class="area-blurb">The constitutional rules for refusing treatment, surrogate decision-making, and capacity. Core territory for medical, hospice, and gerontological social work.</p>
 <span class="area-soon-badge">Explainers in development</span>
 </div>
 </div>
-<article class="case coming-soon">
-<div class="case-num">22</div>
-<div class="case-body">
-<h3 class="case-name">Cruzan <em>v.</em> Director, Missouri Dept. of Health</h3>
-<!-- When ready: wrap the name above in <a href="/scotus/Cruzan-Missouri.html">...</a> and remove "hidden" from the Read link below; delete the .case-soon badge and the coming-soon class. -->
-<p class="case-citation">497 U.S. 261 (1990) · <span class="vote">Vote: 5–4</span></p>
-<p class="case-takeaway">A competent person has a constitutionally protected liberty interest in refusing life-sustaining treatment. A state may require <strong>clear and convincing evidence of an incapacitated person's wishes</strong> before treatment is withdrawn.</p>
-<span class="case-impact">Why it matters</span>
-<p class="case-impact-text">Foundational for advance directives, surrogate decision-making, and end-of-life work. Shapes how you counsel clients and families about living wills and documenting wishes before capacity is lost.</p>
-</div>
-<div class="case-link-col">
-<span class="case-soon">In Development</span>
-<a class="case-link" href="/scotus/Cruzan-Missouri.html" hidden>Read <span class="case-link-arrow">→</span></a>
-</div>
+<div class="case-grid">
+<article class="case-card dev" id="c-cruzan">
+<!-- When ready: wrap name in <a href="/scotus/Cruzan-Missouri.html">, remove "hidden", swap .cc-soon for the link, drop "dev". -->
+<h3 class="cc-name">Cruzan <em>v.</em> Director, Missouri Dept. of Health</h3>
+<p class="cc-cite">497 U.S. 261 (1990) · <span class="vote">5–4</span></p>
+<p class="cc-take">A competent person has a liberty interest in refusing life-sustaining treatment. A state may require <strong>clear and convincing evidence of an incapacitated person's wishes</strong> before withdrawing it.</p>
+<span class="cc-why-label">Why it matters</span>
+<p class="cc-why">Foundational for advance directives and surrogate decision-making. Shapes how you counsel clients and families about documenting wishes.</p>
+<div class="cc-foot"><span class="cc-soon">In Development</span><a class="cc-link" href="/scotus/Cruzan-Missouri.html" hidden>Read →</a></div>
 </article>
+</div>
 </section>
 
-<!-- HONORABLE MENTIONS -->
-<section class="honorable" aria-labelledby="honorable-title">
-<div class="honorable-head">
-<div class="area-tag">Also Worth Knowing<strong>+</strong></div>
+<!-- AREA 10 -->
+<section class="area" id="area-10" aria-labelledby="area-10-title">
+<div class="area-head">
+<div class="area-tag">Practice Area<strong>10</strong></div>
 <div>
-<h2 class="area-title" id="honorable-title">Honorable <em>Mentions</em></h2>
-<p class="honorable-blurb">Cases that didn't make the top ten but deserve recognition. Each is still good law. These are most relevant to specific practice settings. Where a full explainer exists, the case name links to it.</p>
+<h2 class="area-title" id="area-10-title">LGBTQ+ Clients &amp; <em>Civil Rights</em></h2>
+<p class="area-blurb">Marriage, employment, and the regulation of clinical practice itself. The decisions that shape family formation, workplace protection, and licensure for and with LGBTQ+ clients.</p>
 </div>
 </div>
-
-<div class="honorable-group">
-<div class="honorable-group-title">Civil Commitment &amp; Institutional Rights</div>
-<ul class="honorable-list">
-<li class="honorable-item">
-<div class="honorable-item-name"><a href="/scotus/Parham-JR.html">Parham v. J.R.</a></div>
-<div class="honorable-item-meta">442 U.S. 584 (1979) · 6–3</div>
-<p class="honorable-item-desc">Parents may "voluntarily" commit a minor to a psychiatric facility with only a neutral physician's confirmation. No adversary hearing required. Crucial for adolescent inpatient social work.</p>
-</li>
-<li class="honorable-item">
-<div class="honorable-item-name"><a href="/scotus/Youngberg-Romeo.html">Youngberg v. Romeo</a></div>
-<div class="honorable-item-meta">457 U.S. 307 (1982) · 9–0</div>
-<p class="honorable-item-desc">Persons involuntarily committed to state institutions have constitutional rights to safe conditions, freedom from undue restraint, and minimally adequate training. Essential for ID/DD social work.</p>
-</li>
-</ul>
+<div class="case-grid">
+<article class="case-card" id="c-obergefell">
+<h3 class="cc-name"><a href="/scotus/Obergefell-Hodges.html">Obergefell <em>v.</em> Hodges</a></h3>
+<p class="cc-cite">576 U.S. 644 (2015) · <span class="vote">5–4</span></p>
+<p class="cc-take">Marriage equality nationwide.</p>
+<span class="cc-why-label">Why it matters</span>
+<p class="cc-why">Affects family-formation work, foster and adoptive licensing, and second-parent adoptions.</p>
+<div class="cc-foot"><a class="cc-link" href="/scotus/Obergefell-Hodges.html">Read →</a></div>
+</article>
+<article class="case-card" id="c-bostock">
+<h3 class="cc-name"><a href="/scotus/Bostock-Clayton-County.html">Bostock <em>v.</em> Clayton County</a></h3>
+<p class="cc-cite">590 U.S. 644 (2020) · <span class="vote">6–3</span></p>
+<p class="cc-take">Title VII's ban on sex discrimination <strong>protects gay, lesbian, and transgender employees.</strong></p>
+<span class="cc-why-label">Why it matters</span>
+<p class="cc-why">Relevant to workplace issues for LGBTQ+ clients and to your own professional setting.</p>
+<div class="cc-foot"><a class="cc-link" href="/scotus/Bostock-Clayton-County.html">Read →</a></div>
+</article>
+<article class="case-card" id="c-chiles">
+<h3 class="cc-name"><a href="/scotus/Chiles-Salazar.html">Chiles <em>v.</em> Salazar</a></h3>
+<p class="cc-cite">606 U.S. ___ (2026) · <span class="vote">8–1</span></p>
+<p class="cc-take">Colorado's conversion-therapy ban, as applied to talk therapy with minors, regulates speech by viewpoint and must <strong>survive strict scrutiny.</strong> Remanded; statute not yet struck down.</p>
+<span class="cc-why-label">Why it matters</span>
+<p class="cc-why">Directly implicates how states may regulate clinical practice, and the boundary between conduct and speech in therapy.</p>
+<div class="cc-foot"><a class="cc-link" href="/scotus/Chiles-Salazar.html">Read →</a></div>
+</article>
 </div>
-
-<div class="honorable-group">
-<div class="honorable-group-title">Parental Rights &amp; Family Integrity</div>
-<ul class="honorable-list">
-<li class="honorable-item">
-<div class="honorable-item-name"><a href="/scotus/Stanley-Illinois.html">Stanley v. Illinois</a></div>
-<div class="honorable-item-meta">405 U.S. 645 (1972) · 5–2</div>
-<p class="honorable-item-desc">An unwed biological father is entitled to a hearing on his fitness before the state can take his children. Foundation of putative-father rights. Pairs with Santosky and Troxel.</p>
-</li>
-<li class="honorable-item">
-<div class="honorable-item-name"><a href="/scotus/Pierce-Society-of-Sisters.html">Pierce v. Society of Sisters</a></div>
-<div class="honorable-item-meta">268 U.S. 510 (1925) · 9–0</div>
-<p class="honorable-item-desc">Historical anchor of parents' rights to direct the upbringing and education of their children. Foundational substantive due-process case underlying Troxel.</p>
-</li>
-<li class="honorable-item">
-<div class="honorable-item-name"><a href="/scotus/Wisconsin-Yoder.html">Wisconsin v. Yoder</a></div>
-<div class="honorable-item-meta">406 U.S. 205 (1972) · 6–1</div>
-<p class="honorable-item-desc">Amish parents' free-exercise rights allowed exemption from compulsory schooling beyond eighth grade. Companion case to Pierce on parental autonomy in education.</p>
-</li>
-<li class="honorable-item">
-<div class="honorable-item-name"><a href="/scotus/Adoptive-Couple-Baby-Girl.html">Adoptive Couple v. Baby Girl</a></div>
-<div class="honorable-item-meta">570 U.S. 637 (2013) · 5–4</div>
-<p class="honorable-item-desc">Narrows ICWA's TPR provisions in a specific factual posture involving a noncustodial biological father. Pairs with Brackeen.</p>
-</li>
-</ul>
-</div>
-
-<div class="honorable-group">
-<div class="honorable-group-title">Benefits &amp; Procedural Due Process</div>
-<ul class="honorable-list">
-<li class="honorable-item">
-<div class="honorable-item-name"><a href="/scotus/Mathews-Eldridge.html">Mathews v. Eldridge</a></div>
-<div class="honorable-item-meta">424 U.S. 319 (1976) · 6–2</div>
-<p class="honorable-item-desc">Three-factor due-process balancing test that governs most benefits-termination cases today. Explains why Social Security disability uses lighter procedures than Goldberg required for welfare.</p>
-</li>
-</ul>
-</div>
-
-<div class="honorable-group">
-<div class="honorable-group-title">Special Education</div>
-<ul class="honorable-list">
-<li class="honorable-item">
-<div class="honorable-item-name"><a href="/scotus/Board-of-Education-Rowley.html">Board of Education v. Rowley</a></div>
-<div class="honorable-item-meta">458 U.S. 176 (1982) · 6–3</div>
-<p class="honorable-item-desc">The original IDEA / FAPE case. Now read through the Endrew F. lens but still good law. Worth knowing as the doctrinal foundation Endrew F. built on.</p>
-</li>
-</ul>
-</div>
-
-<div class="honorable-group">
-<div class="honorable-group-title">Immigrant Clients &amp; School Social Work</div>
-<ul class="honorable-list">
-<li class="honorable-item">
-<div class="honorable-item-name"><a href="/scotus/Plyler-Doe.html">Plyler v. Doe</a></div>
-<div class="honorable-item-meta">457 U.S. 202 (1982) · 5–4</div>
-<p class="honorable-item-desc">States may not deny free public K–12 education to undocumented children. Important for school social workers and any worker serving immigrant families.</p>
-</li>
-</ul>
-</div>
-
-<div class="honorable-group">
-<div class="honorable-group-title">LGBTQ+ Clients</div>
-<ul class="honorable-list">
-<li class="honorable-item">
-<div class="honorable-item-name"><a href="/scotus/Obergefell-Hodges.html">Obergefell v. Hodges</a></div>
-<div class="honorable-item-meta">576 U.S. 644 (2015) · 5–4</div>
-<p class="honorable-item-desc">Marriage equality nationwide. Affects family-formation work, foster and adoptive licensing, and second-parent adoptions.</p>
-</li>
-<li class="honorable-item">
-<div class="honorable-item-name"><a href="/scotus/Bostock-Clayton-County.html">Bostock v. Clayton County</a></div>
-<div class="honorable-item-meta">590 U.S. 644 (2020) · 6–3</div>
-<p class="honorable-item-desc">Title VII's ban on sex discrimination protects gay, lesbian, and transgender employees. Relevant to workplace issues for LGBTQ+ clients.</p>
-</li>
-<li class="honorable-item">
-<div class="honorable-item-name"><a href="/scotus/Chiles-Salazar.html">Chiles v. Salazar</a></div>
-<div class="honorable-item-meta">606 U.S. ___ (2026) · 8–1</div>
-<p class="honorable-item-desc">Colorado's conversion therapy ban, as applied to talk therapy with minors, regulates speech by viewpoint and must survive strict scrutiny. Case remanded; statute not yet struck down.</p>
-</li>
-</ul>
-</div>
-
-<div class="honorable-group">
-<div class="honorable-group-title">Juvenile Justice</div>
-<ul class="honorable-list">
-<li class="honorable-item">
-<div class="honorable-item-name"><a href="/scotus/Roper-Simmons.html">Roper v. Simmons</a></div>
-<div class="honorable-item-meta">543 U.S. 551 (2005) · 5–4</div>
-<p class="honorable-item-desc">Eighth Amendment bars the death penalty for offenses committed under age 18. Foundational for adolescent-brain-development arguments in social work testimony.</p>
-</li>
-<li class="honorable-item">
-<div class="honorable-item-name"><a href="/scotus/Graham-Florida.html">Graham v. Florida</a></div>
-<div class="honorable-item-meta">560 U.S. 48 (2010) · 6–3</div>
-<p class="honorable-item-desc">Life without parole is unconstitutional for juveniles convicted of non-homicide offenses. Part of the juvenile-sentencing trilogy with Roper and Miller.</p>
-</li>
-<li class="honorable-item">
-<div class="honorable-item-name"><a href="/scotus/Miller-Alabama.html">Miller v. Alabama</a></div>
-<div class="honorable-item-meta">567 U.S. 460 (2012) · 5–4</div>
-<p class="honorable-item-desc">Mandatory life without parole for juvenile homicide offenders is unconstitutional. Requires individualized sentencing considering youth. Made retroactive by Montgomery (2016).</p>
-</li>
-</ul>
-</div>
-
-<div class="honorable-group">
-<div class="honorable-group-title">Intellectual Disability &amp; Sentencing</div>
-<ul class="honorable-list">
-<li class="honorable-item">
-<div class="honorable-item-name"><a href="/scotus/Atkins-Virginia.html">Atkins v. Virginia</a></div>
-<div class="honorable-item-meta">536 U.S. 304 (2002) · 6–3</div>
-<p class="honorable-item-desc">Executing a person with intellectual disability violates the Eighth Amendment. Relevant when social workers conduct adaptive-functioning assessments in capital-mitigation work.</p>
-</li>
-<li class="honorable-item">
-<div class="honorable-item-name"><a href="/scotus/Hall-Florida.html">Hall v. Florida</a></div>
-<div class="honorable-item-meta">572 U.S. 701 (2014) · 5–4</div>
-<p class="honorable-item-desc">States cannot use a strict IQ-score cutoff to deny an Atkins claim. Standard error of measurement must be considered.</p>
-</li>
-<li class="honorable-item">
-<!-- <div class="honorable-item-name"><a href="/scotus/Week-10.pdf">For Claude Week 10</a></div>
-<div class="honorable-item-meta">NA</div>
-<p class="honorable-item-desc">NA.</p> -->
-</li>
-</ul>
-</div>
-
 </section>
+
 </main>
 
 <footer class="colophon" role="contentinfo">
@@ -1171,5 +659,21 @@
 <div class="colophon-meta">Mongan's Teaching Archive</div>
 </div>
 </footer>
+
+<a class="backtotop" id="backToTop" href="#top" aria-label="Back to top of page">&#8593; Top</a>
+
+<script>
+  // Show the back-to-top button after scrolling down the page.
+  (function () {
+    var btn = document.getElementById('backToTop');
+    if (!btn) return;
+    function onScroll() {
+      if (window.scrollY > 600) { btn.classList.add('show'); }
+      else { btn.classList.remove('show'); }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>
 
 </body></html>
