@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Riggins v. Nevada, Case Explainer</title>
+<meta name="description" content="Plain-language explainer of Riggins v. Nevada (1992), the Supreme Court case holding that a state may not forcibly medicate a criminal defendant throughout trial without findings of necessity, justification, and consideration of less intrusive alternatives.">
+<meta name="author" content="Philip Mongan">
+<meta property="og:title" content="Riggins v. Nevada — Understanding SCOTUS Opinions">
+<meta property="og:description" content="Plain-language explainer of Riggins v. Nevada (1992), the Supreme Court case on forcibly medicating a criminal defendant during trial without findings or consideration of alternatives.">
+<meta property="og:url" content="https://philipmongan.com/scotus/Riggins-Nevada.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Mongan's Teaching Archive">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&amp;family=Inter+Tight:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f4ede0;
+    --paper-2: #ebe2d1;
+    --paper-deep: #e5dac4;
+    --ink: #1c1815;
+    --ink-2: #2d2722;
+    --ink-soft: #4a4239;
+    --ink-mute: #6b6258;
+    --rule: #c9bda6;
+    --rule-soft: #d9cfba;
+    --oxblood: #6b1f2a;
+    --oxblood-deep: #4f1620;
+    --oxblood-tint: #f3e0e2;
+    --brass: #6b5320;
+    --brass-tint: #f1e8cf;
+    --majority: #2d4a3a;
+    --majority-tint: #d9e2d8;
+    --dissent: #6b1f2a;
+    --dissent-tint: #ebd5d6;
+    --concur: #6b5320;
+    --concur-tint: #efe5c8;
+    --font-display: 'Fraunces', 'Times New Roman', serif;
+    --font-body: 'Inter Tight', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 17px;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(107,31,42,0.025) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(107,83,32,0.025) 0%, transparent 50%);
+  }
+  body::before {
+    content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1; opacity: 0.4;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.11 0 0 0 0 0.09 0 0 0 0 0.08 0 0 0 0.12 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .skip-link { position: absolute; top: -100px; left: 16px; background: var(--ink); color: var(--paper); padding: 12px 18px; text-decoration: none; font-weight: 600; border-radius: 2px; z-index: 9999; transition: top 0.2s; }
+  .skip-link:focus { top: 16px; outline: 3px solid var(--oxblood); }
+
+  .masthead { border-bottom: 1px solid var(--rule); padding: 24px 0 18px; position: relative; z-index: 2; }
+  .masthead-inner { max-width: 1180px; margin: 0 auto; padding: 0 32px; display: flex; align-items: baseline; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .masthead-brand { font-family: var(--font-display); font-size: 15px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); }
+  .masthead-brand a { color: inherit; text-decoration: none; }
+  .masthead-brand a:hover { color: var(--oxblood); }
+  .masthead-meta { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mute); }
+
+  .hero { max-width: 1180px; margin: 0 auto; padding: 48px 32px 32px; position: relative; z-index: 2; }
+  .hero-eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--oxblood); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+  .hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--oxblood); }
+  .hero-eyebrow::after { content: ''; flex: 1; height: 1px; background: var(--rule); max-width: 200px; }
+  .hero-title { font-family: var(--font-display); font-weight: 500; font-size: clamp(40px, 6vw, 84px); line-height: 0.98; letter-spacing: -0.025em; color: var(--ink); margin-bottom: 12px; font-variation-settings: "opsz" 144, "SOFT" 30; }
+  .hero-title em { font-style: italic; font-weight: 400; color: var(--oxblood); }
+  .hero-citation { font-family: var(--font-mono); font-size: 13px; color: var(--ink-mute); letter-spacing: 0.04em; margin-bottom: 36px; }
+  .hero-citation a { color: var(--oxblood); text-decoration: underline; text-underline-offset: 3px; }
+  .hero-citation a:hover { color: var(--oxblood-deep); }
+
+  .lede { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; padding-top: 28px; border-top: 3px double var(--ink); }
+  .lede-label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-mute); padding-top: 6px; }
+  .lede-label-mark { display: inline-block; width: 6px; height: 6px; background: var(--oxblood); margin-right: 8px; border-radius: 50%; vertical-align: middle; }
+  .lede-text { font-family: var(--font-display); font-size: clamp(20px, 2.2vw, 26px); line-height: 1.4; font-weight: 400; color: var(--ink); letter-spacing: -0.005em; }
+  .lede-text strong { font-weight: 600; color: var(--oxblood); font-style: italic; }
+  @media (max-width: 720px) { .lede { grid-template-columns: 1fr; gap: 12px; } }
+
+  .bluf { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; margin-top: 28px; padding: 24px 28px 26px; background: var(--paper-2); border-left: 4px solid var(--brass); border-radius: 2px; }
+  .bluf-label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brass); font-weight: 700; padding-top: 4px; }
+  .bluf-label-mark { display: inline-block; width: 6px; height: 6px; background: var(--brass); margin-right: 8px; border-radius: 50%; vertical-align: middle; }
+  .bluf-text { font-family: var(--font-body); font-size: 16.5px; line-height: 1.7; color: var(--ink-2); }
+  .bluf-text strong { color: var(--ink); font-weight: 600; }
+  @media (max-width: 720px) { .bluf { grid-template-columns: 1fr; gap: 8px; padding: 20px 22px; } }
+
+  .dropcap::first-letter { font-family: var(--font-display); font-size: 5em; font-weight: 600; float: left; line-height: 0.85; margin: 0.04em 0.08em 0 0; color: var(--oxblood); font-style: italic; }
+
+  main { max-width: 1180px; margin: 0 auto; padding: 0 32px 80px; position: relative; z-index: 2; }
+  section { padding: 56px 0; border-bottom: 1px solid var(--rule); }
+  section:last-of-type { border-bottom: none; }
+
+  .section-head { display: grid; grid-template-columns: 120px 1fr; gap: 32px; align-items: baseline; margin-bottom: 32px; }
+  .section-num { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.18em; color: var(--ink-mute); text-transform: uppercase; border-top: 2px solid var(--ink); padding-top: 8px; }
+  .section-num strong { display: block; font-family: var(--font-display); font-size: 28px; font-weight: 400; font-style: italic; color: var(--oxblood); letter-spacing: -0.01em; margin-top: 2px; }
+  .section-title { font-family: var(--font-display); font-size: clamp(28px, 3.5vw, 44px); font-weight: 500; line-height: 1.05; letter-spacing: -0.02em; color: var(--ink); }
+  .section-title em { font-style: italic; color: var(--oxblood); }
+  @media (max-width: 720px) { .section-head { grid-template-columns: 1fr; gap: 8px; } .section-num { border-top: none; padding-top: 0; } }
+
+  .body-grid { display: grid; grid-template-columns: 120px 1fr; gap: 32px; }
+  .body-grid-aside { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-mute); padding-top: 8px; }
+  .body-grid-main { max-width: 65ch; }
+  .body-grid-main p { margin-bottom: 1em; font-size: 17px; line-height: 1.7; color: var(--ink-2); }
+  .body-grid-main p:last-child { margin-bottom: 0; }
+  .body-grid-main strong { color: var(--ink); font-weight: 600; }
+  .body-grid-main em { font-style: italic; }
+  @media (max-width: 720px) { .body-grid { grid-template-columns: 1fr; gap: 8px; } }
+
+  /* BENCH */
+  .bench { background: var(--paper-2); border: 1px solid var(--rule); border-radius: 4px; padding: 36px 32px 28px; margin-top: 8px; }
+  .bench-title { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-mute); text-align: center; margin-bottom: 24px; }
+  .bench-row { display: flex; justify-content: center; gap: 8px; margin-bottom: 28px; flex-wrap: wrap; }
+  .justice { flex: 0 0 auto; width: 88px; text-align: center; padding: 12px 4px; border-radius: 4px; border: 1.5px solid var(--rule); background: var(--paper); position: relative; transition: transform 0.15s, box-shadow 0.15s; }
+  .justice:hover { transform: translateY(-2px); box-shadow: 0 6px 14px rgba(28,24,21,0.08); }
+  .justice-seal { width: 32px; height: 32px; border-radius: 50%; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 14px; font-weight: 600; color: var(--paper); font-style: italic; }
+  .justice-name { font-family: var(--font-display); font-size: 13px; font-weight: 600; line-height: 1.15; color: var(--ink); }
+  .justice-role { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mute); margin-top: 4px; }
+  .justice.majority { border-color: var(--majority); background: var(--majority-tint); }
+  .justice.majority .justice-seal { background: var(--majority); }
+  .justice.dissent { border-color: var(--dissent); background: var(--dissent-tint); }
+  .justice.dissent .justice-seal { background: var(--dissent); }
+  .justice.dissent .justice-role { color: var(--ink); }
+  .justice.concur { border-color: var(--concur); background: var(--concur-tint); }
+  .justice.concur .justice-seal { background: var(--concur); }
+  .justice.concur .justice-role { color: var(--ink); }
+  .justice.author::after { content: '\2726'; position: absolute; top: 4px; right: 6px; font-size: 12px; color: var(--oxblood); }
+  .bench-legend { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; padding-top: 20px; border-top: 1px solid var(--rule); font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); }
+  .bench-legend-item { display: flex; align-items: center; gap: 8px; }
+  .bench-legend-swatch { width: 14px; height: 14px; border-radius: 50%; border: 1.5px solid; }
+  .bench-legend-swatch.maj { background: var(--majority-tint); border-color: var(--majority); }
+  .bench-legend-swatch.con { background: var(--concur-tint); border-color: var(--concur); }
+  .bench-legend-swatch.dis { background: var(--dissent-tint); border-color: var(--dissent); }
+
+  /* ARGUMENTS */
+  .arguments { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 8px; }
+  @media (max-width: 720px) { .arguments { grid-template-columns: 1fr; } }
+  .arg-card { background: var(--paper); border: 1px solid var(--rule); border-top: 4px solid; padding: 28px 28px 24px; border-radius: 2px; }
+  .arg-card.majority-arg { border-top-color: var(--majority); }
+  .arg-card.concur-arg  { border-top-color: var(--concur); }
+  .arg-card.dissent-arg  { border-top-color: var(--dissent); }
+  .arg-label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .arg-card.majority-arg .arg-label { color: var(--majority); }
+  .arg-card.concur-arg  .arg-label { color: var(--concur); }
+  .arg-card.dissent-arg  .arg-label { color: var(--dissent); }
+  .arg-label-mark { display: inline-block; width: 6px; height: 6px; border-radius: 50%; }
+  .arg-card.majority-arg .arg-label-mark { background: var(--majority); }
+  .arg-card.concur-arg  .arg-label-mark { background: var(--concur); }
+  .arg-card.dissent-arg  .arg-label-mark { background: var(--dissent); }
+  .arg-headline { font-family: var(--font-display); font-size: 22px; font-weight: 500; line-height: 1.3; color: var(--ink); margin-bottom: 18px; letter-spacing: -0.01em; }
+  .arg-headline em { font-style: italic; color: var(--oxblood); }
+  .arg-points { list-style: none; counter-reset: argp; }
+  .arg-points li { counter-increment: argp; padding: 14px 0 14px 36px; border-bottom: 1px solid var(--rule-soft); font-size: 15.5px; line-height: 1.6; color: var(--ink-2); position: relative; }
+  .arg-points li:last-child { border-bottom: none; padding-bottom: 4px; }
+  .arg-points li::before { content: counter(argp, decimal-leading-zero); position: absolute; left: 0; top: 14px; font-family: var(--font-mono); font-size: 12px; color: var(--ink-mute); letter-spacing: 0.05em; }
+  .arg-points li strong { display: block; font-family: var(--font-display); font-weight: 600; font-size: 16px; color: var(--ink); margin-bottom: 4px; letter-spacing: -0.005em; }
+
+  /* THREE-CASE TRILOGY COMPONENT */
+  .trilogy { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 8px; }
+  @media (max-width: 820px) { .trilogy { grid-template-columns: 1fr; } }
+  .trilogy-card { background: var(--paper); border: 1px solid var(--rule); border-radius: 2px; overflow: hidden; }
+  .trilogy-card-header { padding: 18px 20px 16px; border-bottom: 1px solid var(--rule); }
+  .trilogy-seq { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 6px; }
+  .trilogy-case { font-family: var(--font-display); font-size: 18px; font-weight: 500; color: var(--ink); line-height: 1.2; margin-bottom: 4px; letter-spacing: -0.01em; }
+  .trilogy-case em { font-style: italic; color: var(--oxblood); }
+  .trilogy-year { font-family: var(--font-mono); font-size: 12px; color: var(--ink-mute); letter-spacing: 0.06em; }
+  .trilogy-body { padding: 16px 20px; }
+  .trilogy-who { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brass); font-weight: 700; margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid var(--rule-soft); }
+  .trilogy-body p { font-size: 14.5px; line-height: 1.6; color: var(--ink-2); margin-bottom: 8px; }
+  .trilogy-body p:last-child { margin-bottom: 0; }
+  .trilogy-body strong { color: var(--ink); font-weight: 600; }
+  .trilogy-highlight { background: var(--paper-2); border-left: 3px solid var(--oxblood); padding: 10px 14px; margin-top: 10px; font-size: 14px; line-height: 1.55; color: var(--ink-2); }
+  .trilogy-highlight strong { color: var(--oxblood); font-size: 12px; font-family: var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 4px; }
+  .trilogy-card.current { border-color: var(--oxblood); }
+  .trilogy-card.current .trilogy-card-header { background: var(--oxblood-tint); }
+
+  /* GUARDRAIL */
+  .guardrail { background: var(--brass-tint); border: 1px solid var(--brass); border-left: 4px solid var(--brass); padding: 24px 28px; margin-top: 8px; border-radius: 2px; }
+  .guardrail-label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--brass); font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+  .guardrail-label::before { content: '\26A0'; font-size: 16px; color: var(--brass); }
+  .guardrail-title { font-family: var(--font-display); font-size: 22px; font-weight: 500; color: var(--ink); margin-bottom: 14px; letter-spacing: -0.01em; }
+  .guardrail ul { list-style: none; padding: 0; }
+  .guardrail li { padding: 8px 0 8px 24px; font-size: 15.5px; color: var(--ink-2); line-height: 1.55; position: relative; }
+  .guardrail li::before { content: '\2715'; position: absolute; left: 0; top: 9px; color: var(--brass); font-weight: 700; font-size: 13px; }
+  .guardrail li strong { color: var(--ink); font-weight: 600; }
+
+  /* TIMELINE */
+  .timeline { margin-top: 8px; border-left: 2px solid var(--rule); padding-left: 28px; margin-left: 12px; }
+  .timeline-event { position: relative; padding-bottom: 28px; }
+  .timeline-event:last-child { padding-bottom: 0; }
+  .timeline-event::before { content: ''; position: absolute; left: -36px; top: 6px; width: 14px; height: 14px; background: var(--paper); border: 2px solid var(--oxblood); border-radius: 50%; }
+  .timeline-event.scotus::before { background: var(--oxblood); }
+  .timeline-court { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--oxblood); margin-bottom: 4px; font-weight: 700; }
+  .timeline-ruling { font-family: var(--font-display); font-size: 17px; font-weight: 500; color: var(--ink); margin-bottom: 4px; letter-spacing: -0.005em; }
+  .timeline-desc { font-size: 14.5px; color: var(--ink-soft); line-height: 1.55; }
+
+  /* PRACTICE */
+  .practice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 8px; }
+  @media (max-width: 820px) { .practice-grid { grid-template-columns: 1fr; } }
+  .practice-card { background: var(--paper); border: 1px solid var(--rule); padding: 24px 22px; border-radius: 2px; border-top: 4px solid var(--oxblood); }
+  .practice-card-tag { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--oxblood); margin-bottom: 10px; font-weight: 700; }
+  .practice-card-title { font-family: var(--font-display); font-size: 19px; font-weight: 600; line-height: 1.25; color: var(--ink); margin-bottom: 10px; letter-spacing: -0.01em; }
+  .practice-card p { font-size: 14.5px; line-height: 1.6; color: var(--ink-2); }
+
+  /* KEY TERMS */
+  .key-terms { margin-top: 16px; background: var(--paper-2); border: 1px solid var(--rule); padding: 28px 32px; border-radius: 2px; }
+  .key-terms-title { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--oxblood); font-weight: 700; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--rule); }
+  .key-terms-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px 32px; }
+  @media (max-width: 720px) { .key-terms-list { grid-template-columns: 1fr; gap: 20px; } }
+  .key-term-name { font-family: var(--font-display); font-weight: 600; font-style: italic; color: var(--ink); font-size: 17px; margin-bottom: 8px; letter-spacing: -0.005em; }
+  .key-term-def { font-size: 14.5px; color: var(--ink-2); line-height: 1.6; margin: 0; }
+
+  /* PULLQUOTE */
+  .pullquote { margin: 48px auto; max-width: 800px; text-align: center; padding: 0 24px; }
+  .pullquote-mark { font-family: var(--font-display); font-style: italic; font-size: 88px; color: var(--oxblood); line-height: 0.6; margin-bottom: 12px; font-weight: 400; }
+  .pullquote-text { font-family: var(--font-display); font-style: italic; font-size: clamp(22px, 2.4vw, 30px); line-height: 1.35; font-weight: 400; color: var(--ink); margin-bottom: 16px; letter-spacing: -0.005em; }
+  .pullquote-cite { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-mute); }
+
+  /* COLOPHON */
+  .colophon { background: var(--ink); color: var(--paper-2); padding: 36px 32px; position: relative; z-index: 2; }
+  .colophon-inner { max-width: 1180px; margin: 0 auto; display: flex; justify-content: space-between; align-items: baseline; gap: 24px; flex-wrap: wrap; }
+  .colophon-brand { font-family: var(--font-display); font-size: 14px; font-weight: 500; letter-spacing: 0.04em; font-style: italic; color: var(--paper); }
+  .colophon-brand a { color: inherit; text-decoration: none; }
+  .colophon-brand a:hover { color: var(--oxblood-tint); }
+  .colophon-meta { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #a89e8e; }
+
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+</style>
+</head><body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="masthead" role="banner">
+<div class="masthead-inner">
+<div class="masthead-brand"><a href="/scotus/">understanding scotus opinions</a></div>
+<div class="masthead-meta">Dr. Philip Mongan, lcsw, ph.D.</div>
+</div>
+</div>
+<div class="hero">
+<p class="hero-eyebrow">October Term 1991 · Decided May 18, 1992</p>
+<h1 class="hero-title">Riggins <em>v.</em><br>Nevada</h1>
+<p class="hero-citation">No. 90–8466 · 504 U.S. 127 (1992) · <a href="https://www.oyez.org/cases/1991/90-8466" target="_blank" rel="noopener">Read the full case on Oyez ↗</a></p>
+<div class="lede">
+<div class="lede-label"><span class="lede-label-mark" aria-hidden="true"></span>The Holding</div>
+<p class="lede-text">The Supreme Court held, <strong>7–2</strong>, that Nevada violated the Sixth and Fourteenth Amendments by forcing a criminal defendant to take high-dose antipsychotic medication throughout his trial with <em>no findings, no justification, and no consideration of less intrusive alternatives</em>.</p>
+</div>
+<div class="bluf">
+<div class="bluf-label"><span class="bluf-label-mark" aria-hidden="true"></span>In plain terms</div>
+<p class="bluf-text">David Riggins was charged with murder. While awaiting trial in jail, he was prescribed Mellaril, an antipsychotic, at doses as high as 800mg per day. Before trial he asked the court to suspend the medication so the jury could see his unmedicated mental state. The court denied the request without any explanation. He went to trial heavily medicated, was convicted, and sentenced to death. The Supreme Court reversed, holding that <strong>a state may not forcibly medicate a defendant throughout trial without first establishing a medical or penological justification and finding that no less intrusive alternative exists.</strong> Simply assuming the medication was fine, without any record analysis, was constitutionally inadequate.</p>
+</div>
+</div>
+<main id="main"><!-- 01: THE QUESTION -->
+<section aria-labelledby="s1-title">
+<div class="section-head">
+<div class="section-num">Section <strong>01</strong></div>
+<h2 class="section-title" id="s1-title">The Question <em>Presented</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">What was<br>at stake</div>
+<div class="body-grid-main">
+<p class="dropcap">In 1987 David Riggins was arrested in Las Vegas and charged with murdering Paul Wade, who had been stabbed 32 times. While confined in the Clark County Jail awaiting trial, Riggins complained to Dr. R. Edward Quass, a psychiatrist who treated jail patients, about hearing voices and having trouble sleeping. Dr. Quass prescribed Mellaril (thioridazine), a potent antipsychotic medication. The dose started at 100mg per day and was raised to 800mg per day before trial began.</p>
+<p>Before trial, Riggins moved to have the Mellaril suspended. He offered two arguments. First, he had a liberty interest under the Due Process Clause in refusing unwanted antipsychotic medication, a right the Court had recognized the year before in Washington v. Harper. Second, and more practically, he was mounting an insanity defense. The jury would need to evaluate his mental state, but the medication was actively altering it. The medicated version of him that the jury would see was not the person who allegedly committed the crime. His demeanor, his testimony, his ability to communicate with his lawyers, his affect on the stand: all of it was being chemically managed in ways the jury would not observe and might not understand.</p>
+<p>The Nevada trial court denied the motion without any explanation. No findings. No analysis. No consideration of whether the medication was medically necessary, whether it could be reduced or replaced, or whether Riggins's trial rights were implicated. He was convicted of first-degree murder and robbery and sentenced to death. The Nevada Supreme Court affirmed, reasoning that the expert testimony about Mellaril's effects was sufficient for the jury to account for the drug's impact on his behavior.</p>
+<p>The Supreme Court took the case to decide whether forcing a criminal defendant to take antipsychotic medication throughout his trial, without any judicial finding of necessity or any consideration of alternatives, satisfied due process.</p>
+</div>
+</div>
+</section>
+<!-- 02: THE BENCH -->
+<section aria-labelledby="s2-title">
+<div class="section-head">
+<div class="section-num">Section <strong>02</strong></div>
+<h2 class="section-title" id="s2-title">The <em>Bench</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">Who joined<br>which side</div>
+<div class="body-grid-main">
+<p>Justice O'Connor wrote for six Justices. Justice Kennedy agreed with the result but on somewhat narrower grounds, filing a concurrence in the judgment. Justices Thomas and Scalia dissented, though Scalia declined to join Part II-A of Thomas's opinion, making this a partial dissent with an internal split.</p>
+<p>The Kennedy concurrence is worth attention. He grounded his analysis more firmly in the specific pharmacological evidence in the record and the amicus briefs, particularly data from the American Psychiatric Association about how high-dose Mellaril can produce akinesia, a sedation-like state severe enough to affect thought processes. Kennedy would have resolved the case on the narrower ground that medicating a defendant at this level with this drug's documented cognitive effects violated fair trial rights, without constructing a broader liberty interest framework. His concurrence reflects his characteristic preference for fact-specific holdings over categorical rules.</p>
+<p>Thomas's dissent argues that the majority conflated two separate questions: whether Riggins had a fair trial, and whether Nevada improperly forced him to take medication. In Thomas's view, those are distinct issues. Riggins was in criminal court seeking reversal of a conviction. The only question properly before the Court was whether he received a fair trial, and Thomas believed he did. Any liberty interest claim about the medication itself would need to be pursued in a different proceeding, not as a ground for reversing a criminal conviction.</p>
+</div>
+</div>
+<div class="bench" role="figure" aria-label="The nine Justices and how they voted">
+<p class="bench-title">The Rehnquist Court · Vote 7–2</p>
+<div class="bench-row">
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">R</div>
+<div class="justice-name">Rehnquist</div>
+<div class="justice-role">Joined</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">W</div>
+<div class="justice-name">White</div>
+<div class="justice-role">Joined</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">B</div>
+<div class="justice-name">Blackmun</div>
+<div class="justice-role">Joined</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">S</div>
+<div class="justice-name">Stevens</div>
+<div class="justice-role">Joined</div>
+</div>
+<div class="justice majority author">
+<div class="justice-seal" aria-hidden="true">O</div>
+<div class="justice-name">O'Connor</div>
+<div class="justice-role">Author</div>
+</div>
+<div class="justice concur author">
+<div class="justice-seal" aria-hidden="true">K</div>
+<div class="justice-name">Kennedy</div>
+<div class="justice-role">Concurred</div>
+</div>
+<div class="justice majority">
+<div class="justice-seal" aria-hidden="true">S</div>
+<div class="justice-name">Souter</div>
+<div class="justice-role">Joined</div>
+</div>
+<div class="justice dissent author">
+<div class="justice-seal" aria-hidden="true">T</div>
+<div class="justice-name">Thomas</div>
+<div class="justice-role">Dissented</div>
+</div>
+<div class="justice dissent">
+<div class="justice-seal" aria-hidden="true">S</div>
+<div class="justice-name">Scalia</div>
+<div class="justice-role">Dissented*</div>
+</div>
+</div>
+<div class="bench-legend">
+<div class="bench-legend-item"><span class="bench-legend-swatch maj" aria-hidden="true"></span>Majority (6)</div>
+<div class="bench-legend-item"><span class="bench-legend-swatch con" aria-hidden="true"></span>Concur in judgment (1)</div>
+<div class="bench-legend-item"><span class="bench-legend-swatch dis" aria-hidden="true"></span>Dissent (2)</div>
+<div class="bench-legend-item">✦ Opinion author &nbsp;&nbsp;&nbsp; * Scalia joined Thomas except as to Part II-A</div>
+</div>
+</div>
+</section>
+<!-- PULLQUOTE -->
+<div class="pullquote">
+<div class="pullquote-mark" aria-hidden="true">“</div>
+<p class="pullquote-text">An unacceptable risk remained that forced medication compromised his trial rights.</p>
+<p class="pullquote-cite">Justice O'Connor, for the Court</p>
+</div>
+<!-- 03: THE REASONING -->
+<section aria-labelledby="s3-title">
+<div class="section-head">
+<div class="section-num">Section <strong>03</strong></div>
+<h2 class="section-title" id="s3-title">The <em>Reasoning</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">Three<br>positions</div>
+<div class="body-grid-main">
+<p>O'Connor built the majority opinion on two foundations: the liberty interest in refusing antipsychotic medication established in Washington v. Harper, and the fair trial requirements of the Sixth Amendment. Kennedy reached the same result through the trial rights lens without fully endorsing the liberty interest framework. Thomas rejected both and would have affirmed the conviction on the ground that Riggins received a fair trial regardless of any medication-related liberty violation.</p>
+</div>
+</div>
+<div class="arguments">
+<article class="arg-card majority-arg">
+<div class="arg-label"><span class="arg-label-mark" aria-hidden="true"></span>The Majority (O'Connor)</div>
+<h3 class="arg-headline">No findings, no justification, no consideration of alternatives: <em>due process requires more than silence.</em></h3>
+<ol class="arg-points">
+<li><strong>The liberty interest established in Harper applies here.</strong> Washington v. Harper recognized that a prisoner has a liberty interest under the Due Process Clause in avoiding unwanted antipsychotic medication. The state can override that interest, but only through procedural protections and substantive findings. Riggins was a pretrial detainee, not a convicted prisoner, and the liberty interest applied at least as strongly.</li>
+<li><strong>The state's procedural failure was categorical.</strong> Nevada's trial court denied the motion with no written findings, no analysis, and no stated rationale. There was no determination that Mellaril was medically necessary, no consideration of whether lower doses might suffice, no examination of whether alternative medications existed, and no weighing of the state's interest against Riggins's trial rights. The Constitution required more than this.</li>
+<li><strong>Forced medication during trial implicates multiple Sixth Amendment rights.</strong> Antipsychotic drugs of the Mellaril class can affect a defendant's demeanor, affect, appearance, and communication with counsel, as well as the substance and delivery of testimony. Even if expert witnesses could explain the drug's effects to a jury, that would not cure the constitutional problem: the jury was seeing a chemically managed version of the defendant, not the person whose mental state was actually at issue in the insanity defense. An unacceptable risk remained.</li>
+<li><strong>The standard: overriding justification plus medical appropriateness.</strong> O'Connor identified two bases on which Nevada could potentially have justified forced medication: (1) that it was medically appropriate and necessary for Riggins's own safety or the safety of others, or (2) that an essential state interest required it. The record supported neither. The majority declined to define the full standard exhaustively, leaving that work to future cases.</li>
+<li><strong>The insanity defense made this especially serious.</strong> Where a defendant is affirmatively arguing that his mental state at the time of the offense was disordered, the jury's ability to observe his unmedicated presentation is directly relevant. The medication was not incidental to the trial; it was chemically altering the very thing being litigated.</li>
+</ol>
+</article>
+<div style="display: flex; flex-direction: column; gap: 24px;">
+<article class="arg-card concur-arg">
+<div class="arg-label"><span class="arg-label-mark" aria-hidden="true"></span>Kennedy, Concurring</div>
+<h3 class="arg-headline">The <em>pharmacology itself</em> condemned this trial.</h3>
+<ol class="arg-points">
+<li><strong>The amicus evidence was decisive for Kennedy.</strong> The APA's brief described how antipsychotic drugs at high doses can produce akinesia, a severe sedation-like state that impairs thought processes. At 800mg of Mellaril per day, the cognitive effects documented in the record were serious enough on their own to compromise a fair trial. Kennedy grounded his analysis in this specific evidence rather than constructing a broad liberty interest framework.</li>
+<li><strong>Kennedy would have stopped at fair trial, not expanded to liberty interest.</strong> The majority's analysis went further than Kennedy thought necessary. He would have reversed on the narrower ground that medicating this defendant at this level with this drug, on this record, violated his right to a fair trial. The broader due process framework O'Connor constructed was, in Kennedy's view, unnecessary for the outcome and potentially problematic in future cases.</li>
+</ol>
+</article>
+<article class="arg-card dissent-arg">
+<div class="arg-label"><span class="arg-label-mark" aria-hidden="true"></span>Thomas, Dissenting</div>
+<h3 class="arg-headline">The majority <em>conflated two questions</em> that belong in separate proceedings.</h3>
+<ol class="arg-points">
+<li><strong>A criminal appeal asks only whether the trial was fair.</strong> Riggins was seeking reversal of a criminal conviction, not an injunction or damages for a liberty violation. The only constitutionally relevant question was whether he received a fundamentally fair trial under the Sixth and Fourteenth Amendments. Thomas believed he did.</li>
+<li><strong>The liberty interest claim belongs elsewhere.</strong> Even accepting that Nevada may have violated Riggins's liberty interest in refusing medication, that violation would be actionable in a different proceeding, not as a ground for reversing the conviction. The majority collapsed the fair trial question and the liberty interest question into one, which Thomas viewed as analytically improper.</li>
+<li><strong>Scalia's partial non-joinder.</strong> Scalia joined the dissent except as to Part II-A, suggesting some aspect of Thomas's broader analysis went further than Scalia was willing to follow, though the opinion does not make the nature of that disagreement explicit.</li>
+</ol>
+</article>
+</div>
+</div>
+</section>
+<!-- 04: THE TRILOGY -->
+<section aria-labelledby="s4-title">
+<div class="section-head">
+<div class="section-num">Section <strong>04</strong></div>
+<h2 class="section-title" id="s4-title">The Forced Medication <em>Trilogy</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">Three cases,<br>three contexts</div>
+<div class="body-grid-main">
+<p>Riggins sits at the center of a three-case arc on the state's power to forcibly administer antipsychotic medication. Each case addressed a different population and a different governmental purpose. Together they define the constitutional landscape that forensic mental health practitioners and social workers operate within.</p>
+</div>
+</div>
+<div class="trilogy">
+<div class="trilogy-card">
+<div class="trilogy-card-header">
+<p class="trilogy-seq">Case One · 1990</p>
+<p class="trilogy-case">Washington <em>v.</em> Harper</p>
+<p class="trilogy-year">494 U.S. 210</p>
+</div>
+<div class="trilogy-body">
+<p class="trilogy-who">Who: Convicted prisoners</p>
+<p>The Court held that prisoners retain a significant liberty interest in avoiding unwanted antipsychotic medication under the Due Process Clause. The state can override this interest, but must do so through procedural protections and may do so only when the inmate is dangerous to self or others and the treatment is medically appropriate.</p>
+<p>Harper established the liberty interest that Riggins would extend two years later. It also permitted states to use administrative rather than judicial procedures for the prison context, a feature that troubled Kennedy and would later matter in subsequent cases.</p>
+<div class="trilogy-highlight"><strong>The standard</strong> Medical appropriateness plus dangerousness to self or others. Administrative process permissible in prison setting.</div>
+</div>
+</div>
+<div class="trilogy-card current">
+<div class="trilogy-card-header">
+<p class="trilogy-seq">Case Two · 1992 · This Case</p>
+<p class="trilogy-case">Riggins <em>v.</em> Nevada</p>
+<p class="trilogy-year">504 U.S. 127</p>
+</div>
+<div class="trilogy-body">
+<p class="trilogy-who">Who: Pretrial defendants at trial</p>
+<p>The Court extended the Harper liberty interest to criminal defendants awaiting trial. It held that Nevada violated due process and the Sixth Amendment by forcing Mellaril on Riggins throughout his trial with no findings, no justification, and no consideration of alternatives.</p>
+<p>Importantly, the majority did not fully define when forced medication of a trial defendant would be permissible. It identified the problem (absence of findings and justification) without exhaustively specifying the remedy. That standard-setting work was left for Sell.</p>
+<div class="trilogy-highlight"><strong>The standard (partial)</strong> Overriding justification plus medical appropriateness required. Full standard not defined. Reversal required when record contains no findings.</div>
+</div>
+</div>
+<div class="trilogy-card">
+<div class="trilogy-card-header">
+<p class="trilogy-seq">Case Three · 2003</p>
+<p class="trilogy-case">Sell <em>v.</em> United States</p>
+<p class="trilogy-year">539 U.S. 166</p>
+</div>
+<div class="trilogy-body">
+<p class="trilogy-who">Who: Defendants incompetent to stand trial</p>
+<p>The Court addressed the specific question Riggins left open: when may the government forcibly medicate a defendant solely to render them competent to stand trial? Sell established a demanding four-factor test that must all be satisfied before involuntary medication for this purpose is permitted.</p>
+<p>Sell completed the trilogy by specifying the constitutional standard that Riggins had gestured toward. The four factors are: (1) important governmental interest; (2) medication substantially likely to render the defendant competent; (3) medication unlikely to produce side effects that would undermine trial fairness; (4) medication necessary and less intrusive alternatives inadequate.</p>
+<div class="trilogy-highlight"><strong>The standard (complete)</strong> Four-factor test: important interest, likely competence, no unfair side effects, necessity. High bar. Used only as last resort.</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 05: WHAT THE COURT DID NOT DECIDE -->
+<section aria-labelledby="s5-title">
+<div class="section-head">
+<div class="section-num">Section <strong>05</strong></div>
+<h2 class="section-title" id="s5-title">What the Court <em>Did Not</em> Decide</h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">Read this<br>carefully</div>
+<div class="body-grid-main">
+<p>Riggins is explicitly an incomplete opinion in certain respects. O'Connor identified the constitutional problem but stopped short of fully defining the constitutional remedy. Understanding what was left open matters for applying the case correctly.</p>
+</div>
+</div>
+<div class="guardrail" role="note">
+<div class="guardrail-label">Common misreads to avoid</div>
+<h3 class="guardrail-title">Riggins set a floor, not a complete standard.</h3>
+<ul>
+<li><strong>It did not bar all forced medication of trial defendants.</strong> O'Connor specifically noted that Nevada might have been able to justify the medication if it had made findings. A state that demonstrates medical appropriateness, addresses less intrusive alternatives, and establishes an essential interest may still be able to forcibly medicate. Riggins closed the door on the absence-of-findings approach; it did not close the door on forced medication entirely.</li>
+<li><strong>It did not define the complete due process standard for forced medication at trial.</strong> The majority declined to specify exactly what the state must show. That work was left for Sell v. United States (2003), which established the four-factor test. Riggins identifies what is insufficient; Sell specifies what is required.</li>
+<li><strong>It applied to the trial context, not every stage of criminal proceedings.</strong> The relationship between Riggins and the restoration-of-competency context was not fully worked out in 1992. Sell addressed the specific question of medicating to achieve competency, which involves a different governmental purpose than simply maintaining a defendant's behavior during trial.</li>
+<li><strong>It did not resolve what happens after medication is withdrawn.</strong> Riggins sought suspension of the medication during trial. The opinion did not address whether a defendant who had been medicated during pre-trial proceedings and then goes to trial without medication can challenge that prior medication as trial prejudice, or how courts should handle the transition.</li>
+<li><strong>The sentencing claim was not addressed.</strong> Riggins also argued that the medication at his sentencing hearing obscured his true mental condition from the jury that recommended death. O'Connor explicitly declined to reach this argument because the conviction itself was being reversed. The sentencing question remained open.</li>
+</ul>
+</div>
+</section>
+<!-- 06: PROCEDURAL ROUTE -->
+<section aria-labelledby="s6-title">
+<div class="section-head">
+<div class="section-num">Section <strong>06</strong></div>
+<h2 class="section-title" id="s6-title">How It <em>Got Here</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">The path<br>to SCOTUS</div>
+<div class="body-grid-main">
+<p>Riggins moved through Nevada's courts with every lower court ruling against him before the Supreme Court reversed.</p>
+</div>
+</div>
+<div class="timeline">
+<div class="timeline-event">
+<div class="timeline-court">1987 · Clark County, Nevada</div>
+<div class="timeline-ruling">Riggins charged with murder and robbery</div>
+<div class="timeline-desc">David Riggins is arrested for the stabbing death of Paul Wade. While confined in the Clark County Jail, he reports hearing voices and sleeping difficulties. Dr. Quass prescribes Mellaril at 100mg/day, eventually raised to 800mg/day.</div>
+</div>
+<div class="timeline-event">
+<div class="timeline-court">Pre-trial · Nevada District Court</div>
+<div class="timeline-ruling">Motion to suspend medication denied without explanation</div>
+<div class="timeline-desc">Riggins moves to have Mellaril suspended during trial, arguing a liberty interest in refusing medication and that the drug will interfere with his insanity defense. The trial court denies the motion with no findings, no analysis, and no stated reasons. Trial proceeds with Riggins medicated at 800mg/day.</div>
+</div>
+<div class="timeline-event">
+<div class="timeline-court">1990 · Nevada District Court</div>
+<div class="timeline-ruling">Convicted of first-degree murder and robbery; sentenced to death</div>
+<div class="timeline-desc">The jury rejects the insanity defense and convicts Riggins of first-degree murder and robbery with a deadly weapon. He is sentenced to death.</div>
+</div>
+<div class="timeline-event">
+<div class="timeline-court">1991 · Nevada Supreme Court</div>
+<div class="timeline-ruling">Conviction affirmed</div>
+<div class="timeline-desc">The Nevada Supreme Court affirms, reasoning that expert testimony about Mellaril's effects was sufficient for the jury to understand the drug's impact on Riggins's behavior. The court finds no constitutional violation.</div>
+</div>
+<div class="timeline-event scotus">
+<div class="timeline-court">May 18, 1992 · Supreme Court of the United States</div>
+<div class="timeline-ruling">SCOTUS reverses, 7–2</div>
+<div class="timeline-desc">Justice O'Connor writes for six Justices. Justice Kennedy concurs in the judgment. Justices Thomas and Scalia dissent, with Scalia joining all but Part II-A of Thomas's opinion. The conviction is reversed and the case remanded. The Court holds that forcing Mellaril on Riggins throughout trial with no findings and no consideration of alternatives violated the Sixth and Fourteenth Amendments.</div>
+</div>
+<div class="timeline-event">
+<div class="timeline-court">On remand · Nevada</div>
+<div class="timeline-ruling">Retrial; ultimately convicted again</div>
+<div class="timeline-desc">On remand, Nevada retried Riggins. He was convicted again and received another death sentence. The constitutional question the Supreme Court resolved in 1992 was procedural: the original trial was constitutionally defective for lack of findings. The reversal did not mean Riggins was innocent or that he could not be retried and convicted under a proper procedure.</div>
+</div>
+</div>
+</section>
+<!-- 07: FOR PRACTICE -->
+<section aria-labelledby="s7-title">
+<div class="section-head">
+<div class="section-num">Section <strong>07</strong></div>
+<h2 class="section-title" id="s7-title">For <em>Practice</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">The social<br>work bridge</div>
+<div class="body-grid-main">
+<p>Riggins matters most directly for workers in forensic mental health settings, but its implications extend to any practitioner involved in the legal system with clients who have psychiatric diagnoses and are facing criminal charges. Three lenses help organize the practice implications.</p>
+</div>
+</div>
+<div class="practice-grid">
+<div class="practice-card">
+<div class="practice-card-tag">Forensic Practice Lens</div>
+<h3 class="practice-card-title">Medication status is a legal variable, not just a clinical one.</h3>
+<p>Forensic mental health workers conducting evaluations, providing consultation, or testifying in criminal cases involving defendants with psychiatric diagnoses need to document and account for medication status as a legally significant factor. Riggins establishes that the medicated state of a defendant during trial can itself be a constitutional issue. Evaluations that document pre-trial and trial-period medication status, dosage, and documented cognitive or behavioral effects provide the kind of record that courts need and that Riggins said must exist before forced medication continues.</p>
+</div>
+<div class="practice-card">
+<div class="practice-card-tag">Advocacy Lens</div>
+<h3 class="practice-card-title">Clients have a right to contest forced medication, and workers can help them exercise it.</h3>
+<p>Riggins, together with Harper and Sell, establishes that persons with psychiatric diagnoses in criminal proceedings have constitutionally protected liberty interests in refusing antipsychotic medication. Social workers serving as case managers, mitigation specialists, or advocates in criminal defense contexts should know that a client who is being involuntarily medicated has the right to have that decision reviewed by a court, and that the court must make findings. If no findings were made, that is a constitutional deficiency worth raising with defense counsel.</p>
+</div>
+<div class="practice-card">
+<div class="practice-card-tag">Clinical Documentation Lens</div>
+<h3 class="practice-card-title">The Sell four-factor test creates a clinical checklist for forensic evaluators.</h3>
+<p>While Riggins identified the problem and Sell defined the standard, workers who provide clinical input in competency-to-stand-trial proceedings need to understand both. The Sell factors require clinical findings: is restoration to competency substantially likely? Are side effects likely to undermine trial fairness? Are less intrusive alternatives inadequate? These are clinical questions requiring clinical answers, and forensic mental health professionals, including social workers in forensic settings, contribute to the record on which courts decide them.</p>
+</div>
+</div>
+</section>
+<!-- 08: VOCABULARY -->
+<section aria-labelledby="s8-title">
+<div class="section-head">
+<div class="section-num">Section <strong>08</strong></div>
+<h2 class="section-title" id="s8-title">A Working <em>Vocabulary</em></h2>
+</div>
+<div class="body-grid">
+<div class="body-grid-aside">Key terms<br>in this area</div>
+<div class="body-grid-main">
+<p>Riggins sits at the intersection of psychopharmacology, criminal procedure, and constitutional law. The following terms appear in the case and in the trilogy that surrounds it.</p>
+</div>
+</div>
+<div class="key-terms">
+<div class="key-terms-title">Frequently Used in This Opinion</div>
+<div class="key-terms-list">
+<div>
+<p class="key-term-name">Mellaril (thioridazine)</p>
+<p class="key-term-def">A first-generation antipsychotic medication prescribed to Riggins at 800mg per day before and during trial. At high doses, Mellaril can produce sedation, cognitive blunting, and akinesia. The drug was later removed from most markets due to cardiac risks. Kennedy's concurrence specifically engages the APA's amicus brief describing the drug's potential cognitive effects at high doses.</p>
+</div>
+<div>
+<p class="key-term-name">Akinesia</p>
+<p class="key-term-def">A movement and cognitive side effect of high-dose antipsychotic medication in which the patient experiences a severe sedation-like state that can impair thought processes, slow movement, and blunt affect. Kennedy's concurrence uses this term specifically, drawing on APA amicus data. It is one of the reasons that medicating a defendant during trial can affect the jury's perception of their mental state, demeanor, and credibility.</p>
+</div>
+<div>
+<p class="key-term-name">Liberty interest (Due Process)</p>
+<p class="key-term-def">A constitutionally protected interest recognized under the Fourteenth Amendment that the government cannot deprive a person of without due process of law. Washington v. Harper first recognized that avoiding unwanted antipsychotic medication constitutes a liberty interest for prisoners. Riggins extended this to pretrial defendants. The interest is not absolute: it can be overridden by the state with adequate procedural protections and substantive justification.</p>
+</div>
+<div>
+<p class="key-term-name">Sell test (four factors)</p>
+<p class="key-term-def">The standard established by Sell v. United States (2003) for when the government may forcibly medicate a defendant solely to restore competency to stand trial. The four factors: (1) important governmental interest at stake; (2) medication substantially likely to render the defendant competent; (3) medication unlikely to produce side effects that would undermine fair trial rights; (4) medication is necessary and less intrusive alternatives are inadequate. All four must be satisfied. Sell completed the standard that Riggins left open.</p>
+</div>
+<div>
+<p class="key-term-name">Insanity defense</p>
+<p class="key-term-def">A legal defense in which the defendant argues that a mental disease or defect prevented them from understanding the nature of the act or distinguishing right from wrong at the time of the offense. In Riggins, the insanity defense made the forced medication issue especially sharp: the jury needed to evaluate Riggins's mental state, but the medication was actively altering it. The very thing being litigated was being chemically managed throughout the proceedings.</p>
+</div>
+<div>
+<p class="key-term-name">Competency to stand trial</p>
+<p class="key-term-def">A legal standard requiring that a criminal defendant have a rational and factual understanding of the proceedings against them and be able to assist in their own defense. Distinct from the insanity defense (which concerns mental state at the time of the offense). Antipsychotic medication is sometimes used to restore competency in defendants who have been found incompetent. Sell v. United States (2003) established the constitutional standard for when this is permissible.</p>
+</div>
+</div>
+</div>
+</section>
+</main><footer class="colophon" role="contentinfo">
+<div class="colophon-inner">
+<div class="colophon-brand"><a href="/scotus/">Understanding SCOTUS Opinions</a></div>
+<div class="colophon-meta">Mongan's Teaching Archive</div>
+</div>
+</footer></body></html>
